@@ -963,6 +963,34 @@ pForm.gfnGetAuth = function(sAuthGubn)
 	return bAuth;
 };
 
+pForm.getFormAuthority = function(strFormID, nAuthSeq)
+{
+	if(nexacro._quickview_formurl) return true;
+	
+	// 권한없을때 버튼을 보이게 할지 여부
+	var bButtonVisable = true;
+	
+	var sButtonAuth = this.gfnGetAuth();
+	if (this.gfnIsNull(sButtonAuth)) sButtonAuth = "0000000";
+	
+	// 공통버튼별 권한
+	var sSearch = sButtonAuth[0];	// 조회
+	var sAdd 	= sButtonAuth[1];	// 추가
+	var sDel 	= sButtonAuth[2];	// 삭제
+	var sSave 	= sButtonAuth[3];	// 저장
+	var sPrint 	= sButtonAuth[4];	// 출력
+	var sExcel  = sButtonAuth[5];	// 엑셀
+	var sInit 	= sButtonAuth[6];	// 초기화
+	
+	if(nAuthSeq == 1 || nAuthSeq == 2) // 추가,삭제,저장 권한
+	{
+		if(sAdd || sDel || sSave) return true;
+	} else {
+		return false;
+	}
+	
+};
+		
 /**
 * @class  공통모듈버튼 셋팅 <br>
 * @param  {Object} objDiv - 공통모듈버튼 셋팅할 DIV

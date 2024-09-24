@@ -68,7 +68,7 @@
         };
         
         // User Script
-        this.registerScript("cmmPaging.xfdl", function() {
+        this.registerScript("cmmPaging_copy0.xfdl", function() {
         /**
         *  DevPACK
         *  @FileName 	cmmPaging.xfdl
@@ -390,7 +390,7 @@
             this.addEventHandler("onsize",this.form_onsize,this);
             this.cboCnt.addEventHandler("onitemchanged",this.cboCnt_onitemchanged,this);
         };
-        this.loadIncludeScript("cmmPaging.xfdl");
+        this.loadIncludeScript("cmmPaging_copy0.xfdl");
         this.loadPreloadList();
         
         // Remove Reference

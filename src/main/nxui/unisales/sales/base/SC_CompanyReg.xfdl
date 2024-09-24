@@ -7,7 +7,7 @@
         <Button id="btn_Cancel" taborder="10" text="닫기" width="70" height="28" bottom="18" onclick="btn_Cancel_onclick" right="9" TL_SEQ="59"/>
         <Button id="btn_Save" taborder="1" text="저장" width="60" height="28" cssclass="btn_WF_Crud" right="btn_Cancel:8" bottom="18" onclick="comm_Click" enable="false" TL_SEQ="115"/>
         <Button id="btn_CompanyAddMM" taborder="2" text="공통코드 관리" height="28" right="1134" bottom="18" onclick="comm_Click" enable="false" TL_SEQ="672" left="9.00"/>
-        <Div id="div_Attachment02" taborder="4" left="btn_CompanyAddMM:10.00" width="116" height="28" async="true" USE_NEXT_FILE_TYPE="true" USE_LINK_TYPE="false" USE_MULTI_FILE="true" USE_OPEN_ADD_DIALOG="false" USE_DELETE_ALL="false" USE_BUTTON_ONLY="true" url="sales::comm/COM_Attachment.xfdl" bottom="18" enable="true" enableevent="true" SOURCE_SEQ="COMPANY_CD" SOURCE_CD="COM" BINDDATASET="dsCompany" text=""/>
+        <Div id="div_Attachment02" taborder="4" left="btn_CompanyAddMM:10.00" width="116" height="28" async="true" USE_NEXT_FILE_TYPE="true" USE_LINK_TYPE="false" USE_MULTI_FILE="true" USE_OPEN_ADD_DIALOG="false" USE_DELETE_ALL="false" USE_BUTTON_ONLY="true" url="sales::comm/COM_Attachment.xfdl" bottom="18" enable="true" enableevent="true" SOURCE_SEQ="COMPANY_CODE" SOURCE_CD="COM" BINDDATASET="dsCompany" text=""/>
         <Button id="btn_Del" taborder="3" text="회사삭제" width="93" height="28" onclick="comm_Click" cssclass="btn_WF_CrudDelete" bottom="18" enable="false" left="div_Attachment02:8.00" TL_SEQ="22578"/>
         <Tab id="tab_Info" taborder="5" left="10" top="10" tabindex="0" right="10" bottom="56" onchanged="tab_Info_onchanged">
           <Tabpages>
@@ -435,10 +435,10 @@
                           <Cell text="bind:HOLD_OFFICE" combodataset="ds_CD_HOLD_OFFICE" combocodecol="CODE" combodatacol="CAPTION" displaytype="combotext" edittype="combo"/>
                           <Cell col="1" text="bind:ETAX_FLAG" displaytype="checkboxcontrol" edittype="checkbox"/>
                           <Cell col="2" text="bind:ORDER_FLAG" displaytype="checkboxcontrol" edittype="checkbox"/>
-                          <Cell col="3" text="bind:DEPT_NM" edittype="text" displaytype="text"/>
-                          <Cell col="4" text="bind:ROLE_CD" displaytype="combocontrol" edittype="combo" combodataset="ds_CD_ROLE_CODE" combocodecol="CODE" combodatacol="CAPTION"/>
-                          <Cell col="5" text="bind:EMP_NM" edittype="text" displaytype="text"/>
-                          <Cell col="6" text="bind:GRADE_CD" displaytype="combocontrol" edittype="combo" combodataset="ds_CD_GRADE_CODE" combocodecol="CODE" combodatacol="CAPTION" combotype="search"/>
+                          <Cell col="3" text="bind:DEPT_NAME" edittype="text" displaytype="text"/>
+                          <Cell col="4" text="bind:ROLE_CODE" displaytype="combocontrol" edittype="combo" combodataset="ds_CD_ROLE_CODE" combocodecol="CODE" combodatacol="CAPTION"/>
+                          <Cell col="5" text="bind:EMP_NAME" edittype="text" displaytype="text"/>
+                          <Cell col="6" text="bind:GRADE_CODE" displaytype="combocontrol" edittype="combo" combodataset="ds_CD_GRADE_CODE" combocodecol="CODE" combodatacol="CAPTION" combotype="search"/>
                           <Cell col="7" text="bind:O_PHONE_NO" edittype="text" displaytype="text"/>
                           <Cell col="8" text="bind:H_PHONE_NO" edittype="text" displaytype="text"/>
                           <Cell col="9" text="bind:EMAIL" edittype="text" displaytype="text"/>
@@ -593,87 +593,83 @@
     <Objects>
       <Dataset id="dsCompany">
         <ColumnInfo>
-          <Column id="COMPANY_NM" type="STRING" size="255"/>
-          <Column id="COMPANY_NM_ENG" type="STRING" size="256"/>
-          <Column id="COMPANY_ABBREVIATION" type="STRING" size="256"/>
-          <Column id="TAG" type="STRING" size="255"/>
-          <Column id="CLIENT_FLAG" type="STRING" size="255"/>
-          <Column id="COMPANY_FLAG" type="STRING" size="255"/>
-          <Column id="TMP_FLAG" type="STRING" size="255"/>
-          <Column id="BLACKLIST_FLAG" type="STRING" size="255"/>
-          <Column id="NATION_CD" type="STRING" size="255"/>
-          <Column id="BUSINESS_SCALE_CD" type="STRING" size="255"/>
-          <Column id="L_CATEGORY_CD" type="STRING" size="255"/>
-          <Column id="M_CATEGORY_CD" type="STRING" size="255"/>
-          <Column id="COMPANY_REG_NO" type="STRING" size="255"/>
-          <Column id="CORPORATE_REG_NO" type="STRING" size="255"/>
-          <Column id="INCORPORATION_DATE" type="STRING" size="255"/>
-          <Column id="CEO_NM" type="STRING" size="255"/>
-          <Column id="CEO_PHONE" type="STRING" size="255"/>
-          <Column id="POST_NO" type="STRING" size="255"/>
-          <Column id="POST_ADDR" type="STRING" size="255"/>
-          <Column id="DETAIL_ADDR" type="STRING" size="256"/>
-          <Column id="PHONE_NO" type="STRING" size="255"/>
-          <Column id="FAX_NO" type="STRING" size="255"/>
-          <Column id="BUSINESS_FORM" type="STRING" size="255"/>
-          <Column id="BUSINESS_KIND" type="STRING" size="255"/>
-          <Column id="PURCHASE_COMPANY_CD" type="STRING" size="255"/>
-          <Column id="PRODUCT_FLAG" type="STRING" size="255"/>
-          <Column id="SI_FLAG" type="STRING" size="255"/>
-          <Column id="SOLUTION_FLAG" type="STRING" size="255"/>
-          <Column id="GOODS_FLAG" type="STRING" size="255"/>
-          <Column id="PARTNER_FLAG" type="STRING" size="255"/>
-          <Column id="PARTNER_KIND" type="STRING" size="255"/>
-          <Column id="COMPANY_STATE" type="STRING" size="255"/>
-          <Column id="COMPANY_KIND" type="STRING" size="255"/>
-          <Column id="BANK_CD" type="STRING" size="255"/>
-          <Column id="ACCOUNT_NO" type="STRING" size="255"/>
-          <Column id="ACCOUNT_NM" type="STRING" size="255"/>
-          <Column id="SI_VIEW_FLAG" type="STRING" size="255"/>
-          <Column id="COLLECTION_BOND_FLAG" type="STRING" size="255"/>
-          <Column id="CL_APPROVAL_EMP_NO" type="STRING" size="255"/>
-          <Column id="CL_ASSET" type="STRING" size="255"/>
-          <Column id="CL_EMP_NUMBER" type="STRING" size="255"/>
-          <Column id="CL_APPROVAL_DATE" type="STRING" size="255"/>
-          <Column id="CL_CAPITAL" type="STRING" size="255"/>
-          <Column id="CL_OPINION" type="STRING" size="255"/>
-          <Column id="CL_PS" type="STRING" size="255"/>
-          <Column id="CL_ANNUAL_SALES" type="STRING" size="255"/>
-          <Column id="CL_SI" type="STRING" size="255"/>
-          <Column id="CL_NET_INCOME" type="STRING" size="255"/>
-          <Column id="CL_EVALUATION" type="STRING" size="255"/>
-          <Column id="CL_LISTED_FLAG" type="STRING" size="255"/>
-          <Column id="CL_EXCEPTION_CD" type="STRING" size="255"/>
-          <Column id="CL_ADD_SCORE1" type="STRING" size="255"/>
-          <Column id="CL_ADD_SCORE2" type="STRING" size="255"/>
-          <Column id="CL_ADD_SCORE3" type="STRING" size="255"/>
-          <Column id="REMARKS" type="STRING" size="255"/>
-          <Column id="DELETE_FLAG" type="STRING" size="255"/>
-          <Column id="INSERT_DATE" type="STRING" size="255"/>
-          <Column id="INSERT_EMP_NO" type="STRING" size="255"/>
-          <Column id="INSERT_DEPT_CD" type="STRING" size="255"/>
-          <Column id="INSERT_MODEL" type="STRING" size="255"/>
-          <Column id="UPDATE_DATE" type="STRING" size="255"/>
-          <Column id="UPDATE_EMP_NO" type="STRING" size="255"/>
-          <Column id="UPDATE_DEPT_CD" type="STRING" size="255"/>
-          <Column id="UPDATE_DEPT_NM" type="STRING" size="255"/>
-          <Column id="UPDATE_MODEL" type="STRING" size="255"/>
-          <Column id="REST" type="STRING" size="256"/>
-          <Column id="CL_APPROVAL_EMP_NM" type="STRING" size="256"/>
-          <Column id="CL_CURRENT_ASSETS" type="STRING" size="256"/>
-          <Column id="CL_PROFITABILITY" type="STRING" size="256"/>
-          <Column id="CL_SAFETY" type="STRING" size="256"/>
-          <Column id="CL_REST" type="STRING" size="256"/>
+          <Column id="BLACKLIST_FLAG" type="string" size="32"/>
+          <Column id="COMPANY_NAME_ENG" type="undefined" size="0"/>
+          <Column id="POST_ADDR" type="string" size="32"/>
+          <Column id="PRODUCT_FLAG" type="string" size="32"/>
+          <Column id="REMARKS" type="string" size="32"/>
+          <Column id="PHONE_NO" type="string" size="32"/>
+          <Column id="ACCOUNT_NAME" type="string" size="32"/>
+          <Column id="TURNKEY_CNT" type="bigdecimal" size="8"/>
+          <Column id="M_CATEGORY" type="string" size="32"/>
+          <Column id="COMPANY_FLAG" type="string" size="32"/>
+          <Column id="COMPANY_CODE" type="string" size="32"/>
+          <Column id="NATION_CODE" type="string" size="32"/>
+          <Column id="PARTNER_FLAG" type="string" size="32"/>
+          <Column id="CONTRACT_REMARKS" type="string" size="32"/>
+          <Column id="SI_FLAG" type="string" size="32"/>
+          <Column id="COMPANY_KIND" type="string" size="32"/>
+          <Column id="BUSINESS_SCALE" type="string" size="32"/>
+          <Column id="CL_EVALUATION" type="int" size="4"/>
+          <Column id="CORPORATE_REG_NO" type="string" size="32"/>
+          <Column id="COMPANY_NAME" type="string" size="32"/>
+          <Column id="SOLUTION_FLAG" type="string" size="32"/>
+          <Column id="DELETE_FLAG" type="string" size="32"/>
+          <Column id="TURNKEY_FLAG" type="string" size="32"/>
+          <Column id="CL_PROFITABILITY" type="bigdecimal" size="16"/>
+          <Column id="COMPANY_ABBREVIATION" type="string" size="32"/>
+          <Column id="TMP_FLAG" type="string" size="32"/>
+          <Column id="PURCHASE_COMPANY_CODE" type="string" size="32"/>
+          <Column id="BUSINESS_KIND" type="string" size="32"/>
+          <Column id="CL_SI" type="bigdecimal" size="8"/>
+          <Column id="POST_NO" type="string" size="32"/>
+          <Column id="COMPANY_STATE" type="string" size="32"/>
+          <Column id="ACCOUNT_NO" type="string" size="32"/>
+          <Column id="CL_ANNUAL_SALES" type="bigdecimal" size="8"/>
+          <Column id="CL_CAPITAL" type="bigdecimal" size="8"/>
+          <Column id="SI_VIEW_FLAG" type="string" size="32"/>
+          <Column id="CL_CURRENT_ASSETS" type="bigdecimal" size="16"/>
+          <Column id="DETAIL_ADDR" type="string" size="32"/>
+          <Column id="CL_NET_INCOME" type="bigdecimal" size="8"/>
+          <Column id="L_CATEGORY" type="string" size="32"/>
+          <Column id="GOODS_FLAG" type="string" size="32"/>
+          <Column id="CL_PS" type="bigdecimal" size="8"/>
+          <Column id="PARTNER_KIND" type="undefined" size="0"/>
+          <Column id="CL_EXCEPTION_CODE" type="string" size="32"/>
+          <Column id="INCORPORATION_DATE" type="string" size="32"/>
+          <Column id="CLIENT_FLAG" type="string" size="32"/>
+          <Column id="CL_EMP_NUMBER" type="int" size="4"/>
+          <Column id="BANK_CODE" type="string" size="32"/>
+          <Column id="CL_OPINION" type="string" size="32"/>
+          <Column id="CL_SAFETY" type="bigdecimal" size="16"/>
+          <Column id="CL_LISTED_FLAG" type="string" size="32"/>
+          <Column id="PURCHASE_REMARKS" type="string" size="32"/>
+          <Column id="CL_ADD_SCORE1" type="string" size="32"/>
+          <Column id="CL_ADD_SCORE2" type="string" size="32"/>
+          <Column id="CL_ASSET" type="bigdecimal" size="8"/>
+          <Column id="CL_ADD_SCORE3" type="string" size="32"/>
+          <Column id="BUSINESS_FORM" type="string" size="32"/>
+          <Column id="SUBSIDIARY_COMPANY_FLAG" type="string" size="32"/>
+          <Column id="CEO_PHONE" type="string" size="32"/>
+          <Column id="REST" type="bigdecimal" size="16"/>
+          <Column id="CL_APPROVAL_EMP_NAME" type="string" size="32"/>
+          <Column id="FAX_NO" type="string" size="32"/>
+          <Column id="CEO_NAME" type="string" size="32"/>
+          <Column id="COMPANY_REG_NO" type="string" size="32"/>
+          <Column id="TAG" type="string" size="32"/>
+          <Column id="CL_APPROVAL_EMP_NO" type="string" size="32"/>
+          <Column id="COLLECTION_BOND_FLAG" type="string" size="32"/>
+          <Column id="CL_APPROVAL_DATE" type="string" size="32"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsAddressBook" cancolumnchange="dsAddressBook_cancolumnchange" oncolumnchanged="dsAddressBook_oncolumnchanged">
         <ColumnInfo>
           <Column id="CA_SEQ" type="BIGDECIMAL" size="18"/>
-          <Column id="COMPANY_CD" type="STRING" size="20"/>
-          <Column id="EMP_NM" type="STRING" size="100"/>
-          <Column id="DEPT_NM" type="STRING" size="100"/>
-          <Column id="GRADE_CD" type="STRING" size="20"/>
-          <Column id="ROLE_CD" type="STRING" size="20"/>
+          <Column id="COMPANY_CODE" type="STRING" size="20"/>
+          <Column id="EMP_NAME" type="STRING" size="100"/>
+          <Column id="DEPT_NAME" type="STRING" size="100"/>
+          <Column id="GRADE_CODE" type="STRING" size="20"/>
+          <Column id="ROLE_CODE" type="STRING" size="20"/>
           <Column id="H_PHONE_NO" type="STRING" size="30"/>
           <Column id="O_PHONE_NO" type="STRING" size="30"/>
           <Column id="HOLD_OFFICE" type="STRING" size="20"/>
@@ -824,7 +820,7 @@
           <Column id="INCORPORATION_DATE" size="256" type="DATE"/>
           <Column id="SCORE" size="256" type="STRING"/>
           <Column id="TODAY_DATE" size="256" type="DATE"/>
-          <Column id="BIZ_STAFF_NM" size="256" type="STRING"/>
+          <Column id="BIZ_STAFF_NAME" size="256" type="STRING"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsContractList"/>
@@ -896,18 +892,15 @@ this.fnFormInit = function()
 		this.fvTmpCompReg = this.parent.TMP_COMP_REG;
 	}
 		
-	if(this.commUtil.getFormAuthority(254,1))	// 추가,삭제,저장 권한
+	if(this.getFormAuthority(254,1))	// 추가,삭제,저장 권한
 	{
-		// 회사 삭제 비활성화
-		if(!this.commUtil.getFormAuthority(254,1)) {
-			this.btn_Del.set_enable(true);
-		}
+		this.btn_Del.set_enable(true);
 		this.btn_Save.set_enable(true);
 		this.btn_Plus.set_enable(true);
 		this.btn_Minus.set_enable(true);
 		this.btn_CompanyAddMM.set_enable(true);
 	}
-	else if(this.commUtil.getFormAuthority(254,2))	// (담당자 추가,삭제), (가코드 회사 등록) 권한
+	else if(this.getFormAuthority(254,2))	// (담당자 추가,삭제), (가코드 회사 등록) 권한
 	{
 		this.btn_Save.set_enable(true);
 		this.btn_Plus.set_enable(true);
@@ -939,7 +932,7 @@ this.fnFormInit = function()
 		this.tab_Info.tpg_Person.form.grd_AddressBook.set_formatid("SELECT");
 	}
 	
-	if (this.commUtil.getFormAuthority(254,4))	this.FV_AUTH_PRICE_MASK = true;	// 계약금액 마스킹 처리 권한
+	if (this.getFormAuthority(254,4))	this.FV_AUTH_PRICE_MASK = true;	// 계약금액 마스킹 처리 권한
 	
 	this.fn_setPriceMasking(this.tab_Info.tpg_Contract.form.edt_MaxContractPrice);
 	this.fn_setPriceMasking(this.tab_Info.tpg_Contract.form.edt_MaxPurchasePrice);
@@ -986,6 +979,7 @@ this.fnGetCode = function()
 this.fnSearch = function()
 {
 	// 조건값 셋팅
+	this.gfnAddSendParameter("CO_CD", this.gfnGetCompanyCode());
 	this.gfnAddSendParameter("COMPANY_CODE", this.parent.COMPANY_CODE);
 	
 	var sMapper = "nextBaseMapper";
@@ -1042,16 +1036,17 @@ this.fnSearch = function()
 // 삭제가 아닌 저장인 경우 회사 명이 변경 되었는지 확인
 this.fnTransCompare = function()
 {
-	if(!this.gfnIsEmpty(this.parent.COMPANY_CODE)) {
-		var sCompany = this.dsCompany.getColumn(0, "COMPANY_NM"); 
-		var sOrgCompany = this.dsCompany.getOrgColumn(0, "COMPANY_NM");
-		
-		var sLanguage = nexacro.getApplication().gdsGlobal.getColumn(0, "LANGUAGE");
-		
-		if(sCompany != sOrgCompany && sLanguage == "JAP") this.trnasTarget = "KOR";
-		else if(sCompany != sOrgCompany && sLanguage == "KOR") this.trnasTarget = "JAP";
-		else this.trnasTarget = "";
-	}
+	this.trnasTarget = "KOR";
+// 	if(!this.gfnIsEmpty(this.parent.COMPANY_CODE)) {
+// 		var sCompany = this.dsCompany.getColumn(0, "COMPANY_NAME"); 
+// 		var sOrgCompany = this.dsCompany.getOrgColumn(0, "COMPANY_NAME");
+// 		
+// 		var sLanguage = nexacro.getApplication().gdsGlobal.getColumn(0, "LANGUAGE");
+// 		
+// 		if(sCompany != sOrgCompany && sLanguage == "JAP") this.trnasTarget = "KOR";
+// 		else if(sCompany != sOrgCompany && sLanguage == "KOR") this.trnasTarget = "JAP";
+// 		else this.trnasTarget = "";
+// 	}
 };
 
 this.fnSave = function()
@@ -1079,10 +1074,10 @@ this.fnSave = function()
 	)
 	{
 		var nRow = this.dsCredithistory.insertRow(0);
-		var companyCode = this.dsCompany.getColumn(0, "COMPANY_CD");
+		var companyCode = this.dsCompany.getColumn(0, "COMPANY_CODE");
 		if(!this.gfnIsEmpty(companyCode))
 		{	
-			this.dsCredithistory.setColumn(nRow, "COMPANY_CD", companyCode);
+			this.dsCredithistory.setColumn(nRow, "COMPANY_CODE", companyCode);
 		}
 		//자산, 자본, 년간매출액, 순이익이 변경되었습니다.\n신용평가 이력을 입력후 저장하시기 바랍니다.
 		this.gfnAlert('msg.err.validation.creditcheck', []);
@@ -1127,7 +1122,7 @@ this.fnCallBack = function(strSvcID, nErrorCode, strErrorMag)
 					this.dsAddressBook.deleteRow(0);
 			}
 			
-			if(this.dsCompany.getColumn(0, "COMPANY_CD") == "TOBE" || this.dsCompany.getColumn(0, "COMPANY_CD") == "CORE")
+			if(this.dsCompany.getColumn(0, "COMPANY_CODE") == "TOBE" || this.dsCompany.getColumn(0, "COMPANY_CODE") == "CORE")
 			{
 				this.div_Attachment02.set_visible(false);
 			}
@@ -1305,10 +1300,10 @@ this.comm_Click = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			
 		case "btn_Plus" : 
 			var nRow = this.dsAddressBook.addRow();
-			var companyCode = this.dsCompany.getColumn(0, "COMPANY_CD");
+			var companyCode = this.dsCompany.getColumn(0, "COMPANY_CODE");
 			if(!this.gfnIsEmpty(companyCode))
 			{
-				this.dsAddressBook.setColumn(nRow, "COMPANY_CD", companyCode);
+				this.dsAddressBook.setColumn(nRow, "COMPANY_CODE", companyCode);
 			}
 			this.dsAddressBook.setColumn(nRow, "HOLD_OFFICE", "1");
 			break;
@@ -1318,7 +1313,7 @@ this.comm_Click = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			break;
 			
 		case "btn_Evaluate" : 			
-			if(this.dsCompany.getColumn(0, "BUSINESS_SCALE_CD") == null ||
+			if(this.dsCompany.getColumn(0, "BUSINESS_SCALE") == null ||
 			this.dsCompany.getColumn(0, "CL_CAPITAL") == null || 
 			this.dsCompany.getColumn(0, "CL_ANNUAL_SALES") == null ||
 			this.dsCompany.getColumn(0, "CL_EMP_NUMBER") == null ||
@@ -1459,7 +1454,7 @@ this.comm_Click = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 					function() {
 					});							
 					var nRow = this.dsCredithistory.insertRow(0);
-					var companyCode = this.dsCompany.getColumn(0, "COMPANY_CD");
+					var companyCode = this.dsCompany.getColumn(0, "COMPANY_CODE");
 					if(!this.gfnIsEmpty(companyCode))
 					{	
 						this.dsCredithistory.setColumn(nRow, "COMPANY_CODE", companyCode);
@@ -1562,10 +1557,10 @@ this.comm_Click = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			
 		case "btn_CreditPlus" : 
 			var nRow = this.dsCredithistory.insertRow(0);
-			var companyCode = this.dsCompany.getColumn(0, "COMPANY_CD");
+			var companyCode = this.dsCompany.getColumn(0, "COMPANY_CODE");
 			if(!this.gfnIsEmpty(companyCode))
 			{	
-				this.dsCredithistory.setColumn(nRow, "COMPANY_CD", companyCode);
+				this.dsCredithistory.setColumn(nRow, "COMPANY_CODE", companyCode);
 			}
 			break;
 			
@@ -1707,7 +1702,7 @@ this.fnIsValid = function()
 	//직원명
 	for(var i=0; i<this.dsAddressBook.rowcount; i++)
 	{
-		if(this.gfnIsEmpty(this.dsAddressBook.getColumn(i, "EMP_NM")))
+		if(this.gfnIsEmpty(this.dsAddressBook.getColumn(i, "EMP_NAME")))
 		{
 			this.tab_Info.set_tabindex(3);
 			this.gfnAlert('msg.err.validator.input',['담당자의 담당자명']);
@@ -1793,13 +1788,13 @@ this.tab_Info_tpg_Contract_grd_PurchaseList_oncelldblclick = function(obj:nexacr
 this.btn_Excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(obj.id=="btn_ExcelContract")
-		this.gfn_excelExport(this, this.tab_Info.tpg_Contract.form.grd_ContractList01, this.dsCompany.getColumn(0, "COMPANY_NM")+"_매출계약요약");
+		this.gfn_excelExport(this, this.tab_Info.tpg_Contract.form.grd_ContractList01, this.dsCompany.getColumn(0, "COMPANY_NAME")+"_매출계약요약");
 	else if(obj.id=="btn_ExcelContractList")
-		this.gfn_excelExport(this, this.tab_Info.tpg_Contract.form.grd_ContractList, this.dsCompany.getColumn(0, "COMPANY_NM")+"_매출계약리스트");
+		this.gfn_excelExport(this, this.tab_Info.tpg_Contract.form.grd_ContractList, this.dsCompany.getColumn(0, "COMPANY_NAME")+"_매출계약리스트");
 	else if(obj.id=="btn_ExcelPurchase")
-		this.gfn_excelExport(this, this.tab_Info.tpg_Contract.form.grd_PurchaseList01, this.dsCompany.getColumn(0, "COMPANY_NM")+"_매입계약요약");
+		this.gfn_excelExport(this, this.tab_Info.tpg_Contract.form.grd_PurchaseList01, this.dsCompany.getColumn(0, "COMPANY_NAME")+"_매입계약요약");
 	else if(obj.id=="btn_ExcelPurchaseList")
-		this.gfn_excelExport(this, this.tab_Info.tpg_Contract.form.grd_PurchaseList, this.dsCompany.getColumn(0, "COMPANY_NM")+"_매입계약리스트");
+		this.gfn_excelExport(this, this.tab_Info.tpg_Contract.form.grd_PurchaseList, this.dsCompany.getColumn(0, "COMPANY_NAME")+"_매입계약리스트");
 };
 
 this.tab_Info_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
@@ -1836,7 +1831,7 @@ this.tab_Info_tpg_Credit_cmb_AdminOpinion_onitemchanged = function(obj:nexacro.C
 	
 	if(this.dsAdminOpinion.rowcount == 0 || this.dsAdminOpinion.getRowType(0) != Dataset.ROWTYPE_INSERT) {
 		this.dsAdminOpinion.insertRow(0);
-		this.dsAdminOpinion.setColumn(0, "COMPANY_CD", this.parent.COMPANY_CODE);
+		this.dsAdminOpinion.setColumn(0, "COMPANY_CODE", this.parent.COMPANY_CODE);
 		this.dsAdminOpinion.setColumn(0, "CL_OPINION", e.postvalue);
 	}
 };
@@ -2002,13 +1997,13 @@ this.tab_Info_tpg_Credit_stc_AdminOpinion_onclick = function(obj:nexacro.Static,
       <BindItem id="item3" compid="tab_Info.tpg_BasicInfo.form.chb_FakeCode" propid="value" datasetid="dsCompany" columnid="TMP_FLAG"/>
       <BindItem id="item4" compid="tab_Info.tpg_BasicInfo.form.chb_BlackList" propid="value" datasetid="dsCompany" columnid="BLACKLIST_FLAG"/>
       <BindItem id="item5" compid="tab_Info.tpg_BasicInfo.form.edt_OriginContractNo00" propid="value" datasetid="dsCompany" columnid="TAG"/>
-      <BindItem id="item6" compid="tab_Info.tpg_BasicInfo.form.cmb_Nation" propid="value" datasetid="dsCompany" columnid="NATION_CD"/>
+      <BindItem id="item6" compid="tab_Info.tpg_BasicInfo.form.cmb_Nation" propid="value" datasetid="dsCompany" columnid="NATION_CODE"/>
       <BindItem id="item7" compid="tab_Info.tpg_BasicInfo.form.txt_Remark" propid="value" datasetid="dsCompany" columnid="REMARKS"/>
-      <BindItem id="item8" compid="tab_Info.tpg_BasicInfo.form.cmb_CompanySize" propid="value" datasetid="dsCompany" columnid="BUSINESS_SCALE_CD"/>
-      <BindItem id="item9" compid="tab_Info.tpg_BasicInfo.form.cmb_LargeCategory" propid="value" datasetid="dsCompany" columnid="L_CATEGORY_CD"/>
-      <BindItem id="item10" compid="tab_Info.tpg_BasicInfo.form.cmb_MiddleCategory" propid="value" datasetid="dsCompany" columnid="M_CATEGORY_CD"/>
+      <BindItem id="item8" compid="tab_Info.tpg_BasicInfo.form.cmb_CompanySize" propid="value" datasetid="dsCompany" columnid="BUSINESS_SCALE"/>
+      <BindItem id="item9" compid="tab_Info.tpg_BasicInfo.form.cmb_LargeCategory" propid="value" datasetid="dsCompany" columnid="L_CATEGORY"/>
+      <BindItem id="item10" compid="tab_Info.tpg_BasicInfo.form.cmb_MiddleCategory" propid="value" datasetid="dsCompany" columnid="M_CATEGORY"/>
       <BindItem id="item11" compid="tab_Info.tpg_BasicInfo.form.edt_CorperateRegistrationNumber" propid="value" datasetid="dsCompany" columnid="CORPORATE_REG_NO"/>
-      <BindItem id="item12" compid="tab_Info.tpg_BasicInfo.form.edt_RepresentName" propid="value" datasetid="dsCompany" columnid="CEO_NM"/>
+      <BindItem id="item12" compid="tab_Info.tpg_BasicInfo.form.edt_RepresentName" propid="value" datasetid="dsCompany" columnid="CEO_NAME"/>
       <BindItem id="item13" compid="tab_Info.tpg_BasicInfo.form.edt_RepresentNumber" propid="value" datasetid="dsCompany" columnid="CEO_PHONE"/>
       <BindItem id="item14" compid="tab_Info.tpg_BasicInfo.form.cal_FoundationDate" propid="value" datasetid="dsCompany" columnid="INCORPORATION_DATE"/>
       <BindItem id="item15" compid="tab_Info.tpg_BasicInfo.form.edt_Address" propid="value" datasetid="dsCompany" columnid="POST_ADDR"/>
@@ -2016,7 +2011,7 @@ this.tab_Info_tpg_Credit_stc_AdminOpinion_onclick = function(obj:nexacro.Static,
       <BindItem id="item18" compid="tab_Info.tpg_BasicInfo.form.edt_Telephone" propid="value" datasetid="dsCompany" columnid="PHONE_NO"/>
       <BindItem id="item19" compid="tab_Info.tpg_BasicInfo.form.edt_FaxNumber" propid="value" datasetid="dsCompany" columnid="FAX_NO"/>
       <BindItem id="item20" compid="tab_Info.tpg_BasicInfo.form.cmb_BusinessType" propid="value" datasetid="dsCompany" columnid="BUSINESS_KIND"/>
-      <BindItem id="item21" compid="tab_Info.tpg_BasicInfo.form.edt_Code" propid="value" datasetid="dsCompany" columnid="PURCHASE_COMPANY_CD"/>
+      <BindItem id="item21" compid="tab_Info.tpg_BasicInfo.form.edt_Code" propid="value" datasetid="dsCompany" columnid="PURCHASE_COMPANY_CODE"/>
       <BindItem id="item22" compid="tab_Info.tpg_BasicInfo.form.chb_Product" propid="value" datasetid="dsCompany" columnid="PRODUCT_FLAG"/>
       <BindItem id="item24" compid="tab_Info.tpg_BasicInfo.form.chb_Si" propid="value" datasetid="dsCompany" columnid="SI_FLAG"/>
       <BindItem id="item25" compid="tab_Info.tpg_BasicInfo.form.chb_Solution" propid="value" datasetid="dsCompany" columnid="SOLUTION_FLAG"/>
@@ -2024,21 +2019,21 @@ this.tab_Info_tpg_Credit_stc_AdminOpinion_onclick = function(obj:nexacro.Static,
       <BindItem id="item27" compid="tab_Info.tpg_BasicInfo.form.chb_OfficialPartner" propid="value" datasetid="dsCompany" columnid="PARTNER_FLAG"/>
       <BindItem id="item28" compid="tab_Info.tpg_BasicInfo.form.cmb_CompanyStatus" propid="value" datasetid="dsCompany" columnid="COMPANY_STATE"/>
       <BindItem id="item29" compid="tab_Info.tpg_BasicInfo.form.cmb_PlaceOfContract" propid="value" datasetid="dsCompany" columnid="COMPANY_KIND"/>
-      <BindItem id="item30" compid="tab_Info.tpg_BasicInfo.form.cmb_BankName" propid="value" datasetid="dsCompany" columnid="BANK_CD"/>
+      <BindItem id="item30" compid="tab_Info.tpg_BasicInfo.form.cmb_BankName" propid="value" datasetid="dsCompany" columnid="BANK_CODE"/>
       <BindItem id="item47" compid="tab_Info.tpg_BasicInfo.form.edt_AccountNumber" propid="value" datasetid="dsCompany" columnid="ACCOUNT_NO"/>
-      <BindItem id="item48" compid="tab_Info.tpg_BasicInfo.form.edt_AccountName" propid="value" datasetid="dsCompany" columnid="ACCOUNT_NM"/>
+      <BindItem id="item48" compid="tab_Info.tpg_BasicInfo.form.edt_AccountName" propid="value" datasetid="dsCompany" columnid="ACCOUNT_NAME"/>
       <BindItem id="item50" compid="tab_Info.tpg_BasicInfo.form.cmb_BusinessCondition" propid="value" datasetid="dsCompany" columnid="BUSINESS_FORM"/>
       <BindItem id="item51" compid="tab_Info.tpg_BasicInfo.form.cmb_PartKind" propid="value" datasetid="dsCompany" columnid="PARTNER_KIND"/>
       <BindItem id="item52" compid="tab_Info.tpg_BasicInfo.form.CheckBox00" propid="value" datasetid="dsCompany" columnid="COLLECTION_BOND_FLAG"/>
       <BindItem id="item53" compid="tab_Info.tpg_BasicInfo.form.edt_PostNo" propid="value" datasetid="dsCompany" columnid="POST_NO"/>
-      <BindItem id="item54" compid="tab_Info.tpg_BasicInfo.form.edt_CompanyName" propid="value" datasetid="dsCompany" columnid="COMPANY_NM"/>
-      <BindItem id="item31" compid="tab_Info.tpg_Credit.form.edt_Approver" propid="value" datasetid="dsCompany" columnid="CL_APPROVAL_EMP_NM"/>
+      <BindItem id="item54" compid="tab_Info.tpg_BasicInfo.form.edt_CompanyName" propid="value" datasetid="dsCompany" columnid="COMPANY_NAME"/>
+      <BindItem id="item31" compid="tab_Info.tpg_Credit.form.edt_Approver" propid="value" datasetid="dsCompany" columnid="CL_APPROVAL_EMP_NAME"/>
       <BindItem id="item32" compid="tab_Info.tpg_Credit.form.cal_ApproveDate" propid="value" datasetid="dsCompany" columnid="CL_APPROVAL_DATE"/>
       <BindItem id="item33" compid="tab_Info.tpg_Credit.form.edt_EvaluationGrade" propid="value" datasetid="dsCompany" columnid="CL_EVALUATION"/>
       <BindItem id="item34" compid="tab_Info.tpg_Credit.form.edt_Asset" propid="value" datasetid="dsCompany" columnid="CL_ASSET"/>
       <BindItem id="item35" compid="tab_Info.tpg_Credit.form.cmb_AdminOpinion" propid="value" datasetid="dsCompany" columnid="CL_OPINION"/>
       <BindItem id="item36" compid="tab_Info.tpg_Credit.form.edt_TotalEmployees" propid="value" datasetid="dsCompany" columnid="CL_EMP_NUMBER"/>
-      <BindItem id="item37" compid="tab_Info.tpg_Credit.form.cmb_Exception" propid="value" datasetid="dsCompany" columnid="CL_EXCEPTION_CD"/>
+      <BindItem id="item37" compid="tab_Info.tpg_Credit.form.cmb_Exception" propid="value" datasetid="dsCompany" columnid="CL_EXCEPTION_CODE"/>
       <BindItem id="item38" compid="tab_Info.tpg_Credit.form.cmb_AdditionalScore1" propid="value" datasetid="dsCompany" columnid="CL_ADD_SCORE1"/>
       <BindItem id="item39" compid="tab_Info.tpg_Credit.form.cmb_AdditionalScore2" propid="value" datasetid="dsCompany" columnid="CL_ADD_SCORE2"/>
       <BindItem id="item40" compid="tab_Info.tpg_Credit.form.chb_Listed" propid="value" datasetid="dsCompany" columnid="CL_LISTED_FLAG"/>
@@ -2072,11 +2067,11 @@ this.tab_Info_tpg_Credit_stc_AdminOpinion_onclick = function(obj:nexacro.Static,
       <BindItem id="item73" compid="tab_Info.tpg_BasicInfo.form.chb_TURNKEY" propid="value" datasetid="dsCompany" columnid="TURNKEY_FLAG"/>
       <BindItem id="item75" compid="tab_Info.tpg_Person.form.txt_Remark00" propid="value" datasetid="dsAddressBook" columnid="HISTORY"/>
       <BindItem id="item74" compid="tab_Info.tpg_BasicInfo.form.edt_CompanyAbbreviation" propid="value" datasetid="dsCompany" columnid="COMPANY_ABBREVIATION"/>
-      <BindItem id="item77" compid="tab_Info.tpg_BasicInfo.form.edt_CompanyNameJap" propid="value" datasetid="dsCompany" columnid="COMPANY_NM_ENG"/>
+      <BindItem id="item77" compid="tab_Info.tpg_BasicInfo.form.edt_CompanyNameJap" propid="value" datasetid="dsCompany" columnid="COMPANY_NAME_ENG"/>
       <BindItem id="item76" compid="tab_Info.tpg_BasicInfo.form.chb_SubsidiaryCompany" propid="value" datasetid="dsCompany" columnid="SUBSIDIARY_COMPANY_FLAG"/>
       <BindItem id="item78" compid="tab_Info.tpg_BasicInfo.form.jPostAddr.form.edtSculZip" propid="value" datasetid="dsCompany" columnid="POST_NO"/>
-      <BindItem id="item79" compid="tab_Info.tpg_BasicInfo.form.jPostAddr.form.edtBasAddr" propid="value" datasetid="dsCompany" columnid="BASC_ADDR"/>
-      <BindItem id="item80" compid="tab_Info.tpg_BasicInfo.form.jPostAddr.form.edtDetailAddr" propid="value" datasetid="dsCompany" columnid="DTL_ADDR"/>
+      <BindItem id="item79" compid="tab_Info.tpg_BasicInfo.form.jPostAddr.form.edtBasAddr" propid="value" datasetid="dsCompany" columnid="POST_ADDR"/>
+      <BindItem id="item80" compid="tab_Info.tpg_BasicInfo.form.jPostAddr.form.edtDetailAddr" propid="value" datasetid="dsCompany" columnid="DETAIL_ADDR"/>
     </Bind>
   </Form>
 </FDL>
