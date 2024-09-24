@@ -1,22 +1,37 @@
 package com.unisales.next.base.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ibatis.common.resources.Resources;
+import com.nexacro.java.xapi.data.ColumnHeader;
 import com.nexacro.java.xapi.data.DataSet;
+import com.nexacro.java.xapi.data.DataTypes;
 import com.nexacro.uiadapter.spring.core.NexacroException;
 import com.nexacro.uiadapter.spring.core.annotation.ParamDataSet;
 import com.nexacro.uiadapter.spring.core.data.NexacroResult;
-import com.unisales.sytm.code.service.codeService;
+import com.unisales.next.base.service.nextBaseService;
 import com.unisales.util.NexterUtil;
 
 /**
@@ -41,347 +56,223 @@ public class nextBaseController {
 	private Logger log = LoggerFactory.getLogger(nextBaseController.class);
 	
 	@Autowired(required=true)
-    private codeService commCodeService;
+    private nextBaseService commBaseService;
 
-	@RequestMapping(value = "/selectCommonCodeAll.do")
-	public NexacroResult selectCommonCodeAll(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-											, HttpServletRequest request) throws NexacroException{
+	/**
+	 * 단건 조회
+	 * @param searchMap		: 조회할 Dataset
+	 * @param queryMap		: 조회할 쿼리맵정보
+	 * @return result		: 데이터 셋
+	 */	
+	@RequestMapping(value = "/selectNextList.do")
+	public NexacroResult selectNextList(@ParamDataSet(name = "dsCond", required = false) Map<String,Object> searchMap 
+		    , @ParamDataSet(name = "dsMap", required = false) Map<String,String> queryMap
+			, HttpServletRequest request) throws NexacroException, IOException, SQLException{
 
     	// 공통코드 목록을 조회한다.
-    	List<Map<String,Object>> commonCodeGubun = commCodeService.selectCommonCodeGubunAll(searchMap);
-    	List<Map<String,Object>> commonCode		 = commCodeService.selectCommonCodeAll(searchMap);
+    	List<Map<String,Object>> contents = commBaseService.searchList(queryMap, searchMap);
     	
-		NexacroResult result = new NexacroResult();
-		result.addDataSet("dsCodeGubun" , commonCodeGubun);
-		result.addDataSet("dsCode"		, commonCode);
+	    String outds = (String) queryMap.get("outds");
+	    if(outds == null) outds = "dsList";
+	    NexacroResult result = new NexacroResult();
+		result.addDataSet(outds, contents);
+		
 		return result;
 	} 
 	
 	/**
-   	 * 공통코드 변경내용 저장
-   	 * @param saveMap		: 저장할 Dataset
-   	 * @return result		: 데이터 셋
-   	 */
-    @RequestMapping(value = "/saveCommonCodeAll.do")
-   	public NexacroResult saveCommonCodeAll(@ParamDataSet(name = "dsCodeGubun", required = false) List<Map<String,Object>> commonCodeGubun
-   										  ,@ParamDataSet(name = "dsCode", required = false) List<Map<String,Object>> commonCode
-   										  , HttpServletRequest request) throws NexacroException{
-       	
-       	NexterUtil NexUtil = new NexterUtil();
+	 * 다건 조회
+	 * @param searchMap		: 조회할 Dataset
+	 * @param queryMap		: 조회할 쿼리맵정보
+	 * @return result		: 데이터 셋
+	 */	
+	@RequestMapping(value = "/selectNextMultiList.do")
+	public NexacroResult selectNextMultiList(@ParamDataSet(name = "dsCond", required = false) Map<String,Object> searchMap 
+			, @ParamDataSet(name = "dsMap", required = false) List<Map<String,String>> queryList
+			, HttpServletRequest request) throws NexacroException, IOException, SQLException{
 
-       	// Login 사용자 정보를 받은 Map
-       	Map<String, Object> loginUserInfo = new HashMap<String, Object>();
-       	loginUserInfo = NexUtil.getUserInfoMap(request);
-       	
-       	//임포트한 공통코드를 저장한다.
-       	commCodeService.insertCommonCodeGubunAll(commonCodeGubun, loginUserInfo); //대분류저장
-       	commCodeService.insertCommonCodeAll(commonCode, loginUserInfo); //소분류저장
-       	
-   		NexacroResult result = new NexacroResult();
-   		
-   		return result;
-   	}
-    
-	@RequestMapping(value = "/searchAllCommonCode.do")
-	public NexacroResult searchAllCommonCode(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-											, HttpServletRequest request) throws NexacroException{
-
-    	// 공통코드 목록을 조회한다.
-    	List<Map<String,Object>> commCodeListInfo = commCodeService.searchUnionCommonCode(searchMap);
-    	
-		NexacroResult result = new NexacroResult();
-		result.addDataSet("gdsCommCode", commCodeListInfo);
+	    NexacroResult result = new NexacroResult();
+	    
+    	int size = queryList.size();
+    	for(int i=0;i<size;i++) {
+    		Map<String, String> queryMap = queryList.get(i);
+    	    List<Map<String,Object>> list  = commBaseService.searchList(queryMap, searchMap);	
+    	    String outds = (String) queryMap.get("outds");
+    	    result.addDataSet(outds, list);
+    	}
+		
 		return result;
-	} 
+	} 	
 	
-	@RequestMapping(value = "/searchUnionCommonCode.do")
-	public NexacroResult searchUnionCommonCode(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-			 								, @ParamDataSet(name = "dsCondPage", required = false) Map<String,String> searchMapPage
-											, HttpServletRequest request) throws NexacroException{
-		searchMap.put("START_NUM", searchMapPage.get("START_NUM"));
-		searchMap.put("END_NUM", searchMapPage.get("END_NUM"));
-		
-    	// 공통코드 목록을 조회한다.
-    	List<Map<String,Object>> commCodeListInfo = commCodeService.searchUnionCommonCode(searchMap);
-    	List<Map<String,Object>> commCodeListInfoCnt = commCodeService.searchUnionCommonCodeCnt(searchMap);
-    	
-		NexacroResult result = new NexacroResult();
-		result.addDataSet("dsList", commCodeListInfo);
-		result.addDataSet("dsCount", commCodeListInfoCnt);
-		return result;
-	} 
- 
-    @RequestMapping(value = "/SearchCommCodeList.do")
-	public NexacroResult SearchCommCodeList(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-										, HttpServletRequest request) throws NexacroException{
-
-    	// 공통코드 목록을 조회한다.
-    	List<Map<String,Object>> commCodeListInfo = commCodeService.searchComCodeList(searchMap);
-			
-		NexacroResult result = new NexacroResult();
-		result.addDataSet("dsList", commCodeListInfo);
-		
-		return result;
-	}   
-    
-    /**
-	 * 공통코드 목록 조회
-	 * @param searchMap		: 조회 조건 Dataset
-	 * @return result		: 조회 데이터 셋
+	/**
+	 * 공통 추가/수정
+	 * @param saveMap		: 저장할 Dataset
+	 * @return result		: 데이터 셋
+	 * @throws ParseException 
+	 * @throws IOException 
 	 */
-    @RequestMapping(value = "/SearchPopCommCodeList.do")
-	public NexacroResult SearchPopCommCodeList(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-										, HttpServletRequest request) throws NexacroException{
+    @RequestMapping(value = "/saveNextCompanyList.do")
+	public NexacroResult saveNextCompanyList(@ParamDataSet(name = "dsList1", required = false) List<Map<String,Object>> dsList1
+										, @ParamDataSet(name = "dsList2", required = false) List<Map<String,Object>> dsList2
+										, @ParamDataSet(name = "dsList3", required = false) List<Map<String,Object>> dsList3
+										, @ParamDataSet(name = "dsList4", required = false) List<Map<String,Object>> dsList4
+										, @ParamDataSet(name = "dsMap", required = false) Map<String,String> queryMap
+										, @ParamDataSet(name = "dsCond", required = false) Map<String,Object> searchMap 
+										, HttpServletRequest request) throws NexacroException, IOException, ParseException{
+    	NexterUtil NexUtil = new NexterUtil();
 
-    	// 공통코드 목록을 조회한다.
-    	List<Map<String,Object>> commCodeListInfo = commCodeService.searchPopComCodeList(searchMap);
-			
-		NexacroResult result = new NexacroResult();
-		result.addDataSet("dsList", commCodeListInfo);
-		
-		return result;
-	}    
-    
-    /**
-   	 * 공통코드 변경내용 저장
-   	 * @param saveMap		: 저장할 Dataset
-   	 * @return result		: 데이터 셋
-   	 */
-    @RequestMapping(value = "/saveComCode.do")
-   	public NexacroResult saveComCode(@ParamDataSet(name = "dsMaster", required = false) List<Map<String,Object>> saveListComCode
-   									,@ParamDataSet(name = "dsDetail", required = false) List<Map<String,Object>> saveListPopComCode
-   									, HttpServletRequest request) throws NexacroException{
-       	
-       	NexterUtil NexUtil = new NexterUtil();
-
-       	// Login 사용자 정보를 받은 Map
-       	Map<String, Object> loginUserInfo = new HashMap<String, Object>();
-       	loginUserInfo = NexUtil.getUserInfoMap(request);
-       	
-       	// 시스템 메시지를 저장한다.
-       	commCodeService.saveComCode(saveListComCode, loginUserInfo); //대분류저장
-       	commCodeService.savePopComCode(saveListPopComCode, loginUserInfo); //소분류저장
-       	
-   		NexacroResult result = new NexacroResult();
-   		
-   		return result;
-   	}
-    
-    /**
-	 * 신규등록 메시지 코드 존재여부 체크
-	 * @param searchMap		: 체크할 데이터 Dataset
-	 * @return result		: 조회 데이터 셋
-	 */
-    @RequestMapping(value = "/checkCommonCode.do")
-	public NexacroResult checkCommonCode(@ParamDataSet(name = "dsMasterCheck", required = false) List<Map<String,String>> masterCheck 
-										,@ParamDataSet(name = "dsDetailCheck", required = false) List<Map<String,String>> detailCheck 
-										, HttpServletRequest request) throws NexacroException{
-
-    	int nMasterSize = masterCheck.size();
-    	int nDetailSize = detailCheck.size();
+    	// Login 사용자 정보를 받은 Map
+    	Map<String, Object> loginUserInfo = NexUtil.getUserInfoMap(request);
     	
-    	List<Map<String,Object>> checkMasterCommonCode = null;
-    	List<Map<String,Object>> checkDetailCommonCode = null;
-    	
-    	if(nMasterSize>0) {
-    		checkMasterCommonCode = commCodeService.checkMasterCommonCode(masterCheck);
+    	String compCd = queryMap.get("COMPANY_CODE");
+    	String companyCd = "";
+    	// 생성
+    	if(compCd == null) {
+    		Map<String,String> newMap = new HashMap<>();
+    		newMap.put("map"	, "nextBaseMapper");
+    		newMap.put("mapid"	, "selectNewCompanyCode");    		
+    		Map<String,Object> codeMap  = commBaseService.searchMap(newMap, searchMap);
+    		companyCd = (String) codeMap.get("NEW_COMPANY_CODE");
     	}
-    	if(nDetailSize>0) {
-    		checkDetailCommonCode = commCodeService.checkDetailCommonCode(detailCheck);
+    	
+    	for(int i=0;i<4;i++) {
+        	// 추가/수정
+    		List<Map<String,Object>> input = null;
+    		if(i==0) input = dsList1;
+    		else if(i==1) input = dsList2;
+    		else if(i==2) input = dsList3;
+    		else if(i==3) input = dsList4;
+        	commBaseService.saveCompanyList(searchMap, queryMap, input, loginUserInfo, companyCd);
+    		
     	}
     	
 		NexacroResult result = new NexacroResult();
-		result.addDataSet("dsMasterResult", checkMasterCommonCode);
-		result.addDataSet("dsDetailResult", checkDetailCommonCode);
-		
 		return result;
+	}  	
+    
+    /**
+	 * 파일다운로드 후 다운로드된 서버 파일 삭제
+	 * @param request		: N/A
+	 * @return uuid : 서버에 저장하는 파일명 생성 후 return
+	 */	    
+	private static String getUuid() { 
+		return UUID.randomUUID().toString().replaceAll("-", ""); 
 	}
-    
+	
     /**
-	 * 공통코드 대분류 삭제
-	 * @param saveMap		: 삭제할 Dataset
-	 * @return result		: 데이터 셋
-	 */
-    @RequestMapping(value = "/deleteComCode.do")
-	public NexacroResult deleteComCode(@ParamDataSet(name = "dsList", required = false) List<Map<String,Object>> delList
-								, HttpServletRequest request) throws NexacroException{
+ 	 * 파일Upload
+ 	 * @param request		: Http Request
+ 	 * @param response		: Http response
+ 	 * @return nexacroResult	: 데이터 셋
+ 	 */	    
+     @RequestMapping("/saveNextFileUpload.do")
+     public NexacroResult saveNextFileUpload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+ 	    	
+     	NexterUtil NexUtil = new NexterUtil();
 
-    	// 공통코드 대분류 삭제한다.
-    	commCodeService.deleteComCode(delList);
-		NexacroResult result = new NexacroResult();
-		
-		return result;
-	}
-    
-    /**
-	 * 공통코드 대분류 삭제
-	 * @param saveMap		: 삭제할 Dataset
-	 * @return result		: 데이터 셋
-	 */
-    @RequestMapping(value = "/deletePopComCode.do")
-	public NexacroResult deletePopComCode(@ParamDataSet(name = "dsList", required = false) List<Map<String,Object>> delList
-								, HttpServletRequest request) throws NexacroException{
+     	// Login 사용자 정보를 받은 Map
+     	Map<String, Object> loginUserInfo = NexUtil.getUserInfoMap(request);
+     	
+     	Properties properties = new Properties();
+        Reader reader = Resources.getResourceAsReader("file.properties");
+        properties.load(reader);
+        String path = properties.getProperty("uploadPath");
+        
+     	
+     	List<Map<String,Object>> inDs = new ArrayList<Map<String,Object>>();
+     	
+     	DataSet dsIsrtFiles = new DataSet("dsInsertFile");
+     	DataSet dsDeltFiles = new DataSet("dsDeleteFile");
+     	
+     	MultipartHttpServletRequest mhsr = (MultipartHttpServletRequest) request;
+     	Iterator<String> iter = mhsr.getFileNames();
+     	
+    	String sourceCd  = mhsr.getParameter("sourceCd");
+    	String sourceSeq = mhsr.getParameter("sourceSeq");
+    	String statusCd  = mhsr.getParameter("statusCd");
+    	String insertDs  = mhsr.getParameter("insertDs");
+    	String deleteDs  = mhsr.getParameter("deleteDs");
+    	
+    	dsIsrtFiles.loadXml(insertDs);
+    	dsDeltFiles.loadXml(deleteDs);
 
-    	// 공통코드 대분류 삭제한다.
-    	commCodeService.deletePopComCode(delList);
-		NexacroResult result = new NexacroResult();
-		
-		return result;
-	}  
-    
-    /*------------------------------------------------------------------------------------------------------------------------*/
-    // 자산관리
-    /*------------------------------------------------------------------------------------------------------------------------*/
-    /**
-	 * 자산관리 목록 조회
-	 * @param saveMap		: 삭제할 Dataset
-	 * @return result		: 데이터 셋
-	 */    
-    @RequestMapping(value = "/SearchAssetList.do")
-	public NexacroResult SearchAssetList(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-										, HttpServletRequest request) throws NexacroException{
+     	MultipartFile mfile = null; 
+     	String fieldName = ""; 
+     	
+     	File dir = new File(path); 
+     	if (!dir.isDirectory()) { 
+     		dir.mkdirs(); 
+     	}
+     	
+     	int row = 0;
+     	    	
+ 		// 값이 나올때까지 
+ 		while (iter.hasNext()) { 
+ 			fieldName = (String)iter.next();
+ 			
+ 			// 내용을 가져와서 
+ 			mfile = mhsr.getFile(fieldName); 
+ 			String origName; 
+ 			//origName = new String(mfile.getOriginalFilename().getBytes("8859_1"), "UTF-8");
+ 			origName = mfile.getOriginalFilename();
 
-    	// 공통코드 목록을 조회한다.
-    	List<Map<String,Object>> commCodeListInfo = commCodeService.searchAssetList(searchMap);
+ 			// 파일명이 없다면 
+ 			if ("".equals(origName)) {
+ 				continue; 
+ 			} 
+ 			// 파일 명 변경(uuid로 암호화) 
+ 			String ext = origName.substring(origName.lastIndexOf('.')); 
+ 			ext = ext.replace(".", "");
+ 			
+ 			String saveFileName = getUuid(); 
+ 			String sCd = dsIsrtFiles.getString(row, "SOURCE_CD");
+ 			String serverPath = path + File.separator + sCd + File.separator + saveFileName;
+ 			File serverFile = new File(serverPath); 
+ 			mfile.transferTo(serverFile); 
+ 			
+ 			Map<String,Object> inMap = new HashMap<>();
 			
-		NexacroResult result = new NexacroResult();
-		result.addDataSet("dsList", commCodeListInfo);
-		
-		return result;
-	}      
-    
-    /**
-   	 * 자산관리 저장
-   	 * @param saveMap		: 저장할 Dataset
-   	 * @return result		: 데이터 셋
-   	 */
-    @RequestMapping(value = "/saveAssetList.do")
-   	public NexacroResult saveAssetList(@ParamDataSet(name = "dsList", required = false) List<Map<String,Object>> saveMap
-   									, HttpServletRequest request) throws NexacroException{
-       	
-       	NexterUtil NexUtil = new NexterUtil();
+			inMap.put("SOURCE_CD"		, dsIsrtFiles.getString(row, "SOURCE_CD"));
+			inMap.put("SOURCE_SEQ"		, dsIsrtFiles.getString(row, "SOURCE_SEQ"));
+	    	inMap.put("STATUS_CD"		, dsIsrtFiles.getString(row, "STATUS_CD"));
+	    	inMap.put("FM_SEQ"			, dsIsrtFiles.getString(row, "FM_SEQ"));
+	    	
+	    	inMap.put("FILE_NAME"		, origName);
+	    	inMap.put("SAVE_FILE_NAME"	, saveFileName);
+	    	inMap.put("FILE_SIZE"		, mfile.getSize());
+	    	inMap.put("FILE_TYPE"		, ext);
+	    	inMap.put("SAVE_PATH"		, serverPath);
+	    	
+	    	commBaseService.insertFileMapUserMap("MapFile", inMap, loginUserInfo);
+	    	commBaseService.insertFileMapUserMap("MasterFile", inMap, loginUserInfo);
+	    	
+	    	row++;
+ 		}
+ 		
+ 		if(dsDeltFiles.getRowCount() > 0) {
+ 			Map<String,Object> inMap = new HashMap<>();
+ 			for(int i=0,len=dsDeltFiles.getRowCount();i<len;i++) {
+ 	 			String sCd 	= dsDeltFiles.getString(i, "SOURCE_CD");
+ 				String fileName = dsDeltFiles.getString(i, "SAVE_FILE_NAME");
+ 				inMap.put("SOURCE_CD"		, sCd);
+ 				inMap.put("SOURCE_SEQ"		, dsDeltFiles.getString(i, "SOURCE_SEQ"));
+ 		    	inMap.put("STATUS_CD"		, dsDeltFiles.getString(i, "STATUS_CD"));
+ 				inMap.put("FM_SEQ"			, dsDeltFiles.getString(i, "FM_SEQ"));
+ 				inMap.put("SOURCE_CD"		, dsDeltFiles.getString(i, "FILE_SEQ"));
+ 				inMap.put("SAVE_FILE_NAME"	, fileName);
+ 				
+ 				commBaseService.deleteFileMapUserMap("MasterFile", inMap, loginUserInfo);
+ 				
+ 	 			String serverPath = path + File.separator + sCd + File.separator + fileName;
+ 	 			
+ 		        File f = new File(serverPath);
+ 				if(f.exists()) {
+ 					f.delete();
+ 				}
+ 			}
+ 		}
 
-       	// Login 사용자 정보를 받은 Map
-       	Map<String, Object> loginUserInfo = new HashMap<String, Object>();
-       	loginUserInfo = NexUtil.getUserInfoMap(request);
-       	
-       	// 시스템 메시지를 저장한다.
-       	commCodeService.saveAssetList(saveMap, loginUserInfo);
-       	
-   		NexacroResult result = new NexacroResult();
-   		
-   		return result;
-   	}    
-    
-    /**
-	 * IP 목록 조회
-	 * @param saveMap		: 삭제할 Dataset
-	 * @return result		: 데이터 셋
-	 */    
-    @RequestMapping(value = "/SearchIPList.do")
-	public NexacroResult SearchIPList(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-										, HttpServletRequest request) throws NexacroException{
-
-    	// 공통코드 목록을 조회한다.
-    	List<Map<String,Object>> commCodeListInfo = commCodeService.searchIPList(searchMap);
-			
-		NexacroResult result = new NexacroResult();
-		result.addDataSet("dsList", commCodeListInfo);
-		
-		return result;
-	}          
-    
-    /**
-   	 * 자산관리 저장
-   	 * @param saveMap		: 저장할 Dataset
-   	 * @return result		: 데이터 셋
-   	 */
-    @RequestMapping(value = "/saveIPList.do")
-   	public NexacroResult saveIPList(@ParamDataSet(name = "dsList", required = false) List<Map<String,Object>> saveMap
-   									, HttpServletRequest request) throws NexacroException{
-       	
-       	NexterUtil NexUtil = new NexterUtil();
-
-       	// Login 사용자 정보를 받은 Map
-       	Map<String, Object> loginUserInfo = new HashMap<String, Object>();
-       	loginUserInfo = NexUtil.getUserInfoMap(request);
-       	
-       	// 시스템 메시지를 저장한다.
-       	commCodeService.saveIPList(saveMap, loginUserInfo);
-       	
-   		NexacroResult result = new NexacroResult();
-   		
-   		return result;
-   	}        
-    
-    /**
-   	 * 달력생성
-   	 * @param saveMap		: 저장할 Dataset
-   	 * @return result		: 데이터 셋
-   	 */    
-    @RequestMapping(value = "/CreateCalendarList.do")
-	public NexacroResult createCalendarList(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-										, HttpServletRequest request) throws NexacroException{
-
-       	NexterUtil NexUtil = new NexterUtil();
-
-       	// Login 사용자 정보를 받은 Map
-       	Map<String, Object> loginUserInfo = new HashMap<String, Object>();
-       	loginUserInfo = NexUtil.getUserInfoMap(request);
-       	
-    	// 달력생성.
-       	DataSet ds = commCodeService.createCalendarList(searchMap, loginUserInfo);
-			
-		NexacroResult result = new NexacroResult();
-		
-		return result;
-	}       
-    
-    /**
-   	 * 달력조회
-   	 * @param saveMap		: 저장할 Dataset
-   	 * @return result		: 데이터 셋
-   	 */    
-    @RequestMapping(value = "/searchCalendarList.do")
-	public NexacroResult searchCalendarList(@ParamDataSet(name = "dsCond", required = false) Map<String,String> searchMap 
-										, HttpServletRequest request) throws NexacroException{
-
-       	NexterUtil NexUtil = new NexterUtil();
-
-       	// Login 사용자 정보를 받은 Map
-       	Map<String, Object> loginUserInfo = new HashMap<String, Object>();
-       	loginUserInfo = NexUtil.getUserInfoMap(request);
-       	
-    	// 달력조회.
-    	List<Map<String,Object>> commCalListInfo = commCodeService.searchCalendarList(searchMap);
-			
-		NexacroResult result = new NexacroResult();
-		result.addDataSet("dsList", commCalListInfo);
-		
-		return result;
-	}           
-    
-    /**
-   	 * 달력 저장
-   	 * @param saveMap		: 저장할 Dataset
-   	 * @return result		: 데이터 셋
-   	 */
-    @RequestMapping(value = "/saveCalendarList.do")
-   	public NexacroResult saveCalendarList(@ParamDataSet(name = "dsList", required = false) List<Map<String,Object>> saveMap
-   									, HttpServletRequest request) throws NexacroException{
-       	
-       	NexterUtil NexUtil = new NexterUtil();
-
-       	// Login 사용자 정보를 받은 Map
-       	Map<String, Object> loginUserInfo = new HashMap<String, Object>();
-       	loginUserInfo = NexUtil.getUserInfoMap(request);
-       	
-       	// 시스템 메시지를 저장한다.
-       	commCodeService.saveCalendarList(saveMap, loginUserInfo);
-       	
-   		NexacroResult result = new NexacroResult();
-   		
-   		return result;
-   	}           
-    
+         NexacroResult nexacroResult = new NexacroResult();
+         return nexacroResult;    	
+     }    
 }

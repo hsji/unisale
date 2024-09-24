@@ -197,11 +197,11 @@ public class nextBaseServiceImpl implements nextBaseService {
         saveMap.put("USER_ID_SRV", userInfo.get("USER_CON_IPADDR_SRV"));
         saveMap.put("USER_CON_IPADDR_SRV", userInfo.get("USER_CON_IPADDR_SRV"));
         
-        Map<String,Object> cntMap = sqlSession.selectOne("nextCommMapper.selectFileMap", saveMap);
-        int cnt = Integer.parseInt(String.valueOf(cntMap.get("CNT")));
-        if(cnt == 0) {
+        //Map<String,Object> cntMap = sqlSession.selectOne("nextCommMapper.selectFileMap", saveMap);
+        //int cnt = Integer.parseInt(String.valueOf(cntMap.get("CNT")));
+        //if(cnt == 0) {
         	sqlSession.insert(strInsertMap,saveMap);
-        }
+        //}
      }
      
      /**

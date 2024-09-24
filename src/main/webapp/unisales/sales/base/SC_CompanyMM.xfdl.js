@@ -13,12 +13,12 @@
             this.set_titletext("회사정보관리");
             if (Form == this.constructor)
             {
-                this._setFormPosition(1050,570);
+                this._setFormPosition(1290,570);
             }
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsOutput", this);
-            obj._setContents("<ColumnInfo><Column id=\"COMPANY_CD\" type=\"STRING\" size=\"20\"/><Column id=\"COMPANY_NM\" type=\"STRING\" size=\"100\"/><Column id=\"TAG\" type=\"STRING\" size=\"200\"/><Column id=\"CLIENT_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"COMPANY_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"TMP_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"BLACKLIST_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"NATION_CD\" type=\"STRING\" size=\"20\"/><Column id=\"BUSINESS_SCALE\" type=\"STRING\" size=\"20\"/><Column id=\"L_CATEGORY_CD\" type=\"STRING\" size=\"20\"/><Column id=\"M_CATEGORY\" type=\"STRING\" size=\"20\"/><Column id=\"COMPANY_REG_NO\" type=\"STRING\" size=\"20\"/><Column id=\"CORPORATE_REG_NO\" type=\"STRING\" size=\"30\"/><Column id=\"INCORPORATION_DATE\" type=\"DATETIME\" size=\"23\"/><Column id=\"CEO_NM\" type=\"STRING\" size=\"30\"/><Column id=\"CEO_PHONE\" type=\"STRING\" size=\"20\"/><Column id=\"POST_NO\" type=\"STRING\" size=\"8\"/><Column id=\"POST_ADDR\" type=\"STRING\" size=\"100\"/><Column id=\"DETAIL_ADDR\" type=\"STRING\" size=\"100\"/><Column id=\"PHONE_NO\" type=\"STRING\" size=\"20\"/><Column id=\"FAX_NO\" type=\"STRING\" size=\"20\"/><Column id=\"BUSINESS_FORM\" type=\"STRING\" size=\"20\"/><Column id=\"BUSINESS_KIND\" type=\"STRING\" size=\"20\"/><Column id=\"PURCHASE_COMPANY_CODE\" type=\"STRING\" size=\"4\"/><Column id=\"PRODUCT_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"SI_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"SOLUTION_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"GOODS_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"PARTNER_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"PARTNER_KIND\" type=\"STRING\" size=\"20\"/><Column id=\"COMPANY_STATE\" type=\"STRING\" size=\"20\"/><Column id=\"COMPANY_KIND\" type=\"STRING\" size=\"20\"/><Column id=\"BANK_CD\" type=\"STRING\" size=\"20\"/><Column id=\"ACCOUNT_NO\" type=\"STRING\" size=\"30\"/><Column id=\"ACCOUNT_NAME\" type=\"STRING\" size=\"50\"/><Column id=\"SI_VIEW_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"COLLECTION_BOND_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"CL_APPROVAL_EMP_NO\" type=\"STRING\" size=\"60\"/><Column id=\"CL_ASSET\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_EMP_NUMBER\" type=\"INT\" size=\"10\"/><Column id=\"CL_APPROVAL_DATE\" type=\"DATETIME\" size=\"23\"/><Column id=\"CL_CAPITAL\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_OPINION\" type=\"STRING\" size=\"20\"/><Column id=\"CL_PS\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_ANNUAL_SALES\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_SI\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_NET_INCOME\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_EVALUATION\" type=\"INT\" size=\"10\"/><Column id=\"CL_LISTED_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"CL_EXCEPTION_CODE\" type=\"STRING\" size=\"20\"/><Column id=\"CL_ADD_SCORE1\" type=\"STRING\" size=\"20\"/><Column id=\"CL_ADD_SCORE2\" type=\"STRING\" size=\"20\"/><Column id=\"CL_ADD_SCORE3\" type=\"STRING\" size=\"20\"/><Column id=\"REMARKS\" type=\"STRING\" size=\"32767\"/><Column id=\"DELETE_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"INSERT_DATE\" type=\"DATETIME\" size=\"23\"/><Column id=\"INSERT_EMP_NO\" type=\"STRING\" size=\"60\"/><Column id=\"INSERT_DEPT_CD\" type=\"STRING\" size=\"60\"/><Column id=\"INSERT_DEPT_NM\" type=\"STRING\" size=\"100\"/><Column id=\"INSERT_MODEL\" type=\"STRING\" size=\"100\"/><Column id=\"UPDATE_DATE\" type=\"DATETIME\" size=\"23\"/><Column id=\"UPDATE_EMP_NO\" type=\"STRING\" size=\"60\"/><Column id=\"UPDATE_DEPT_CD\" type=\"STRING\" size=\"60\"/><Column id=\"UPDATE_DEPT_NM\" type=\"STRING\" size=\"100\"/><Column id=\"UPDATE_MODEL\" type=\"STRING\" size=\"100\"/><Column id=\"PROJECT_COUNT\" type=\"STRING\" size=\"255\"/><Column id=\"GENUINE_CONTRACT_OF_SALES\" type=\"STRING\" size=\"255\"/><Column id=\"PROVISIONAL_CONTRACT_OF_SALES\" type=\"STRING\" size=\"255\"/><Column id=\"GENUINE_CONTRACT_OF_PURCHASE\" type=\"STRING\" size=\"255\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"COMPANY_CODE\" type=\"STRING\" size=\"20\"/><Column id=\"COMPANY_NAME\" type=\"STRING\" size=\"100\"/><Column id=\"TAG\" type=\"STRING\" size=\"200\"/><Column id=\"CLIENT_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"COMPANY_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"TMP_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"BLACKLIST_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"NATION_CODE\" type=\"STRING\" size=\"20\"/><Column id=\"BUSINESS_SCALE\" type=\"STRING\" size=\"20\"/><Column id=\"L_CATEGORY\" type=\"STRING\" size=\"20\"/><Column id=\"M_CATEGORY\" type=\"STRING\" size=\"20\"/><Column id=\"COMPANY_REG_NO\" type=\"STRING\" size=\"20\"/><Column id=\"CORPORATE_REG_NO\" type=\"STRING\" size=\"30\"/><Column id=\"INCORPORATION_DATE\" type=\"DATETIME\" size=\"23\"/><Column id=\"CEO_NAME\" type=\"STRING\" size=\"30\"/><Column id=\"CEO_PHONE\" type=\"STRING\" size=\"20\"/><Column id=\"POST_NO\" type=\"STRING\" size=\"8\"/><Column id=\"POST_ADDR\" type=\"STRING\" size=\"100\"/><Column id=\"DETAIL_ADDR\" type=\"STRING\" size=\"100\"/><Column id=\"PHONE_NO\" type=\"STRING\" size=\"20\"/><Column id=\"FAX_NO\" type=\"STRING\" size=\"20\"/><Column id=\"BUSINESS_FORM\" type=\"STRING\" size=\"20\"/><Column id=\"BUSINESS_KIND\" type=\"STRING\" size=\"20\"/><Column id=\"PURCHASE_COMPANY_CODE\" type=\"STRING\" size=\"4\"/><Column id=\"PRODUCT_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"SI_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"SOLUTION_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"GOODS_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"PARTNER_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"PARTNER_KIND\" type=\"STRING\" size=\"20\"/><Column id=\"COMPANY_STATE\" type=\"STRING\" size=\"20\"/><Column id=\"COMPANY_KIND\" type=\"STRING\" size=\"20\"/><Column id=\"BANK_CODE\" type=\"STRING\" size=\"20\"/><Column id=\"ACCOUNT_NO\" type=\"STRING\" size=\"30\"/><Column id=\"ACCOUNT_NAME\" type=\"STRING\" size=\"50\"/><Column id=\"SI_VIEW_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"COLLECTION_BOND_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"CL_APPROVAL_EMP_NO\" type=\"STRING\" size=\"60\"/><Column id=\"CL_ASSET\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_EMP_NUMBER\" type=\"INT\" size=\"10\"/><Column id=\"CL_APPROVAL_DATE\" type=\"DATETIME\" size=\"23\"/><Column id=\"CL_CAPITAL\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_OPINION\" type=\"STRING\" size=\"20\"/><Column id=\"CL_PS\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_ANNUAL_SALES\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_SI\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_NET_INCOME\" type=\"BIGDECIMAL\" size=\"53\"/><Column id=\"CL_EVALUATION\" type=\"INT\" size=\"10\"/><Column id=\"CL_LISTED_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"CL_EXCEPTION_CODE\" type=\"STRING\" size=\"20\"/><Column id=\"CL_ADD_SCORE1\" type=\"STRING\" size=\"20\"/><Column id=\"CL_ADD_SCORE2\" type=\"STRING\" size=\"20\"/><Column id=\"CL_ADD_SCORE3\" type=\"STRING\" size=\"20\"/><Column id=\"REMARKS\" type=\"STRING\" size=\"32767\"/><Column id=\"DELETE_FLAG\" type=\"STRING\" size=\"1\"/><Column id=\"INSERT_DATE\" type=\"DATETIME\" size=\"23\"/><Column id=\"INSERT_EMP_NO\" type=\"STRING\" size=\"60\"/><Column id=\"INSERT_DEPT_CD\" type=\"STRING\" size=\"60\"/><Column id=\"INSERT_DEPT_NM\" type=\"STRING\" size=\"100\"/><Column id=\"INSERT_MODEL\" type=\"STRING\" size=\"100\"/><Column id=\"UPDATE_DATE\" type=\"DATETIME\" size=\"23\"/><Column id=\"UPDATE_EMP_NO\" type=\"STRING\" size=\"60\"/><Column id=\"UPDATE_DEPT_CD\" type=\"STRING\" size=\"60\"/><Column id=\"UPDATE_DEPT_NM\" type=\"STRING\" size=\"100\"/><Column id=\"UPDATE_MODEL\" type=\"STRING\" size=\"100\"/><Column id=\"PROJECT_COUNT\" type=\"STRING\" size=\"255\"/><Column id=\"GENUINE_CONTRACT_OF_SALES\" type=\"STRING\" size=\"255\"/><Column id=\"PROVISIONAL_CONTRACT_OF_SALES\" type=\"STRING\" size=\"255\"/><Column id=\"GENUINE_CONTRACT_OF_PURCHASE\" type=\"STRING\" size=\"255\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -70,15 +70,15 @@
             obj.set_formscrolltype("none");
             this.addChild(obj.name, obj);
 
-            obj = new Static("stc_CompanyType","0","12","90","24",null,null,null,null,null,null,this.div_Project_Management.form);
-            obj.set_taborder("4");
+            obj = new Static("stc_CompanyType","0","12","93","24",null,null,null,null,null,null,this.div_Project_Management.form);
+            obj.set_taborder("5");
             obj.set_text("회사구분");
             obj.set_cssclass("sta_WF_SchLabel");
             obj.getSetter("TL_SEQ").set("836");
             this.div_Project_Management.addChild(obj.name, obj);
 
-            obj = new Combo("cmb_SelectType","stc_CompanyType:0.00","12","151","24",null,null,null,null,null,null,this.div_Project_Management.form);
-            obj.set_taborder("5");
+            obj = new Combo("cmb_SelectType","stc_CompanyType:0","12","111","24",null,null,null,null,null,null,this.div_Project_Management.form);
+            obj.set_taborder("6");
             obj.set_innerdataset("ds_SelectType");
             obj.set_codecolumn("CODE");
             obj.set_datacolumn("CAPTION");
@@ -87,7 +87,7 @@
             obj.set_index("0");
             this.div_Project_Management.addChild(obj.name, obj);
 
-            obj = new Static("stc_ClientName","cmb_SelectType:0","12","80","24",null,null,null,null,null,null,this.div_Project_Management.form);
+            obj = new Static("stc_ClientName","cmb_SelectType:0.00","12","73","24",null,null,null,null,null,null,this.div_Project_Management.form);
             obj.set_taborder("0");
             obj.set_cssclass("sta_WF_SchLabel");
             obj.set_text("회사");
@@ -98,7 +98,7 @@
             obj.set_taborder("1");
             this.div_Project_Management.addChild(obj.name, obj);
 
-            obj = new CheckBox("chb_Inquiry","edt_ClientName:20","12","80","24",null,null,null,null,null,null,this.div_Project_Management.form);
+            obj = new CheckBox("chb_Inquiry","edt_ClientName:30","12","67","24",null,null,null,null,null,null,this.div_Project_Management.form);
             obj.set_taborder("2");
             obj.set_text("가 조회");
             obj.set_falsevalue("0");
@@ -106,30 +106,46 @@
             obj.getSetter("TL_SEQ").set("2271");
             this.div_Project_Management.addChild(obj.name, obj);
 
-            obj = new Button("btn_Search",null,"10","48","28","8",null,null,null,null,null,this.div_Project_Management.form);
+            obj = new Button("btn_Ins",null,"8","60","22","152",null,null,null,null,null,this.div_Project_Management.form);
             obj.set_taborder("3");
+            obj.set_text("신규");
+            obj.set_cssclass("btn_WF_tran");
+            obj.set_enable("false");
+            obj.getSetter("TL_SEQ").set("116");
+            this.div_Project_Management.addChild(obj.name, obj);
+
+            obj = new Button("btn_Merge",null,"8","70","22","btn_Ins:8",null,null,null,null,null,this.div_Project_Management.form);
+            obj.set_taborder("7");
+            obj.set_text("회사병합");
+            obj.set_cssclass("btn_WF_tran");
+            obj.set_enable("false");
+            obj.getSetter("TL_SEQ").set("2272");
+            this.div_Project_Management.addChild(obj.name, obj);
+
+            obj = new Button("btn_Search",null,"10","48","28","25",null,null,null,null,null,this.div_Project_Management.form);
+            obj.set_taborder("4");
             obj.set_text("조회");
             obj.set_cssclass("btn_WF_Search");
             obj.getSetter("TL_SEQ").set("118");
             this.div_Project_Management.addChild(obj.name, obj);
 
-            obj = new CheckBox("cb_BlackList","chb_Inquiry:0","12","90","24",null,null,null,null,null,null,this.div_Project_Management.form);
-            obj.set_taborder("6");
+            obj = new CheckBox("cb_BlackList","chb_Inquiry:10","12","90","24",null,null,null,null,null,null,this.div_Project_Management.form);
+            obj.set_taborder("8");
             obj.set_text("블랙리스트");
             obj.set_falsevalue("0");
             obj.set_truevalue("1");
             obj.getSetter("TL_SEQ").set("842");
             this.div_Project_Management.addChild(obj.name, obj);
 
-            obj = new Static("stc_CompanyType00","cb_BlackList:0","12","80","24",null,null,null,null,null,null,this.div_Project_Management.form);
-            obj.set_taborder("7");
+            obj = new Static("stc_CompanyType00","cb_BlackList:0.00","12","80","24",null,null,null,null,null,null,this.div_Project_Management.form);
+            obj.set_taborder("9");
             obj.set_text("대분류");
             obj.set_cssclass("sta_WF_SchLabel");
             obj.getSetter("TL_SEQ").set("670");
             this.div_Project_Management.addChild(obj.name, obj);
 
-            obj = new Combo("cmb_CoLCategory","stc_CompanyType00:0.00","12","151","24",null,null,null,null,null,null,this.div_Project_Management.form);
-            obj.set_taborder("8");
+            obj = new Combo("cmb_CoLCategory","stc_CompanyType00:0","12","151","24",null,null,null,null,null,null,this.div_Project_Management.form);
+            obj.set_taborder("10");
             obj.set_innerdataset("ds_CD_L_CATEGORY");
             obj.set_codecolumn("CODE");
             obj.set_datacolumn("CAPTION");
@@ -138,47 +154,42 @@
             obj.set_index("0");
             this.div_Project_Management.addChild(obj.name, obj);
 
-            obj = new Static("staTitle01","0","div_Project_Management:0","270","43",null,null,null,null,null,null,this);
+            obj = new Static("staTitle01","0","div_Project_Management:0","342","43",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_text("회사정보");
             obj.set_cssclass("sta_WF_Title");
             this.addChild(obj.name, obj);
 
-            obj = new Grid("grd_CompanyMM","0","staTitle01:0",null,null,"20","30",null,null,null,null,this);
+            obj = new Grid("grd_CompanyMM","0","staTitle01:0",null,null,"20","24",null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_binddataset("dsOutput");
             obj.set_autofittype("col");
             obj.set_cellmovingtype("col");
             obj.set_cellsizingtype("col");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"48\"/><Column size=\"70\"/><Column size=\"150\"/><Column size=\"150\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"250\"/><Column size=\"70\"/><Column size=\"70\"/><Column size=\"70\"/><Column size=\"70\"/><Column size=\"70\"/><Column size=\"70\"/></Columns><Rows><Row size=\"32\" band=\"head\"/><Row size=\"32\"/></Rows><Band id=\"head\"><Cell text=\"NO\"/><Cell col=\"1\" text=\"회사코드\" TL_SEQ=\"147\"/><Cell col=\"2\" text=\"회사명\" TL_SEQ=\"148\"/><Cell col=\"3\" text=\"대분류\" TL_SEQ=\"670\"/><Cell col=\"4\" text=\"대표자명\" TL_SEQ=\"848\"/><Cell col=\"5\" text=\"우편번호\" TL_SEQ=\"838\"/><Cell col=\"6\" text=\"주소\" TL_SEQ=\"851\"/><Cell col=\"7\" text=\"고객사\" TL_SEQ=\"32\"/><Cell col=\"8\" text=\"협력사\" TL_SEQ=\"1133\"/><Cell col=\"9\" text=\"프로젝트\" TL_SEQ=\"119\"/><Cell col=\"10\" text=\"가프로젝트\" TL_SEQ=\"2274\"/><Cell col=\"11\" text=\"매출\" TL_SEQ=\"302\"/><Cell col=\"12\" text=\"매입\" TL_SEQ=\"52\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\"/><Cell col=\"1\" text=\"bind:COMPANY_CD\"/><Cell col=\"2\" text=\"bind:COMPANY_NM\" textAlign=\"left\"/><Cell col=\"3\" text=\"bind:L_CATEGORY_CD\" combodataset=\"ds_CD_L_CATEGORY\" combocodecol=\"CODE\" combodatacol=\"CAPTION\" displaytype=\"combotext\"/><Cell col=\"4\" text=\"bind:CEO_NM\"/><Cell col=\"5\" text=\"bind:POST_NO\"/><Cell col=\"6\" text=\"bind:ADDR\" textAlign=\"left\"/><Cell col=\"7\" text=\"bind:CLIENT_FLAG\" displaytype=\"checkboxcontrol\" edittype=\"none\"/><Cell col=\"8\" text=\"bind:COMPANY_FLAG\" edittype=\"none\" displaytype=\"checkboxcontrol\"/><Cell col=\"9\" text=\"bind:PROJECT_CNT\"/><Cell col=\"10\" text=\"bind:PRE_PROJECT_CNT\"/><Cell col=\"11\" text=\"bind:CONTRACT_CNT\"/><Cell col=\"12\" text=\"bind:PURCHASE_CNT\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"48\"/><Column size=\"70\"/><Column size=\"150\"/><Column size=\"150\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"250\"/><Column size=\"70\"/><Column size=\"70\"/><Column size=\"70\"/><Column size=\"70\"/><Column size=\"70\"/><Column size=\"70\"/></Columns><Rows><Row size=\"32\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"NO\"/><Cell col=\"1\" text=\"회사코드\" TL_SEQ=\"147\"/><Cell col=\"2\" text=\"회사명\" TL_SEQ=\"148\"/><Cell col=\"3\" text=\"대분류\" TL_SEQ=\"670\"/><Cell col=\"4\" text=\"대표자명\" TL_SEQ=\"848\"/><Cell col=\"5\" text=\"우편번호\" TL_SEQ=\"838\"/><Cell col=\"6\" text=\"주소\" TL_SEQ=\"851\"/><Cell col=\"7\" text=\"고객사\" TL_SEQ=\"32\"/><Cell col=\"8\" text=\"협력사\" TL_SEQ=\"1133\"/><Cell col=\"9\" text=\"프로젝트\" TL_SEQ=\"119\"/><Cell col=\"10\" text=\"가프로젝트\" TL_SEQ=\"2274\"/><Cell col=\"11\" text=\"매출\" TL_SEQ=\"302\"/><Cell col=\"12\" text=\"매입\" TL_SEQ=\"52\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\"/><Cell col=\"1\" text=\"bind:COMPANY_CODE\"/><Cell col=\"2\" text=\"bind:COMPANY_NAME\" textAlign=\"left\"/><Cell col=\"3\" text=\"bind:L_CATEGORY\" combodataset=\"ds_CD_L_CATEGORY\" combocodecol=\"CODE\" combodatacol=\"CAPTION\" displaytype=\"combotext\"/><Cell col=\"4\" text=\"bind:CEO_NAME\"/><Cell col=\"5\" text=\"bind:POST_NO\"/><Cell col=\"6\" text=\"bind:ADDR\" textAlign=\"left\"/><Cell col=\"7\" text=\"bind:CLIENT_FLAG\" displaytype=\"checkboxcontrol\" edittype=\"none\"/><Cell col=\"8\" text=\"bind:COMPANY_FLAG\" edittype=\"none\" displaytype=\"checkboxcontrol\"/><Cell col=\"9\" text=\"bind:PROJECT_CNT\"/><Cell col=\"10\" text=\"bind:PRE_PROJECT_CNT\"/><Cell col=\"11\" text=\"bind:CONTRACT_CNT\"/><Cell col=\"12\" text=\"bind:PURCHASE_CNT\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Div("divCmmnBtn",null,"div_Project_Management:8","580","33","20",null,null,null,null,null,this);
+            obj = new Div("divCmmnBtn",null,"60","467","33","20",null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_text("div00");
             this.addChild(obj.name, obj);
 
-            obj = new Button("btn_ExcelExport",null,"0","119","28","0",null,null,null,null,null,this.divCmmnBtn.form);
+            obj = new Button("btnExcelDown","348","0","119","28",null,null,null,null,null,null,this.divCmmnBtn.form);
             obj.set_taborder("0");
             obj.set_text("엑셀다운로드");
+            obj.set_fittocontents("width");
             obj.set_cssclass("btn_WF_ExcelSave");
             this.divCmmnBtn.addChild(obj.name, obj);
 
-            obj = new Button("btn_Ins",null,"0","78","28","btn_ExcelExport:3",null,null,null,null,null,this.divCmmnBtn.form);
+            obj = new Button("btnExcelUpload",null,"0","107","28","btnExcelDown:5",null,null,null,null,null,this.divCmmnBtn.form);
             obj.set_taborder("1");
-            obj.set_text("신규");
-            obj.set_enable("true");
+            obj.set_text("엑셀업로드");
+            obj.set_fittocontents("width");
+            obj.set_cssclass("btn_WF_ExcelUp");
             obj.set_visible("false");
             this.divCmmnBtn.addChild(obj.name, obj);
 
-            obj = new Button("btn_Merge",null,"0","107","28","btn_Ins:3",null,null,null,null,null,this.divCmmnBtn.form);
-            obj.set_taborder("2");
-            obj.set_text("회사병합");
-            obj.set_enable("true");
-            obj.set_visible("false");
-            this.divCmmnBtn.addChild(obj.name, obj);
-
-            obj = new Div("divCount","0",null,null,"27","20","0",null,null,null,null,this);
+            obj = new Div("divCount","0",null,null,"24","0","0",null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("div00");
             obj.set_url("common::cmmCount.xfdl");
@@ -197,7 +208,7 @@
             this.divCount.form.addLayout(obj.name, obj);
 
             //-- Default Layout : this
-            obj = new Layout("default","",1050,570,this,function(p){});
+            obj = new Layout("default","",1290,570,this,function(p){});
             obj.set_mobileorientation("landscape");
             this.addLayout(obj.name, obj);
             
@@ -261,17 +272,17 @@
         ************************************************************************************************/
         this.fnFormInit = function()
         {
-        	if(this.commUtil.getFormAuthority(254,1)	// 추가,삭제,저장 권한
-        	|| this.commUtil.getFormAuthority(254,2))	//(담당자 추가,삭제), (가코드 회사 등록) 권한
-        	{
-        		this.divCmmnBtn.form.btn_Ins.set_enable(true);
-        	}
-        	if(this.commUtil.getFormAuthority(254,3))	// 회사병합 권한
-        	{
-        		this.divCmmnBtn.form.btn_Merge.set_enable(true);
-        	}
-        	this.fnGetCode();
-        	this.div_Project_Management.form.chb_Inquiry.set_value(0);
+        // 	if(this.commUtil.getFormAuthority(254,1)	// 추가,삭제,저장 권한
+        // 	|| this.commUtil.getFormAuthority(254,2))	//(담당자 추가,삭제), (가코드 회사 등록) 권한
+        // 	{
+        // 		this.divCmmnBtn.form.btn_Ins.set_enable(true);
+        // 	}
+        // 	if(this.commUtil.getFormAuthority(254,3))	// 회사병합 권한
+        // 	{
+        // 		this.divCmmnBtn.form.btn_Merge.set_enable(true);
+        // 	}
+         	this.fnGetCode();
+        // 	this.div_Project_Management.form.chb_Inquiry.set_value(0);
 
         	this.gfnSetCommBtn(this.divCmmnBtn);
         }
@@ -418,15 +429,15 @@
         			,dsFakeContract : this.dsFakeContract
         			,dsRealPurchase : this.dsRealPurchase
         			,"pType"	    : colText[1]
-        			,"COMPANY_CODE" : this.dsOutput.getColumn(this.dsOutput.rowposition, "COMPANY_CD")
+        			,"COMPANY_CODE" : this.dsOutput.getColumn(this.dsOutput.rowposition, "COMPANY_CODE")
         			,title 			: ''
         		}
         		this.commUtil.popup(this, "CompanyMMPopup", "sales::base/SC_CompanyMMPopup.xfdl", -1, -1, null, null, true, true, false, sArgument, "fnPopupCallBack");
         	}
         	else
         	{
-        		var sArgument = {COMPANY_CODE : this.dsOutput.getColumn(e.row, "COMPANY_CD")
-        						,title 			: '회사정보 - ' + this.dsOutput.getColumn(this.dsOutput.rowposition, "COMPANY_NM")};
+        		var sArgument = {COMPANY_CODE : this.dsOutput.getColumn(e.row, "COMPANY_CODE")
+        						,title 			: '회사정보 - ' + this.dsOutput.getColumn(this.dsOutput.rowposition, "COMPANY_NAME")};
         		this.commUtil.popup(this, "CompanyReg", "sales::base/SC_CompanyReg.xfdl", -1, -1, null, null, true, true, false, sArgument, "fnPopupCallBack");
         	}
         };
@@ -467,11 +478,15 @@
         		case "btn_Search" :
         			this.fnSearch();
         			break;
-        		case "btn_ExcelExport" :
-        			this.gfn_excelExport(this, this.grd_CompanyMM);
+        		case "btnExcelDown" :
+        			// 엑셀 상단 타이틀 텍스트 설정
+        			var sSubTitle = this.staTitle01.text;
+
+        			// Excel Export 공통함수 호출
+        			this.gfnExcelExport(this.grd_CompanyMM, sSubTitle, sSubTitle, "EXCEL2007","",sSubTitle, true, "");
         			break;
         		case "btn_Merge" :
-        			var sArgument = {COMPANY_CODE : this.dsOutput.getColumn(e.row, "COMPANY_CD")};
+        			var sArgument = {COMPANY_CODE : this.dsOutput.getColumn(e.row, "COMPANY_CODE")};
         			this.commUtil.popup(this, "CompanyMerge", "sales::base/SC_CompanyMerge.xfdl", -1, -1, null, null, true, true, false, sArgument, "fnPopupCallBack");
         			break;
         	}
@@ -504,12 +519,13 @@
             this.addEventHandler("onload",this.SC_CompanyMM_onload,this);
             this.div_Project_Management.form.cmb_SelectType.addEventHandler("onitemchanged",this.div_Project_Management_cmb_SelectType_onitemchanged,this);
             this.div_Project_Management.form.edt_ClientName.addEventHandler("onkeydown",this.div_Project_Management_edt_ClientName_onkeydown,this);
+            this.div_Project_Management.form.btn_Ins.addEventHandler("onclick",this.comm_Click,this);
+            this.div_Project_Management.form.btn_Merge.addEventHandler("onclick",this.comm_Click,this);
             this.div_Project_Management.form.btn_Search.addEventHandler("onclick",this.comm_Click,this);
             this.div_Project_Management.form.cmb_CoLCategory.addEventHandler("onitemchanged",this.div_Project_Management_cmb_SelectType_onitemchanged,this);
             this.grd_CompanyMM.addEventHandler("oncelldblclick",this.grd_CompanyMM_oncelldblclick,this);
-            this.divCmmnBtn.form.btn_ExcelExport.addEventHandler("onclick",this.comm_Click,this);
-            this.divCmmnBtn.form.btn_Ins.addEventHandler("onclick",this.comm_Click,this);
-            this.divCmmnBtn.form.btn_Merge.addEventHandler("onclick",this.comm_Click,this);
+            this.divCmmnBtn.form.btnExcelDown.addEventHandler("onclick",this.comm_Click,this);
+            this.divCmmnBtn.form.btnExcelUpload.addEventHandler("onclick",this.divCmmnBtn_btnExcelUpload_onclick,this);
         };
         this.loadIncludeScript("SC_CompanyMM.xfdl");
         this.loadPreloadList();

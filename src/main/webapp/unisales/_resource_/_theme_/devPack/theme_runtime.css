@@ -1,0 +1,173 @@
+﻿
+        
+.nexainput.nexaleftalign
+{
+  text-align:left;
+}
+.nexainput.nexarightalign
+{
+  text-align:right;
+}
+.nexainput.nexacenteralign
+{
+  text-align:center;
+}
+
+.nexacontentsbox.nexaleftalign
+{
+  text-align:left;
+}
+.nexacontentsbox.nexarightalign
+{
+  text-align:right;
+}
+.nexacontentsbox.nexacenteralign
+{
+  text-align:center;
+}
+.celltreeline
+{
+  border : 1px dotted #999999;
+}
+.Edit, .MaskEdit, .TextArea, .EditControl, .MaskEditControl, .TextAreaControl
+{
+  cursor:text;
+}
+.Button .nexacontentsbox, .ButtonControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.FileDownload  .nexacontentsbox, .FileDownloadControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.IconTextControl .nexacontentsbox, .IconControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.DatePickerDayItemControl .nexacontentsbox, .DatePickerWeekItemControl .nexacontentsbox, .DatepickerYearItemControl .nexacontentsbox, .TitleBarButtonControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.MainFrame, .VScrollBarControl, .HScrollBarControl
+{
+  cursor:default;
+}
+
+.Sketch .nexacontentsbox
+{
+   text-align:center;
+}
+
+.nexainput
+{
+  cursor:inherit;
+}
+
+.TitleBarControl
+{
+	background : #3A3C43;
+}
+.TitleBarControl .titleicon
+{
+	color : #ffffff;
+	font : bold 14px "Malgun Gothic";
+}
+.DatePickerControl
+{
+	border : 1px solid #646982;
+	background : #ffffff;
+}
+.DatePickerControl .head
+{
+	background : #ffffff;
+	color : #333333;
+	font : bold 14px "Malgun Gothic";
+}
+.DatePickerControl .head .yearstatic
+{
+	font : bold 14px "Malgun Gothic";
+}
+.DatePickerControl .body
+{
+	background : #ffffff;
+}
+.DatePickerControl .body .weekband
+{
+	background : #f7f8fa;
+}
+.DatePickerControl .body .weekitem
+{
+	color : #666666;
+}
+.DatePickerControl .body .dayitem
+{
+	color : #333333;
+}
+.TitleBarControl[status=deactivate]
+{
+	background : #3A3C43;
+}
+.TitleBarControl .titleicon[status=mouseover]
+{
+	color : #ffffff;
+	font : bold 14px "Malgun Gothic";
+}
+.TitleBarControl .titleicon[status=deactivate]
+{
+	color : #ffffff;
+	font : bold 14px "Malgun Gothic";
+}
+.DatePickerControl .body .dayitem[status=mouseover]
+{
+	background : #e4f0fe;
+}
+.DatePickerControl .body .weekitem[userstatus=saturday]
+{
+	color : #239cf0;
+}
+.DatePickerControl .body .weekitem[userstatus=sunday]
+{
+	color : #ee5555;
+}
+.DatePickerControl .body .dayitem[userstatus=selected]
+{
+	background : #38c2d8;
+	color : #ffffff;
+	font : bold 13px "Malgun Gothic";
+}
+.DatePickerControl .body .dayitem[userstatus=day]
+{
+	color : #333333;
+}
+.DatePickerControl .body .dayitem[userstatus=today]
+{
+	background : #3683e2;
+	color : #ffffff;
+	font : bold 13px "Malgun Gothic";
+}
+.DatePickerControl .body .dayitem[userstatus=saturday]
+{
+	color : #239cf0;
+}
+.DatePickerControl .body .dayitem[userstatus=sunday]
+{
+	color : #ee5555;
+}
+.DatePickerControl .body .dayitem[userstatus=trailingday]
+{
+	color : #aaaaaa;
+}
+.TitleBarControl[status=disabled]
+{
+	background : #3A3C43;
+}
+.TitleBarControl .titleicon[status=disabled]
+{
+	color : #ffffff;
+	font : bold 14px "Malgun Gothic";
+}
