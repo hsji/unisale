@@ -69,6 +69,22 @@
 	WHERE FM_SEQ = #{FM_SEQ}
 </select>
 
+<select id="selectFileMasterBySeq" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT 
+	       FM.FILE_SEQ
+	     , FM.FILE_TYPE
+	     , FM.FILE_NAME
+	     , FM.SAVE_FILE_NAME
+	     , FM.SAVE_PATH	
+	     , FP.SOURCE_CD
+	     , FP.SOURCE_SEQ
+	     , FP.STATUS_CD
+	FROM SALES_FILE_MASTER FM,SALES_FILE_MAP FP
+	WHERE FM.FM_SEQ = #{FM_SEQ}
+	AND   FM.FILE_SEQ = #{FILE_SEQ}
+	AND   FP.FM_SEQ = #{FM_SEQ}
+</select>
+
 <!-- file map 저장 -->
 <insert id="insertMapFile" parameterType="java.util.Map">
 	INSERT INTO SALES_FILE_MAP

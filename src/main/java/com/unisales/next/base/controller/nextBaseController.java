@@ -28,8 +28,10 @@ import com.ibatis.common.resources.Resources;
 import com.nexacro.java.xapi.data.ColumnHeader;
 import com.nexacro.java.xapi.data.DataSet;
 import com.nexacro.java.xapi.data.DataTypes;
+import com.nexacro.java.xapi.tx.PlatformType;
 import com.nexacro.uiadapter.spring.core.NexacroException;
 import com.nexacro.uiadapter.spring.core.annotation.ParamDataSet;
+import com.nexacro.uiadapter.spring.core.data.NexacroFileResult;
 import com.nexacro.uiadapter.spring.core.data.NexacroResult;
 import com.unisales.next.base.service.nextBaseService;
 import com.unisales.util.NexterUtil;
@@ -53,6 +55,7 @@ import com.unisales.util.NexterUtil;
 
 @Controller
 public class nextBaseController {
+	final String SALES_DIR 		= "sales";
 	private Logger log = LoggerFactory.getLogger(nextBaseController.class);
 	
 	@Autowired(required=true)
@@ -105,18 +108,24 @@ public class nextBaseController {
 	} 	
 	
 	/**
-	 * 공통 추가/수정
+	 * 회사정보 저장
 	 * @param saveMap		: 저장할 Dataset
 	 * @return result		: 데이터 셋
 	 * @throws ParseException 
 	 * @throws IOException 
 	 */
-    @RequestMapping(value = "/saveNextCompanyList.do")
-	public NexacroResult saveNextCompanyList(@ParamDataSet(name = "dsList1", required = false) List<Map<String,Object>> dsList1
-										, @ParamDataSet(name = "dsList2", required = false) List<Map<String,Object>> dsList2
-										, @ParamDataSet(name = "dsList3", required = false) List<Map<String,Object>> dsList3
-										, @ParamDataSet(name = "dsList4", required = false) List<Map<String,Object>> dsList4
-										, @ParamDataSet(name = "dsMap", required = false) Map<String,String> queryMap
+    @RequestMapping(value = "/saveNextList.do")
+	public NexacroResult saveNextList(@ParamDataSet(name = "dsInput1", required = false) List<Map<String,Object>> dsList1
+										, @ParamDataSet(name = "dsInput2", required = false) List<Map<String,Object>> dsList2
+										, @ParamDataSet(name = "dsInput3", required = false) List<Map<String,Object>> dsList3
+										, @ParamDataSet(name = "dsInput4", required = false) List<Map<String,Object>> dsList4
+										, @ParamDataSet(name = "dsInput5", required = false) List<Map<String,Object>> dsList5
+										, @ParamDataSet(name = "dsInput6", required = false) List<Map<String,Object>> dsList6
+										, @ParamDataSet(name = "dsInput7", required = false) List<Map<String,Object>> dsList7
+										, @ParamDataSet(name = "dsInput8", required = false) List<Map<String,Object>> dsList8
+										, @ParamDataSet(name = "dsInput9", required = false) List<Map<String,Object>> dsList9
+										, @ParamDataSet(name = "dsInput10", required = false) List<Map<String,Object>> dsList10
+										, @ParamDataSet(name = "dsMap", required = false) List<Map<String,String>> queryList
 										, @ParamDataSet(name = "dsCond", required = false) Map<String,Object> searchMap 
 										, HttpServletRequest request) throws NexacroException, IOException, ParseException{
     	NexterUtil NexUtil = new NexterUtil();
@@ -124,15 +133,61 @@ public class nextBaseController {
     	// Login 사용자 정보를 받은 Map
     	Map<String, Object> loginUserInfo = NexUtil.getUserInfoMap(request);
     	
-    	String compCd = queryMap.get("COMPANY_CODE");
+    	int size = queryList.size();
+    	for(int i=0;i<size;i++) {
+        	// 추가/수정
+    		List<Map<String,Object>> input = null;
+    		if(i==0) input = dsList1;
+    		else if(i==1) input = dsList2;
+    		else if(i==2) input = dsList3;
+    		else if(i==3) input = dsList4;
+    		else if(i==4) input = dsList5;
+    		else if(i==5) input = dsList6;
+    		else if(i==6) input = dsList7;
+    		else if(i==7) input = dsList8;
+    		else if(i==8) input = dsList9;
+    		else if(i==9) input = dsList10;
+    		
+    		Map<String,String> queryMap = queryList.get(i);
+        	commBaseService.saveListUserMap(queryMap, input, loginUserInfo);
+    		
+    	}
+    	
+		NexacroResult result = new NexacroResult();
+		return result;
+	}  		
+	
+	/**
+	 * 회사정보 저장
+	 * @param saveMap		: 저장할 Dataset
+	 * @return result		: 데이터 셋
+	 * @throws ParseException 
+	 * @throws IOException 
+	 */
+    @RequestMapping(value = "/saveNextCompanyList.do")
+	public NexacroResult saveNextCompanyList(@ParamDataSet(name = "dsInput1", required = false) List<Map<String,Object>> dsList1
+										, @ParamDataSet(name = "dsInput2", required = false) List<Map<String,Object>> dsList2
+										, @ParamDataSet(name = "dsInput3", required = false) List<Map<String,Object>> dsList3
+										, @ParamDataSet(name = "dsInput4", required = false) List<Map<String,Object>> dsList4
+										, @ParamDataSet(name = "dsMap", required = false) List<Map<String,String>> queryList
+										, @ParamDataSet(name = "dsCond", required = false) Map<String,Object> searchMap 
+										, HttpServletRequest request) throws NexacroException, IOException, ParseException{
+    	NexterUtil NexUtil = new NexterUtil();
+
+    	// Login 사용자 정보를 받은 Map
+    	Map<String, Object> loginUserInfo = NexUtil.getUserInfoMap(request);
+    	
+    	String compCd = (String) searchMap.get("COMPANY_CODE");
     	String companyCd = "";
     	// 생성
-    	if(compCd == null) {
+    	if(compCd == null || compCd.equals("")) {
     		Map<String,String> newMap = new HashMap<>();
     		newMap.put("map"	, "nextBaseMapper");
-    		newMap.put("mapid"	, "selectNewCompanyCode");    		
+    		newMap.put("mapid"	, "NewCompanyCode");    		
     		Map<String,Object> codeMap  = commBaseService.searchMap(newMap, searchMap);
     		companyCd = (String) codeMap.get("NEW_COMPANY_CODE");
+    		
+    		System.out.println("=====NEW_COMPANY_CODE=====" + companyCd);
     	}
     	
     	for(int i=0;i<4;i++) {
@@ -142,6 +197,7 @@ public class nextBaseController {
     		else if(i==1) input = dsList2;
     		else if(i==2) input = dsList3;
     		else if(i==3) input = dsList4;
+    		Map<String,String> queryMap = queryList.get(i);
         	commBaseService.saveCompanyList(searchMap, queryMap, input, loginUserInfo, companyCd);
     		
     	}
@@ -226,7 +282,7 @@ public class nextBaseController {
  			
  			String saveFileName = getUuid(); 
  			String sCd = dsIsrtFiles.getString(row, "SOURCE_CD");
- 			String serverPath = path + File.separator + sCd + File.separator + saveFileName;
+ 			String serverPath = path + File.separator + SALES_DIR + File.separator + sCd + File.separator + saveFileName;
  			File serverFile = new File(serverPath); 
  			mfile.transferTo(serverFile); 
  			
@@ -248,7 +304,7 @@ public class nextBaseController {
 	    	
 	    	row++;
  		}
- 		
+
  		if(dsDeltFiles.getRowCount() > 0) {
  			Map<String,Object> inMap = new HashMap<>();
  			for(int i=0,len=dsDeltFiles.getRowCount();i<len;i++) {
@@ -258,12 +314,12 @@ public class nextBaseController {
  				inMap.put("SOURCE_SEQ"		, dsDeltFiles.getString(i, "SOURCE_SEQ"));
  		    	inMap.put("STATUS_CD"		, dsDeltFiles.getString(i, "STATUS_CD"));
  				inMap.put("FM_SEQ"			, dsDeltFiles.getString(i, "FM_SEQ"));
- 				inMap.put("SOURCE_CD"		, dsDeltFiles.getString(i, "FILE_SEQ"));
+ 				inMap.put("FILE_SEQ"		, dsDeltFiles.getString(i, "FILE_SEQ"));
  				inMap.put("SAVE_FILE_NAME"	, fileName);
  				
  				commBaseService.deleteFileMapUserMap("MasterFile", inMap, loginUserInfo);
  				
- 	 			String serverPath = path + File.separator + sCd + File.separator + fileName;
+ 	 			String serverPath = path + File.separator + SALES_DIR + File.separator + sCd + File.separator + fileName;
  	 			
  		        File f = new File(serverPath);
  				if(f.exists()) {
@@ -275,4 +331,61 @@ public class nextBaseController {
          NexacroResult nexacroResult = new NexacroResult();
          return nexacroResult;    	
      }    
+     
+     /**
+ 	 * 파일다운로드
+ 	 * @param request		: Http Request
+ 	 * @param response		: Http response
+ 	 * @return fileResult	: 데이터 셋
+ 	 */	
+     @RequestMapping("/nextFileDownload.do")
+     public NexacroFileResult nextFileDownload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+      	Properties properties = new Properties();
+        Reader reader = Resources.getResourceAsReader("file.properties");
+        properties.load(reader);
+        String path = properties.getProperty("uploadPath");
+        
+ 		String SCD = (String)request.getParameter("SCD");
+ 		String SSE = (String)request.getParameter("SSE");
+ 		String SFN = (String)request.getParameter("SFN");
+ 		String OF = (String)request.getParameter("OF");
+ 		String SEQ = (String)request.getParameter("SEQ");
+ 		String FSEQ = (String)request.getParameter("FSEQ");
+ 		
+ 		if(SCD == null) SCD = "";
+ 		if(SFN == null) SFN = "";
+ 		
+ 		if(SCD.equals("") || SFN.equals("")){
+ 			Map<String,String> QMap = new HashMap<>();
+ 			Map<String,Object> SMap = new HashMap<>();
+			
+ 			QMap.put("map"		, "nextCommMapper");
+ 			QMap.put("mapid"	, "FileMasterBySeq");
+ 			
+ 			SMap.put("FM_SEQ"	, SEQ);
+ 			SMap.put("FILE_SEQ"	, FSEQ);
+	    	
+ 			Map<String,Object> OUTMap = commBaseService.searchMap(QMap, SMap);
+ 			
+ 			SCD = (String) OUTMap.get("SOURCE_CD");
+ 			SFN = (String) OUTMap.get("SAVE_FILE_NAME");
+ 			OF = (String) OUTMap.get("FILE_NAME");
+ 		}    	
+ 		String serverPath = path + File.separator + SALES_DIR + File.separator + SCD + File.separator + SFN;
+     	
+     	//파일명 인코딩
+         String characterEncoding = request.getCharacterEncoding();
+         if(characterEncoding == null) {
+             characterEncoding = PlatformType.DEFAULT_CHAR_SET;
+         }
+         //orgFileName = new String(orgFileName.getBytes("iso8859-1"), characterEncoding);    	
+     	
+     	File file = new File(serverPath);
+     	
+     	NexacroFileResult fileResult = new NexacroFileResult(file);
+     	fileResult.setOriginalName(OF);
+     	
+     	return fileResult;
+     }        
 }
