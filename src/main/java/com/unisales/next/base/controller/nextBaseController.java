@@ -37,8 +37,8 @@ import com.unisales.util.NexterUtil;
  */
 
 @Controller
-public class codeController {
-	private Logger log = LoggerFactory.getLogger(codeController.class);
+public class nextBaseController {
+	private Logger log = LoggerFactory.getLogger(nextBaseController.class);
 	
 	@Autowired(required=true)
     private codeService commCodeService;
