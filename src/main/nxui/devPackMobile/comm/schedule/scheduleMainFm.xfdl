@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="scheduleMainFm" width="480" height="770" onload="form_onload" titletext="일정">
+    <Layouts>
+      <Layout height="770" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="40"/>
+        <Static id="Static03" taborder="1" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_00" taborder="2" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="40"/>
+        <Calendar id="cal00" taborder="9" left="40" top="30" height="410" weekformat="S M T W T F S" usetrailingday="false" type="monthonly" ondayclick="cal00_ondayclick" innerdataset="dsScdData" datecolumn="CAL_DATE" backgroundcolumn="CAL_IMAGE" onlbuttonup="cal00_onlbuttonup" cssclass="cal_MF_Cal" right="40" popuptype="system"/>
+        <Static id="Static03_00" taborder="3" left="0" top="cal00:0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01_01" taborder="4" text="H20" left="0" cssclass="sta_WF_GSize" visible="false" right="0" height="20" top="Static03_00:0"/>
+        <Static id="staToday" taborder="5" left="30" top="Static02_01_01_01_01:0" width="210" height="30" cssclass="sta_WF_CalDate"/>
+        <Static id="staCnt" taborder="6" text="총 6건" left="384" top="Static02_01_01_01_01:0" height="30" cssclass="sta_WF_CalViews" right="30"/>
+        <Static id="Static02_01_01_01_00_00" taborder="7" text="H40" left="0" cssclass="sta_WF_GSize" visible="false" right="0" bottom="0" height="40"/>
+        <ListView id="lst00" taborder="8" left="22" right="20" cssclass="lst_WF_Calview" binddataset="dsScdData" top="staToday:10" oncellclick="lst00_oncellclick" bottom="40">
+          <Formats>
+            <Format id="default">
+              <Band id="body" width="100%" height="98">
+                <Cell id="Cell03" left="8" height="78" cssclass="cell_Box" right="8" top="8"/>
+                <Cell id="Cell00" left="24" top="26" width="40" height="40" text="bind:SSC_CD_KORN_NM" cssclass="expr:dataset.parent.fnSetSectCdCss1(SCD_SECT_CD)" displaytype="text"/>
+                <Cell id="Cell01" left="74" top="22" height="25" cssclass="cell_CalTitle" text="bind:TITLE" right="24"/>
+                <Cell id="Cell02" left="74" top="52" height="20" text="expr:dataset.parent.fnListViewSetInfo(dataset,currow)" right="24"/>
+              </Band>
+            </Format>
+          </Formats>
+        </ListView>
+        <Static id="Static02_01_01_01_00" taborder="10" text="H40" left="1" top="390" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	scheduleMainFm.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/03/28
+*  @Desction   설명
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/03/28			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvScdInfo 	= {}; //일정 마스터 정보
+
+this.fvMenuCd	= ""; //메뉴코드 (일정 마스터 정보 조회해 올 때 사용)
+this.fvDeptCd	= ""; //부서코드
+this.fvParamScdcd = ""; //(파라미터 유무에 따라 모아보기 여부 구분)
+this.fvScdCd	= ""; //일정관리 코드
+this.fvScdId	= ""; //일정번호
+this.fvDate 	= ""; //선택된 날짜
+
+this.fvAccess	= ""; //일정 접근 권한(MY:모아보기, Y:부서일정)
+
+
+this.fvAdd	= "1";//+등록버튼
+this.objApp = nexacro.getApplication();
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+
+	this.objApp.gdsCommCode.filter("HCL_CD == 'CM03'");
+	this.dsSetCd.copyData(this.objApp.gdsCommCode,true);	////일정유형 복사
+	this.objApp.gdsCommCode.filter("");
+
+	this.fvMenuCd	= this.gfnGetArgumentM(this.FRAME_MENUCOLUMNS.menuId);
+	this.fvParamScdcd	= this.gfnGetArgumentM(this.FRAME_MENUCOLUMNS.param);
+	this.fvDeptCd 	= nexacro.getApplication().gdsUser.getColumn(0, "DEPT_CD");
+
+	//Today
+	this.fvDate = this.gfnGetDate();
+	this.staToday.set_text(this.fvDate.substr(4,2)+"월 "
+							+ this.fvDate.substr(6,2) + "일 "
+							+ "("+ this.gfnGetDayKor(this.fvDate) +")");
+
+	var nWeek = this.gfnGetWeekCountOfMonth(this.fvDate);
+
+	if (nWeek == 6)
+	{
+		this.Static03_00.set_top("cal00:45");
+		this.resetScroll();
+	}
+
+	this.dsCond.clearData();
+	var nRow = this.dsCond.addRow();
+	this.dsCond.setColumn(nRow,"SCD_CD",this.fvParamScdcd);
+	this.dsCond.setColumn(nRow,"DEPT_CD", this.fvDeptCd);
+	this.dsCond.setColumn(nRow,"YYYYMM", this.fvDate.substr(0,6));
+	
+	//일정 모아보기/부서 일정
+ 	if(this.gfnIsNull(this.fvParamScdcd)){
+ 		this.fvAccess = "MY";
+ 	}else if(!this.gfnIsNull(this.fvParamScdcd)){
+ 		this.fvAccess = "Y";
+ 	}
+	
+	//일정 마스터 정보 조회하기(모아보기 시 전체 일정 마스터 조회)
+	this.fnTranSearchScdInfo();
+};
+
+//폼 화면 닫기
+this.fnClose = function()
+{
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+//조회
+this.cfnSearch = function()
+{
+	if(this.fvAccess=="MY"){
+		//일정 모아보기
+		this.fnTranGetMySchedule();
+	}else if(this.fvAccess=="Y"){
+		//부서별 일정
+		this.fnTranGetSchedule();
+	}
+};
+
+//신규
+this.cfnAdd = function()
+{
+	//일정 신규 등록
+	this.fnOpenScdP("add");
+};
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+//일정 마스터 정보 조회
+this.fnTranSearchScdInfo = function()
+{
+	var strSvcId    = "SearchScdInfo";		
+	var strSvcUrl   = "SearchScdInfo.do";	
+	var inData      = "dsCond=dsCond";	
+	var outData     = "dsScdInfo=dsList";	
+	var strArg      = "";					
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 			
+};
+
+//부서별 일정 조회
+this.fnTranGetSchedule = function()
+{
+	this.dsScdData.clear();
+	this.dsCond.setColumn(0,"YYYYMM", this.fvDate.substr(0,6));
+
+ 	var strSvcId    = "getSchedule";
+ 	var strSvcUrl   = "getSchedule.do";
+ 	var inData      = "dsSearch=dsCond";
+ 	var outData     = "dsScdData=dsScdData";
+ 	var strArg      = "";
+ 	var callBackFnc = "fnCallback";
+ 	
+ 	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+ 						strSvcUrl , 	// trabsaction을 요청할 주소
+ 						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+ 						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+ 						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+ 						callBackFnc); 		
+};
+// 모아보기 일정 조회
+this.fnTranGetMySchedule = function()
+{
+	this.dsScdData.clear();
+	this.dsCond.setColumn(0,"YYYYMM", this.fvDate.substr(0,6));
+
+ 	var strSvcId    = "getMySchedule";
+ 	var strSvcUrl   = "getMySchedule.do";
+ 	var inData      = "dsSearch=dsCond";
+ 	var outData     = "dsScdData=dsScdData";
+ 	var strArg      = "";
+ 	var callBackFnc = "fnCallback";
+ 	
+ 	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+ 						strSvcUrl , 	// trabsaction을 요청할 주소
+ 						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+ 						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+ 						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+ 						callBackFnc); 			
+};
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+//Transaction CallBack
+this.fnCallback = function(sSvcId, nErrMCd, sErrMsg)
+{
+	switch(sSvcId){
+		case "SearchScdInfo" : 
+			//일정 마스터 정보 저장
+			this.fnSetScdInfo();
+			//일정 데이터 조회
+			this.cfnSearch();
+			break;
+		case "getSchedule":
+			this.cal00.set_value(this.fvDate);
+			//css적용
+			this.fnSetCalCss();			
+			//일정 목록
+			this.fnSetScdList();
+			break;
+		case "getMySchedule":
+			this.cal00.set_value(this.fvDate);
+			//css적용
+			this.fnSetCalCss();			
+			//일정 목록
+			this.fnSetScdList();
+			break;
+	}
+};
+
+//Popup CallBack
+this.fnPopupCallback = function(sPopupId, sRtn)
+{
+	//조회->수정으로 넘어온 경우 수정 팝업 열어주기
+	if(sRtn =="rUpdate"){
+		this.fnOpenScdP("update", this.fvScdId);
+	}else if(!this.gfnIsNull(sRtn) && sRtn != "rUpdate"){
+		//재조회
+		this.fvDate = sRtn;
+		this.cfnSearch();
+	}
+};
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+//일정 마스터 정보 저장
+this.fnSetScdInfo = function()
+{
+	//정보 받아오기 실패
+	if(this.dsScdInfo.getRowCount() == 0){
+		//this.gfnAlert("해당 메뉴 없음");
+		this.gfnAlert("msg.nomenu");
+	}else if(this.dsScdInfo.getRowCount()==1){
+		//일정 마스터 정보 1개만 받아왔을 때 == 바로 셋팅
+		this.fvScdInfo = { 
+			scdNm	: this.dsScdInfo.getColumn(0,"SCD_NM")
+			, scdCd : this.dsScdInfo.getColumn(0,"SCD_CD")
+			, apndYn: this.dsScdInfo.getColumn(0,"APND_YN")
+			, mgrCd : this.dsScdInfo.getColumn(0,"MGR_ID")
+		};		
+	}else if(this.dsScdInfo.getRowCount() > 1){
+		//일정 마스터 정보 1개 이상일 경우(모아보기) 본인 부서로 셋팅
+		var	nRow = this.dsScdInfo.findRow("SCD_CD", this.fvDeptCd);
+		this.fvScdInfo = {  
+			scdNm	: this.dsScdInfo.getColumn(nRow,"SCD_NM")
+			, scdCd : this.dsScdInfo.getColumn(nRow,"SCD_CD")
+			, apndYn: this.dsScdInfo.getColumn(nRow,"APND_YN")
+			, mgrCd : this.dsScdInfo.getColumn(nRow,"MGR_ID")
+			};
+	}
+};
+
+//일정 있는 날 표시
+this.fnSetCalCss = function()
+{
+	//일정있는 날짜에 이미지 셋팅
+	this.dsScdData.set_enableevent(false);
+	this.dsScdData.addColumn("CAL_IMAGE", "string");
+ 	for(var i=0; i<this.dsScdData.getRowCount(); i++){
+ 		this.dsScdData.setColumn(i, "CAL_IMAGE", "url('theme://images/cal_MF_Dot.png') no-repeat center bottom");
+ 	}
+	this.dsScdData.set_enableevent(true);
+};
+
+//일정 목록 출력
+this.fnSetScdList = function()
+{
+	this.dsScdList.clearData();
+	this.dsScdList.set_enableevent(false);
+	this.lst00.set_binddataset('');
+	
+	//검색된 날짜에 맞는 일정만 filter처리 후 copy
+	this.dsScdData.filter("CAL_DATE=='" + this.fvDate + "'");
+	this.dsScdList.copyData(this.dsScdData,true);
+	this.dsScdData.filter("");
+	
+	this.lst00.set_binddataset(this.dsScdList);
+	this.dsScdList.set_enableevent(true);
+	
+	//날짜/일정 건수 셋팅
+	this.staToday.set_text(this.fvDate.substr(4,2)+"월 "
+							+ this.fvDate.substr(6,2) + "일 "
+							+ "("+ this.gfnGetDayKor(this.fvDate) +")");		
+	this.staCnt.set_text("총 " + this.dsScdList.getRowCount()+ "건");
+
+	this.gfnSetLstResize(this.lst00);
+	this.gfnResizeComp(this, true);
+}
+
+//ListView expr 설정 함수
+this.fnListViewSetInfo = function(objDs, nRow)
+{
+	var sUser		= objDs.getColumn(nRow, 'INPT_EMP_NO').substr(0,objDs.getColumn(nRow, 'INPT_EMP_NO').indexOf("("));
+	var sStartDt	= objDs.getColumn(nRow, 'START_DAY');
+	var sStartTime	= objDs.getColumn(nRow, 'START_TIME');
+	var sStartMinutes	= objDs.getColumn(nRow, 'START_MINUTES');
+	var sEndDt		= objDs.getColumn(nRow, 'END_DAY');
+	var sEndTime	= objDs.getColumn(nRow, 'END_TIME');
+	var sEndMinutes = objDs.getColumn(nRow, 'END_MINUTES');
+	
+	var sStartYyyy 	= sStartDt.substr(0,4);
+	var sStartMm	= sStartDt.substr(4,2);
+	var sStartDd	= sStartDt.substr(6,2);
+	var sEndYyyy 	= sEndDt.substr(0,4);
+	var sEndMm		= sEndDt.substr(4,2);
+	var sEndDd		= sEndDt.substr(6,2);
+	
+	//한글 요일
+	var sStartDay	= this.gfnGetDayKor(sStartDt);
+	var sEndDay		= this.gfnGetDayKor(sEndDt);
+	
+	var sReturn	 	= "";
+	
+	//셋팅
+	if(sStartDay == sEndDay){
+		sReturn = sUser + " | " + sStartYyyy +"." + sStartMm + "." + sStartDd +"("+ sStartDay  +") "
+				   +  sStartTime +":" + sStartMinutes + "~"  + sEndTime + ":" + sEndMinutes;
+	}else{
+		sReturn = sUser + " | " + sStartYyyy +"." + sStartMm + "." + sStartDd +"("+ sStartDay  +") " +  sStartTime +":" + sStartMinutes + " ~ " 
+				   + sEndYyyy +"." + sEndMm + "." + sEndDd +"("+ sEndDay  +") " +sEndTime + ":" + sEndMinutes;
+	}
+	
+	return sReturn ;
+};
+
+//팝업
+this.fnOpenScdP = function(sStatus)
+{
+
+	var sTitle	= "";
+	var oOption = "";
+	
+	var popupId		= "";
+	var popupUrl	= "";
+	
+	var nRow	= this.dsScdList.rowposition;
+	
+	if(sStatus == "read"){
+		//모아보기 경우 클릭된 일정에 따라 일정 마스터 정보 수정
+		if(this.fvAccess=="MY"){
+			var	nRow = this.dsScdInfo.findRow("SCD_CD", this.fvScdCd);
+			this.fvScdInfo = {  
+				scdNm	: this.dsScdInfo.getColumn(nRow,"SCD_NM")
+				, scdCd : this.dsScdInfo.getColumn(nRow,"SCD_CD")
+				, apndYn: this.dsScdInfo.getColumn(nRow,"APND_YN")
+				, mgrCd : this.dsScdInfo.getColumn(nRow,"MGR_ID")
+				};		
+		}	
+		
+		sTitle = this.fvScdInfo.scdNm + " 일정 상세조회";
+		oOption = {title:sTitle
+				 ,isDetail:true};
+	
+		//상세조회
+		popupId		= "searchReadScd";
+		popupUrl	= "comm::schedule/scheduleReadPu.xfdl";
+		var oArg	= {pvApndYn		: this.fvScdInfo.apndYn
+						,pvMgrCd	: this.fvScdInfo.mgrCd	//관리자						
+						,pvScdCd	: this.fvScdCd
+						,pvScdId	: this.fvScdId
+						}
+	}else if(sStatus == "add"){
+	
+		//모아보기/부서별 일정 등록 화면 나뉨
+		var sScdType = "";
+		var apndYn	 = "";
+		if(this.fvAccess=="MY"){
+			sScdType = "MY";
+			sTitle = "일정 등록";	
+		}else if(this.fvAccess=="Y"){
+			sScdType = "Y"
+			sTitle = this.fvScdInfo.scdNm +" 일정 등록";			
+		}
+		
+		oOption = {title:sTitle
+				  ,isDetail:false};
+				  
+	    //등록
+		popupId		= "addScd";
+		popupUrl	= "comm::schedule/schedulePu.xfdl";
+		var oArg	= {pvApndYn		: this.fvScdInfo.apndYn
+						,pvTitle	: this.fvScdInfo.scdNm	//일정마스터타이틀					
+						,pvScdCd	: this.fvScdInfo.scdCd
+						,pvDate		: this.fvDate
+						,pvDeptCd   : this.fvDeptCd
+						,pvScdType	: sScdType
+						,pvOpenType : "add"
+						}
+	
+	}else if(sStatus == "update"){
+		sTitle = this.fvScdInfo.scdNm + " 일정 수정";
+		oOption = {title:sTitle
+				 ,isDetail:false};
+	
+		//수정
+		popupId		= "UpdateScd";
+		popupUrl	= "comm::schedule/scheduleUpdatePu.xfdl";
+		var oArg	= {pvApndYn		: this.fvScdInfo.apndYn		
+						,pvTitle 	: this.fvScdInfo.scdNm // 일정마스터타이틀
+						,pvScdCd	: this.fvScdCd
+						,pvScdId	: this.fvScdId
+						,pvOpenType : "update"
+						}	
+		
+	}
+	
+	var sPopupCallBack = "fnPopupCallback";
+	this.gfnOpenPopupM(popupId, popupUrl, oArg, sPopupCallBack, oOption);
+};
+
+//일정 유형 별 Css
+this.fnSetSectCdCss1 = function(sScdSectCd)
+{
+	return "label" + this.gfnLPad(this.dsSetCd.findRow("SSC_CD", sScdSectCd)+1, 0, 2);
+};
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+//날짜 선택
+this.cal00_ondayclick = function(obj:nexacro.Calendar,e:nexacro.CalendarDayClickEventInfo)
+{
+	//같은 년도/같은 월일 경우 일정 목록만 셋팅해줌
+	if(this.fvDate.substr(0,6) == e.date.substr(0,6)){
+		this.fvDate = e.date;
+		this.fnSetScdList();
+	}else{
+		//다른 년도/ 다른 월일 경우 데이터 재조회
+		this.fvDate = e.date;
+		this.cfnSearch();
+	}
+};
+
+// <> 버튼으로 달력 변경 시 데이터 재조회
+this.cal00_onlbuttonup = function(obj:nexacro.Calendar,e:nexacro.MouseEventInfo)
+{
+	var sName = e.fromreferenceobject.name;
+	if(sName=='nextbutton'){
+		this.fvDate = this.gfnAddMonth(this.fvDate.substr(0,6)+"01", +1);
+		if(this.fvDate.substr(0,6)==this.gfnGetDate().substr(0,6))  this.fvDate = this.gfnGetDate();	
+		this.cfnSearch();
+	}else if(sName=='prevbutton'){
+		this.fvDate = this.gfnAddMonth(this.fvDate.substr(0,6)+"01", -1);
+		if(this.fvDate.substr(0,6)==this.gfnGetDate().substr(0,6))  this.fvDate = this.gfnGetDate();
+		this.cfnSearch();
+	}	
+	
+	var nWeek = this.gfnGetWeekCountOfMonth(this.fvDate);
+
+	if (nWeek == 6)
+	{
+		this.Static03_00.set_top("cal00:45");
+	}	
+	else
+	{
+		this.Static03_00.set_top("cal00:0");
+	}
+	this.resetScroll();
+};
+
+
+//listView 클릭
+this.lst00_oncellclick = function(obj:nexacro.ListView,e:nexacro.ListViewClickEventInfo)
+{
+	this.fvScdId	= this.dsScdList.getColumn(e.row, "SCD_ID");
+	this.fvScdCd	= this.dsScdList.getColumn(e.row, "SCD_CD");
+	
+	//상세조회 팝업 open
+	this.fnOpenScdP("read");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="SCD_CD" type="STRING" size="256"/>
+          <Column id="DEPT_CD" type="STRING" size="256"/>
+          <Column id="YYYYMM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsScdInfo"/>
+      <Dataset id="dsScdData">
+        <ColumnInfo>
+          <Column id="CAL_DATE" type="STRING" size="256"/>
+          <Column id="SCD_NM" type="STRING" size="256"/>
+          <Column id="SCD_CD" type="STRING" size="256"/>
+          <Column id="SCD_ID" type="STRING" size="256"/>
+          <Column id="SCD_SECT_CD" type="STRING" size="256"/>
+          <Column id="SSC_CD_KORN_NM" type="STRING" size="256"/>
+          <Column id="TITLE" type="STRING" size="256"/>
+          <Column id="START_DAY" type="STRING" size="256"/>
+          <Column id="START_TIME" type="STRING" size="256"/>
+          <Column id="START_MINUTES" type="STRING" size="256"/>
+          <Column id="END_DAY" type="STRING" size="256"/>
+          <Column id="END_TIME" type="STRING" size="256"/>
+          <Column id="END_MINUTES" type="STRING" size="256"/>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="INPT_ID" type="STRING" size="256"/>
+          <Column id="INPT_IP" type="STRING" size="256"/>
+          <Column id="INPT_DTTM" type="STRING" size="256"/>
+          <Column id="CHGE_ID" type="STRING" size="256"/>
+          <Column id="CHGE_IP" type="STRING" size="256"/>
+          <Column id="CHGE_DTTM" type="STRING" size="256"/>
+          <Column id="INPT_EMP_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsScdList">
+        <ColumnInfo>
+          <Column id="SCD_NM" type="STRING" size="256"/>
+          <Column id="SCD_CD" type="STRING" size="256"/>
+          <Column id="SCD_ID" type="STRING" size="256"/>
+          <Column id="SCD_SECT_CD" type="STRING" size="256"/>
+          <Column id="TITLE" type="STRING" size="256"/>
+          <Column id="START_DAY" type="STRING" size="256"/>
+          <Column id="START_TIME" type="STRING" size="256"/>
+          <Column id="START_MINUTES" type="STRING" size="256"/>
+          <Column id="END_DAY" type="STRING" size="256"/>
+          <Column id="END_TIME" type="STRING" size="256"/>
+          <Column id="END_MINUTES" type="STRING" size="256"/>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="INPT_EMP_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSetCd"/>
+    </Objects>
+  </Form>
+</FDL>

@@ -1,0 +1,586 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppVariables version="2.0">
+  <Datasets>
+    <Dataset id="gdsMessage">
+      <ColumnInfo>
+        <Column id="MSGE_CD" type="STRING" size="256"/>
+        <Column id="KORN_MSGE" type="STRING" size="256"/>
+        <Column id="MSGE_FLAG_CD" type="STRING" size="3"/>
+        <Column id="msgTitle" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="MSGE_CD">msg.server.error</Col>
+          <Col id="KORN_MSGE">서버 오류입니다.\n관리자에게 문의하세요.</Col>
+          <Col id="MSGE_FLAG_CD">ERR</Col>
+          <Col id="msgTitle">에러</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.server.error.msg</Col>
+          <Col id="KORN_MSGE">서버에서 다음과 같은 에러메시지를 받았습니다.\n{0}</Col>
+          <Col id="MSGE_FLAG_CD">ERR</Col>
+          <Col id="msgTitle">에러</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.session.timeout</Col>
+          <Col id="KORN_MSGE">세션이 종료되었습니다. 다시 로그인해주세요.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.login.url.error</Col>
+          <Col id="KORN_MSGE">정상적인 경로로 접속하시기 바랍니다.</Col>
+          <Col id="MSGE_FLAG_CD">ERR</Col>
+          <Col id="msgTitle">에러</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.login.error</Col>
+          <Col id="KORN_MSGE">해당하는 사용자 정보가 없습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.call.nofile</Col>
+          <Col id="KORN_MSGE">해당하는 메뉴에 Program File이 등록되지 않았습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.nomenu</Col>
+          <Col id="KORN_MSGE">해당 Menu가 존재하지 않습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.mdicount.max</Col>
+          <Col id="KORN_MSGE">화면은 {0}개 까지만 실행 가능합니다. 화면을 닫고 다시 실행해주세요.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.exit</Col>
+          <Col id="msgTitle">확인</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="KORN_MSGE">종료 하시겠습니까?</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.logout</Col>
+          <Col id="KORN_MSGE">로그아웃 하시겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.before.movepage</Col>
+          <Col id="KORN_MSGE">변경된 데이터가 있습니다. 현재 화면을 닫겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.before.removeallpage</Col>
+          <Col id="KORN_MSGE">변경된 데이터가 있습니다. 전체 화면을 닫겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.before.reopen</Col>
+          <Col id="KORN_MSGE">변경된 데이터가 있습니다. 화면을 다시 여시겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.before.search</Col>
+          <Col id="KORN_MSGE">검색을 진행하면 변경된 데이터가 사라집니다. \n계속 진행 하시겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.before.moveropos</Col>
+          <Col id="KORN_MSGE">해당 row의 위치를 이동하면 변경된 데이터가 사라집니다. \n계속 진행 하시겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.before.delete</Col>
+          <Col id="KORN_MSGE">선택된 자료를 삭제 하시겠습니까? </Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.before.deletesave</Col>
+          <Col id="KORN_MSGE">선택된 자료를 삭제 후 저장하시겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">confirm.before.save</Col>
+          <Col id="KORN_MSGE">변경된 내역을 저장 하시겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0}에 변경 사항이 있습니다.\n저장하시겠습니까?</Col>
+          <Col id="MSGE_CD">confirm.before.save.where</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.noselect</Col>
+          <Col id="KORN_MSGE">{0} 을(를) 선택해 주십시요.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.search.nodata</Col>
+          <Col id="KORN_MSGE">지정된 조건에 해당하는 항목을 찾을 수 없습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.save.nodata</Col>
+          <Col id="KORN_MSGE">저장할 데이터가 없습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.save.nochange</Col>
+          <Col id="KORN_MSGE">변경된 내역이 없습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.save.success</Col>
+          <Col id="KORN_MSGE">저장 되었습니다.</Col>
+          <Col id="MSGE_FLAG_CD">INF</Col>
+          <Col id="msgTitle">알림</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.update.success</Col>
+          <Col id="KORN_MSGE">수정 되었습니다.</Col>
+          <Col id="MSGE_FLAG_CD">INF</Col>
+          <Col id="msgTitle">알림</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.delete.success</Col>
+          <Col id="KORN_MSGE">삭제 되었습니다.</Col>
+          <Col id="MSGE_FLAG_CD">INF</Col>
+          <Col id="msgTitle">알림</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.action.success</Col>
+          <Col id="KORN_MSGE">처리 되었습니다.</Col>
+          <Col id="MSGE_FLAG_CD">INF</Col>
+          <Col id="msgTitle">알림</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.action.fail</Col>
+          <Col id="KORN_MSGE">프로세스가 실패하였습니다.</Col>
+          <Col id="MSGE_FLAG_CD">ERR</Col>
+          <Col id="msgTitle">에러</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.updateafter</Col>
+          <Col id="KORN_MSGE">변경된 내역을 저장 후 작업하세요.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.delete.child</Col>
+          <Col id="KORN_MSGE">하위 자료가 있어 삭제할 수 없습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.grid.noselect</Col>
+          <Col id="KORN_MSGE">선택된 항목이 없습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.before.delete</Col>
+          <Col id="KORN_MSGE">정말로 삭제 하시겠습니까?</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator</Col>
+          <Col id="KORN_MSGE">{0}</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">중복된 {0}가 존재합니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.duplcation</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.required</Col>
+          <Col id="KORN_MSGE">{0} 은(는) 필수 입력 항목입니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 은(는) {1} 보다 작아야 합니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.sizemax</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 은(는) {1} 보다 커야 합니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.sizemin</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.length</Col>
+          <Col id="KORN_MSGE">{0} 의 입력값은 {1} 자리이어야 합니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.rangelength</Col>
+          <Col id="KORN_MSGE">{0} 은(는) {1} 와(과) {2} 사이의 자리이어야 합니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.maxlength</Col>
+          <Col id="KORN_MSGE">{0} 항목의 최대 입력글자수를 초과하였습니다. 최대길이 : {1}</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.minlength</Col>
+          <Col id="KORN_MSGE">{0} 항목은 최소 입력글자수 이상 입력해야 합니다. 최소길이 : {1} </Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.maxlengthB</Col>
+          <Col id="KORN_MSGE">{0} 항목의 최대 입력글자수를 초과하였습니다. 최대길이 : {1}  byte</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.minlengthB</Col>
+          <Col id="KORN_MSGE">{0} 항목은 최소 입력글자수 이상 입력해야 합니다. 최소길이 : {1} byte</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.digits</Col>
+          <Col id="KORN_MSGE">{0} 은(는) 숫자만 입력 가능합니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.min</Col>
+          <Col id="KORN_MSGE">{0} 은(는) {1} 이상의 숫자만 입력 가능합니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.max</Col>
+          <Col id="KORN_MSGE">{0} 은(는) {1} 이하의 숫자만 입력 가능합니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.date</Col>
+          <Col id="KORN_MSGE">{0} 은(는) 유효하지 않은 날짜 형식입니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.dateym</Col>
+          <Col id="KORN_MSGE">{0} 은(는) 유효하지 않은 년월 형식입니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 항목은 {1} 보다 이후 날짜 이여야 합니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.fromtomax</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 항목은 {1} 보다 이전 날짜 이여야 합니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.fromtomin</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.fromto</Col>
+          <Col id="KORN_MSGE">{0} 의 날짜가 {1} 의 날짜보다 작습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.comparebig</Col>
+          <Col id="KORN_MSGE">{0} 이(가) {1} 보다 작습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.comparesmall</Col>
+          <Col id="KORN_MSGE">{0} 이(가) {1} 보다 큽니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.equalto</Col>
+          <Col id="KORN_MSGE">{0} 이(가) {1} 와(과) 일치하지 않습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 은(는) {1} 와(과) 값을 다르게 입력해야 합니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.notequalto</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.range</Col>
+          <Col id="KORN_MSGE">{0} 은(는) {1} 와(과) {2} 사이의 값입니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.declimit</Col>
+          <Col id="KORN_MSGE">{0} 은(는) 소숫점 {1} 자리로 구성되어야 합니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.code</Col>
+          <Col id="KORN_MSGE">{0} 은(는) {1} 중 하나의 값이어야 합니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.ssn</Col>
+          <Col id="KORN_MSGE">{0} 항목은 유효하지 않은 주민등록번호입니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.email</Col>
+          <Col id="KORN_MSGE">{0} 항목은 유효하지 않은 이메일 주소입니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.url</Col>
+          <Col id="KORN_MSGE">웹사이트 주소가 잘못 입력 되었습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.tel</Col>
+          <Col id="KORN_MSGE">전화번호가 잘못된 형태로 입력 되었습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 항목은(는) 유효하지 않은 핸드폰번호입니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.phone</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.zipcode</Col>
+          <Col id="KORN_MSGE">우편번호가 잘못된 형태로 입력 되었습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.multicombo.maxcnt</Col>
+          <Col id="KORN_MSGE">{0}개 이상 선택 할 수 없습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 항목은 유효하지 않은 사업자등록번호입니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.biznum</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 항목은 유효하지 않은 법인등록번호입니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.bubin</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 항목은 한글만 입력하셔야 합니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.hangle</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 항목은 영문+숫자 조합으로 입력하셔야 합니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.engnum</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0} 항목은 특수문자를 입력 할 수 없습니다.</Col>
+          <Col id="MSGE_CD">msg.err.validator.notspecialchar</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.maxdate</Col>
+          <Col id="KORN_MSGE">날짜의 입력 가능 범위를 벗어났습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.validator.date.great</Col>
+          <Col id="KORN_MSGE">종료일이 시작일보다 빠릅니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.file.exist</Col>
+          <Col id="KORN_MSGE">{0} 은(는) 중복된 파일이 존재합니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.file.filesize</Col>
+          <Col id="KORN_MSGE">첨부 파일의 용량은 최고 {0}MB까지 입니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.file.filetotalsize</Col>
+          <Col id="KORN_MSGE">첨부 파일의 전체 용량은 최고 {0}MB까지 입니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.file.allowtype</Col>
+          <Col id="KORN_MSGE">{0} 은(는) 허용되지 않는 확장자입니다.[{1}]</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.file.itemcount</Col>
+          <Col id="KORN_MSGE">첨부 파일은 {0}개 이상 등록 할 수 없습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.file.uploadfail</Col>
+          <Col id="KORN_MSGE">{0}로(으로) 파일업로드가 실패하였습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.exist.code</Col>
+          <Col id="KORN_MSGE">입력하는 Code ({0})값이 이미 등록되어 있습니다.</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.confirm</Col>
+          <Col id="KORN_MSGE">{0}</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">{0}을/를 삭제하신 후 {1}을/를 삭제하시기 바랍니다.</Col>
+          <Col id="MSGE_CD">msg.delete.input</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="KORN_MSGE">신규로 대분류 코드를 생성하고 해당 소분류코드를 동시에 생성할 경우\n신규 대분류 코드는 한건으로 제한됩니다.\n\n저장 하시겠습니까?</Col>
+          <Col id="MSGE_CD">confirm.delete.new</Col>
+          <Col id="MSGE_FLAG_CD">CFN</Col>
+          <Col id="msgTitle">확인</Col>
+        </Row>
+        <Row>
+          <Col id="MSGE_CD">msg.err.tran</Col>
+          <Col id="KORN_MSGE">{0}</Col>
+          <Col id="MSGE_FLAG_CD">WAN</Col>
+          <Col id="msgTitle">경고</Col>
+        </Row>
+      </Rows>
+    </Dataset>
+    <Dataset id="gdsMenu">
+      <ColumnInfo>
+        <Column id="MENU_ID" type="STRING" size="256" description="메뉴아이디"/>
+        <Column id="MENU_NM" type="STRING" size="256" description="메뉴명"/>
+        <Column id="MENU_LV" type="STRING" size="256" description="메뉴레벨"/>
+        <Column id="HIPO_MENU_ID" type="STRING" size="256" description="상위메뉴아이디"/>
+        <Column id="MENU_GRP_ID" type="STRING" size="256" description="메뉴그룹아이디"/>
+        <Column id="PRGM_ID" type="STRING" size="256" description="프로그램아이디"/>
+        <Column id="LEAF_YN" type="STRING" size="256" description="마지막노드여부"/>
+        <Column id="MENU_URL" type="STRING" size="256" description="메뉴경로"/>
+        <Column id="USED_YN" type="STRING" size="256" description="사용여부"/>
+        <Column id="cmmnBtnAdd" type="STRING" size="256"/>
+        <Column id="cmmnBtnDel" type="STRING" size="256"/>
+        <Column id="cmmnBtnSave" type="STRING" size="256"/>
+        <Column id="cmmnBtnPrint" type="STRING" size="256"/>
+        <Column id="cmmnBtnHelp" type="STRING" size="256"/>
+        <Column id="cmmnBtnExcelUp" type="STRING" size="256"/>
+        <Column id="cmmnBtnExcelDown" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gdsCommCode"/>
+    <Dataset id="gdsUser"/>
+    <Dataset id="gdsLog">
+      <ColumnInfo>
+        <Column id="LOG_TYPE" type="STRING" size="256"/>
+        <Column id="PRGM_ID" type="STRING" size="256"/>
+        <Column id="MENU_ID" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gdsMyMenu">
+      <ColumnInfo>
+        <Column id="MENU_GRP_ID" type="STRING" size="32"/>
+        <Column id="PRGM_FULL_PATH" type="STRING" size="32"/>
+        <Column id="ORDR" type="BIGDECIMAL" size="16"/>
+        <Column id="PRGM_FILE_NM" type="STRING" size="32"/>
+        <Column id="MENU_ID" type="STRING" size="32"/>
+        <Column id="MENU_NM_EN" type="STRING" size="32"/>
+        <Column id="MENU_NM" type="STRING" size="32"/>
+        <Column id="PRGM_ID" type="STRING" size="32"/>
+        <Column id="PRGM_PATH" type="STRING" size="32"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gdsLoginLog">
+      <ColumnInfo>
+        <Column id="BROWSER_CD" type="STRING" size="256"/>
+        <Column id="BROWSER_VERSION" type="STRING" size="256"/>
+        <Column id="OS_CD" type="STRING" size="256"/>
+        <Column id="OS_VERSION" type="STRING" size="256"/>
+        <Column id="SCREEN_HEIGHT" type="STRING" size="256"/>
+        <Column id="SCREEN_WIDTH" type="STRING" size="256"/>
+        <Column id="MOB_YN" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gdsMenuTmp"/>
+    <Dataset id="gdsAddBtn">
+      <ColumnInfo>
+        <Column id="SYTM_FLAG_CD" type="STRING" size="256"/>
+        <Column id="MENU_ID" type="STRING" size="256"/>
+        <Column id="BTTN_ID" type="STRING" size="256"/>
+        <Column id="SORT_CD" type="STRING" size="256"/>
+        <Column id="SORT_ORDR" type="STRING" size="256"/>
+        <Column id="BTTN_NM" type="STRING" size="256"/>
+        <Column id="BTTN_ENGL_NM" type="STRING" size="256"/>
+        <Column id="BTTN_STYLE" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+  </Datasets>
+  <Variables>
+    <Variable id="gvSytmFlagCd" initval="MO"/>
+    <Variable id="gvIsLogin" initval="N"/>
+    <Variable id="gvAppVersionA" initval="1.6"/>
+    <Variable id="gvAppVersionI" initval="1.4"/>
+  </Variables>
+  <DataObjects/>
+</AppVariables>

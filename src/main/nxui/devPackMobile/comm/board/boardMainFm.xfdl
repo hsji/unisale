@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="boardMainFm" width="480" height="810" onload="form_onload" titletext="게시판 메인">
+    <Layouts>
+      <Layout height="810" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="360"/>
+        <Static id="Static03" taborder="1" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_00" taborder="2" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="360"/>
+        <Static id="Static02_01_01_01" taborder="3" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00" taborder="4" text="H40" left="1" top="770" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Div id="divGubunTitle" taborder="10" left="525" top="25" height="265" width="420" visible="false">
+          <Layouts>
+            <Layout>
+              <Static id="Static00_00" taborder="0" text="검색어" left="0" top="-15" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Combo id="cboGubun" taborder="1" text="제목" left="0" top="35" height="50" value="01" index="0" right="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">01</Col>
+                      <Col id="datacolumn">제목</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">02</Col>
+                      <Col id="datacolumn">내용</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Edit id="edtCond" taborder="2" left="0" top="95" height="50" right="0" onkeyup="divGubunTitle_edtCond_onkeyup"/>
+              <Button id="btnSearch" taborder="3" text="조회" cssclass="btn_WF_Full" right="0" height="60" left="0" onclick="btnSearch_onclick" top="edtCond:20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divGubunDate" taborder="8" text="div01" top="285" height="210" width="420" left="530" visible="false">
+          <Layouts>
+            <Layout>
+              <Static id="Static00_00" taborder="0" text="등록일" left="0" top="-15" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Calendar id="cboFromDate" taborder="1" left="0" top="40" height="50" width="48.81%"/>
+              <Calendar id="cboToDate" taborder="3" top="40" height="50" width="205" right="0"/>
+              <Button id="btnSearch" taborder="2" text="조회" left="0" height="60" cssclass="btn_WF_Full" right="0" bottom="20" onclick="btnSearch_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="staLine" taborder="5" left="0" height="10" cssclass="sta_WF_Boundary" right="0" bottom="505"/>
+        <Static id="Static02_01_01_01_01" taborder="6" text="H20" left="0" top="staLine:0" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_00" taborder="7" text="H10" left="0" top="115" cssclass="sta_WF_GSize" visible="false" right="0" height="10"/>
+        <Grid id="grdList" taborder="9" left="30" top="Static02_01_01_01_01:0" right="30" cssclass="grd_WF_SearchBoard" binddataset="dsList" height="445" oncellclick="grdList_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="420"/>
+              </Columns>
+              <Rows>
+                <Row size="50"/>
+                <Row size="55"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:TITLE"/>
+                <Cell row="1" cssclass="cell_WF_Line" text="expr:dataset.parent.fnSetWirter(dataset,currow)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02_01_01_01_00_00" taborder="11" text="H20" left="1" top="255" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	boardMainFm.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/06
+*  @Desction   설명
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/06			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvBoardInfo = {};
+
+this.fvPrgmId = "";
+this.fvMenuCd = "";
+this.fvBoardCd = "";
+
+
+this.fvAdd	= "1";//+등록버튼
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+	
+	this.fvPrgmId	= this.gfnGetArgumentM(this.FRAME_MENUCOLUMNS.prgmId);
+	this.fvMenuCd	= this.gfnGetArgumentM(this.FRAME_MENUCOLUMNS.menuId);
+	this.fvBoardCd	= this.gfnGetArgumentM(this.FRAME_MENUCOLUMNS.param);
+	this.fvDeptCd 	= nexacro.getApplication().gdsUser.getColumn(0, "DEPT_CD");
+
+	//검색Div 셋팅
+	this.fnSetDivGubun(this.fvPrgmId);
+
+	//게시판 정보 조회
+	this.fnTranSearchBoardInfo(this.fvBoardCd); 
+};
+
+//폼 화면 닫기
+this.fnClose = function()
+{
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+//조회
+this.cfnSearch = function()
+{
+	this.dsList.clearData();
+	this.fnTranSearch();	
+};
+
+//신규
+this.cfnAdd = function()
+{
+	this.fnOpenBoardP("add");
+};
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+//게시판 정보 조회
+this.fnTranSearchBoardInfo = function(sBoardCd)
+{
+	this.dsBoardCond.clearData();
+	var nRow = this.dsBoardCond.addRow();
+	this.dsBoardCond.setColumn(nRow, "BOARD_CD", sBoardCd);
+
+	var strSvcId    = "searchBoardList";
+	var strSvcUrl   = "searchBoardList.do";
+	var inData      = "dsCond=dsBoardCond";
+	var outData     = "dsBoardInfo=dsList";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]	
+};
+
+//조회
+this.fnTranSearch = function()
+{
+	this.dsCond.setColumn(0,"srchBoardCd", this.fvBoardCd);
+	this.dsCond.setColumn(0,"srchCond", this.gfnTrim(this.dsCond.getColumn(0,"srchCond")));
+
+	this.dsCond.setColumn(0,"srchFlag", "B");
+	
+
+	var strSvcId    = "searchBoard";
+	var strSvcUrl   = "searchBoardContent.do";
+	var inData      = "dsCond=dsCond";
+	var outData     = "dsList=dsList";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]		
+};
+
+//조회수 업데이트
+this.fnTranUpdateInqCnt = function ()
+{
+	var strSvcId    = "saveBoardContents";
+	var strSvcUrl   = "saveBoardContents.do";
+	var inData      = "dsList=dsUpdateInq:U";
+	var outData     = "";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]
+};
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+//Transaction Callback
+this.fnCallback = function(sSvcId, nErrCd, nErrMsg)
+{
+	switch(sSvcId) {
+		case "searchBoardList" :
+			this.fnSetBoardInfo();
+			break;
+		case "searchBoard":
+			this.gfnSetGrdResize(this.grdList, this.grdList.rowcount);
+			this.gfnResizeComp(this, true);
+			break;
+		case "saveBoardContents":
+			this.fnOpenBoardP("read");
+			break;
+	}
+};
+
+//popup Callback
+this.fnPopupCallback = function (sPopupId, sRtn)
+{
+	if(sRtn!=null && sRtn=="rUpdate"){
+		this.fnOpenBoardP("update");
+	}else{
+		//조회
+		this.cfnSearch();	
+	}
+};
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+//프로그램 아이디별로 검색조건 셋팅
+this.fnSetDivGubun = function(sPrgmId)
+{	
+	this.dsCond.clearData();
+	var nRow = this.dsCond.addRow();
+	//M000000002==제목/내용검색 , M000000004==기간검색
+	if(sPrgmId == "M000000002"){
+		this.divGubunTitle.set_visible(true);
+		this.divGubunTitle.set_top("30px");
+		this.divGubunTitle.set_left("30px");
+		this.divGubunTitle.set_right("30px");
+		this.staLine.set_top("divGubunTitle:0");
+		this.divGubunTitle.form.cboGubun.set_index(0);
+		this.resetScroll();
+		
+	}else if(sPrgmId == "M000000004"){
+		this.divGubunDate.set_visible(true);
+		this.divGubunDate.set_top("30px");
+		this.divGubunDate.set_left("30px");
+		this.divGubunDate.set_right("30px");
+		this.divGubunDate.form.cboToDate.set_width(this.divGubunDate.form.cboFromDate.getOffsetWidth());
+		this.staLine.set_top("divGubunDate:0");
+		this.dsCond.setColumn(nRow, "FROM_DATE", this.gfnAddDate(this.gfnGetDate(),-7));
+		this.dsCond.setColumn(nRow, "TO_DATE", this.gfnGetDate());
+		this.resetScroll();	
+	}
+}
+
+//게시판 정보 조회
+this.fnSetBoardInfo = function()
+{
+	if( this.dsBoardInfo.getRowCount() == 0 ){
+		this.gfnAlert("msg.nomenu");
+		return;
+	}
+	
+	this.fvBoardInfo = {
+		blbdNm 	 : this.dsBoardInfo.getColumn(0, "BLBD_NM")
+		,answYn  : this.dsBoardInfo.getColumn(0, "ANSW_YN")
+		,apndYn  : this.dsBoardInfo.getColumn(0, "APND_YN")
+		,pageCnt : this.dsBoardInfo.getColumn(0, "PAGE_CNT")
+		,replyYn : this.dsBoardInfo.getColumn(0, "REPLY_YN")
+		,mgrCd	 : this.dsBoardInfo.getColumn(0, "MGR_CD")
+	};
+	
+	//조회
+	this.cfnSearch();	
+}
+
+//그리드 작성자 셋팅
+this.fnSetWirter = function(objDs, nRow)
+{
+	var sRtn = "";
+
+	var sWriter = objDs.getColumn(nRow, "INPT_EMP_NO");
+	var sDate	= objDs.getColumn(nRow, "INPT_DTTM")+"";
+	var sTime	= objDs.getColumn(nRow, "INPT_DTTM")+"";
+	var sCount	= "";
+	
+	sWriter 	= sWriter.substr(0, sWriter.indexOf("("));
+	sDate		= sDate.substr(0,4) + "."+ sDate.substr(4,2) + "."+ sDate.substr(6,2);
+	sTime		= sTime.substr(8,2) +":" +sTime.substr(10,2);
+	
+	sRtn		= sWriter + " | " + sDate +" " + sTime + " | 조회 " + objDs.getColumn(nRow, "INQ_CNT") ;
+	
+	return sRtn;
+}
+
+//팝업
+this.fnOpenBoardP = function(sStatus)
+{
+	var sTitle	= "";
+	var oOption = "";
+	
+	var popupId		= "";
+	var popupUrl	= "";
+	
+	if(sStatus == "read"){
+	
+		sTitle = this.fvBoardInfo.blbdNm + " 상세조회";
+		oOption = {title:sTitle
+				 ,isDetail:true};
+	
+		//상세조회
+		popupId		= "readBoard";
+		popupUrl	= "comm::board/boardReadPu.xfdl";
+		var nRow   	= this.dsList.rowposition;
+		var oArg	= {pvApndYn		: this.fvBoardInfo.apndYn
+					  //,pvAnswYn 	: this.fvBoardInfo.answYn
+					  //,pvReplyYn    : this.fvBoardInfo.replyYn
+					  ,pvBoardCd	: this.fvBoardCd
+					  ,pvNotiNo		: this.dsList.getColumn(nRow, "NOTI_NO")
+					  ,pvOpenType	: "read"
+					  ,pvMgrCd	 	: this.fvBoardInfo.mgrCd
+					};
+	}else if(sStatus =="add"){
+		sTitle		= this.fvBoardInfo.blbdNm + " 등록";
+		oOption 	= {title:sTitle
+						,isDetail:false};
+		popupId		= "addBoard";
+		popupUrl	= "comm::board/boardPu.xfdl";
+		var oArg	= {pvApndYn		: this.fvBoardInfo.apndYn
+						,pvBoardcd	: this.fvBoardCd
+						,pvAnswYn   : this.fvBoardInfo.answYn
+						,pvHrank	: "" //상위게시글번호
+						,pvAnswLvl  : 0  //답변레벨
+						,pvOpenType	: "add"
+						}
+	}else if(sStatus =="update"){
+		sTitle		= this.fvBoardInfo.blbdNm + " 수정";
+		oOption		= {title :sTitle
+		               ,isDetail:false};
+		var nRow   	= this.dsList.rowposition;			   
+					   
+		popupId		= "updateBoard";
+		popupUrl	= "comm::board/boardUpdatePu.xfdl";
+		var oArg	= {pvApndYn		: this.fvBoardInfo.apndYn
+						,pvBoardCd	: this.fvBoardCd
+						,pvNotiNo	: this.dsList.getColumn(nRow, "NOTI_NO")
+						,pvOpenType	: "update"
+						}
+	}
+	var sPopupCallBack = "fnPopupCallback";
+	this.gfnOpenPopupM(popupId, popupUrl, oArg, sPopupCallBack, oOption);
+}
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+//조회버튼
+this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//기간 검색 시 fromDate가 ToDate보다 크면 안 됨.
+	if(obj.parent.parent.name.toUpperCase().indexOf("DATE") > -1){
+		var sFromDate	= this.divGubunDate.form.cboFromDate.value;
+		var sToDate		= this.divGubunDate.form.cboToDate.value;
+		if(sFromDate > sToDate){
+			this.gfnAlert("msg.err.validator.date.great");
+			return;
+		}
+	}
+	
+	this.cfnSearch();
+};
+
+
+//그리드 셀 클릭
+this.grdList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var nRow = e.row;
+	
+	this.dsUpdateInq.clearData();
+	var nTargetRow = this.dsUpdateInq.addRow();
+	
+	this.dsUpdateInq.copyRow(nTargetRow, this.dsList, nRow);
+	this.dsUpdateInq.setColumn(nTargetRow, "STATUS", "updateInqCount");
+	
+	//조회수 증가
+	this.fnTranUpdateInqCnt();
+};
+
+//제목/내용 검색 후 엔터 누르면 조회
+this.divGubunTitle_edtCond_onkeyup = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	if(e.keycode==13){
+		this.cfnSearch();		
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="srchGubun" type="STRING" size="256"/>
+          <Column id="srchCond" type="STRING" size="256"/>
+          <Column id="srchBoardCd" type="STRING" size="256"/>
+          <Column id="srchFlag" type="STRING" size="256"/>
+          <Column id="FROM_DATE" type="STRING" size="256"/>
+          <Column id="TO_DATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBoardCond">
+        <ColumnInfo>
+          <Column id="BOARD_CD" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBoardInfo"/>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="BLBD_CD" type="STRING" size="256"/>
+          <Column id="NOTI_NO" type="STRING" size="256"/>
+          <Column id="TITLE" type="STRING" size="256"/>
+          <Column id="CNTN" type="STRING" size="256"/>
+          <Column id="INQ_CNT" type="STRING" size="256"/>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="INPT_ID" type="STRING" size="256"/>
+          <Column id="INPT_DTTM" type="STRING" size="256"/>
+          <Column id="INPT_IP" type="STRING" size="256"/>
+          <Column id="CHGE_ID" type="STRING" size="256"/>
+          <Column id="CHGE_DTTM" type="STRING" size="256"/>
+          <Column id="CHGE_IP" type="STRING" size="256"/>
+          <Column id="INPT_EMP_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsUpdateInq">
+        <ColumnInfo>
+          <Column id="BLBD_CD" type="STRING" size="256"/>
+          <Column id="NOTI_NO" type="STRING" size="256"/>
+          <Column id="INQ_CNT" type="INT" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item2" compid="divGubunDate.form.cboFromDate" propid="value" datasetid="dsCond" columnid="FROM_DATE"/>
+      <BindItem id="item3" compid="divGubunDate.form.cboToDate" propid="value" datasetid="dsCond" columnid="TO_DATE"/>
+      <BindItem id="item0" compid="divGubunTitle.form.cboGubun" propid="value" datasetid="dsCond" columnid="srchGubun"/>
+      <BindItem id="item1" compid="divGubunTitle.form.edtCond" propid="value" datasetid="dsCond" columnid="srchCond"/>
+    </Bind>
+  </Form>
+</FDL>

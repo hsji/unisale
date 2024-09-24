@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmMainPage" width="480" height="950" cssclass="frm_WF_Bg" onload="form_onload" titletext="메인">
+    <Layouts>
+      <Layout height="950" mobileorientation="portrait" screenid="mobile" width="480">
+        <Div id="div" taborder="0" left="590" top="90" width="50" height="50" cssclass="div_WF_BoxColor" visible="false"/>
+        <Button id="Button02" taborder="1" left="531" top="90" width="39" height="37" cssclass="btn_WF_Search" visible="false"/>
+        <Div id="div00" taborder="2" text="div01" left="0" top="0" bottom="0" right="0" onsize="div00_onsize" cssclass="div_WF_Main">
+          <Layouts>
+            <Layout>
+              <Static id="sta00" taborder="0" left="0" top="308" cssclass="sta_WF_MainBg" right="0" bottom="0" text=""/>
+              <Static id="Static02_01" taborder="12" text="H20" left="0" top="223" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+              <Static id="Static02" taborder="1" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+              <Static id="Static02_00" taborder="2" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+              <Static id="staCnt" taborder="3" left="385" top="253" height="30" cssclass="sta_WF_CalViews" right="30"/>
+              <Static id="Static02_01_00" taborder="4" text="H40" left="0" top="910" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+              <Button id="btnScd" taborder="5" text="일정" left="15.00%" top="113" width="56" height="80" cssclass="btn_Main_01" onclick="btnShortCut_onclick" uMenuId="SCD000003M"/>
+              <Button id="btnNoti" taborder="6" text="공지" left="35.00%" top="113" width="56" height="80" cssclass="btn_Main_02" onclick="btnShortCut_onclick" uMenuId="10501001M"/>
+              <Button id="btnDeptUser" taborder="7" text="조직도" left="55.00%" top="113" width="56" height="80" cssclass="btn_Main_03" onclick="btnShortCut_onclick" uMenuId="10401007M"/>
+              <Button id="btnDesign" taborder="8" text="디자인" top="113" width="56" height="80" cssclass="btn_Main_04" onclick="btnShortCut_onclick" uMenuId="10102001M" left="75%"/>
+              <Calendar id="cal00" taborder="9" left="30" top="243" width="180" height="50" cssclass="cal_WF_CalDate" onchanged="cal00_onchanged"/>
+              <Static id="Static02_01_01" taborder="10" text="H20" left="0" top="0" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+              <Static id="staDate" taborder="11" left="29" top="237" width="140" height="56" cssclass="sta_MF_CalDate"/>
+              <ListView id="lst00" taborder="13" left="22" right="21" cssclass="lst_WF_Calview" binddataset="dsList" top="321" oncellclick="lst00_oncellclick" bottom="40" visible="true">
+                <Formats>
+                  <Format id="default">
+                    <Band id="body" width="100%" height="98">
+                      <Cell id="Cell03" left="8" cssclass="cell_Box" right="8" top="5" bottom="10"/>
+                      <Cell id="Cell00" left="24" top="26" width="40" height="40" text="bind:SSC_CD_KORN_NM" cssclass="expr:dataset.parent.fnSetSectCdCss1(SCD_SECT_CD)" displaytype="text"/>
+                      <Cell id="Cell01" left="74" top="25" height="25" cssclass="cell_CalTitle" text="bind:TITLE" right="24"/>
+                      <Cell id="Cell02" left="74" top="49" height="20" text="expr:dataset.parent.fnListViewSetInfo(dataset,currow)" right="24"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </ListView>
+              <Div id="divNoti" taborder="14" left="30" top="20" height="65" cssclass="div_WF_NoticeBg" right="30">
+                <Layouts>
+                  <Layout>
+                    <Static id="staNoti" taborder="0" left="18" top="17" height="31" cssclass="sta_WF_NoticeTit" onclick="staNoti_onclick" font="normal 16px/normal &quot;-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,Apple SD Gothic Neo,sans-serif&quot;" wordWrap="none" right="95"/>
+                    <Static id="staNotiDate" taborder="1" top="17" width="74" height="31" cssclass="sta_WF_NoticeDate" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="DEPT_CD" type="STRING" size="256"/>
+          <Column id="SECTDATE" type="STRING" size="256"/>
+          <Column id="BOARD_CD" type="STRING" size="256"/>
+          <Column id="srchBoardCd" type="STRING" size="256"/>
+          <Column id="gubun_main" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList"/>
+      <Dataset id="dsScdInfo"/>
+      <Dataset id="dsNotiList"/>
+      <Dataset id="dsBoardInfo"/>
+      <Dataset id="dsSetCd"/>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	frmMainPage.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/11
+*  @Desction   설명
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/11			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvScdInfo	= {};
+
+this.fvDate		= ""; //선택된 날짜
+this.fvDeptCd	= "";
+this.fvScdId	= "";
+this.fvScdCd	= "";
+
+this.fvNotiBoardCd	= "1000000"; //공지사항 게시판코드
+this.fvBoardInfo = {}; //공지사항 게시판정보
+
+
+this.fvAdd	= "1";//+등록버튼
+this.objApp = nexacro.getApplication();
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+
+	this.objApp.gdsCommCode.filter("HCL_CD == 'CM03'");
+	this.dsSetCd.copyData(this.objApp.gdsCommCode,true);	////일정유형 복사
+	this.objApp.gdsCommCode.filter("");
+
+	this.dsCond.clearData();
+	var nRow = this.dsCond.addRow();
+	
+	this.fvDeptCd	= nexacro.getApplication().gdsUser.getColumn(0,"DEPT_CD");	
+
+	this.dsCond.setColumn(nRow, "DEPT_CD", this.fvDeptCd);
+	this.dsCond.setColumn(nRow, "BOARD_CD", this.fvNotiBoardCd);	//게시판 정보 조회 시 사용
+	this.dsCond.setColumn(nRow, "srchBoardCd", this.fvNotiBoardCd); //게시판 목록 조회 시 사용
+
+	//날짜
+	var objDate = this.gfnGetDate();
+	this.fvDate	= objDate.substr(0,8);
+	this.div00.form.cal00.set_value(this.fvDate);
+	
+	//일정 마스터 정보 조회(모아보기)
+	this.fnTranSearchScdInfo();	
+	
+	//조회
+	this.cfnSearch();
+	
+	//공지사항게시판조회
+	this.fnTranSearchBoardInfo();	
+};
+
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+//조회
+this.cfnSearch = function()
+{
+	//Static text 변경
+	this.div00.form.staDate.set_text(this.fvDate.substr(4,2) + "월 " + this.fvDate.substr(6,2) + "일 "	+  this.gfnGetDayKor(this.fvDate));
+	//일정조회(모아보기)
+	this.fnTranSectOneDay();	
+};
+
+//신규
+this.cfnAdd = function()
+{
+	this.fnOpenScdP("add");
+};
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+//일정 마스터 정보 조회
+this.fnTranSearchScdInfo = function()
+{
+	var strSvcId    = "SearchScdInfo";		
+	var strSvcUrl   = "SearchScdInfo.do";	 
+	var inData      = "dsCond=dsCond";	
+	var outData     = "dsScdInfo=dsList";	
+	var strArg      = "";					
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 			
+};
+
+//하루치 일정 조회(모아보기)
+this.fnTranSectOneDay = function()
+{
+	this.dsList.clearData();
+	
+	var strSvcId    = "sectOneDay";
+	var strSvcUrl   = "sectOneDay.do";
+	var inData      = "dsSearch=dsCond";
+	var outData     = "dsList=dsScdList";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 		
+};
+
+//게시판 정보조회
+this.fnTranSearchBoardInfo = function()
+{
+	var strSvcId    = "searchBoardList";
+	var strSvcUrl   = "searchBoardList.do";
+	var inData      = "dsCond=dsBoardCond";
+	var outData     = "dsBoardInfo=dsList";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	
+};
+
+//게시글 조회
+this.fnTranNotiBoardSearch = function ()
+{
+	//22.04.28 메인화면에서 공지사항 수정일자 내림차순으로 정렬
+	this.dsCond.setColumn(0, "gubun_main", "T");
+	
+	var strSvcId    = "searchBoardContent";
+	var strSvcUrl   = "searchBoardContent.do";
+	var inData      = "dsCond=dsCond";
+	var outData     = "dsNotiList=dsList";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	
+};
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+//transaction Callback
+this.fnCallback = function(sSvcId, nErrCd, nErrMsg)
+{
+	switch(sSvcId) {
+		case "SearchScdInfo" : 
+			break;
+		case "sectOneDay" :	
+			this.fnSetListView();
+			break;
+		case "searchBoardList":
+			//공지사항 게시판 정보 셋팅
+			this.fnSetBoardInfo();
+			//공지조회
+			this.fnTranNotiBoardSearch();				
+			break;
+		case "searchBoardContent":
+			//최신 공지로 text 셋팅
+			var sText = this.dsNotiList.getColumn(0,"TITLE");
+			var objFont = this.div00.form.divNoti.form.staNoti.font;
+			var objSize = nexacro.getTextSize(sText, objFont);
+			var nWidth = this.div00.form.divNoti.form.staNoti.getOffsetWidth();
+			
+			if (objSize.nx > nWidth)
+			{
+				var len = 0;
+				for (var i = 0; i < sText.length; i++)
+				{
+					var objSize2 = nexacro.getTextSize(sText.substr(i, 1), objFont);
+					len += objSize2.nx;
+
+					if (len > nWidth) //문자길이가 더 커질 경우
+					{
+						var sText = sText.substr(0, i-2) + "...";
+						this.div00.form.divNoti.form.staNoti.set_text(sText);
+					}
+				}			
+			}
+			else
+			{
+				this.div00.form.divNoti.form.staNoti.set_text(this.dsNotiList.getColumn(0,"TITLE"));
+			}
+			
+			var sDate = this.dsNotiList.getColumn(0,"CHGE_DTTM") + "";
+			this.div00.form.divNoti.form.staNotiDate.set_text(sDate.substr(0,4)+"."+sDate.substr(4,2)+"."+sDate.substr(6,2));
+			break;
+	}
+};
+
+//Popup CallBack
+this.fnPopupCallback = function(sPopupId, sRtn)
+{
+	//일정 조회->수정으로 넘어온 경우 수정 팝업 열어주기
+	if(sPopupId== "searchReadScd" && sRtn =="rUpdate"){
+		this.fnOpenScdP("update", this.fvScdId);
+	}
+	//일정 등록, 수정 팝업 close , 삭제
+	else if(!this.gfnIsNull(sRtn) && (sPopupId== "addScd" || sPopupId == "updateScd" || (sPopupId== "searchReadScd" && sRtn !="rUpdate"))){
+		this.fvDate = sRtn;	
+		this.div00.form.cal00.set_value(this.fvDate);
+		this.cfnSearch();	//일정 재조회
+	}
+	//공지 조회->수정으로 넘어온 경우 수정 팝업 열어주기
+	else if(sPopupId=="readBoard"&&sRtn =="rUpdate"){
+		this.fnOpenScdP("updateNoti");
+	}
+	//공지 수정팝업 close, 삭제
+	else if(sPopupId=="updateBoard" || ( sPopupId=="readBoard" && sRtn !="rUpdate")){
+		this.fnTranNotiBoardSearch();//공지 재조회		
+	}
+};
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+//ListView expr 설정 함수
+this.fnListViewSetInfo = function(objDs, nRow)
+{
+	var sUser		= objDs.getColumn(nRow, 'INPT_EMP_NO').substr(0,objDs.getColumn(nRow, 'INPT_EMP_NO').indexOf("("));
+	var sStartDt	= objDs.getColumn(nRow, 'START_DAY');
+	var sStartTime	= objDs.getColumn(nRow, 'START_TIME');
+	var sStartMinutes	= objDs.getColumn(nRow, 'START_MINUTES');
+	var sEndDt		= objDs.getColumn(nRow, 'END_DAY');
+	var sEndTime	= objDs.getColumn(nRow, 'END_TIME');
+	var sEndMinutes = objDs.getColumn(nRow, 'END_MINUTES');
+	
+	var sStartYyyy 	= sStartDt.substr(0,4);
+	var sStartMm	= sStartDt.substr(4,2);
+	var sStartDd	= sStartDt.substr(6,2);
+	var sEndYyyy 	= sEndDt.substr(0,4);
+	var sEndMm		= sEndDt.substr(4,2);
+	var sEndDd		= sEndDt.substr(6,2);
+	
+	//한글 요일
+	var sStartDay	= this.gfnGetDayKor(sStartDt);
+	var sEndDay		= this.gfnGetDayKor(sEndDt);
+	
+	var sReturn	 	= "";
+	
+	//셋팅
+	if(sStartDay == sEndDay){
+		sReturn = sUser + " | " + sStartYyyy +"." + sStartMm + "." + sStartDd +"("+ sStartDay  +") "
+				   +  sStartTime +":" + sStartMinutes + "~"  + sEndTime + ":" + sEndMinutes;
+	}else{
+		sReturn = sUser + " | " + sStartYyyy +"." + sStartMm + "." + sStartDd +"("+ sStartDay  +") " +  sStartTime +":" + sStartMinutes + " ~ " 
+				   + sEndYyyy +"." + sEndMm + "." + sEndDd +"("+ sEndDay  +") " +sEndTime + ":" + sEndMinutes;
+	}
+	
+	return sReturn ;
+};
+
+
+//리스트뷰 셋팅
+this.fnSetListView = function()
+{
+	this.div00.form.staCnt.set_text("총 " +this.dsList.getRowCount()+"건");
+	//리스트 뷰 리사이즈
+	this.div00.form.sta00.set_visible(false);
+	this.gfnSetLstResize(this.div00.form.lst00);
+	this.div00.form.sta00.set_visible(true);
+}
+
+
+//게시판 정보 셋팅
+this.fnSetBoardInfo = function()
+{
+	this.fvBoardInfo = {
+		blbdNm 	 : this.dsBoardInfo.getColumn(0, "BLBD_NM")
+		,answYn  : this.dsBoardInfo.getColumn(0, "ANSW_YN")
+		,apndYn  : this.dsBoardInfo.getColumn(0, "APND_YN")
+		,pageCnt : this.dsBoardInfo.getColumn(0, "PAGE_CNT")
+		,replyYn : this.dsBoardInfo.getColumn(0, "REPLY_YN")
+		,mgrCd	 : this.dsBoardInfo.getColumn(0, "MGR_CD")
+	};
+}
+
+//팝업
+this.fnOpenScdP = function(sStatus)
+{
+	var sTitle	= "";
+	var oOption = "";
+	
+	var popupId		= "";
+	var popupUrl	= "";
+	
+	//this.fvScdInfo 셋팅(일정 마스터 정보)
+	var sScdCd = !this.gfnIsNull(this.fvScdCd)? this.fvScdCd : this.fvDeptCd;
+	var	nRow = this.dsScdInfo.findRow("SCD_CD", sScdCd);
+	this.fvScdInfo = {  scdNm	: this.dsScdInfo.getColumn(nRow,"SCD_NM")
+						, scdCd : this.dsScdInfo.getColumn(nRow,"SCD_CD")
+						, apndYn: this.dsScdInfo.getColumn(nRow,"APND_YN")
+						, mgrCd : this.dsScdInfo.getColumn(nRow,"MGR_ID")
+					};	
+				
+	if(sStatus=="read"){
+		sTitle	=  this.fvScdInfo.scdNm + " 일정 상세조회";
+		oOption = {title:sTitle
+				 ,isDetail:true};
+				 
+		//상세조회
+		popupId		= "searchReadScd";
+		popupUrl	= "comm::schedule/scheduleReadPu.xfdl";
+		var oArg	= {pvApndYn		: this.fvScdInfo.apndYn
+						,pvMgrCd	: this.fvScdInfo.mgrCd	//관리자						
+						,pvScdCd	: this.fvScdCd
+						,pvScdId	: this.fvScdId
+						}	
+	}else if(sStatus=="add"){
+		sTitle	= "일정 등록";
+		oOption	= {title:sTitle
+					,isDetail:false};
+	    //등록
+		popupId		= "addScd";
+		popupUrl	= "comm::schedule/schedulePu.xfdl";
+		var oArg	= {pvApndYn		: this.fvScdInfo.apndYn		
+						,pvScdCd	: this.fvScdInfo.scdCd
+						,pvDate		: this.fvDate
+						,pvDeptCd   : this.fvDeptCd
+						,pvScdType	: "MY"
+						,pvOpenType : "add"
+						}
+		
+	}else if(sStatus == "update"){
+		sTitle = this.fvScdInfo.scdNm + " 일정 수정";
+		oOption = {title:sTitle
+				 ,isDetail:false};
+		//수정
+		popupId		= "updateScd";
+		popupUrl	= "comm::schedule/scheduleUpdatePu.xfdl";
+		var oArg	= {pvApndYn		: this.fvScdInfo.apndYn		
+						,pvTitle 	: this.fvScdInfo.scdNm // 일정마스터타이틀
+						,pvScdCd	: this.fvScdCd
+						,pvScdId	: this.fvScdId
+						,pvOpenType : "update"
+						}	
+		
+	}else if(sStatus == "readNoti"){
+		sTitle = this.fvBoardInfo.blbdNm + " 상세조회";
+		oOption = {title:sTitle
+				 ,isDetail:true};
+	
+		//공지사항 상세조회
+		popupId		= "readBoard";
+		popupUrl	= "comm::board/boardReadPu.xfdl";
+		var oArg	= {pvApndYn		: this.fvBoardInfo.apndYn
+					  //,pvAnswYn 	: this.fvBoardInfo.answYn
+					  //,pvReplyYn  : this.fvReplyYn
+					  ,pvBoardCd	: this.fvNotiBoardCd
+					  ,pvNotiNo		: this.dsNotiList.getColumn(0, "NOTI_NO")
+					  ,pvOpenType	: "read"
+					  ,pvMgrCd	 	: this.fvBoardInfo.mgrCd
+					};		
+	}else if(sStatus == "updateNoti"){
+		sTitle		= this.fvBoardInfo.blbdNm + " 수정";
+		oOption		= {title :sTitle
+		               ,isDetail:false};					   
+		popupId		= "updateBoard";
+		popupUrl	= "comm::board/boardUpdatePu.xfdl";
+		var oArg	= {pvApndYn		: this.fvBoardInfo.apndYn
+						,pvBoardCd	: this.fvNotiBoardCd
+						,pvNotiNo	: this.dsNotiList.getColumn(0, "NOTI_NO")
+						,pvOpenType	: "update"
+						}	
+	}
+	
+	var sPopupCallBack = "fnPopupCallback";
+	this.gfnOpenPopupM(popupId, popupUrl, oArg, sPopupCallBack, oOption);
+};
+
+//일정 유형 별 Css
+this.fnSetSectCdCss1 = function(sScdSectCd)
+{
+	return "label" + this.gfnLPad(this.dsSetCd.findRow("SSC_CD", sScdSectCd)+1, 0, 2);
+};
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+//리스트 뷰 클릭
+this.lst00_oncellclick = function(obj:nexacro.ListView,e:nexacro.ListViewClickEventInfo)
+{
+	this.fvScdId	= this.dsList.getColumn(e.row, "SCD_ID");
+	this.fvScdCd	= this.dsList.getColumn(e.row, "SCD_CD");
+	
+	//상세조회 팝업 open
+	this.fnOpenScdP("read");
+};
+
+//공지 클릭
+this.staNoti_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	//공지 상세조회 팝업 open
+	this.fnOpenScdP("readNoti");		
+};
+
+//바로가기 아이콘 클릭
+this.btnShortCut_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//uMenuId == userProperty
+	var sMenuId = obj.uMenuId;
+	
+	var objDs	= nexacro.getApplication().gdsMenu;
+	var nTargetRow = objDs.findRow("MENU_ID", sMenuId);
+	
+	//메뉴로 이동(frmMenu의 메소드 fnFormOpen)
+ 	nexacro.getApplication().mainframe.baseChild.form.divMenu.form.fnFormOpen(objDs, nTargetRow);
+};
+
+
+//캘린더 값 변경
+this.cal00_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
+{
+	this.fvDate = obj.value;
+	//데이터 조회
+	this.cfnSearch();
+};
+
+//div00 크기 변경됐을 때 add버튼플로팅
+this.div00_onsize = function(obj:nexacro.Div,e:nexacro.SizeEventInfo)
+{
+	var objVScrollbar = this.vscrollbar;
+	var objBtn = this.div00.form.btnAdd;
+ 	var nPadding = 20;
+	this.parent.parent.fnSetFloatBtnInitPos(this.vscrollbar, objBtn, nPadding);
+};
+
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="div00.form.cal00" propid="value" datasetid="dsCond" columnid="SECTDATE"/>
+    </Bind>
+  </Form>
+</FDL>

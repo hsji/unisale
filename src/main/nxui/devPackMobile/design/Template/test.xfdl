@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="div00" taborder="0" left="360" top="160" width="460" height="200" background="aquamarine" text="">
+          <Layouts>
+            <Layout>
+              <Static id="sta00_00_00_01_00_00" taborder="2" text="sta00" left="0" top="147" height="50" cssclass="test1" right="0"/>
+              <Static id="sta00_00_00_01_00_00_00" taborder="3" text="sta00" left="0" top="98" height="50" cssclass="test1" right="0"/>
+              <Static id="sta00_00_00_01_00" taborder="1" text="sta00" left="0" top="49" height="50" cssclass="test1" right="0"/>
+              <Static id="sta00_00_00_01" taborder="0" text="sta00" left="0" top="0" height="50" cssclass="test1" right="0"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="sta00_00_00_01" taborder="1" text="sta00" left="339" top="480" width="461" height="50" cssclass="test1"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

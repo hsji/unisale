@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp01" width="480" height="770" onclick="Temp01_onclick" titletext="Organization">
+    <Layouts>
+      <Layout height="770" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static03" taborder="1" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_00" taborder="2" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_01" taborder="3" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Grid id="grd00" taborder="4" left="30" top="30" height="740" binddataset="Dataset00" right="30" autofittype="col" treeusecheckbox="false" cssclass="grd_WF_Organization" treeinitstatus="expand,all">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="208"/>
+              </Columns>
+              <Rows>
+                <Row size="54"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:Name" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:Level"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="Level" type="STRING" size="256"/>
+          <Column id="Name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Level">0</Col>
+            <Col id="Name">1DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">1</Col>
+            <Col id="Name">2DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">2</Col>
+            <Col id="Name">3DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">3</Col>
+            <Col id="Name">4DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">3</Col>
+            <Col id="Name">4DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">3</Col>
+            <Col id="Name">4DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">2</Col>
+            <Col id="Name">3DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">3</Col>
+            <Col id="Name">4DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">3</Col>
+            <Col id="Name">4DepthMenu</Col>
+          </Row>
+          <Row>
+            <Col id="Level">3</Col>
+            <Col id="Name">4DepthMenu</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

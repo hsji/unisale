@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp02" width="480" height="890" titletext="SingleDetail" cssclass="frm_WF_Bg" onload="form_onload">
+    <Layouts>
+      <Layout height="890" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="sta00" taborder="13" left="0" top="0" cssclass="sta_WF_GBg03" right="0" bottom="0"/>
+        <Static id="Static01_00_01_00" taborder="0" text="총 16건" top="30" width="85" height="50" cssclass="sta_WF_CalViews" right="30"/>
+        <Div id="Div00" taborder="1" left="30" top="83" height="182" cssclass="div_WF_DetailBox" right="29" text="">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="투비데브팩" left="30" top="0" height="60" cssclass="sta_WF_Title" right="30"/>
+              <Static id="Static01" taborder="1" text="2022.05.01~2022.05.31" top="11" width="216" height="38" right="30" cssclass="sta_WF_Date"/>
+              <Static id="Static02" taborder="2" text="프로젝트" left="33" top="72" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_00" taborder="3" text="투비일정관리프로젝트" top="72" width="263" height="30" cssclass="sta_WF_OutputR" right="30"/>
+              <Static id="Static02_00_00" taborder="4" text="123,456,789,100" top="102" width="263" height="30" cssclass="sta_WF_OutputP" right="30"/>
+              <Static id="Static02_01" taborder="5" text="단가" left="33" top="102" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_02" taborder="6" text="제품" left="33" top="132" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_00_01" taborder="7" text="넥사크로플랫폼" top="132" width="263" height="30" cssclass="sta_WF_OutputR" right="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="2" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="3" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02" taborder="4" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="5" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01" taborder="6" text="H20" left="0" top="63" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_00_00_00" taborder="7" text="H10" left="1" top="265" cssclass="sta_WF_GSize" visible="false" right="-1" height="10"/>
+        <Div id="Div00_00" taborder="8" left="30" top="275" height="182" cssclass="div_WF_DetailBox" right="29" text="">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="투비데브팩" left="30" top="0" height="60" cssclass="sta_WF_Title" right="30"/>
+              <Static id="Static01" taborder="1" text="2022.05.01~2022.05.31" top="11" width="216" height="38" right="30" cssclass="sta_WF_Date"/>
+              <Static id="Static02" taborder="2" text="프로젝트" left="33" top="72" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_00" taborder="3" text="투비일정관리프로젝트" top="72" width="263" height="30" cssclass="sta_WF_OutputR" right="30"/>
+              <Static id="Static02_00_00" taborder="4" text="123,456,789,100" top="102" width="263" height="30" cssclass="sta_WF_OutputP" right="30"/>
+              <Static id="Static02_01" taborder="5" text="단가" left="33" top="102" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_02" taborder="6" text="제품" left="33" top="132" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_00_01" taborder="7" text="넥사크로플랫폼" top="132" width="263" height="30" cssclass="sta_WF_OutputR" right="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02_01_00_00_00_00" taborder="9" text="H10" left="1" top="457" cssclass="sta_WF_GSize" visible="false" right="-1" height="10"/>
+        <Div id="Div00_01" taborder="10" left="30" top="467" height="182" cssclass="div_WF_DetailBox" right="29" text="">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="투비데브팩" left="30" top="0" height="60" cssclass="sta_WF_Title" right="30"/>
+              <Static id="Static01" taborder="1" text="2022.05.01~2022.05.31" top="11" width="216" height="38" right="30" cssclass="sta_WF_Date"/>
+              <Static id="Static02" taborder="2" text="프로젝트" left="33" top="72" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_00" taborder="3" text="투비일정관리프로젝트" top="72" width="263" height="30" cssclass="sta_WF_OutputR" right="30"/>
+              <Static id="Static02_00_00" taborder="4" text="123,456,789,100" top="102" width="263" height="30" cssclass="sta_WF_OutputP" right="30"/>
+              <Static id="Static02_01" taborder="5" text="단가" left="33" top="102" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_02" taborder="6" text="제품" left="33" top="132" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_00_01" taborder="7" text="넥사크로플랫폼" top="132" width="263" height="30" cssclass="sta_WF_OutputR" right="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02_01_00_00_00_01" taborder="11" text="H10" left="1" top="649" cssclass="sta_WF_GSize" visible="false" right="-1" height="10"/>
+        <Div id="Div00_00_00" taborder="12" left="30" top="659" height="182" cssclass="div_WF_DetailBox" right="29" text="">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="투비데브팩" left="30" top="0" height="60" cssclass="sta_WF_Title" right="30"/>
+              <Static id="Static01" taborder="1" text="2022.05.01~2022.05.31" top="11" width="216" height="38" right="30" cssclass="sta_WF_Date"/>
+              <Static id="Static02" taborder="2" text="프로젝트" left="33" top="72" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_00" taborder="3" text="투비일정관리프로젝트" top="72" width="263" height="30" cssclass="sta_WF_OutputR" right="30"/>
+              <Static id="Static02_00_00" taborder="4" text="123,456,789,100" top="102" width="263" height="30" cssclass="sta_WF_OutputP" right="30"/>
+              <Static id="Static02_01" taborder="5" text="단가" left="33" top="102" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_02" taborder="6" text="제품" left="33" top="132" width="114" height="30" cssclass="sta_WF_LabelDetail"/>
+              <Static id="Static02_00_01" taborder="7" text="넥사크로플랫폼" top="132" width="263" height="30" cssclass="sta_WF_OutputR" right="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	Temp03.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/21
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/21			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+//조회
+this.cfnSearch = function ()
+{
+	//TODO..
+};
+
+//저장
+this.cfnSave = function ()
+{
+	//TODO..
+};
+
+//추가
+this.cfnAdd = function ()
+{
+	//TODO..
+};
+
+//삭제
+this.cfnDel = function ()
+{
+	//TODO..
+};
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Guide00" width="480" height="1488" titletext="img, chk, rdo, btn" cssclass="frm_WF_GFrame" onload="form_onload">
+    <Layouts>
+      <Layout height="1488" width="480">
+        <Static id="sta00" taborder="43" left="0" top="100" cssclass="sta_WF_GBg" right="0" height="1388"/>
+        <Static id="sta109_00_01" taborder="42" left="10" top="1158" height="310" cssclass="sta_WF_Box" right="10"/>
+        <Static id="sta109_00" taborder="28" left="10" top="589" height="267" cssclass="sta_WF_Box" right="10" text=""/>
+        <Static id="sta109" taborder="2" left="10" top="160" height="409" cssclass="sta_WF_Box" right="10" text=""/>
+        <Static id="Static00" taborder="0" left="0" top="0" height="150" cssclass="sta_WF_GBar" text="&lt;fc v='#445BEC'&gt;&lt;fs v='13'&gt;TOBESOFT&lt;/fs&gt;&lt;/fc&gt;&#13;&#10;Component KIT&#13;&#10;&lt;fc v='#acafbb'&gt;&lt;fs v='11'&gt;img, chk, rdo, btn&lt;/fs&gt;&lt;/fc&gt;" right="0" usedecorate="true" onclick="Static00_onclick"/>
+        <Static id="sta01" taborder="1" top="53" width="61" height="50" right="20" text="03" cssclass="sta_WF_GNum"/>
+        <Static id="Static03_00_00_02" taborder="3" left="30" top="185" width="200" height="23" cssclass="sta_WF_GTxt01" text="Image"/>
+        <Static id="Static04_00_01_02" taborder="4" text="기본" left="30" top="230" width="26" height="14" cssclass="sta_WF_GTxt02"/>
+        <Static id="Static05_00_02_02" taborder="5" text="normal" left="30" top="258" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <ImageViewer id="ImageViewer00_00" taborder="26" left="30" top="281" height="110" right="51.04%"/>
+        <Static id="Static05_00_00_02_02" taborder="6" text="disabled" left="30" top="411" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <Static id="Static03_00_00_03" taborder="7" left="30" top="618" width="200" height="21" cssclass="sta_WF_GTxt01" text="CheckBox"/>
+        <Static id="Static04_00_01_03" taborder="8" text="기본" left="30" top="663" width="26" height="14" cssclass="sta_WF_GTxt02"/>
+        <Static id="Static05_00_02_03" taborder="9" text="normal" left="30" top="691" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <CheckBox id="CheckBox00" taborder="18" text="체크" left="30" width="85" height="35" value="true" top="716" onclick="Div01_CheckBox03_onclick"/>
+        <Static id="Static05_00_00_02_03" taborder="10" text="disabled" left="30" top="771" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <CheckBox id="CheckBox03" taborder="17" text="체크" left="125" width="85" height="35" value="false" top="716" onclick="Div01_CheckBox03_onclick"/>
+        <Static id="Static04_00_00_00_03" taborder="11" text="필수" left="246" top="663" width="26" height="14" cssclass="sta_WF_GTxt02"/>
+        <Static id="Static05_00_01_00_03" taborder="12" text="essential" left="246" top="691" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <ImageViewer id="ImageViewer00" taborder="13" left="ImageViewer00_00:10" top="281" height="110" image="url('theme://images/sta_LOGIN_Logo.png')" stretch="fixaspectratio" right="30"/>
+        <ImageViewer id="ImageViewer01_00" taborder="27" left="30" top="434" height="110" enable="false" text="" right="51.04%"/>
+        <ImageViewer id="ImageViewer01" taborder="14" left="ImageViewer01_00:10" top="434" height="110" enable="false" image="url('theme://images/sta_LOGIN_Logo.png')" stretch="fit" right="30"/>
+        <Static id="sta106" taborder="15" text="stretch : fixaspectratio" left="ImageViewer00_00:10" top="253" width="190" height="23" cssclass="sta_WF_GTxt05"/>
+        <Static id="sta106_00" taborder="16" text="stretch : fit" left="ImageViewer01_00:10" top="406" width="190" height="23" cssclass="sta_WF_GTxt05"/>
+        <CheckBox id="CheckBox04" taborder="19" text="체크" left="30" width="85" height="35" value="true" top="794" onclick="Div01_CheckBox03_onclick" enable="false"/>
+        <CheckBox id="CheckBox05" taborder="20" text="체크" left="125" width="85" height="35" value="false" top="794" onclick="Div01_CheckBox03_onclick" readonly="false" enable="false"/>
+        <CheckBox id="CheckBox06" taborder="21" text="체크" left="250" width="85" height="35" value="true" top="716" onclick="Div01_CheckBox03_onclick" cssclass="essential"/>
+        <CheckBox id="CheckBox07" taborder="22" text="체크" left="345" width="85" height="35" value="false" top="716" onclick="Div01_CheckBox03_onclick" cssclass="essential"/>
+        <Static id="sta109_00_00" taborder="29" left="10" top="873" height="267" cssclass="sta_WF_Box" right="10"/>
+        <Static id="Static03_00_00_03_00" taborder="30" left="30" top="902" width="200" height="21" cssclass="sta_WF_GTxt01" text="Radio"/>
+        <Static id="Static04_00_01_03_00" taborder="31" text="기본" left="30" top="947" width="26" height="14" cssclass="sta_WF_GTxt02"/>
+        <Static id="Static05_00_02_03_00" taborder="32" text="normal" left="30" top="975" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <Static id="Static05_00_00_02_03_00" taborder="33" text="disabled" left="30" top="1055" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <Static id="Static04_00_00_00_03_00" taborder="34" text="필수" left="250" top="947" width="26" height="14" cssclass="sta_WF_GTxt02"/>
+        <Static id="Static05_00_01_00_03_00" taborder="35" text="essential" left="250" top="975" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <Radio id="Radio00" taborder="23" left="30" top="1000" width="200" height="35" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="1" text="선택" index="0" direction="vertical" columncount="3">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">선택</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">미선택</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Radio id="Radio01" taborder="24" left="30" top="1078" width="200" height="35" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="1" text="선택" index="0" direction="vertical" columncount="3" enable="false">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">선택</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">미선택</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Radio id="Radio02" taborder="25" left="250" top="1000" width="200" height="35" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="1" text="선택" index="0" direction="vertical" columncount="3" cssclass="essential" onitemchanged="Radio02_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">선택</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">미선택</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Button id="Button00" taborder="36" text="버튼" top="1280" height="60" width="100" left="30" fittocontents="none"/>
+        <Button id="Button01" taborder="37" text="버튼" top="1383" height="60" width="100" left="30" fittocontents="none" enable="false"/>
+        <Static id="Static03_00" taborder="38" left="30" top="1183" width="72" height="21" cssclass="sta_WF_GTxt01" text="Button"/>
+        <Static id="Static04_00" taborder="39" text="기본" left="30" top="1229" width="26" height="14" cssclass="sta_WF_GTxt02"/>
+        <Static id="Static05_00" taborder="40" text="normal" left="30" top="1257" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+        <Static id="Static05_00_00" taborder="41" text="disabled" left="30" top="1360" width="50" height="13" cssclass="sta_WF_GTxt03"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Radio02_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleTab" width="480" height="768" titletext="탭" onload="form_onload">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" width="480">
+        <Div id="divTab" taborder="0" text="div00" left="0" top="3" height="60" right="0">
+          <Layouts>
+            <Layout>
+              <Button id="btn1" taborder="3" text="탭1" left="0" top="0" width="120" height="60" cssclass="btn_WF_tab_S"/>
+              <Button id="btn2" taborder="2" text="탭2" left="btn1:0" top="0" width="120" height="60" cssclass="btn_WF_tab_N"/>
+              <Button id="btn3" taborder="1" text="탭3" left="btn2:0" top="0" width="120" height="60" cssclass="btn_WF_tab_N"/>
+              <Button id="btn4" taborder="0" text="탭4" left="btn3:0" top="0" width="120" height="60" cssclass="btn_WF_tab_N"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divTab1" taborder="1" text="Tab1" left="0" top="60" right="0" border="1px solid #244A89" height="710"/>
+        <Div id="divTab2" taborder="2" text="Tab2" left="490" top="60" right="-490" visible="false" border="1px solid #244A89" height="710"/>
+        <Div id="divTab3" taborder="3" text="Tab3" left="975" top="60" right="-975" visible="false" border="1px solid #244A89" height="710"/>
+        <Div id="divTab4" taborder="4" text="Tab4" left="1460" top="60" right="-1460" visible="false" border="1px solid #244A89" height="710"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleTab.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.04
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.04			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvArrInfo = null;
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+	
+	this.divTab.form.set_scrollbarsize(0);
+	
+	//탭버튼을 화면너비에 딱 맞게 쓰는 경우 아래 주석 해제
+//     var arrDiv = this.divTab.form.components;
+//     var nWidth = this.getOffsetWidth() / arrDiv.length;
+//     
+//     for (var i = 0; i < arrDiv.length; i++)
+//     {
+//         arrDiv[i].set_width(nWidth);
+//     }
+//     
+//     this.divTab.form.resetScroll();
+
+    
+	//탭정보
+	this.fn_setTabInfo(
+		[ {objBtn: this.divTab.form.btn1, objDiv: this.divTab1}
+		, {objBtn: this.divTab.form.btn2, objDiv: this.divTab2}
+		, {objBtn: this.divTab.form.btn3, objDiv: this.divTab3}
+		, {objBtn: this.divTab.form.btn4, objDiv: this.divTab4}
+		]);	    
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+//탭버튼 공통 처리
+this.fn_setTabInfo = function(arrInfo, sFunc)
+{
+	if (this.gfnIsNull(sFunc))
+	{
+		sFunc = this.fnTabClick;
+		this.fvArrInfo = arrInfo;
+	}
+
+	for (var i = 0; i < arrInfo.length; i++)
+	{
+		arrInfo[i].objBtn.addEventHandler("onclick", sFunc, this);
+		arrInfo[i].objDiv.set_left(0);
+		arrInfo[i].objDiv.set_right(0);
+	}	
+}
+
+//탭버튼 공통 처리
+this.fnTabClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	for (var i = 0; i < this.fvArrInfo.length; i++)
+	{
+		this.fvArrInfo[i].objBtn.set_cssclass("btn_WF_tab_N");
+		this.fvArrInfo[i].objDiv.set_visible(false);
+		if (this.fvArrInfo[i].objBtn== obj)
+		{
+			this.fvArrInfo[i].objBtn.set_cssclass("btn_WF_tab_S");
+			this.fvArrInfo[i].objDiv.set_visible(true);
+		}
+	}
+}
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,17 @@
+﻿{
+	"name": "Crypto",
+	"version": "2019.1.30",
+	"description": "CryptoJS - code.google.com/p/crypto-js",
+	"license": "New BSD License",
+	"scripts": [			
+			/* open source */
+			"CryptoJS/jsbn.js",	
+			"CryptoJS/rsa.js",
+			"CryptoJS/prng4.js",
+			"CryptoJS/rng.js",
+			"CryptoJS/sha256.js",
+			"CryptoJS/RSAUtil.js"
+			/* open source end */			
+	]
+}
+//@ sourceURL=Crypto.json

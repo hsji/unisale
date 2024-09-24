@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nextCommMapper">
+<!--공통 : 파일 조회 -->
+<select id="selectFileList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT '0' AS CHK
+	     , FP.SOURCE_CD
+	     , FP.SOURCE_SEQ
+	     , FP.STATUS_CD
+	     , FP.FM_SEQ
+	     , FM.FILE_SEQ
+	     , FM.FILE_TYPE
+	     , FM.FILE_NAME
+	     , FM.SAVE_FILE_NAME
+	     , FM.SAVE_PATH
+	     , 'N' AS DEL_FLAG
+	     , '1' AS STATUS
+	     , ( SELECT EMP_NM
+	         FROM T_SYTM_USER
+	         WHERE EMP_NO = FM.INPT_ID
+	        ) AS INSERT_EMP_NAME
+	     , FM.INPT_DTTM
+	     , FP.SHARE_FLAG
+	     , '' AS FILE_STATUS
+	     , '' AS fileid
+	FROM SALES_FILE_MAP FP
+	LEFT JOIN SALES_FILE_MASTER FM ON FP.FM_SEQ = FM.FM_SEQ
+	WHERE 1=1
+	  AND (FP.SOURCE_CD = #{SOURCE_CD} AND FP.SOURCE_SEQ = #{SOURCE_SEQ})
+	<if test="SOURCE_CD != null and SOURCE_CD != '' and 'CL'.equals(SOURCE_CD)">
+	  OR (FP.SOURCE_CD = 'P' AND FP.SOURCE_SEQ IN (
+	  										SELECT PROJECT_CODE
+	                        					FROM SALES_CONTRACT_LIST
+	                        					WHERE CONTRACT_NO = #{SOURCE_SEQ}))
+	</if>
+	<choose>
+	  <when test="STATUS_CD != null and STATUS_CD != ''">
+	    AND FP.STATUS_CD = #{STATUS_CD}
+	  </when>
+	  <otherwise>
+	    AND IFNULL(FP.STATUS_CD, '') != 'INSERT'
+	  </otherwise>
+	</choose>
+	ORDER BY FP.SOURCE_CD, FP.SOURCE_SEQ, FP.STATUS_CD, FP.FM_SEQ
+</select>
+
+<!--공통 : 파일 조회 -->
+<select id="selectFileMap" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT CAST(COUNT(*) AS INTEGER) AS CNT
+	FROM SALES_FILE_MAP
+	WHERE SOURCE_CD = #{SOURCE_CD}
+	AND  SOURCE_SEQ = #{SOURCE_SEQ}
+	AND  STATUS_CD = #{STATUS_CD}
+</select>
+
+<select id="selectFileMasterKey" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT CAST(COUNT(*) AS INTEGER) AS CNT
+	FROM SALES_FILE_MAP
+	WHERE FM_SEQ = #{FM_SEQ}
+	AND SOURCE_CD = #{SOURCE_CD}
+	AND  SOURCE_SEQ = #{SOURCE_SEQ}
+</select>
+
+<select id="selectFileMasterCount" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT CAST(COUNT(*) AS INTEGER) AS CNT
+	FROM SALES_FILE_MASTER
+	WHERE FM_SEQ = #{FM_SEQ}
+</select>
+
+<!-- file map 저장 -->
+<insert id="insertMapFile" parameterType="java.util.Map">
+	INSERT INTO SALES_FILE_MAP
+	(
+	SOURCE_CD
+	, SOURCE_SEQ
+	, STATUS_CD
+	, FM_SEQ
+	, DEL_FLAG
+	, SHARE_FLAG
+	, INPT_ID
+	, INPT_IP
+	, INPT_DTTM
+	, CHGE_ID
+	, CHGE_IP
+	, CHGE_DTTM
+	)VALUES(
+	 #{SOURCE_CD}
+	,#{SOURCE_SEQ}
+	,#{STATUS_CD}
+	,#{FM_SEQ}
+	,#{DEL_FLAG}
+	,#{SHARE_FLAG}
+	,#{USER_ID_SRV}
+	,#{USER_CON_IPADDR_SRV}
+	,NOW()
+	,#{USER_ID_SRV}
+	,#{USER_CON_IPADDR_SRV}
+	,NOW()
+	)
+	ON 
+	DUPLICATE KEY
+		UPDATE 
+		      FM_SEQ = #{FM_SEQ}
+</insert>
+
+<!-- file map 삭제 -->
+<delete id="deleteMapFile" parameterType="java.util.Map">
+	DELETE FROM SALES_FILE_MAP
+	WHERE SOURCE_CD=#{SOURCE_CD} 
+	AND SOURCE_SEQ=#{SOURCE_SEQ} 
+	AND STATUS_CD=#{STATUS_CD}
+</delete>
+
+<delete id="deleteMapFileMasterKey" parameterType="java.util.Map">
+	DELETE FROM SALES_FILE_MAP
+	WHERE SOURCE_CD=#{SOURCE_CD} 
+	AND SOURCE_SEQ=#{SOURCE_SEQ} 
+	AND STATUS_CD=#{STATUS_CD}
+	AND FM_SEQ=#{FM_SEQ}
+</delete>
+
+<!-- file master 저장 -->
+<insert id="insertMasterFile" parameterType="java.util.Map">
+	INSERT INTO SALES_FILE_MASTER
+	(
+	 FM_SEQ
+	, FILE_SEQ
+	, SAVE_FILE_NAME
+	, FILE_NAME
+	, FILE_SIZE
+	, FILE_TYPE
+	, SAVE_PATH
+	, INPT_ID
+	, INPT_IP
+	, INPT_DTTM
+	, CHGE_ID
+	, CHGE_IP
+	, CHGE_DTTM
+	)VALUES(
+	 #{FM_SEQ}
+	,(SELECT COALESCE(MAX(FILE_SEQ),0)+1 FROM SALES_FILE_MASTER F WHERE FM_SEQ = #{FM_SEQ})
+	,#{SAVE_FILE_NAME}
+	,#{FILE_NAME}
+	,#{FILE_SIZE}
+	,#{FILE_TYPE}
+	,#{SAVE_PATH}
+	,#{USER_ID_SRV}
+	,#{USER_CON_IPADDR_SRV}
+	,NOW()
+	,#{USER_ID_SRV}
+	,#{USER_CON_IPADDR_SRV}
+	,NOW()
+	)
+	ON 
+	DUPLICATE KEY
+		UPDATE 
+		    SAVE_FILE_NAME 			= #{SAVE_FILE_NAME}
+		    , FILE_NAME 			= #{FILE_NAME}
+		    , FILE_SIZE 		= #{FILE_SIZE}
+		    , FILE_TYPE 		= #{FILE_TYPE}
+		    , SAVE_PATH 		= #{SAVE_PATH}
+		    , CHGE_ID 			= #{USER_ID_SRV}
+		    , CHGE_IP			= #{USER_CON_IPADDR_SRV}
+		    , CHGE_DTTM			= NOW()	
+</insert>
+
+<!-- file master 삭제 -->
+<delete id="deleteMasterFile" parameterType="java.util.Map">
+	DELETE FROM SALES_FILE_MASTER
+	WHERE FM_SEQ=#{FM_SEQ} 
+	AND FILE_SEQ=#{FILE_SEQ} 
+</delete>
+
+</mapper>

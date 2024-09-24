@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleValidation" width="480" height="768" titletext="정합성 체크" onload="form_onload">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00_00" taborder="1" text="유형" left="30" top="20" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Combo id="cboSectCd" taborder="2" left="30" top="70" height="50" value="" index="-1" cssclass="essential" right="51.04%"/>
+        <Static id="Static00_01" taborder="3" text="시작시간" left="246" top="120" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Static id="Static02_00" taborder="4" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00" taborder="5" text="시작일" left="30" top="120" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Calendar id="calStartDay" taborder="6" left="30" top="170" height="50" popuptype="system" onchanged="fnDateTime_onchanged" cssclass="essential" right="51.04%"/>
+        <Combo id="cboStartTime" taborder="7" left="calStartDay:10" top="170" height="50" value="" index="-1" innerdataset="dsTime" codecolumn="NAME" datacolumn="NAME" onitemchanged="fnDateTime_onchanged" cssclass="essential" right="28.96%"/>
+        <Static id="Static00_01_00" taborder="8" text="종료시간" left="246" top="220" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Static id="Static00_02" taborder="9" text="종료일" left="30" top="220" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Calendar id="calEndDay" taborder="10" left="30" top="270" height="50" popuptype="system" onchanged="fnDateTime_onchanged" cssclass="essential" right="51.04%"/>
+        <Static id="Static00_02_00_00" taborder="11" text="제목" left="30" width="120" height="50" cssclass="sta_WF_Label" top="320"/>
+        <Edit id="edtTitle" taborder="12" left="30" top="370" height="50" right="30" oninput="edtTitle_oninput" cssclass="essential"/>
+        <TextArea id="txaContent" taborder="13" left="30" top="430" onchanged="TextArea00_onchanged" right="30" height="240" cssclass="essential"/>
+        <Button id="btnSave" taborder="14" text="저장" left="30" cssclass="btn_WF_Full" right="30" height="60" onclick="btnSave_onclick" top="690"/>
+        <Static id="Static02_01_01_01_01" taborder="15" text="H20" left="0" top="670" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="sta01" taborder="16" text=":" left="345" top="170" width="10" height="50"/>
+        <Combo id="cboStartMinutes" taborder="17" top="170" height="50" value="" index="-1" innerdataset="dsMinutes" codecolumn="NAME" datacolumn="NAME" onitemchanged="fnDateTime_onchanged" left="cboStartTime:14" text="" cssclass="essential" right="30"/>
+        <Combo id="cboEndTime" taborder="18" left="calEndDay:10" top="270" height="50" value="" index="-1" innerdataset="dsTime" codecolumn="NAME" datacolumn="NAME" onitemchanged="fnDateTime_onchanged" cssclass="essential" text="" right="28.96%"/>
+        <Static id="sta01_00" taborder="19" text=":" left="345" top="270" width="10" height="50"/>
+        <Combo id="cboEndMinutes" taborder="20" top="270" height="50" value="" index="-1" innerdataset="dsMinutes" codecolumn="NAME" datacolumn="NAME" onitemchanged="fnDateTime_onchanged" left="cboEndTime:14" cssclass="essential" right="30"/>
+        <Static id="Static02_01_01" taborder="21" text="H20" left="0" top="0" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_00" taborder="22" text="H40" left="0" top="750" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleValidation.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2020/12/02
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2020/12/02			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+// Validation 체크 Rule의 종류
+// required - 필수 체크
+// length:7 - 길이가 7자리인지 체크
+// max:7 - 값이 7 보다 큰지 체크	
+// min:7 - 값이 7 보다 작은지 체크
+// maxlength:7 - 길이가 7자 보다 큰지 체크
+// maxlengthbyte:7 - byte의 길이가 7보다 보다 큰지 체크
+// maxlengthdec:8:4 - Decimal의 값의 길이가 정수 8자리, 소수 4자리 보다 큰지 체크
+// minlength:3 - 길이가 3보다 작은지 체크
+// minlengthbyte:3 - byte의 길이가 3보다 작은지 체크
+// fromto:칼럼명 - 등록된 날짜가 칼럼의 값 보다 큰지 예) this.gfnSetValidation(this.dsList, "DATE_TO", "종료일자,시작일자", "required,date,fromto:DATE_FROM");
+// fromtosmall:칼럼명 - 등록된 날짜가 칼럼의 값 보다 작은지 예) this.gfnSetValidation(this.dsList, "DATE_FROM", "시작일자,종료일자", "required,date,fromtosmall:DATE_TO");
+// range:40:100 - 값이 40 ~ 100 사이의 값인지 체크	
+// isemail - 이메일 체크
+// isssn - 주민번호 체크
+// isbzid - 사업자등록번호 체크
+// isfirmid - 법인등록번호 체크	
+// istel - 전화번호 체크
+// ismobile - 핸드폰번호 체크
+// isphone - 전화번호or핸드폰번호 체크
+// date - 년월일형태의 날짜가 맞는지 체크
+// dateym - 년월형태의 날짜가 맞는지 체크	
+// korean - 한글 여부 체크
+// digits - 숫자 여부 체크
+// engnum - 영문+숫자 여부 체크
+// special - 특수문자 포함 여부 체크
+// comparebig:칼럼명 - NAME 칼럼의 값보다 큰지 체크 예) this.gfnSetValidation(this.dsList2, "CAMP", "비교,최소값", "required,comparebig:MIN_NUM");
+// comparesmall:칼럼명 - NAME 칼럼의 값보다 작은지 체크 예) this.gfnSetValidation(this.dsList2, "CAMP", "비교,최소값", "required,comparesmall:MIN_NUM");
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj,e); //필수함수
+	//공통 코드 (일정 유형 코드)
+	var param = [{bixtype : "Combo", code : "CM03", objid : this.cboSectCd, selecttype : "S"}];
+	//공통 코드 콤보 설정
+	this.gfnGetCommonCode(param);	
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+
+//저장 버튼
+this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sCont = "";
+	sCont = this.txaContent.text;
+	sCont = this.gfnIsNull(sCont) ? "" : nexacro.replaceAll(sCont,"\n", "<br>");
+	
+	this.dsList.setColumn(0, "CNTN", sCont);
+	this.dsList.setColumn(0, "TITLE", this.gfnTrim(this.edtTitle.value));
+/*
+	var nStartDayTime = this.dsList.getColumn(0,"START_DAY") + this.dsList.getColumn(0,"START_TIME") + this.dsList.getColumn(0,"START_MINUTES");
+	var nEndDayTime = this.dsList.getColumn(0,"END_DAY") + this.dsList.getColumn(0,"END_TIME") + this.dsList.getColumn(0,"END_MINUTES");
+	if(nStartDayTime > nEndDayTime) {
+		this.gfnAlert("msg.err.validator.date.great");
+		return;
+	}
+*/	
+	// 정합성 체크
+	this.gfnClearValidation(this.dsList);
+	this.gfnSetValidation(this.dsList, "SCD_SECT_CD", "유형", "required");
+	this.gfnSetValidation(this.dsList, "START_DAY", "시작일", "required,date");
+	this.gfnSetValidation(this.dsList, "START_TIME", "시작시간", "required");
+	this.gfnSetValidation(this.dsList, "START_MINUTES", "시작분", "required");
+	this.gfnSetValidation(this.dsList, "END_DAY", "종료일", "required,date,fromto:START_DAY");
+	this.gfnSetValidation(this.dsList, "END_TIME", "종료시간", "required");
+	this.gfnSetValidation(this.dsList, "END_MINUTES", "종료분", "required");
+	this.gfnSetValidation(this.dsList, "TITLE", "제목", "required");
+	this.gfnSetValidation(this.dsList, "CNTN", "내용", "required");
+	// Dataset의 변경된 Row Validation check
+	if (this.gfnValidation(this.dsList, "U") == false) return;	
+
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsTime">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NAME">00</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">01</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">02</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">03</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">04</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">05</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">06</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">07</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">08</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">09</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">10</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">11</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">12</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">13</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">14</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">15</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">16</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">17</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">18</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">19</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">20</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">21</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">22</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">23</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMinutes">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NAME">00</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">10</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">20</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">30</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">40</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">50</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="SCD_CD" type="STRING" size="256"/>
+          <Column id="SCD_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="SCD_CD" type="STRING" size="256"/>
+          <Column id="SCD_SECT_CD" type="STRING" size="256"/>
+          <Column id="TITLE" type="STRING" size="256"/>
+          <Column id="START_DAY" type="STRING" size="256"/>
+          <Column id="START_TIME" type="STRING" size="256"/>
+          <Column id="START_MINUTES" type="STRING" size="256"/>
+          <Column id="END_DAY" type="STRING" size="256"/>
+          <Column id="END_TIME" type="STRING" size="256"/>
+          <Column id="END_MINUTES" type="STRING" size="256"/>
+          <Column id="CNTN" type="STRING" size="256"/>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="DEL_YN" type="STRING" size="256"/>
+          <Column id="INPT_EMP_NO" type="STRING" size="256"/>
+          <Column id="INPT_ID" type="STRING" size="256"/>
+          <Column id="CHGE_ID" type="STRING" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsUpload">
+        <ColumnInfo>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="FILE_SEQ" type="STRING" size="256"/>
+          <Column id="SAVE_FILE_NM" type="STRING" size="256"/>
+          <Column id="OTXT_FILE_NM" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="FILE_TYPE" type="STRING" size="256"/>
+          <Column id="FILE_PATH_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDialog id="fdgFile" onclose="fdgFile_onclose"/>
+      <FileUpTransfer id="futFile" onerror="futFile_onerror" onsuccess="futFile_onsuccess"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item1" compid="cboSectCd" propid="value" datasetid="dsList" columnid="SCD_SECT_CD"/>
+      <BindItem id="item2" compid="calStartDay" propid="value" datasetid="dsList" columnid="START_DAY"/>
+      <BindItem id="item3" compid="cboStartTime" propid="value" datasetid="dsList" columnid="START_TIME"/>
+      <BindItem id="item4" compid="calEndDay" propid="value" datasetid="dsList" columnid="END_DAY"/>
+      <BindItem id="item5" compid="edtTitle" propid="value" datasetid="dsList" columnid="TITLE"/>
+      <BindItem id="item6" compid="txaContent" propid="value" datasetid="dsList" columnid="CNTN"/>
+      <BindItem id="item7" compid="cboStartMinutes" propid="value" datasetid="dsList" columnid="START_MINUTES"/>
+      <BindItem id="item8" compid="cboEndTime" propid="value" datasetid="dsList" columnid="END_TIME"/>
+      <BindItem id="item9" compid="cboEndMinutes" propid="value" datasetid="dsList" columnid="END_MINUTES"/>
+    </Bind>
+  </Form>
+</FDL>

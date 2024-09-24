@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="cmmPagingM" width="480" height="50" titletext="페이징버튼" onload="form_onload" onsize="form_onsize">
+    <Layouts>
+      <Layout height="50" mobileorientation="portrait" width="480">
+        <Div id="divPage" taborder="1" left="29%" top="0" width="200" height="50" visible="false">
+          <Layouts>
+            <Layout>
+              <Button id="btnBefore" taborder="0" left="0" top="0" width="50" height="50" onclick="fnMovePage" enable="false" tabstop="true" cssclass="btn_WF_Prev"/>
+              <Static id="staPage" taborder="1" left="50" top="0" height="50" usedecorate="true" textAlign="center" verticalAlign="middle" cssclass="sta_WF_Paging" text="1  /  2" width="100"/>
+              <Button id="btnNext" taborder="2" top="0" height="50" onclick="fnMovePage" enable="false" cssclass="btn_WF_Next" left="150" width="50"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="staCount" taborder="0" text="총 &lt;fc v='#3683e2'&gt;0&lt;/fc&gt; 건" left="0" top="0" usedecorate="true" cssclass="sta_WF_Dot" bottom="0" width="100"/>
+        <Combo id="cboCnt" taborder="2" text="10" top="0" width="92" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="10" right="0" onitemchanged="cboCnt_onitemchanged" accessibilitylabel="페이지당 목록 건수 설정" bottom="0">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">10</Col>
+                <Col id="datacolumn">10</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">20</Col>
+                <Col id="datacolumn">20</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">30</Col>
+                <Col id="datacolumn">30</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">50</Col>
+                <Col id="datacolumn">50</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">100</Col>
+                <Col id="datacolumn">100</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	cmmPagingM.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.11
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.11			TOBESOFT					최초생성
+* 2022.10.14			TOBESOFT					수정
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvPageLeft   = 0; 	// div가운데 위치시키기 위한 left값
+this.fvFnCallback = "";	// 조회함수
+this.fvRecords    = 10;	// 목록수
+this.fvPage       = 1;
+this.fvObjGrid;
+this.fvPageColor  = "#4678FF";
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//this.gfnFormOnLoadM(obj); //필수함수
+};
+
+this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{
+	//가운데로
+	if (this.fvFnCallback != "") this.fnSetCenter(obj);
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+/**
+ * @description  page초기화
+*/
+this.fnInitPage = function()
+{
+	this.divPage.set_visible(true);
+	this.divPage.form.staPage.set_text("");
+	this.divPage.form.btnBefore.set_enable(false);
+	this.divPage.form.btnNext.set_enable(false);
+};
+
+/**
+ * @description  nCreatePage page갯수에 맞게 버튼 생성
+*/
+this.fnCreatePage = function(objGrid, sFnCallback, nPage, nRecords, nTotalRecords)
+{
+	this.fvFnCallback = sFnCallback;	// callBack 함수명
+	
+	// 페이지 당 건수 설정
+	nRecords = this.cboCnt.value;
+	this.fvRecords = nRecords;
+	
+	// 총 페이지 건수 표시
+	var sText = "총 <fc v='#25649e'>" + nTotalRecords + "</fc> 건" ;
+	this.staCount.set_text(sText);	
+	
+	/*전체페이지갯수 계산*/	
+	if( Math.floor( nTotalRecords % nRecords ) > 0 )
+	{
+        nTotalPageC = Math.floor( nTotalRecords / nRecords ) + 1;
+    }else 
+    {
+        nTotalPageC = Math.floor( nTotalRecords / nRecords );
+    }
+    
+    //DIV 초기화
+    this.fnInitPage();
+    this.set_scrollbartype("none");
+	
+	/************************************************************************
+	 * 앞으로(<) 버튼설정
+	 ************************************************************************/
+	this.divPage.form.btnBefore.page = nPage - 1;
+	this.divPage.form.btnBefore.set_enable(true);
+	
+	// 현재페이지가 '1'이면 비활성화
+	if( nPage == 1)		this.divPage.form.btnBefore.set_enable(false);
+	
+	/************************************************************************
+	 *페이징 표시
+	 ************************************************************************/
+	var sPage = "<b v='true'><fc v='" + this.fvPageColor + "'>" + nPage + "</fc></b> / " + nTotalPageC;
+	this.divPage.form.staPage.set_text(sPage);
+	
+	/************************************************************************
+	 * 뒤로(>) 버튼생성
+	 ************************************************************************/
+	this.divPage.form.btnNext.set_enable(true);
+	this.divPage.form.btnNext.page = nPage +1;
+	
+	//현재페이지가 전체페이지갯수만큼이면 비활성화
+	if( nPage >= nTotalPageC) this.divPage.form.btnNext.set_enable(false);
+	
+	this.fvPage = nPage;
+	
+	//가운데로
+	this.fnSetCenter(this);
+};
+
+/**
+ * @description  page이동함수
+*/
+this.fnMovePage = function(obj)
+{
+	var nPage = nexacro.toNumber(obj.page); 						//누른페이지
+//	var nRecordOffset = (nPage-1) * nexacro.toNumber(this.fvRecords);	//시작데이터rownum계산
+	
+	//callback함수호출
+	this.lookupFunc(this.fvFnCallback).call(nPage, this.fvRecords);
+};
+
+/**
+ * @description  pagingDiv가 가운데오도록
+*/
+this.fnSetCenter = function(obj)
+{
+	var diffWidth = nexacro.toNumber(obj.getOffsetWidth()) - nexacro.toNumber(this.divPage.getOffsetWidth());
+	var diffHeight = nexacro.toNumber(obj.getOffsetHeight()) - nexacro.toNumber(this.divPage.getOffsetHeight());
+	
+ 	this.divPage.move(parseFloat(diffWidth/2),parseFloat(diffHeight/2));
+};
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.cboCnt_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	if(!this.gfnIsNull(this.fvFnCallback))
+	{
+		this.lookupFunc(this.fvFnCallback).call(1, e.postvalue);
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="form" width="480" height="1010" titletext="바코드읽기/QR생성(NRE)" onload="form_onload">
+    <Layouts>
+      <Layout height="1010" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="1" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_00" taborder="2" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <ImageViewer id="iv_qrcode" taborder="3" top="570" stretch="fixaspectratio" height="400" left="30" text="" right="30"/>
+        <Button id="btnCreate" taborder="4" text="QRcode 생성" left="30" top="490" height="60" right="30" cssclass="btn_WF_Full" onclick="btnCreate_onclick"/>
+        <TextArea id="txt_text" taborder="5" left="30" top="420" height="50" value="http://tobesoft.com" right="30"/>
+        <TextArea id="tx_output" taborder="6" left="30" top="110" right="30" height="200" readonly="true"/>
+        <Button id="btnScan" taborder="7" text="QRcode / Barcode 스캔" left="30" top="30" right="30" height="60" cssclass="btn_WF_Full" onclick="btnScan_onclick"/>
+        <Button id="btnToast" taborder="9" text="Toast" left="30" top="320" height="60" onclick="btnToast_onclick" right="51.04%"/>
+        <Button id="btnVersion" taborder="8" text="앱버전" left="btnToast:10" top="320" height="60" onclick="btnVersion_onclick" right="30"/>
+        <Static id="Static03" taborder="10" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01_00_00_01" taborder="11" text="H20" left="0" top="90" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_00" taborder="12" text="H40" left="0" top="380" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_00_01_00" taborder="13" text="H10" left="0" top="310" cssclass="sta_WF_GSize" visible="false" right="0" height="10"/>
+        <Static id="Static02_01_01_01_00_00_01_01" taborder="14" text="H20" left="0" top="470" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_00_00" taborder="15" text="H20" left="0" top="550" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_00_00" taborder="16" text="H40" left="0" top="970" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	sampleQR.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/01
+*  @Desction   설명
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/01		    TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.objApp = nexacro.getApplication();
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+	
+    //모바일앱이면
+    if (system.navigatorname =="nexacro" && this.objApp.gvOs.indexOf("WINDOWS") == -1)
+    {
+		this.btnScan.set_enable(true);	
+		this.btnToast.set_enable(true);	
+		this.btnVersion.set_enable(true);	
+		this.btnCreate.set_enable(true);	
+	
+		this.addChild("standardPlugin",new nexacro.Standard());
+		this.standardPlugin.addEventHandler("on_callback", this.on_standardPlugin_callback, this);   		
+    }	
+	else
+	{
+        alert("현재 브라우저에서는 지원하지 않습니다");
+		this.btnScan.set_enable(false);	
+		this.btnToast.set_enable(false);	
+		this.btnVersion.set_enable(false);	
+		this.btnCreate.set_enable(false);	
+	}		
+	
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+this.on_standardPlugin_callback = function(obj, e)
+{
+	this.tx_output.set_value("");
+// 	trace("this.on_callback ::: "+e.svcid);
+// 	trace("this.on_callback ::: "+e.reason);
+// 	trace("this.on_callback ::: "+e.returnvalue);
+// 	trace(JSON.stringify(e.returnvalue));
+
+	var sValue = e.returnvalue;
+	
+	if (this.objApp.gvOs.indexOf("ANDROID") == -1)
+	{
+		sValue = e.returnvalue.message;
+	}
+
+	if (e.reason == 0)
+	{
+		if (e.svcid == "scan")
+		{
+			this.tx_output.set_value(sValue);
+		}
+		else if (e.svcid == "mkQRCode")
+		{
+			this.iv_qrcode.set_image(sValue);
+		}
+		else if (e.svcid == "getPackageVersion")
+		{
+			if (this.objApp.gvOs.indexOf("ANDROID") > -1)
+			{
+				sValue = e.returnvalue.versionName;				
+			}	
+		
+			this.tx_output.set_value(sValue);
+		}		
+	}
+	else
+	{
+		var out  = "\nCODE   : " + e.reason;
+			out += "\nRESULT : " + e.returnvalue;
+		this.tx_output.set_value(out);
+	}
+}
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+
+this.btnScan_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	this.standardPlugin.callMethod("scan", param);
+};
+
+this.btnCreate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	param.sData = this.txt_text.value;
+	param.nSize = 400;
+
+	this.standardPlugin.callMethod("mkQRCode", param);	
+};
+
+this.btnVersion_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	this.standardPlugin.callMethod("getPackageVersion", param);	
+};
+
+this.btnToast_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var param = {
+		toastText : "Toast Test",
+		duration : 0// 0 : LENGTH_SHORT, 1 : LENGTH_LONG
+	};
+	this.standardPlugin.callMethod("viewToast", param);	
+};
+]]></Script>
+    <Objects/>
+  </Form>
+</FDL>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp01" width="480" height="815" onclick="Temp01_onclick" titletext="Notice List">
+    <Layouts>
+      <Layout height="815" mobileorientation="portrait" screenid="mobile" width="480">
+        <Grid id="Grid00" taborder="11" left="30" top="340" height="475" right="30" cssclass="grd_WF_SearchBoard" binddataset="Dataset00" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="420"/>
+              </Columns>
+              <Rows>
+                <Row size="50"/>
+                <Row size="55"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="넥사크로플랫폼 2022.2월 정기버전 안내"/>
+                <Cell row="1" text="2022.02.07｜ 조회 20" cssclass="cell_WF_Line"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static03" taborder="1" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_00" taborder="2" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_01" taborder="3" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static03_00" taborder="4" left="0" top="310" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Button id="Button01" taborder="5" top="690" width="65" height="65" cssclass="btn_WF_AddSchedule" right="15" text=""/>
+        <Static id="Static02_01_01_01_01" taborder="6" text="H20" left="0" top="320" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static00_00" taborder="7" text="검색어" left="30" top="30" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Combo id="Combo00_00" taborder="8" text="제목" left="30" top="80" height="50" value="" index="-1" right="30"/>
+        <Edit id="Edit00" taborder="9" left="30" top="140" height="50" right="30"/>
+        <Button id="Button00" taborder="10" text="조회" left="30" top="210" height="60" cssclass="btn_WF_Full" right="30"/>
+        <Static id="Static02_01_00" taborder="12" text="H10" left="0" top="130" cssclass="sta_WF_GSize" visible="false" right="0" height="10"/>
+        <Static id="Static02_01_01_01_02" taborder="13" text="H20" left="0" top="190" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00" taborder="14" text="H40" left="0" top="270" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Temp01_onclick = function(obj:nexacro.Form,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

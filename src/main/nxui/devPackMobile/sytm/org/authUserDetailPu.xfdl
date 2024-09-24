@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="authUserDetailPu" width="480" height="770" titletext="조직도 상세" onload="authDeptUserDetailPu_onload">
+    <Layouts>
+      <Layout height="770" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02_01_01" taborder="3" text="H20" left="0" top="80" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Grid id="grdUserInfo" taborder="5" left="30" top="Static02_01_01:0" cssclass="grd_WF_UserInfo" right="30" bottom="40" binddataset="dsUserInfo" autofittype="col" oncellclick="grdUserInfo_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="246"/>
+                <Column size="50"/>
+                <Column size="50"/>
+              </Columns>
+              <Rows>
+                <Row size="54"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:KEY" cssclass="label_Info"/>
+                <Cell col="1" text="bind:VALUE"/>
+                <Cell col="2" displaytype="imagecontrol" cssclass="expr:KEY ==  &quot;핸드폰&quot; ?  &quot;label_Mobile&quot; : &quot;&quot;"/>
+                <Cell col="3" displaytype="imagecontrol" cssclass="expr:KEY ==  &quot;핸드폰&quot; ? &quot;label_Message&quot; : &quot;&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="1" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static03_00" taborder="4" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="sta00" taborder="2" top="Static03_00:20" height="50" cssclass="sta_WF_ConTit" width="370" left="30"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsUserInfo">
+        <ColumnInfo>
+          <Column id="KEY" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="KEY">사용자ID</Col>
+            <Col id="VALUE"/>
+          </Row>
+          <Row>
+            <Col id="KEY">부서</Col>
+            <Col id="VALUE"/>
+          </Row>
+          <Row>
+            <Col id="KEY">직급</Col>
+            <Col id="VALUE"/>
+          </Row>
+          <Row>
+            <Col id="KEY">직잭</Col>
+            <Col id="VALUE"/>
+          </Row>
+          <Row>
+            <Col id="KEY">핸드폰</Col>
+            <Col id="VALUE"/>
+          </Row>
+          <Row>
+            <Col id="KEY">이메일</Col>
+            <Col id="VALUE"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	authDeptUserDetailPu.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/25
+*  @Desction   설명
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/25			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.objApp = nexacro.getApplication();
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.authDeptUserDetailPu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(this);
+	
+	//이름 + 직책 or 직급 세팅
+	var sTitle = this.getOwnerFrame().title;
+	this.sta00.set_text(sTitle);
+	
+	//grdUserInfo에 바인딩된 dataset 세팅
+	this.fnSetDsUserInfo();
+	
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+this.fnSetDsUserInfo = function()
+{
+	var nRow = 0;
+	var objDs = this.getOwnerFrame().ds;
+	var dsCommCode = this.objApp.gdsCommCode;
+
+	this.dsUserInfo.setColumn(0, "VALUE", objDs.getColumn(0, "EMP_NO"));
+	this.dsUserInfo.setColumn(1, "VALUE", objDs.getColumn(0, "DEPT_NM"));
+	this.dsUserInfo.setColumn(2, "VALUE", objDs.getColumn(0, "WKGD_NM"));
+	this.dsUserInfo.setColumn(3, "VALUE", objDs.getColumn(0, "WKDT_NM"));
+	this.dsUserInfo.setColumn(4, "VALUE", objDs.getColumn(0, "CELL_NUMB"));
+	this.dsUserInfo.setColumn(5, "VALUE", objDs.getColumn(0, "EMAIL"));
+}
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.grdUserInfo_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var sPhoneNum = this.getOwnerFrame().ds.getColumn(0, "CELL_NUMB");
+	if(this.gfnIsNull(sPhoneNum) || sPhoneNum.length < 3) return;
+	if(e.cell == '2')
+	{
+		//전화 연결
+		system.execBrowser("tel:"+ sPhoneNum);
+
+	}else if(e.cell == '3')
+	{
+		//문자 연결
+		system.execBrowser("sms:"+sPhoneNum);
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

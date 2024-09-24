@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frameLogin" width="480" height="768" cssclass="Login" background="#F2F3FF" onload="frameLogin_onload" titletext="로그인프레임">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" width="480">
+        <Edit id="edtId" taborder="0" left="60" top="430" height="70" onkeyup="edtKeyup" right="60" autoselect="true" cssclass="edt_LOGIN_Id"/>
+        <Edit id="edtPw" taborder="1" left="60" top="512" height="70" cssclass="edt_LOGIN_Pw" onkeyup="edtKeyup" password="true" right="60" autoselect="true"/>
+        <CheckBox id="chkSaveId" taborder="2" text="아이디저장" width="120" height="30" top="599" onclick="Div01_CheckBox03_onclick" cssclass="chk_LOGIN_SaveId" right="58" fittocontents="width"/>
+        <Button id="btnLogin" taborder="3" text="Login" left="60" top="649" height="70" cssclass="btn_LOGIN" onclick="btnLogin_onclick" right="60"/>
+        <Static id="sta00" taborder="4" left="0" top="60" height="370" cssclass="sta_LOGIN_Logo" right="0"/>
+        <Static id="staVersion" taborder="5" left="7" top="4" width="102" height="35" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  컨설팅 표준화 작업
+*  @MenuPath    frame > frmLogin
+*  @FileName 	frmLogin.xfdl 
+*  @Creator 	mobile_consulting
+*  @CreateDate 	2017.11.14
+*  @Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2022.03.24     	mobile_consulting		 	최초 생성 
+*******************************************************************************
+*/
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+ this.objApp = nexacro.getApplication();
+ 
+ /************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose)
+ ************************************************************************************************/
+/**
+ * @description 화면 onload시 처리내역(필수)
+*/
+this.frameLogin_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fnGetPassword();	
+};
+
+
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/************************************************************************************************
+ * CRUD 및 TRANSACTION 서비스 호출 처리
+ ************************************************************************************************/
+this.fnGetBaseInfo = function ()
+{
+	//공통코드
+	var strSvcId    = "SearchBaseInfo";
+	var strSvcUrl   = "SearchBaseInfo.do";
+	var inData      = "";
+	var outData     = "gdsCommCode=dsComboData gdsMessage=dsMessage gdsMyMenu=dsMyMenu gdsMenu=dsMenu gdsAddBtn=dsAddBtn";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc);   // 통신방법 정의 [생략가능]
+};
+
+
+this.fnLogin = function()
+{
+	//자동완성 기능 사용 위해
+	this.dsCond.setColumn(0, "EMP_NO", this.edtId.value);
+	this.dsCond.setColumn(0, "USER_PASSWORD", this.edtPw.value);	
+	
+	// 정합성 체크	
+	this.gfnClearValidation(this.dsCond);
+	this.gfnSetValidation(this.dsCond, "EMP_NO", "사용자ID"	, "required");
+	this.gfnSetValidation(this.dsCond, "USER_PASSWORD", "패스워드"	, "required");
+	if (this.gfnValidation(this.dsCond, "A") == false) return;
+	
+	//데이터셋 세팅
+	this.gfnSetLoginLogDataset();
+
+	//로그인
+	var strSvcId    = "Login";
+	var strSvcUrl   = "Login.do";
+	var inData      = "dsCond=dsCond gdsLoginLog=gdsLoginLog";
+	var outData     = "gdsUser=dsLoginUser dsLoginResult=dsLoginResult";
+	var strArg      = "sSytmFlagCd="+nexacro.getApplication().gvSytmFlagCd;
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc);   // 통신방법 정의 [생략가능]
+}
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분(Transaction, Popup)
+ ************************************************************************************************/
+//transaction
+this.fnCallback = function (sSvcId, nErrCd, sErrMsg)
+{
+	switch(sSvcId) {
+	case "SearchBaseInfo" :	
+		this.dsCond.clearData();
+		this.dsCond.addRow();
+		this.fnGoMain();
+		break;
+	case "Login" :
+		this.fnSetLoginResult(nErrCd,sErrMsg);
+		break;
+
+	}
+}
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+
+
+/**
+ * @description 로그인 결과 세팅
+ */ 
+this.fnSetLoginResult = function (nErrCd,sErrMsg)
+{
+	if(nErrCd == -200){
+		this.gfnAlert("msg.err.tran", [sErrMsg]);		//TODO : alert 화면명 체크
+		return;
+	}else if(nErrCd == 0){
+		var sThemeId = this.objApp.gdsUser.getColumn(0,"THEME_ID");
+		if(!this.gfnIsNull(sThemeId)){
+			if(sThemeId == "02"){
+				nexacro.loadStyle("xcssrc::darkMode.xcss");
+			}else{
+			    nexacro.loadStyle("xcssrc::lightMode.xcss");
+			}
+		}	
+		this.fnSavePassword();
+		this.objApp.gvIsLogin = "Y";
+		this.fnGetBaseInfo();
+	}
+};
+
+
+this.fnGoMain = function()
+{
+	//frmMenu script 영역에 정의된 level 0 메뉴 세팅 함수 호출
+	this.objApp.gvBase.divMenu.form.fnsetDsBtnMenu();
+	//22.04.11 로그인 후 mainpage url 셋팅
+	this.parent.parent.parent.form.divMain.set_url("frame::frmMainPage.xfdl");
+	this.objApp.gvBase.fnAction("LOGIN", true);
+	this.objApp.gvBase.fnAction("History", null);
+}
+
+/**
+ * @description 패스워드가져오기 (저장값)
+ */
+this.fnGetPassword = function ()
+{
+	var sIdSaveCheck = nexacro.getPrivateProfile("idSaveCheck");
+	this.chkSaveId.set_value(sIdSaveCheck);
+
+	var pThis = this
+	nexacro._OnceCallbackTimer.callonce(pThis, function () {
+		if (pThis.chkSaveId.value)
+		{
+			pThis.edtId.set_value(nexacro.getPrivateProfile("idSave"));
+			//edtPw 쪽 생성 후 포커싱 위해 타이머 설정함	
+			pThis.edtPw.setFocus();
+		}
+		else
+		{
+			pThis.edtId.set_value("");
+			pThis.edtId.setFocus();
+		}
+	}, 100);	
+};
+
+/**
+ * @description 패스워드세팅
+ */
+this.fnSavePassword = function ()
+{
+	nexacro.setPrivateProfile("idSaveCheck", this.chkSaveId.value);
+	
+	if (this.chkSaveId.value)
+	{
+		nexacro.setPrivateProfile("idSave", this.edtId.value);
+	}
+};
+ /************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+this.btnLogin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnLogin();
+};
+
+this.edtKeyup = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	if( e.keycode == 13){
+		this.fnLogin();
+	}
+}
+
+
+this.btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace(this.edtId.value);
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="EMP_NO" type="STRING" size="256"/>
+          <Column id="USER_PASSWORD" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsLoginResult"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="edtId" propid="value" datasetid="dsCond" columnid="EMP_NO"/>
+      <BindItem id="item1" compid="edtPw" propid="value" datasetid="dsCond" columnid="USER_PASSWORD"/>
+    </Bind>
+  </Form>
+</FDL>

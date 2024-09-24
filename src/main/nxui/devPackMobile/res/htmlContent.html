@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.5,user-scalable=yes"/>
+
+<title></title>
+<style type='text/css'>
+html, body {width:100%; height:100%; margin:0; border:0; padding:0; overflow:hidden }
+body { background-color:#ffffff; }
+</style>
+	
+<script language="JavaScript" type="text/javascript">
+
+	strHTML = "HoHoHoHo";
+
+	if (! window.NEXACROHTML)
+	{
+		window.NEXACROHTML = {};
+	}
+
+	window.NEXACROHTML.FireUserNotify = function(userdata)
+	{	
+		if (window.NEXACROWEBBROWSER)
+		{	// 윈도우 html5, 안드로이드 html5, iOS html5, iOS 런타임
+			window.NEXACROWEBBROWSER.on_fire_onusernotify(window.NEXACROWEBBROWSER, userdata);
+		}
+		else if (typeof nexacro == "undefined")	//windows runtime
+		{	//윈도우 런타임	
+			window.document.title = userdata;
+		} 
+		else if (nexacro) 					 //mobile runtime - Android
+		{	//안드로이드 런타임
+			nexacro.fireUserNotify(userdata);	
+		} 
+	}
+
+	function fn_getContent(sId)
+	{
+		var divobj = document.getElementById(sId);
+		window.NEXACROHTML.FireUserNotify(divobj.innerHTML);
+	}
+
+</script>
+</head>
+
+<body>
+<br>
+<p><H1 id='title_test'>webbrowser4.html</H1></p>
+
+<input id="inputText" type="text" value="hahahaha" size="64"></p>
+
+<p>strHTML = &quot;<script type="text/javascript">document.write(strHTML);</script>&quot;</p>
+
+<br>
+<br>
+		<div id='contents'> contents</div>
+</body>
+</html>

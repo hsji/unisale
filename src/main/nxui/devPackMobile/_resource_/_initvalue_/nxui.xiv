@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GlobalPropInitvalueDefinition version="1.0">
+  <nexacro.Calendar>
+    <initvalueid id="iv_Cal" popupsize="360 402" popuptype="center"/>
+  </nexacro.Calendar>
+</GlobalPropInitvalueDefinition>

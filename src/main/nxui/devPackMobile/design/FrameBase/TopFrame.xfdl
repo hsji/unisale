@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="TopFrame" width="480" height="55" titletext="상단">
+    <Layouts>
+      <Layout height="55" mobileorientation="landscape" width="480" screenid="mobile">
+        <Static id="Static00" taborder="2" text="타이틀영역" left="55" top="0" height="55" cssclass="sta_TF_Title" width="370"/>
+        <Button id="Button00" taborder="0" left="20" top="0" width="55" height="55" cssclass="btn_TF_Pre"/>
+        <Button id="Button00_00" taborder="1" top="0" width="55" height="55" right="20" cssclass="btn_TF_Menu" text="" onclick="Button00_00_onclick"/>
+        <Static id="Static01" taborder="3" left="0" height="1" cssclass="sta_TF_Line" right="0" bottom="0"/>
+        <Static id="Static00_00" taborder="4" left="55" top="91" height="55" cssclass="sta_WF_Logo" width="370"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/** Favorites popupdiv **/
+this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		this.PopupDiv00.trackPopupByComponent(obj, 0, 0)
+};
+]]></Script>
+  </Form>
+</FDL>

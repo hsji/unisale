@@ -1,0 +1,16 @@
+{
+	"name": "DevPackLibM",
+	"version": "1.0.0.0",
+	"description": "Library for nexacro platform17",
+	"license": "",
+	"scripts": [
+        "DevPackLibM/Frame.js",
+        "DevPackLibM/Popup.js",
+        "DevPackLibM/Util.js",
+		"DevPackLibM/Resize.js",
+		"DevPackLibM/Resize2.js",
+		"DevPackLibM/Message.js",
+		"DevPackLibM/Comp.js"
+
+	]
+}

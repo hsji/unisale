@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="AllFrame" width="480" height="768" titletext="전체프레임">
+    <Layouts>
+      <Layout width="480" height="768" screenid="mobile">
+        <Div id="Div00" taborder="0" left="0" top="0" height="55" right="0" url="design::FrameBase\TopFrame.xfdl"/>
+        <Div id="Div01" taborder="1" text="업무영역" left="0" top="55" right="0" height="713"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

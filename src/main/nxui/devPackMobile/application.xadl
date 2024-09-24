@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="2.0">
+  <Application id="application" screenid="mobile" onload="Application_onload" licenseurl="./license/NexacroN_client_license.xml">
+    <Layout>
+      <MainFrame id="mainframe" showtitlebar="false" showstatusbar="false" left="0" top="0" width="480" height="768" titletext="DevPro Mobile" resizable="true" openalign="center middle" showcascadetitletext="false">
+        <ChildFrame id="baseChild" showtitlebar="false" showstatusbar="false" formurl="frame::frmBase.xfdl"/>
+      </MainFrame>
+    </Layout>
+    <Style url="xcssrc::lightMode.xcss"/>
+  </Application>
+  <Script type="xscript5.1"><![CDATA[/**
+*  컨설팅 표준화 작업
+*  @MenuPath    frame > frameBase
+*  @FileName 	frameBase.xfdl 
+*  @Creator 	mobile_consulting
+*  @CreateDate 	2017.11.14
+*  @Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2022.03.24     	mobile_consulting		 	최초 생성 
+*******************************************************************************
+*/
+
+/************************************************************************************************
+ * application 변수 선언 영역
+ ************************************************************************************************/
+this.gvMenuColumns 	= 
+{
+	sytmFlagCd		: "SYTM_FLAG_CD",    	// 시스템구분코드
+	menuId 			: "MENU_ID",    		// 아이디
+	menuNm 			: "MENU_NM",			// 명칭
+	groupId			: "MODULE_CD",		// 메뉴그룹 아이디
+	prgmId 			: "PRGM_ID",			// 프로그램 아이디
+	prgmPath		: "PRGM_PATH",			// 프로그램 경로(서비스그룹명)
+	prgmFileNm		: "PRGM_FILE_NM",		// 프로그램 파일명
+	menuUrl 		: "MENU_URL",			// 프로그램 URL(서비스그룹명 + "::" + 파일명)
+	menuLevel 		: "MENU_LV",     		// 메뉴레벨	
+    upMenuId    	: "HIPO_MENU_ID",		// 상위메뉴 아이디
+	//leafYn 		: "LEAF_YN",			// 마지막 노드 여부
+	//useYn			: "USED_YN",			// 사용여부
+	addBtnYn		: "CMMNBTNADD",			// 공통신규버튼 사용여부 
+	delBtnYn		: "CMMNBTNDEL",			// 공통삭제버튼 사용여부
+	saveBtnYn		: "CMMNBTNSAVE",		// 공통저장버튼 사용여부
+	printBtnYn		: "CMMNBTNPRINT",		// 공통출력버튼 사용여부
+	helpBtnYn		: "cmmnBtnHelp",		// 공통도움말버튼 사용여부
+	excelUpBtnYn	: "cmmnBtnExcelUp",		// 공통엑셀업로드버튼 사용여부
+	excelDownBtnYn	: "CMMNBTNEXCELDOWN",	// 공통엑셀다운로드버튼 사용여부
+	initbtinYn		: "CMMNBTNINIT",
+	searchBtnYn     : "CMMNBTNSEARCH",
+	winId 			: "WIN_ID",      		// 윈도우(프레임)아이디(열린 메뉴의 윈도우 아이디)
+	title 			: "MENU_NM",			// 메뉴타이틀
+	param			: "PARM",
+	displayPath     : "DISPLAY_PATH",
+	pageUrl			: "MENU_URL"			// pageUrl 사용하는 공통함수 있어 추가.
+};
+ 
+ /************************************************************************************************
+ * application EVENT 영역(onload, onbeforeclose)
+ ************************************************************************************************/
+/**
+ * @description 화면 onload시 처리내역(필수)
+*/
+this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
+{
+	// QuikView 여부 설정
+	nexacro.setEnvironmentVariable("evQuikView", "N");
+	
+	this.gvOs 		    = system.osversion.toUpperCase();	
+    this.gvNaviveStatus = "N";
+    
+    var objApp = nexacro.getApplication();
+	    
+    // 데이터셋 생성
+    var objDs = new Dataset;	//Dataset generating
+    objDs.set_id("gdsArguments");
+    objDs.addColumn("argId", "string");
+    objDs.addColumn("argValue", "string");
+	objApp.addVariable("gdsArguments", objDs);
+	
+	//trace("osVersion : "+ this.gvOs + "  sBrowser : "+ system.navigatorname + " , "+ system.navigatorname);
+	//osVersion : WINDOWS 7  		sBrowser : RUNTIME 		, nexacro   	- 런타임
+	//osVersion : WINDOWS 7  		sBrowser : CHROME 		, Chrome     	- html5
+	//osVersion : Android 6.0.1   	sBrowser : RUNTIME 		, nexacro		- 런타임
+	//osVersion : Android 6.0.1   	sBrowser : CHROME 		, CHROME		- html5
+	//osVersion : iOS 10.3.3   		sBrowser : MobileSafari , nexacro		- 런타임
+	//osVersion : iOS 10.3.3   		sBrowser : MobileSafari , MobileSafari	- html5
+	
+	//------------------------------------------------------------------------
+    var nRunMode = "S"; // S : Studio, L : local, D : 개발, R : 운영    
+    //------------------------------------------------------------------------
+    
+    var objEnv = nexacro.getEnvironment();
+	var xadl = nexacro.getProjectPath();
+	
+	// 런타임 접속
+	if (system.navigatorname == "nexacro") 
+	{
+		// studio로 실행
+		if (xadl.indexOf("file://") != -1) 
+        {        
+			nRunMode = "S";
+			objApp.mainframe.set_titletext("로컬(Studio) - " + objApp.mainframe.titletext);
+            objApp.mainframe.set_showtitlebar(true);     
+            objApp.mainframe.set_border("1px solid black");
+		}
+		// 앱 접속
+		else {
+
+			var urlPath = xadl;
+// 			22.03.29 수정(jhk)
+// 			nexacro 있는지 여부 조건문 추가
+			if(xadl.lastIndexOf("devPack") != -1)
+			{
+				urlPath  = xadl.substring(0, xadl.lastIndexOf("devPack"));
+			}
+			// service URL 설정
+			var objSrv = objEnv.services["svcUrl"];			
+ 			objSrv.set_url(urlPath+"/");
+			
+			this.gvResUrl = xadl + "res/";
+                   
+			// 로컬(웹)
+			if (xadl.indexOf("localhost") > -1 || xadl.indexOf("127.0.0.1") > -1 ) 
+            {
+				nRunMode = "L";
+				objApp.mainframe.set_titletext("로컬(앱)  - " + objApp.mainframe.titletext);
+			} 
+			// 운영
+			else if (objSrv.url.indexOf("tobesoft.com")>-1) 
+            {
+				nRunMode = "R";				
+				// trace 정지 설정
+				this.afnSetTraceMode(false);
+			}
+			// 개발
+            else {
+				nRunMode = "D";
+				objApp.mainframe.set_titletext("개발(앱)  - " + objApp.mainframe.titletext);
+            }
+		}
+	}
+	// 웹 접속
+	else {	
+		//history.pushState 지원브라우져 Chrom 5.0 이상, Internet Explorer 10이상 지원
+		//https://developer.mozilla.org/ko/docs/Web/API/History 참고
+		if ((system.navigatorname).toUpperCase() != "IE" ||
+		    ((system.navigatorname).toUpperCase() == "IE" && parseInt(system.navigatorversion) >= 10))
+		{
+			// 백스페이스 및 툴바의 뒤로가기 방지
+			history.pushState(null, null, location.href);
+			window.onpopstate = function(event) {
+				history.go(1);
+			};
+		}
+
+ 		var urlPath = window.location.protocol + "//" + window.location.host;
+ 		// service URL 설정
+ 		var objSrv = objEnv.services["svcUrl"];		
+		objSrv.set_url(urlPath+"/");
+		//TODO
+		this.gvResUrl = xadl + "res/";
+        
+        // 로컬(웹)
+        if (objSrv.url.indexOf("localhost") > -1 || objSrv.url.indexOf("127.0.0.1") > -1 ) 
+        {
+            nRunMode = "L";
+            objApp.mainframe.set_titletext("로컬(웹)  - " + objApp.mainframe.titletext);
+        }       
+		// 운영
+        else if (objSrv.url.indexOf("tobesoft.com")>-1) 
+        {
+            nRunMode = "R";            
+            // trace 정지 설정
+            this.afnSetTraceMode(false);
+        }
+		// 개발
+        else {
+            nRunMode = "D";
+            objApp.mainframe.set_titletext("개발(웹)  - " + objApp.mainframe.titletext);
+       }        
+	}	
+	nexacro.setEnvironmentVariable("evRunMode", nRunMode);    
+       
+	// 접속경로 확인
+	trace("*===== 접속경로 : " + nexacro.getProjectPath()+" nRunMode " + nRunMode);	 
+
+	// 서버와 SSO 체크로직을 위해 Cookies에 값 설정 예제
+	//nexacro.setCookieVariable("jsessionidTest","AAAAA");
+	//nexacro.setHTTPHeaderVariable("headerTest","BBBBB");
+	
+	// Grid 개인화 정보 load
+// 	var objGds = objApp.gdsGridPersonal;
+// 	var sGdsGridXML = nexacro.getPrivateProfile("gdsGridPersonal");
+// 	objGds.loadXML(sGdsGridXML);
+	
+};
+
+
+
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분(Transaction, Popup)
+ ************************************************************************************************/
+
+
+/************************************************************************************************
+ * CRUD 및 TRANSACTION 서비스 호출 처리
+ ************************************************************************************************/
+
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+/**
+ * @description trace 재정의하여 trace로그 생성 방지
+*/
+this.afnSetTraceMode = function(bTrace)
+{
+	trace("★★ 운영접속시에는 trace 로그를 남기지 않도록 설정되었습니다.");
+	
+    nexacro.setEnvironmentVariable("evTraceMode", bTrace);
+    if (bTrace)
+    {
+		trace = this.gvRealTrace;
+    }
+    else {
+        trace = function trace(){};
+    }
+}
+ 
+ /************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+this.application_onnotification = function(obj:nexacro.Application,e:nexacro.NotificationEventInfo)
+{
+	trace("============> Application_onnotification "+ system.notificationtoken + " ============== "+ e.reason);
+};
+
+//TODO? : mainframe_onsize 이벤트 함수?
+]]></Script>
+</ADL>

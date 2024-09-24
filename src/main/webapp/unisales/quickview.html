@@ -1,0 +1,206 @@
+<!-- DOCTYPE : DOCTYPE declaration -->
+<!DOCTYPE html>
+<html > <!-- LANGUAGE : locale setting (value of location property in Environment) -->
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=1, initial-scale=0.1, width=device-width, target-densitydpi=device-dpi">
+	<!-- META_CHECKVERSION : Add if value of checkversion property in Envrionment is true -->
+    <meta http-equiv="pragma" content="no-cache">
+	
+	<!-- FAVICON : favion setting (value of icon property in Environment. add to value of icon property in Environment) -->
+    <link rel="shortcut icon" href="./_resource_/_theme_/devPack/images/mobiletong.ico?nexaversion=20240531">
+	<!-- USERFONT_STYLE : userfont style setting (value of userfontid property in Environment. crate contents contained in xfont file specified userfontid property in Environment) -->
+    <style id="userfont">
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 100;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-100.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-100.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-100.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-100.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 200;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-200.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-200.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-200.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-200.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 300;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-300.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-300.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-300.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-300.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 400;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-regular.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-regular.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-regular.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-regular.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 500;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-500.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-500.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-500.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-500.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 600;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-600.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-600.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-600.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-600.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 700;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-700.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-700.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-700.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-700.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 800;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-800.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-800.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-800.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-800.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'noto';
+          font-style: normal;
+          font-weight: 900;
+          src: url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-900.woff2?nexaversion=20240531') format('woff2'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-900.woff?nexaversion=20240531') format('woff'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-900.ttf?nexaversion=20240531') format('truetype'),
+               url('./_resource_/_font_/noto-sans-kr-v36-korean_latin-900.svg#NotoSansKR?nexaversion=20240531') format('svg');
+        }
+        </style>
+	
+	<!-- FRAMEWORK_LIBRARY : framework lodaing path (list of scripts files in the Framework.json file) -->
+    <script src="./nexacrolib/framework/Framework.js?nexaversion=24.0.0.140"></script>
+	
+	<!-- COMPONENTS_LIBRARY : commonent lodaing path (list of script file in json file specified in the TypeDefinition module) -->
+    <script src="./nexacrolib/component/CompBase.js?nexaversion=24.0.0.140"></script>
+    <script src="./nexacrolib/component/ComComp.js?nexaversion=24.0.0.140"></script>
+    <script src="./nexacrolib/component/Grid.js?nexaversion=24.0.0.140"></script>
+    <script src="./nexacrolib/component/ListView.js?nexaversion=24.0.0.140"></script>
+    <script src="./nexacrolib/component/DeviceAPI.js?nexaversion=24.0.0.140"></script>
+    <script src="./nexacrolib/component/DevPackLib/License.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Frame.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Util.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Comp.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Transaction.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Validation.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Popup.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/File.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Message.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Grid.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Excel.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/ExtLib.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/Rest.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/DevPackLib/CompOverride.js?nexaversion=1.0.0.0"></script>
+    <script src="./nexacrolib/component/devPackModule/devPackModule.js?nexaversion=1.0"></script>
+    <script src="./nexacrolib/component/Splitter/Splitter.js?nexaversion=0"></script>
+    <script src="./nexacrolib/component/DxChart/DxChart.license.js?nexaversion=2023.11.15.0"></script>
+    <script src="./nexacrolib/component/DxChart/DxChart.js?nexaversion=2023.11.15.0"></script>
+    <script src="./nexacrolib/component/CryptoJS/jsbn.js?nexaversion=2019.1.30"></script>
+    <script src="./nexacrolib/component/CryptoJS/rsa.js?nexaversion=2019.1.30"></script>
+    <script src="./nexacrolib/component/CryptoJS/prng4.js?nexaversion=2019.1.30"></script>
+    <script src="./nexacrolib/component/CryptoJS/rng.js?nexaversion=2019.1.30"></script>
+    <script src="./nexacrolib/component/CryptoJS/sha256.js?nexaversion=2019.1.30"></script>
+    <script src="./nexacrolib/component/CryptoJS/RSAUtil.js?nexaversion=2019.1.30"></script>
+    <script src="./nexacrolib/component/ExcelCompJSXLS/opensource/jszip.js?nexaversion=17.0.0.800"></script>
+    <script src="./nexacrolib/component/ExcelCompJSXLS/opensource/xlsx.js?nexaversion=17.0.0.800"></script>
+    <script src="./nexacrolib/component/ExcelCompJSXLS/FileUtil.js?nexaversion=17.0.0.800"></script>
+    <script src="./nexacrolib/component/ExcelCompJSXLS/ExportObjectJS.js?nexaversion=17.0.0.800"></script>
+    <script src="./nexacrolib/component/ExcelCompJSXLS/ImportObjectJS.js?nexaversion=17.0.0.800"></script>
+    <script src="./nexacrolib/component/AlaSql/alasql.js?nexaversion=17.0.0.800"></script>
+    <script src="./nexacrolib/component/UbiDocuMaker/UbiDocuMaker.js?nexaversion=1.0"></script>
+    <script src="./nexacrolib/component/UbiReport4/UbiReport4.js?nexaversion=17.0.0.42"></script>
+    <script src="./nexacrolib/component/UbiReport4/ubihtml.js?nexaversion=17.0.0.42"></script>
+    <script src="./nexacrolib/component/UbiReport4/ubiexcanvas.js?nexaversion=17.0.0.42"></script>
+    <script src="./nexacrolib/component/UbiReport4/ubinonax.js?nexaversion=17.0.0.42"></script>
+    <script src="./nexacrolib/component/UbiReport4/msg.js?nexaversion=17.0.0.42"></script>
+	
+	<!-- ENVIRONMENT_LIBRARY : application environment path (path of Environment.xml.js) -->
+    <script src="./environment.xml.js"></script>
+  
+  <!-- SPLASH_DEFINE_STYLE : Defines the style of the splash screen that is visible while modules are loading -->
+
+	
+	<title></title>
+</head>
+<body style="margin:0;border:none;-ms-touch-action:none;" onload="oninitframework()">
+	
+  <!-- SPLASH_SHOW_STYLE : Adds the splash screen that is visible while modules are loading -->
+
+  
+	<script>
+	function oninitframework()
+	{
+		/* SPLASH_HIDE_STYLE : Hides the splash screen when modules finish loading */
+
+      
+		/* parameter information */
+		var urlParams = {};
+		(function () {
+			var match,
+			pl     = /\+/g,
+			search = /([^&=]+)=?([^&]*)/g,
+			decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+			query  = window.location.search.substring(1);
+			while (match = search.exec(query)) { urlParams[decode(match[1])] = decode(match[2]); }
+			})();
+		nexacro._launch_screenid = urlParams.screenid;
+		nexacro._quickview_formurl = urlParams.formname;
+		/* SCREEN_INFORMATION : create screen information defined in Environment > ScreenDefinition */
+		var screeninfo = [
+        {"id":"desktop","type":"desktop","icon":"url(\'theme::devPack/images/mobiletong.ico\')","themeid":"theme::devPack","xadl":"unisales.xadl.quickview.js"}
+		];
+		nexacro._initHTMLSysEvent(window, document);
+		nexacro._initEnvironment(screeninfo);
+		/* create internal iframe */
+		/* USERFONT_INFORMATION : userfontid property is specified in the Environment */
+		nexacro._prepareManagerFrame(onloadframework, [{family:'noto', style:'normal', weight:100},{family:'noto', style:'normal', weight:200},{family:'noto', style:'normal', weight:300},{family:'noto', style:'normal', weight:400},{family:'noto', style:'normal', weight:500},{family:'noto', style:'normal', weight:600},{family:'noto', style:'normal', weight:700},{family:'noto', style:'normal', weight:800},{family:'noto', style:'normal', weight:900}]);
+	}
+	function onloadframework()
+	{
+		/* application loading */
+		nexacro._loadADL();
+	}
+	function onfinalframework()
+	{
+		/* application exit */
+	}
+	</script>
+</body>
+</html>
+  

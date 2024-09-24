@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleCalendar" width="480" height="768" titletext="달력" onload="form_onload">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" width="480">
+        <Static id="stc" taborder="0" text="1. popuptype 속성&#13;&#10;값을 설정하지 않으면 데스크탑 환경은 &quot;normal&quot; 로 동작되고, 모바일 환경은 &quot;system&quot; 으로 동작됩니다.&#13;&#10;모바일 환경이면 시스템에서 제공하는 팝업달력이 표시됩니다.&#13;&#10;&#13;&#10;2. User Calendar&#13;&#10;모바일에서 PC와 동일한 달력 사용을 하는 경우, 년월 스핀버튼 조작에 불편함이 있을때 사용할 수 있습니다.&#13;&#10;&#13;&#10;3. 월력 사용방법&#13;&#10;1. UserProperty 추가 uCalType == &quot;MM&quot;" left="30" top="30" height="244" right="30" verticalAlign="top" cssclass="sta_WF_GBg02"/>
+        <Static id="sta_00" taborder="1" text="normal" left="30" top="294" width="162" height="50" cssclass="sta_WF_Label"/>
+        <Calendar id="cal00" taborder="2" left="30" top="344" height="52" right="51.04%"/>
+        <Calendar id="cal02" taborder="3" left="30" top="548" height="52" value="20220522" uCalType="MM" right="51.04%"/>
+        <Static id="sta_03" taborder="4" text="User Calendar 월력(Calendar)" left="30" top="498" width="420" height="50" cssclass="sta_WF_Label"/>
+        <Static id="sta_04" taborder="5" text="User Calendar " left="30" top="396" width="162" height="50" cssclass="sta_WF_Label"/>
+        <Div id="divCalMM" taborder="6" text="Div00" left="30" top="446" height="52" url="common::cmmCal.xfdl" callbackfunc="divCal_onchanged" right="51.04%"/>
+        <Static id="Static03" taborder="7" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="8" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_00_00" taborder="9" text="W30" top="0" cssclass="sta_WF_GSize" visible="false" bottom="0" right="0" width="30"/>
+        <Static id="Static02_00" taborder="10" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_01_00_00_00" taborder="11" text="H40" left="0" top="600" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00" taborder="12" text="H20" left="0" top="274" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleCalendar.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.03
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.03			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+
+this.divCal_onchanged = function(obj, e)
+{
+    trace("divCal_onchanged ======================" + obj.value);
+}
+]]></Script>
+  </Form>
+</FDL>

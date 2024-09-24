@@ -1,0 +1,186 @@
+﻿{
+    "version" : "21.0.0.1",
+    "runtime" :
+    {
+        "target" :
+        {
+            "os" : "windows"
+        },
+        "framework" :
+        [    
+        "./nexacrolib/framework/Framework.js?nexaversion=24.0.0.140"
+        ],
+        "component" :
+        [    
+        "./nexacrolib/component/CompBase.js?nexaversion=24.0.0.140",
+        "./nexacrolib/component/ComComp.js?nexaversion=24.0.0.140",
+        "./nexacrolib/component/Grid.js?nexaversion=24.0.0.140",
+        "./nexacrolib/component/ListView.js?nexaversion=24.0.0.140",
+        "./nexacrolib/component/DeviceAPI.js?nexaversion=24.0.0.140",
+        "./nexacrolib/component/DevPackLib/License.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Frame.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Util.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Comp.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Transaction.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Validation.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Popup.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/File.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Message.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Grid.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Excel.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/ExtLib.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/Rest.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/DevPackLib/CompOverride.js?nexaversion=1.0.0.0",
+        "./nexacrolib/component/devPackModule/devPackModule.js?nexaversion=1.0",
+        "./nexacrolib/component/Splitter/Splitter.js?nexaversion=0",
+        "./nexacrolib/component/DxChart/DxChart.license.js?nexaversion=2023.11.15.0",
+        "./nexacrolib/component/DxChart/DxChart.js?nexaversion=2023.11.15.0",
+        "./nexacrolib/component/CryptoJS/jsbn.js?nexaversion=2019.1.30",
+        "./nexacrolib/component/CryptoJS/rsa.js?nexaversion=2019.1.30",
+        "./nexacrolib/component/CryptoJS/prng4.js?nexaversion=2019.1.30",
+        "./nexacrolib/component/CryptoJS/rng.js?nexaversion=2019.1.30",
+        "./nexacrolib/component/CryptoJS/sha256.js?nexaversion=2019.1.30",
+        "./nexacrolib/component/CryptoJS/RSAUtil.js?nexaversion=2019.1.30",
+        "./nexacrolib/component/ExcelCompJSXLS/opensource/jszip.js?nexaversion=17.0.0.800",
+        "./nexacrolib/component/ExcelCompJSXLS/opensource/xlsx.js?nexaversion=17.0.0.800",
+        "./nexacrolib/component/ExcelCompJSXLS/FileUtil.js?nexaversion=17.0.0.800",
+        "./nexacrolib/component/ExcelCompJSXLS/ExportObjectJS.js?nexaversion=17.0.0.800",
+        "./nexacrolib/component/ExcelCompJSXLS/ImportObjectJS.js?nexaversion=17.0.0.800",
+        "./nexacrolib/component/AlaSql/alasql.js?nexaversion=17.0.0.800",
+        "./nexacrolib/component/UbiDocuMaker/UbiDocuMaker.js?nexaversion=1.0",
+        "./nexacrolib/component/UbiReport4/UbiReport4.js?nexaversion=17.0.0.42",
+        "./nexacrolib/component/UbiReport4/ubihtml.js?nexaversion=17.0.0.42",
+        "./nexacrolib/component/UbiReport4/ubiexcanvas.js?nexaversion=17.0.0.42",
+        "./nexacrolib/component/UbiReport4/ubinonax.js?nexaversion=17.0.0.42",
+        "./nexacrolib/component/UbiReport4/msg.js?nexaversion=17.0.0.42"
+        ],
+        "environment" :
+        [    
+        {
+        "icon":"./_resource_/_theme_/devPack/images/mobiletong.ico?nexaversion=20240531",
+        "file":"./environment.xml.js"
+        }
+        ],
+        "screen" :
+        [    
+        {"id":"desktop","type":"desktop","icon":"url('theme::devPack/images/mobiletong.ico')","filesecurelevel":"all","usehttpkeepalive":"true","themeid":"theme::devPack"}
+        ],
+        "xadl" :
+        [
+        {
+        	"screenid":"desktop",
+        	"launch":"./unisales.xadl.js",
+        	"quickview":"./unisales.xadl.quickview.js",
+        	"form":[]
+        }
+        ],  
+        "protocol" :
+        {
+            "adaptors" :
+            []
+        },
+        "resource" :
+        {
+            "windows" : {
+                "updateurl" : "./",
+                "timeout" : "30",
+                "retry" : "3",
+                "autoupdate" : "auto",
+                "updatetype" : "server",
+            "windows 10" : {
+                "updateurl" : "",
+                "enginesetupkey" : "701B46D8-E1C4-4A14-AC06-F537B82A814B",
+                    "resources" :
+                    [{"type" : "Engine", "file" : "../tpl/setup/nexacro/17.1/nexacro17_SetupRuntime_x86.exe", "targetpath" : "./", "version" : "17.1.3.1100"}]
+                },
+            "windows 8 / 8.1, windows 7, windows vista, windows server 2003, windows server 2008, windows server 2012, windows server 2016" : {
+                "updateurl" : "",
+                "enginesetupkey" : "701B46D8-E1C4-4A14-AC06-F537B82A814B",
+                    "resources" :
+                    [{"type" : "Engine", "file" : "../tpl/setup/nexacro/17.1/nexacro17_SetupRuntime_x86.exe", "targetpath" : "./", "version" : "17.1.3.1100"}]
+                },
+            "common" : {
+                "updateurl" : "",
+                    "resources" :
+                    [{"type" : "Module", "file" : "nexacrolib.zip", "targetpath" : "", "version" : "0"},
+                    {"type" : "File", "file" : "nexacro17lib.zip", "targetpath" : "./", "version" : "0"}]
+                }
+            }
+        },
+		"deploy" :
+        {
+            "windows" : {
+                "updateurl" : "./",
+            "windows 10" : {
+                "updateurl" : "",
+                "enginesetupkey" : "701B46D8-E1C4-4A14-AC06-F537B82A814B",
+                    "resources" :
+                    [{"type" : "Engine", "file" : "../tpl/setup/nexacro/17.1/nexacro17_SetupRuntime_x86.exe", "targetpath" : "./", "version" : "17.1.3.1100"}]
+                },
+            "windows 8 / 8.1, windows 7, windows vista, windows server 2003, windows server 2008, windows server 2012, windows server 2016" : {
+                "updateurl" : "",
+                "enginesetupkey" : "701B46D8-E1C4-4A14-AC06-F537B82A814B",
+                    "resources" :
+                    [{"type" : "Engine", "file" : "../tpl/setup/nexacro/17.1/nexacro17_SetupRuntime_x86.exe", "targetpath" : "./", "version" : "17.1.3.1100"}]
+                },
+            "common" : {
+                "updateurl" : "",
+                    "resources" :
+                    [{"type" : "Module", "file" : "nexacrolib.zip", "targetpath" : "", "version" : "0"},
+                    {"type" : "File", "file" : "nexacro17lib.zip", "targetpath" : "./", "version" : "0"}]
+                }
+            }
+        },
+        "userfont" :
+        [
+        {
+            "font-family" : "noto",
+            "font-style" : "normal",
+            "font-weight" : "100",
+            "local-font-family" : "Noto Sans KR Thin Thin"
+        },
+        {
+            "font-family" : "noto",
+            "font-style" : "normal",
+            "font-weight" : "200",
+            "local-font-family" : "Noto Sans KR Thin ExtraLight"
+        },
+        {
+            "font-family" : "noto",
+            "font-style" : "normal",
+            "font-weight" : "300",
+            "local-font-family" : "Noto Sans KR Thin Light"
+        },
+        {
+            "font-family" : "noto",
+            "font-style" : "normal",
+            "font-weight" : "500",
+            "local-font-family" : "Noto Sans KR Thin Medium"
+        },
+        {
+            "font-family" : "noto",
+            "font-style" : "normal",
+            "font-weight" : "600",
+            "local-font-family" : "Noto Sans KR Thin SemiBold"
+        },
+        {
+            "font-family" : "noto",
+            "font-style" : "normal",
+            "font-weight" : "700",
+            "local-font-family" : "Noto Sans KR Thin Bold"
+        },
+        {
+            "font-family" : "noto",
+            "font-style" : "normal",
+            "font-weight" : "800",
+            "local-font-family" : "Noto Sans KR Thin ExtraBold"
+        },
+        {
+            "font-family" : "noto",
+            "font-style" : "normal",
+            "font-weight" : "900",
+            "local-font-family" : "Noto Sans KR Thin Black"
+        }
+        ]
+    }
+}

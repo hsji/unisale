@@ -1,0 +1,964 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleChartNexacro" width="480" height="3184" titletext="넥사크로 차트 샘플" onload="form_onload">
+    <Layouts>
+      <Layout height="3184" mobileorientation="portrait" width="480">
+        <BasicChart id="BasicChart00" taborder="0" left="30" top="100" binddataset="dsBarChart" categorycolumn="bind:Month" right="30" height="337" maxwidth="">
+          <Contents><![CDATA[{
+	"title": {
+		"id": "title",
+		"text": "Column Chart",
+		"textfont": "20pt/normal '맑은 고딕'",
+		"padding": "5px 0px 0px"
+	},
+	"legend": {
+		"id": "legend",
+		"padding": "3px 10px 3px 10px",
+		"itemtextfont": "9pt '맑은 고딕'",
+		"itemtextcolor": "#4c4c4c"
+	},
+	"tooltip": {
+		"id": "tooltip",
+		"background": "#4b4b4b",
+		"linestyle": "0px none",
+		"textcolor": "white",
+		"textfont": "10pt/normal '맑은 고딕'",
+		"padding": "5px"
+	},
+	"board": {
+		"id": "board"
+	},
+	"categoryaxis": {
+		"id": "categoryaxis",
+		"titletext": "생산 월",
+		"titletextcolor": "#4c4c4c",
+		"titletextfont": "bold 12pt '맑은 고딕'",
+		"labeltextcolor": "#6f6f6f",
+		"labeltextfont": "11pt '맑은 고딕'",
+		"axislinestyle": "1px solid #525252",
+		"ticklinestyle": "1px solid #525252",
+		"boardlinestyle": "1px solid #d0d0d0"
+	},
+	"valueaxes": [
+		{
+			"id": "valueaxis0",
+			"titletext": "생산량",
+			"boardlinevisible": true,
+			"boardlinestyle": "1px solid #d0d0d0",
+			"labeltextcolor": "#6f6f6f",
+			"labeltextfont": "10pt/normal '맑은 고딕'",
+			"titletextcolor": "#4c4c4c",
+			"titletextfont": "bold 12pt '맑은 고딕'",
+			"ticklinestyle": "1px solid #525252",
+			"axislinestyle": "1px solid #525252"
+		}
+	],
+	"seriesset": [
+		{
+			"id": "series0",
+			"titletext": "Vancouver",
+			"barvisible": "true",
+			"barsize": "65",
+			"itemtextvisible": "true",
+			"itemtextcolor": "#003860",
+			"itemtextfont": "bold 12pt '맑은 고딕'",
+			"valuecolumn": "bind:Vancouver",
+			"barlinestyle": "1px solid #1abd9c",
+			"barfillstyle": "#1abd9c",
+			"itemtexttype": "number",
+			"highlightbarvisible": "true",
+			"highlightlinevisible": "true",
+			"highlightpointvisible": "true",
+			"itemtext": "bind:Vancouver",
+			"linevisible": "false"
+		},
+		{
+			"id": "series1",
+			"titletext": "Toronto",
+			"barvisible": true,
+			"barsize": "65",
+			"itemtextvisible": true,
+			"itemtextcolor": "#003860",
+			"itemtextfont": "bold 12pt '맑은 고딕'",
+			"valuecolumn": "bind:Toronto",
+			"barlinestyle": "1px solid #1a85be",
+			"barfillstyle": "#1a85be",
+			"selecttype": "bind",
+			"selectcolumn": "bind:Calgary",
+			"linevisible": "true"
+		},
+		{
+			"id": "series2",
+			"titletext": "Calgray",
+			"barvisible": true,
+			"barsize": "65",
+			"itemtextvisible": true,
+			"itemtextcolor": "#003860",
+			"itemtextfont": "bold 12pt '맑은 고딕'",
+			"valuecolumn": "bind:Calgary",
+			"barlinestyle": "1px solid #1a67bf",
+			"barfillstyle": "#1a67bf"
+		}
+	]
+}]]></Contents>
+        </BasicChart>
+        <Static id="Static00" taborder="1" text="1) Bar Chart" left="30" top="30" height="50" right="30" cssclass="sta_WF_SubTitle"/>
+        <Static id="Static01" taborder="2" text="2) Line Chart" left="30" top="834" height="50" right="30" cssclass="sta_WF_SubTitle"/>
+        <BasicChart id="BasicChart01" taborder="3" left="21" top="904" height="337" binddataset="dsLineChart" categorycolumn="bind:Month" right="39">
+          <Contents><![CDATA[{
+	"title": {
+		"id": "title",
+		"text": "Line Chart",
+		"textfont": "20pt/normal '맑은 고딕'",
+		"padding": "0px 0px 5px"
+	},
+	"legend": {
+		"id": "legend",
+		"padding": "3px 10px 3px 10px",
+		"itemtextfont": "9pt '맑은 고딕'",
+		"itemtextcolor": "#4c4c4c"
+	},
+	"tooltip": {
+		"id": "tooltip",
+		"background": "#4b4b4b",
+		"linestyle": "0px none",
+		"textcolor": "white",
+		"textfont": "10pt/normal '맑은 고딕'",
+		"padding": "5px"
+	},
+	"board": {
+		"id": "board"
+	},
+	"categoryaxis": {
+		"id": "categoryaxis",
+		"titletext": "categoryaxis",
+		"titletextcolor": "#4c4c4c",
+		"titletextfont": "bold 12pt '맑은 고딕'",
+		"labeltextcolor": "#6f6f6f",
+		"labeltextfont": "11pt '맑은 고딕'",
+		"axislinestyle": "1px solid #525252",
+		"ticklinestyle": "1px solid #525252",
+		"boardlinestyle": "1px solid #d0d0d0"
+	},
+	"seriesset": [
+		{
+			"id": "series0",
+			"titletext": "Vancouver",
+			"barvisible": false,
+			"barsize": "65",
+			"itemtextvisible": true,
+			"itemtextcolor": "#003860",
+			"itemtextfont": "bold 12pt '맑은 고딕'",
+			"valuecolumn": "bind:Vancouver",
+			"linevisible": true
+		},
+		{
+			"id": "series1",
+			"titletext": "Toronto",
+			"barvisible": false,
+			"barsize": "65",
+			"itemtextvisible": true,
+			"itemtextcolor": "#003860",
+			"itemtextfont": "bold 12pt '맑은 고딕'",
+			"valuecolumn": "bind:Toronto",
+			"linevisible": true
+		},
+		{
+			"id": "series2",
+			"titletext": "Calgary",
+			"barvisible": false,
+			"barsize": "65",
+			"itemtextvisible": true,
+			"itemtextcolor": "#003860",
+			"itemtextfont": "bold 12pt '맑은 고딕'",
+			"valuecolumn": "bind:Calgary",
+			"pointvisible": true,
+			"linevisible": true
+		}
+	],
+	"valueaxes": [
+		{
+			"id": "valueaxis0",
+			"titletext": "valueaxis",
+			"boardlinevisible": true,
+			"boardlinestyle": "1px solid #d0d0d0",
+			"labeltextcolor": "#6f6f6f",
+			"labeltextfont": "10pt/normal '맑은 고딕'",
+			"titletextcolor": "#4c4c4c",
+			"titletextfont": "bold 12pt '맑은 고딕'",
+			"ticklinestyle": "1px solid #525252",
+			"axislinestyle": "1px solid #525252"
+		}
+	]
+}]]></Contents>
+        </BasicChart>
+        <Static id="Static02" taborder="4" text="3) Area Chart" left="30" top="1281" height="50" right="30" cssclass="sta_WF_SubTitle"/>
+        <BasicChart id="BasicChart02" taborder="5" left="30" top="1351" height="337" binddataset="dsAreaChart" categorycolumn="bind:Month" right="30" rotateaxis="false">
+          <Contents><![CDATA[{
+	"title": {
+		"id": "title",
+		"text": "Area Chart",
+		"textfont": "20pt/normal '맑은 고딕'",
+		"padding": "0px 0px 5px"
+	},
+	"legend": {
+		"id": "legend",
+		"padding": "3px 10px 3px 10px",
+		"itemtextfont": "9pt '맑은 고딕'",
+		"itemtextcolor": "#4c4c4c"
+	},
+	"tooltip": {
+		"id": "tooltip",
+		"background": "#4b4b4b",
+		"linestyle": "0px none",
+		"textcolor": "white",
+		"textfont": "10pt/normal '맑은 고딕'",
+		"padding": "5px"
+	},
+	"board": {
+		"id": "board"
+	},
+	"categoryaxis": {
+		"id": "categoryaxis",
+		"titletext": "categoryaxis",
+		"titletextcolor": "#4c4c4c",
+		"titletextfont": "bold 12pt '맑은 고딕'",
+		"labeltextcolor": "#6f6f6f",
+		"labeltextfont": "11pt '맑은 고딕'",
+		"axislinestyle": "1px solid #525252",
+		"ticklinestyle": "1px solid #525252",
+		"boardlinestyle": "1px solid #d0d0d0",
+		"labelrotate": "-30"
+	},
+	"valueaxes": [
+		{
+			"id": "valueaxis0",
+			"titletext": "valueaxis",
+			"boardlinevisible": true,
+			"boardlinestyle": "1px solid #d0d0d0",
+			"labeltextcolor": "#6f6f6f",
+			"labeltextfont": "10pt/normal '맑은 고딕'",
+			"titletextcolor": "#4c4c4c",
+			"titletextfont": "bold 12pt '맑은 고딕'",
+			"ticklinestyle": "1px solid #525252",
+			"axislinestyle": "1px solid #525252"
+		}
+	],
+	"seriesset": [
+		{
+			"id": "series1",
+			"titletext": "Calgary",
+			"barvisible": false,
+			"barsize": "65",
+			"itemtextvisible": true,
+			"itemtextcolor": "#003860",
+			"itemtextfont": "bold 12pt '맑은 고딕'",
+			"valuecolumn": "bind:Calgary",
+			"lineareavisible": true,
+			"pointvisible": false,
+			"linevisible": true,
+			"linestyle": "1px solid #1f77b4",
+			"linefillstyle": "#1f77b4"
+		}
+	]
+}]]></Contents>
+        </BasicChart>
+        <PieChart id="PieChart00" taborder="6" left="30" top="1798" height="325" binddataset="dsData" categorycolumn="bind:Month" right="30">
+          <Contents><![CDATA[{
+	"title": {
+		"id": "title", 
+		"text": "Pie Chart", 
+		"textfont": "20pt/normal '맑은 고딕'", 
+		"padding": "0px 0px 5px"
+	}, 
+	"legend": {
+		"id": "legend", 
+		"padding": "3px 10px 3px 10px", 
+		"itemtextfont": "9pt '맑은 고딕'", 
+		"itemtextcolor": "#4c4c4c"
+	}, 
+	"tooltip": {
+		"id": "tooltip", 
+		"background": "#4b4b4b", 
+		"linestyle": "0px none", 
+		"textcolor": "#ffffff", 
+		"textfont": "10pt/normal '맑은 고딕'", 
+		"padding": "5px"
+	}, 
+	"board": {
+		"id": "board"
+	}, 
+	"seriesset": [
+	  {
+		"id": "series0", 
+		"radius": 150, 
+		"innerradius": 70, 
+		"linestyle": "2px solid #ffffff", 
+		"itemtextvisible": true, 
+		"itemtextfont": "10pt/normal '맑은 고딕'", 
+		"valuecolumn": "bind:Vancouver"
+	  }
+	]
+}]]></Contents>
+        </PieChart>
+        <PieChart id="PieChart01" taborder="7" left="30" top="2143" height="325" binddataset="dsData" categorycolumn="bind:Month" right="30">
+          <Contents><![CDATA[{
+	"title": {
+		"id": "title",
+		"text": "Pie Chart",
+		"textfont": "20pt/normal '맑은 고딕'",
+		"padding": "0px 0px 5px"
+	},
+	"legend": {
+		"id": "legend",
+		"padding": "3px 10px 3px 10px",
+		"itemtextfont": "9pt '맑은 고딕'",
+		"itemtextcolor": "#4c4c4c"
+	},
+	"tooltip": {
+		"id": "tooltip",
+		"background": "#4b4b4b",
+		"linestyle": "0px none",
+		"textcolor": "#ffffff",
+		"textfont": "10pt/normal '맑은 고딕'",
+		"padding": "5px"
+	},
+	"board": {
+		"id": "board"
+	},
+	"seriesset": [
+		{
+			"id": "series0",
+			"radius": 150,
+			"innerradius": 0,
+			"linestyle": "2px solid #ffffff",
+			"itemtextvisible": true,
+			"itemtextfont": "10pt/normal '맑은 고딕'",
+			"valuecolumn": "bind:Vancouver",
+			"selectcolumn": "bind:color",
+			"selecttype": "bind"
+		}
+	]
+}]]></Contents>
+        </PieChart>
+        <BubbleChart id="BubbleChart00" taborder="8" left="30" top="2578" height="566" binddataset="dsBubble" right="30">
+          <Contents><![CDATA[{
+	"title": {
+		"id": "title",
+		"text": "Bubble Chart",
+		"textfont": "20pt/normal '맑은 고딕'",
+		"padding": "0px 0px 5px"
+	},
+	"legend": {
+		"id": "legend",
+		"padding": "3px 10px 3px 10px",
+		"itemtextfont": "9pt '맑은 고딕'",
+		"itemtextcolor": "#4c4c4c",
+		"visible": "false"
+	},
+	"tooltip": {
+		"id": "tooltip",
+		"background": "#4b4b4b",
+		"linestyle": "0px none",
+		"textcolor": "white",
+		"textfont": "10pt/normal '맑은 고딕'",
+		"padding": "5px"
+	},
+	"board": {
+		"id": "board"
+	},
+	"seriesset": [
+		{
+			"id": "series0",
+			"itemtextvisible": "true",
+			"itemtextfont": "bold 9pt '맑은 고딕'",
+			"valuecolumn": "bind:Profit",
+			"value2column": "bind:Cost",
+			"value3column": "bind:Revenue",
+			"visible": "true"
+		}
+	],
+	"valueaxes": [
+		{
+			"id": "valueaxis0",
+			"titletext": "Profit",
+			"boardlinevisible": "true",
+			"boardlinestyle": "1px solid #d0d0d0",
+			"labeltextcolor": "#6f6f6f",
+			"labeltextfont": "10pt/normal '맑은 고딕'",
+			"titletextcolor": "#4c4c4c",
+			"titletextfont": "bold 12pt '맑은 고딕'",
+			"ticklinestyle": "1px solid #525252",
+			"axislinestyle": "1px solid #525252"
+		},
+		{
+			"id": "valueaxis1",
+			"titletext": "Cost",
+			"boardlinevisible": "true",
+			"boardlinestyle": "1px solid #d0d0d0",
+			"labeltextcolor": "#6f6f6f",
+			"labeltextfont": "10pt/normal '맑은 고딕'",
+			"titletextcolor": "#4c4c4c",
+			"titletextfont": "bold 12pt '맑은 고딕'",
+			"ticklinestyle": "1px solid #525252",
+			"axislinestyle": "1px solid #525252",
+			"labeltype": "normal",
+			"titletextalign": "high"
+		}
+	]
+}]]></Contents>
+        </BubbleChart>
+        <BasicChart id="BasicChart03" taborder="9" left="30" top="457" binddataset="dsBarChart" categorycolumn="bind:Month" right="30" height="337" maxwidth="" bargrouping="true" rotateaxis="true">
+          <Contents><![CDATA[{
+	"title": {
+		"id": "title",
+		"text": "Bar Chart",
+		"textfont": "20pt/normal '맑은 고딕'",
+		"padding": "0px 0px 5px"
+	},
+	"legend": {
+		"id": "legend",
+		"padding": "3px 10px 3px 10px",
+		"itemtextfont": "9pt '맑은 고딕'",
+		"itemtextcolor": "#4c4c4c"
+	},
+	"tooltip": {
+		"id": "tooltip",
+		"background": "#4b4b4b",
+		"linestyle": "0px none",
+		"textcolor": "white",
+		"textfont": "10pt/normal '맑은 고딕'",
+		"padding": "5px"
+	},
+	"board": {
+		"id": "board"
+	},
+	"categoryaxis": {
+		"id": "categoryaxis",
+		"titletext": "생산 월",
+		"titletextcolor": "#4c4c4c",
+		"titletextfont": "bold 12pt '맑은 고딕'",
+		"labeltextcolor": "#6f6f6f",
+		"labeltextfont": "11pt '맑은 고딕'",
+		"axislinestyle": "1px solid #525252",
+		"ticklinestyle": "1px solid #525252",
+		"boardlinestyle": "1px solid #d0d0d0",
+		"opposite": "false"
+	},
+	"valueaxes": [
+		{
+			"id": "valueaxis0",
+			"titletext": "생산량",
+			"boardlinevisible": true,
+			"boardlinestyle": "1px solid #d0d0d0",
+			"labeltextcolor": "#6f6f6f",
+			"labeltextfont": "10pt/normal '맑은 고딕'",
+			"titletextcolor": "#4c4c4c",
+			"titletextfont": "bold 12pt '맑은 고딕'",
+			"ticklinestyle": "1px solid #525252",
+			"axislinestyle": "1px solid #525252"
+		}
+	],
+	"seriesset": [
+		{
+			"id": "series0",
+			"titletext": "Vancouver",
+			"barvisible": "true",
+			"barsize": "65",
+			"itemtextvisible": "true",
+			"itemtextcolor": "#003860",
+			"itemtextfont": "bold 12pt '맑은 고딕'",
+			"valuecolumn": "bind:Vancouver",
+			"barlinestyle": "1px solid #1abd9c",
+			"barfillstyle": "#1abd9c",
+			"itemtexttype": "number",
+			"highlightbarvisible": "true",
+			"highlightlinevisible": "true",
+			"highlightpointvisible": "true",
+			"itemtext": "bind:Vancouver",
+			"linevisible": "false"
+		}
+	]
+}]]></Contents>
+        </BasicChart>
+        <Static id="Static03" taborder="10" text="4) Pie Chart" left="30" top="1728" height="50" right="30" cssclass="sta_WF_SubTitle"/>
+        <Static id="Static04" taborder="11" text="5) Bubble Chart" left="30" top="2508" height="50" right="30" cssclass="sta_WF_SubTitle"/>
+        <Static id="Static03_00" taborder="12" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="13" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_00" taborder="14" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00_00" taborder="15" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_01_00_00_00_00" taborder="16" text="H40" left="0" top="3144" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_00_01_00" taborder="17" text="H20" left="0" top="80" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_01_00_00" taborder="18" text="H20" left="0" top="437" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_01_00_01" taborder="19" text="H40" left="0" top="794" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_00_01_00_00_00" taborder="20" text="H20" left="0" top="884" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_01_00_01_00" taborder="21" text="H40" left="0" top="1241" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_00_01_00_00_00_00" taborder="22" text="H20" left="0" top="1331" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_01_00_01_00_00" taborder="23" text="H40" left="0" top="1688" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_00_01_00_00_00_00_00" taborder="24" text="H20" left="0" top="1778" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_01_00_00_00_00_00_00" taborder="25" text="H20" left="0" top="2123" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_01_00_01_00_00_00" taborder="26" text="H40" left="0" top="2468" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_00_01_00_00_00_00_00_00_00" taborder="27" text="H20" left="0" top="2558" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsBarChart">
+        <ColumnInfo>
+          <Column id="Month" type="STRING" size="256"/>
+          <Column id="Vancouver" type="INT" size="256"/>
+          <Column id="Toronto" type="STRING" size="256"/>
+          <Column id="Calgary" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Month">Jan</Col>
+            <Col id="Vancouver">91</Col>
+            <Col id="Toronto">85</Col>
+            <Col id="Calgary">45</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Feb</Col>
+            <Col id="Vancouver">87</Col>
+            <Col id="Toronto">75</Col>
+            <Col id="Calgary">75</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Mar</Col>
+            <Col id="Vancouver">88</Col>
+            <Col id="Toronto">87</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Apr</Col>
+            <Col id="Vancouver">86</Col>
+            <Col id="Toronto">78</Col>
+            <Col id="Calgary">78</Col>
+          </Row>
+          <Row>
+            <Col id="Month">May</Col>
+            <Col id="Vancouver">82</Col>
+            <Col id="Toronto">84</Col>
+            <Col id="Calgary">56</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Jun</Col>
+            <Col id="Vancouver">80</Col>
+            <Col id="Toronto">68</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Jul</Col>
+            <Col id="Vancouver">79</Col>
+            <Col id="Toronto">57</Col>
+            <Col id="Calgary">54</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Aug</Col>
+            <Col id="Vancouver">72</Col>
+            <Col id="Toronto">67</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Sep</Col>
+            <Col id="Vancouver">90</Col>
+            <Col id="Toronto">87</Col>
+            <Col id="Calgary">85</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Oct</Col>
+            <Col id="Vancouver">95</Col>
+            <Col id="Toronto">75</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Nov</Col>
+            <Col id="Vancouver">40</Col>
+            <Col id="Toronto">84</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Dec</Col>
+            <Col id="Vancouver">60</Col>
+            <Col id="Toronto">65</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsLineChart">
+        <ColumnInfo>
+          <Column id="Month" type="STRING" size="256"/>
+          <Column id="Vancouver" type="INT" size="256"/>
+          <Column id="Toronto" type="STRING" size="256"/>
+          <Column id="Calgary" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Month">Jan</Col>
+            <Col id="Vancouver">91</Col>
+            <Col id="Toronto">85</Col>
+            <Col id="Calgary">45</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Feb</Col>
+            <Col id="Vancouver">87</Col>
+            <Col id="Toronto">75</Col>
+            <Col id="Calgary">75</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Mar</Col>
+            <Col id="Vancouver">88</Col>
+            <Col id="Toronto">87</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Apr</Col>
+            <Col id="Vancouver">86</Col>
+            <Col id="Toronto">78</Col>
+            <Col id="Calgary">78</Col>
+          </Row>
+          <Row>
+            <Col id="Month">May</Col>
+            <Col id="Vancouver">82</Col>
+            <Col id="Toronto">84</Col>
+            <Col id="Calgary">56</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Jun</Col>
+            <Col id="Vancouver">80</Col>
+            <Col id="Toronto">68</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Jul</Col>
+            <Col id="Vancouver">79</Col>
+            <Col id="Toronto">57</Col>
+            <Col id="Calgary">54</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Aug</Col>
+            <Col id="Vancouver">72</Col>
+            <Col id="Toronto">67</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Sep</Col>
+            <Col id="Vancouver">90</Col>
+            <Col id="Toronto">87</Col>
+            <Col id="Calgary">85</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Oct</Col>
+            <Col id="Vancouver">95</Col>
+            <Col id="Toronto">75</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Nov</Col>
+            <Col id="Vancouver">40</Col>
+            <Col id="Toronto">84</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Dec</Col>
+            <Col id="Vancouver">60</Col>
+            <Col id="Toronto">65</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAreaChart">
+        <ColumnInfo>
+          <Column id="Month" type="STRING" size="256"/>
+          <Column id="Calgary" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Month">Jan</Col>
+            <Col id="Calgary">45</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Feb</Col>
+            <Col id="Calgary">75</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Mar</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Apr</Col>
+            <Col id="Calgary">78</Col>
+          </Row>
+          <Row>
+            <Col id="Month">May</Col>
+            <Col id="Calgary">56</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Jun</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Jul</Col>
+            <Col id="Calgary">54</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Aug</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Sep</Col>
+            <Col id="Calgary">85</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Oct</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Nov</Col>
+            <Col id="Calgary">65</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Dec</Col>
+            <Col id="Calgary">79</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsData">
+        <ColumnInfo>
+          <Column id="Month" type="STRING" size="256"/>
+          <Column id="Vancouver" type="INT" size="256"/>
+          <Column id="Toronto" type="STRING" size="256"/>
+          <Column id="Calgary" type="STRING" size="256"/>
+          <Column id="color" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Month">Jan</Col>
+            <Col id="Vancouver">91</Col>
+            <Col id="Toronto">85</Col>
+            <Col id="Calgary">45</Col>
+            <Col id="color">mint</Col>
+          </Row>
+          <Row>
+            <Col id="Month">Feb</Col>
+            <Col id="Vancouver">87</Col>
+            <Col id="Toronto">75</Col>
+            <Col id="Calgary">75</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Mar</Col>
+            <Col id="Vancouver">88</Col>
+            <Col id="Toronto">87</Col>
+            <Col id="Calgary">65</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Apr</Col>
+            <Col id="Vancouver">86</Col>
+            <Col id="Toronto">78</Col>
+            <Col id="Calgary">78</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">May</Col>
+            <Col id="Vancouver">82</Col>
+            <Col id="Toronto">84</Col>
+            <Col id="Calgary">56</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Jun</Col>
+            <Col id="Vancouver">80</Col>
+            <Col id="Toronto">68</Col>
+            <Col id="Calgary">65</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Jul</Col>
+            <Col id="Vancouver">79</Col>
+            <Col id="Toronto">57</Col>
+            <Col id="Calgary">54</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Aug</Col>
+            <Col id="Vancouver">72</Col>
+            <Col id="Toronto">67</Col>
+            <Col id="Calgary">79</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Sep</Col>
+            <Col id="Vancouver">90</Col>
+            <Col id="Toronto">87</Col>
+            <Col id="Calgary">85</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Oct</Col>
+            <Col id="Vancouver">95</Col>
+            <Col id="Toronto">75</Col>
+            <Col id="Calgary">79</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Nov</Col>
+            <Col id="Vancouver">40</Col>
+            <Col id="Toronto">84</Col>
+            <Col id="Calgary">65</Col>
+            <Col id="color"/>
+          </Row>
+          <Row>
+            <Col id="Month">Dec</Col>
+            <Col id="Vancouver">60</Col>
+            <Col id="Toronto">65</Col>
+            <Col id="Calgary">79</Col>
+            <Col id="color"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBubble">
+        <ColumnInfo>
+          <Column id="Profit" type="STRING" size="256"/>
+          <Column id="Cost" type="STRING" size="256"/>
+          <Column id="Revenue" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Profit">300</Col>
+            <Col id="Cost">1950</Col>
+            <Col id="Revenue">800</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">350</Col>
+            <Col id="Cost">600</Col>
+            <Col id="Revenue">1400</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">550</Col>
+            <Col id="Cost">1450</Col>
+            <Col id="Revenue">1000</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">800</Col>
+            <Col id="Cost">1300</Col>
+            <Col id="Revenue">500</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">750</Col>
+            <Col id="Cost">1800</Col>
+            <Col id="Revenue">500</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">1100</Col>
+            <Col id="Cost">1600</Col>
+            <Col id="Revenue">1200</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">900</Col>
+            <Col id="Cost">800</Col>
+            <Col id="Revenue">1500</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">1170</Col>
+            <Col id="Cost">1200</Col>
+            <Col id="Revenue">700</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">1450</Col>
+            <Col id="Cost">1000</Col>
+            <Col id="Revenue">1700</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">1570</Col>
+            <Col id="Cost">1600</Col>
+            <Col id="Revenue">600</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">1750</Col>
+            <Col id="Cost">2200</Col>
+            <Col id="Revenue">1400</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">1950</Col>
+            <Col id="Cost">1450</Col>
+            <Col id="Revenue">1100</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">2150</Col>
+            <Col id="Cost">850</Col>
+            <Col id="Revenue">1400</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">2270</Col>
+            <Col id="Cost">1250</Col>
+            <Col id="Revenue">800</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">2450</Col>
+            <Col id="Cost">1950</Col>
+            <Col id="Revenue">2400</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">2420</Col>
+            <Col id="Cost">600</Col>
+            <Col id="Revenue">500</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">2580</Col>
+            <Col id="Cost">1100</Col>
+            <Col id="Revenue">1200</Col>
+          </Row>
+          <Row>
+            <Col id="Profit">2620</Col>
+            <Col id="Cost">630</Col>
+            <Col id="Revenue">700</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleChartNexacro.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.04
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.04			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/]]></Script>
+  </Form>
+</FDL>

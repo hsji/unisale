@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleCamera" width="480" height="808" titletext="카메라" onload="form_onload">
+    <Layouts>
+      <Layout height="808" mobileorientation="portrait" width="480">
+        <Button id="btnPicture" taborder="0" text="Take Picture" position="absolute" onclick="btnPicture_onClick" left="30" top="30" height="60" cssclass="btn_basic" right="51.04%"/>
+        <Button id="btnUpload" taborder="1" text="Upload" position="absolute" top="30" height="60" cssclass="btn_basic" visible="true" onclick="btnUpload_onclick" left="btnPicture:10" right="30"/>
+        <TextArea id="txt0" taborder="2" stretch="fixaspectratio" position="absolute" left="30" right="30" height="190" top="110"/>
+        <ImageViewer id="ImageViewer00" taborder="3" left="30" top="320" height="448" right="30"/>
+        <Static id="Static03" taborder="4" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="5" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00" taborder="6" text="H20" left="0" top="90" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_00_00" taborder="7" text="H20" left="0" top="300" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_01_00" taborder="8" text="H40" left="0" top="768" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dstype" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="data">imagedata</Col>
+            <Col id="id">imagedata</Col>
+          </Row>
+          <Row>
+            <Col id="id">url</Col>
+            <Col id="data">imageurl</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Camera id="Camera00" oncapture="Camera00_oncapture" onerror="Camera00_onerror"/>
+      <Dataset id="dsImg">
+        <ColumnInfo>
+          <Column id="CONTENT" type="STRING" size="256"/>
+          <Column id="FILENAME" type="STRING" size="256"/>
+          <Column id="CONTENT2" type="BLOB" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsOutput">
+        <ColumnInfo>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="ERRCD" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleCamera.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.04
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.04			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.objApp = nexacro.getApplication();
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+	
+    //모바일앱이면
+    if (system.navigatorname =="nexacro" && this.objApp.gvOs.indexOf("WINDOWS") == -1)
+    {
+		this.Camera00.set_imagequality(80);
+		this.Camera00.set_imagewidth(460);
+		this.Camera00.set_imageheight(460);
+    }	
+	else
+	{
+        alert("현재 브라우저에서는 지원하지 않습니다");
+        this.btnPicture.set_enable(false);	
+		this.btnUpload.set_enable(false);	
+	}
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+this.fnUpload = function()
+{
+	this.transaction("fileUploadex"
+					, "svcUrl::fileUploadex.do"
+					, "input=dsImg"
+					, "dsOutput=output"
+					, ""
+					, "fnCallback"
+					);
+}
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+this.fnCallback = function(trID, nErrCD, sErrMSG)
+{
+	if (trID == "fileUploadex")
+	{
+		if (nErrCD < 0)
+		{
+			trace("Fail!!!:"+sErrMSG);
+		}
+		else
+		{
+			trace(this.dsOutput.saveXML());
+			this.gfnAlert("msg.save.success");
+		}
+	}
+};
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.btnPicture_onClick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.Camera00.set_gettype("imagedata"); //url: imageurl, imagedata: imagedata(base64encoding)
+	this.Camera00.takePicture();
+}
+
+// image 정상생성시 event
+this.Camera00_oncapture = function(obj:nexacro.Camera,e:nexacro.CameraEventInfo)
+{
+	if (obj.gettype == "url") 
+	{
+		this.ImageViewer00.set_image('url("'+e.url+'")');
+		var realpath = e.url.replace("%USERAPP%", "");
+		this.txt0.set_value(e.url+ " \n "  + "file://"+ system.convertRealPath("%USERAPP%") + realpath);
+
+		this.ImageViewer00.set_image("file://"+ system.convertRealPath("%USERAPP%") + realpath);
+											///data/user/0/com.tobemobile.nexacro17sample/files/NEXACRO/
+		
+	}
+	else 
+	{
+		this.txt0.set_value(e.imagedata);
+		this.ImageViewer00.set_image(e.imagedata);
+		var nStart = e.url.lastIndexOf("/");
+		this.dsImg.clearData();
+		this.dsImg.addRow();
+		this.dsImg.setColumn(0, "CONTENT"	, e.imagedata);	 	//String
+		this.dsImg.setColumn(0, "CONTENT2", e.imagedata);		//Blob
+		this.dsImg.setColumn(0, "FILENAME"	, e.url.substr(nStart + 1));	 		
+	}
+}
+
+this.Camera00_onerror = function(obj:nexacro.Camera,e:nexacro.CameraErrorEventInfo)
+{
+	alert(e.eventid + " ### " +e.errormsg);
+}
+
+this.btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnUpload();
+};
+]]></Script>
+  </Form>
+</FDL>

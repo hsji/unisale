@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="팝업" width="420" height="300" titletext="Popup Detail">
+    <Layouts>
+      <Layout height="300" width="420">
+        <Grid id="grd00" taborder="0" left="30" top="0" height="300" binddataset="ds00" cssclass="grd_Pop_ComboList" autofittype="col" right="30">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="327"/>
+              </Columns>
+              <Rows>
+                <Row size="50"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:Column0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="1" text="W30" left="390" top="0" cssclass="sta_WF_GSize" visible="false" bottom="0" width="30"/>
+        <Static id="Static02_00" taborder="2" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds00">
+        <ColumnInfo>
+          <ConstColumn id="ConstColumn0" type="STRING" size="30"/>
+          <Column id="Column0" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">가나</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">가나다</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">가나다라</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">가나다</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="boardPu" width="480" height="770" titletext="게시판 수정" onload="form_onload">
+    <Layouts>
+      <Layout height="770" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="1" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00_00" taborder="2" text="제목" left="30" top="20" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Static id="Static02_01_01" taborder="3" text="H20" left="0" top="500" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Edit id="edtTitle" taborder="11" left="30" top="Static00_00:0" height="50" right="30" cssclass="essential"/>
+        <TextArea id="txaContent" taborder="12" left="30" onchanged="TextArea00_onchanged" right="30" top="edtTitle:10" height="370"/>
+        <Static id="sta00" taborder="4" text="첨부파일" left="30" width="80" height="50" cssclass="sta_WF_Label" top="txaContent:20" visible="false"/>
+        <Static id="Static02_01_01_01" taborder="5" text="H40" left="1" top="730" cssclass="sta_WF_GSize" visible="false" right="-1" height="40"/>
+        <Button id="btnAddFile" taborder="7" left="sta00:2" width="36" height="36" cssclass="btn_WF_Attachment" onclick="btnAddFile_onclick" top="txaContent:33" visible="false"/>
+        <Div id="divFile" taborder="10" left="30" height="70" cssclass="div_WF_Attachment" right="30" top="sta00:10" visible="false">
+          <Layouts>
+            <Layout>
+              <Grid id="grdFile" taborder="0" cssclass="grd_WF_Attachment" left="15" top="10" right="15" bottom="10" autofittype="col" binddataset="dsFile" ondrop="divFile_grdFile_ondrop" oncellclick="divFile_grdFile_oncellclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="48"/>
+                      <Column size="279"/>
+                      <Column size="48"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="48"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell displaytype="imagecontrol" cssclass="Icon_Attachment"/>
+                      <Cell col="1" text="bind:OTXT_FILE_NM"/>
+                      <Cell col="2" displaytype="buttoncontrol"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btnSave" taborder="6" text="저장" left="30" height="60" cssclass="btn_WF_Full" right="30" onclick="btnSave_onclick" top="divFile:20"/>
+        <Static id="Static02_01_01_01_00" taborder="8" left="0" right="0" height="40" top="btnSave:0"/>
+        <Static id="Static02_01_01_00" taborder="9" text="H20" left="0" top="0" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	boardPu.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/07
+*  @Desction   설명
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/07		    TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvApndYn	= "";
+this.fvBoardCd	= "";
+this.fvNotiNo	= "";
+this.fvOpenType	= "";
+
+this.fvFileDelUp = ""; //파일추가삭제여부
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+	
+	this.fvApndYn	= this.getOwnerFrame().pvApndYn;
+	this.fvBoardCd	= this.getOwnerFrame().pvBoardCd;
+	this.fvNotiNo	= this.getOwnerFrame().pvNotiNo;
+	this.fvOpenType	= this.getOwnerFrame().pvOpenType;
+
+	//첨부파일 컴포넌트
+	this.fnSetApndYn(this.fvApndYn);
+	
+	//게시물 내용 조회
+	this.fnGetContentsTran();
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+this.cfnSave = function()
+{
+	var sCont = "";
+	sCont = this.txaContent.text;
+	sCont = this.gfnIsNull(sCont) ? "" : nexacro.replaceAll(sCont,"\n", "<br>");
+	
+	this.dsList.setColumn(0, "CNTN", sCont);
+	this.dsList.setColumn(0, "TITLE", this.gfnTrim(this.edtTitle.value));	
+	
+	// 정합성 체크
+	this.gfnClearValidation(this.dsList);
+	this.gfnSetValidation(this.dsList, "TITLE", "제목"	, "required");
+	// Dataset의 변경된 Row Validation check
+	if (this.gfnValidation(this.dsList, "U") == false) return;	
+
+    // 파일과 내용 모두 변경된 Data가 없다면.
+	if(!this.gfnDsIsUpdated(this.dsFile)&&!this.gfnDsIsUpdated(this.dsList)){
+		this.gfnAlert("msg.save.nochange"); // 저장할 데이터가 없습니다.
+		return;
+	}else{
+		//file 삭제 및 추가
+		if(this.dsFile.getDeletedRowCount()> 0 && this.futFile.filelist.length > 0){
+			this.fvFileDelUp = "Y";
+		    this.fnTranDeleteFile();
+		//file 삭제만
+		}else if(this.dsFile.getDeletedRowCount()> 0 && this.futFile.filelist.length == 0){
+			this.fvFileDel	 = "Y";
+			this.fnTranDeleteFile();
+		//file 추가만	
+		}else if(this.dsFile.getDeletedRowCount()== 0 && this.futFile.filelist.length > 0){
+			this.fnFileUploadTran();
+		//내용만
+		}else if(this.dsFile.getDeletedRowCount()== 0 && this.futFile.filelist.length == 0){
+			this.fnTranSave();
+		}
+	}	
+};
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+//조회
+this.fnGetContentsTran = function ()
+{
+	this.dsCond.clearData();
+	var nRow = this.dsCond.addRow();
+	this.dsCond.setColumn(nRow, "BOARD_CD", this.fvBoardCd);
+	this.dsCond.setColumn(nRow, "NOTI_NO", this.fvNotiNo);
+	
+	var strSvcId    = "searchBoardContentDetail";
+	var strSvcUrl   = "searchBoardContentDetail.do";
+	var inData      = "dsCond=dsCond";
+	var outData     = "dsList=dsList dsFile=dsFile";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	
+};
+
+//저장
+this.fnTranSave = function()
+{
+	this.dsList.setColumn(0, "STATUS", this.fvOpenType);
+	this.dsList.setColumn(0, "CHGE_ID", this.fvInputId);
+	
+	//파일 등록 후 모두 삭제한다면 FILE_ID도 삭제해줘야한다.
+	if(this.dsFile.getRowCount()==0) this.dsList.setColumn(0,"FILE_ID","");
+	
+	var strSvcId    = "saveBoardContents";
+	var strSvcUrl   = "saveBoardContents.do";
+	var inData      = "dsList=dsList:A";
+	var outData     = "";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]		
+};
+
+//파일 저장
+this.fnFileUploadTran = function ()
+{
+	var sBoardId = this.dsList.getColumn(0,"BLBD_CD");
+	var sFileId = this.dsList.getColumn(0, "FILE_ID");
+	if(this.gfnIsNull(sFileId)) sFileId = "";
+	
+	this.futFile.setPostData("BOARD_CD", sBoardId);
+	this.futFile.setPostData("FILE_ID" , sFileId);
+	//22.04.26 IOS앱에서 파일 첨부 에러, 임시처리를 위해 USER_ID넘겨주기	
+	this.futFile.setPostData("USER_ID" , nexacro.getApplication().gdsUser.getColumn(0, "USER_ID"));	
+	
+	this.futFile.upload("svcUrl::boardFileUpload.do");
+};	
+
+//파일 삭제
+this.fnTranDeleteFile = function ()
+{
+	var strSvcId    = "deleteBoardFile";
+	var strSvcUrl   = "deleteBoardFile.do";
+	var inData      = "dsList=dsFile:U";
+	var outData     = "";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]
+};
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+//Transaction Callback
+this.fnCallback = function(sSvcId, nErrCd, nErrMsg)
+{
+	switch(sSvcId) {
+		case "searchBoardContentDetail" :
+			//제목에 포커스
+			this.edtTitle.setFocus();
+			//파일 갯수에 맞게 divFile조절
+			if(this.fvApndYn =="1"){
+				this.fnDivFileSetSize();
+			}
+		break;
+		case "saveBoardContents" :
+			this.gfnAlert("msg.save.success");
+			nexacro.getApplication().gvPopup.close();
+			break;
+		case "deleteBoardFile" :
+ 			if(this.fvFileDelUp == "Y"){
+ 				this.fnFileUploadTran();
+ 			}else if(this.fvFileDel =="Y"){
+ 				this.fnTranSave();
+ 			}
+			break;
+	}
+};
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+//첨부파일 유무
+this.fnSetApndYn = function(sApndYn)
+{
+	var nHeight;
+	var nBtnTop;
+	
+	//첨부파일 없음
+	if(sApndYn == "0"){
+		this.divFile.set_height("0");
+		this.txaContent.set_bottom("100");	
+		nHeight = this.txaContent.getOffsetHeight();		
+		nBtnTop = "txaContent:10px";
+	}else if(sApndYn == "1"){
+		this.sta00.set_visible(true);
+		this.btnAddFile.set_visible(true);
+		this.divFile.set_visible(true);	
+		//divFile height가 0이기 때문에 txaContent bottom -90
+		this.txaContent.set_bottom("195");	
+		nHeight = this.txaContent.getOffsetHeight();		
+		this.divFile.set_height("0");
+		nBtnTop = "divFile:40px";
+	}
+	this.txaContent.set_height(nHeight);	
+	this.btnSave.set_top(nBtnTop);
+	this.resetScroll();	
+};
+
+//divFile 조절
+this.fnDivFileSetSize = function()
+{
+	var nRow = this.dsFile.getRowCount();
+
+	if(nRow==0) {
+		this.divFile.set_height("0");
+	}else{
+		this.divFile.set_height(48*nRow+22);
+		//저장버튼 하단에 40px추가 임시로 Design쪽에서 Static visible처리 후 top 어레인지먼트 걸어줌.
+		//추후에 수정하기
+	}
+	this.resetScroll();	
+};	
+
+//파일세팅
+this.fnSetFile = function (aVFiles)
+{
+	var nLen	= aVFiles.length;
+	
+	var sFileId	= "";
+	var oFile	= null;
+	
+	for(var i=0; i<nLen; i++){
+		sFileId	= aVFiles[i].filename;
+		oFile  	= aVFiles[i];
+		
+		//중복확인
+		if(this.futFile.existFile(oFile)){
+			sFileId += "_" + this.dsFile.getRowCount();
+		}
+		this.futFile.addFile(sFileId, oFile);
+		var nRow = this.dsFile.addRow();
+		this.dsFile.setColumn(nRow, "OTXT_FILE_NM", sFileId);
+	}
+	//divFile 사이즈 조절
+	this.fnDivFileSetSize();
+};
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+//cell 클릭
+this.divFile_grdFile_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var nRow = e.row;
+	if(e.cell == 2){
+		var sFileNm = this.dsFile.getColumn(nRow, "OTXT_FILE_NM");
+		this.futFile.removeFile(sFileNm);
+		this.dsFile.deleteRow(nRow);
+	}		
+	//divFile 사이즈 조절
+	this.fnDivFileSetSize();	
+};
+
+//파일 추가
+this.btnAddFile_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fdgFile.open("file upload..", FileDialog.MULTILOAD);				
+};
+
+//드래그 앤 드랍
+this.divFile_grdFile_ondrop = function(obj:nexacro.Grid,e:nexacro.GridDragEventInfo)
+{
+	this.fnSetFile(e.filelist);			
+};
+
+//파일다이얼로그 클로즈
+this.fdgFile_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	// 1 : open() 메소드를 실행하여 파일 한개를 선택하였을 경우 (IOS 앱)
+	// 3 : open() 메소드를 실행하여 파일을 한개 이상 선택하였을 경우
+	if( e.reason == 1 || e.reason == 3 ){
+		//멀티업로드일경우
+		this.fnSetFile(e.virtualfiles);
+	}	
+};
+
+// 파일 업로드 에러
+this.futFile_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferErrorEventInfo)
+{
+	this.gfnAlert("msg.server.error.msg" ,[e.errormsg]);	
+};
+
+// 파일 업로드 성공
+this.futFile_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	this.dsList.setColumn(0, "FILE_ID", e.datasets[0].getColumn(0,"FILE_ID"));
+	//파일 업로드 성공 후 내용 업로드
+	this.fnTranSave();	
+};
+
+// 저장
+this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.cfnSave();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="BOARD_CD" type="STRING" size="256"/>
+          <Column id="NOTI_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="INPT_EMP_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsFile"/>
+      <FileDialog id="fdgFile" onclose="fdgFile_onclose"/>
+      <FileUpTransfer id="futFile" onerror="futFile_onerror" onsuccess="futFile_onsuccess"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="edtTitle" propid="value" datasetid="dsList" columnid="TITLE"/>
+      <BindItem id="item1" compid="txaContent" propid="value" datasetid="dsList" columnid="CNTN"/>
+    </Bind>
+  </Form>
+</FDL>

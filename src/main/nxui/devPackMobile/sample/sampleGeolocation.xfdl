@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleGeolocation" width="480" height="1230" titletext="위치정보" onload="form_onload">
+    <Layouts>
+      <Layout height="1230" mobileorientation="portrait" width="480">
+        <Button id="Button00" taborder="0" position="absolute" onclick="Button00_onclick" text="위치정보 요청" left="30" top="80" height="60" right="51.04%"/>
+        <Button id="Button01" taborder="1" text="위치정보 요청" position="absolute" onclick="Button01_onclick" left="30" top="210" height="60" right="51.04%"/>
+        <Button id="Button02" taborder="2" text="위치정보 종료" position="absolute" onclick="Button02_onclick" left="Button01:10" top="210" height="60" right="30"/>
+        <Static id="stImageHeight" text="1회 요청. 종료할 필요없음" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="30" height="50" taborder="3" cssclass="sta_WF_SubTitle" right="30"/>
+        <Static id="stImageHeight00" text="위치정보 종료할 때 까지 반복(10초간격)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="160" height="50" taborder="4" cssclass="sta_WF_SubTitle" right="30"/>
+        <Static id="stImageHeight01" text="위도 (latitude)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="290" height="50" taborder="5" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit00" taborder="6" readonly="true" position="absolute" left="30" right="30" top="340" height="50"/>
+        <Static id="stImageHeight02" text="경도(longitude)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="390" height="50" taborder="7" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit01" taborder="8" readonly="true" position="absolute" left="30" right="30" top="440" height="50"/>
+        <Static id="stImageHeight03" text="고도 (meter)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="490" height="50" taborder="9" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit02" taborder="10" readonly="true" position="absolute" left="30" right="30" top="540" height="50"/>
+        <Static id="stImageHeight04" text="방위 (angle)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="590" height="50" taborder="11" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit03" taborder="12" readonly="true" position="absolute" left="30" right="30" top="640" height="50"/>
+        <Static id="stImageHeight05" text="속도 (meter/sec)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="690" height="50" taborder="13" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit04" taborder="14" readonly="true" position="absolute" left="30" right="30" top="740" height="50"/>
+        <Static id="stImageHeight06" text="위치정확도(meter)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="790" height="50" taborder="15" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit05" taborder="16" readonly="true" position="absolute" left="30" right="30" top="840" height="50"/>
+        <Static id="stImageHeight07" text="고도정확도(meter)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="890" height="50" taborder="17" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit06" taborder="18" readonly="true" position="absolute" left="30" right="30" top="940" height="50"/>
+        <Static id="stImageHeight08" text="시각(timestamp)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="990" height="50" taborder="19" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit07" taborder="20" readonly="true" position="absolute" left="30" right="30" top="1040" height="50"/>
+        <Static id="stImageHeight09" text="sourcetype(1:GPS/2:WPS - only Android)" wordwrap="english" onclick="stVersion_onclick" position="absolute" left="30" top="1090" height="50" taborder="21" cssclass="sta_WF_Label" right="30"/>
+        <Edit id="Edit08" taborder="22" readonly="true" position="absolute" left="30" right="30" top="1140" height="50"/>
+        <Static id="Static03" taborder="23" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="24" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_03_00" taborder="25" text="H20" left="0" top="140" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_03_00_00" taborder="26" text="H20" left="0" top="270" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_01_00" taborder="27" text="H40" left="0" top="1190" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleGeolocation.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.04
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.04			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.objApp = nexacro.getApplication();
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+	
+    //모바일앱이면
+    if (system.navigatorname =="nexacro" && this.objApp.gvOs.indexOf("WINDOWS") == -1)
+    {
+		this.Button00.set_enable(true);	
+		this.Button01.set_enable(true);	
+		this.Button02.set_enable(true);	
+    }	
+	else
+	{
+        alert("현재 브라우저에서는 지원하지 않습니다");
+        this.Button00.set_enable(false);	
+		this.Button01.set_enable(false);	
+		this.Button02.set_enable(false);	
+	}		
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.Button00_onclick =  function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// Parameters :
+	// nAccuracy : 요청할 위치 정보 정확도를 설정한다. 작은 숫자일수록 높은 정확도를 의미함.
+	// iOS : ACCURACY_0 ~ ACCURACY_4 (5단계로 설정가능)
+	// Android : ACCURACY_0 ~ ACCURACY_2 (3단계로 설정가능)
+	// nTimeout : 응답 제한시간(ms : 200ms ~ 86400000ms)
+	// 제한시간 초과하는 경우 onrecverror 발생
+
+	var rtn = this.NexaGeolocation00.getCurrentPosition(0, 60000);
+	trace("위치정보 요청 결과 : " + rtn);
+}
+
+this.Button01_onclick =  function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.NexaGeolocation00.watchStart(0, 5000);
+}
+
+this.Button02_onclick =  function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.NexaGeolocation00.watchStop();
+}
+
+this.Geolocation00_onrecvsuccess = function(obj:nexacro.Geolocation,e:nexacro.GeolocationEventInfo)
+{
+	trace("위치정보 onrecvsuccess");
+	trace("---------------------------------------------");
+	trace("       coords     : " + e.coords);
+	trace("       timestamp  : " + e.timestamp);
+	trace("       sourcetype : " + e.sourcetype);
+	trace("위도 : " + e.coords.latitude);
+	trace("경도 : " + e.coords.longitude);
+	trace("고도 : " + e.coords.altitude);
+	trace("방위 : " + e.coords.heading);
+	trace("속도 : " + e.coords.speed);
+	trace("위치정확도 : " + e.coords.accuracy);
+	trace("고도정확도 : " + e.coords.altitudeaccuracy);
+	trace("---------------------------------------------");
+
+	this.Edit00.set_value(e.coords.latitude);
+	this.Edit01.set_value(e.coords.longitude);
+	this.Edit02.set_value(e.coords.altitude);
+	this.Edit03.set_value(e.coords.heading);
+	this.Edit04.set_value(e.coords.speed);
+	this.Edit05.set_value(e.coords.accuracy);
+	this.Edit06.set_value(e.coords.altitudeaccuracy);
+	this.Edit07.set_value(e.timestamp);
+	this.Edit08.set_value(e.sourcetype);
+}
+
+this.Geolocation00_onrecverror = function(obj:nexacro.Geolocation,e:nexacro.GeolocationErrorEventInfo)
+{
+	// trace("위치정보 onrecverror : " + e.errorcode);
+	this.alert("Geolocation onrecverror " + e.errorcode + "::" + e.errormsg);
+}
+]]></Script>
+    <Objects>
+      <NexaGeolocation id="NexaGeolocation00" onrecverror="Geolocation00_onrecverror" onrecvsuccess="Geolocation00_onrecvsuccess"/>
+      <NexaGeolocation id="NexaGeolocation01" onrecverror="NexaGeolocation01_onrecverror" onrecvsuccess="NexaGeolocation01_onrecvsuccess"/>
+    </Objects>
+  </Form>
+</FDL>

@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmThemeSetting" width="480" height="700" titletext="Theme Settings" onload="form_onload">
+    <Layouts>
+      <Layout height="700" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="1" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00_00" taborder="2" text="테마설정" left="30" top="30" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Button id="btnSave" taborder="3" text="저장" left="30" height="60" cssclass="btn_WF_Full" right="30" bottom="40" onclick="btnSave_onclick"/>
+        <Static id="Static02_01_01_01_00_00" taborder="4" text="H40" left="0" top="660" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Button id="btnLignt" taborder="5" text="라이트 모드" left="30" top="80" height="60" cssclass="btn_WF_RdoS" right="50%" onclick="btnLignt_onclick"/>
+        <Button id="btnDark" taborder="6" text="다크 모드" top="80" height="60" cssclass="btn_WF_Rdo" left="btnLignt:0" right="30" onclick="btnDark_onclick"/>
+        <Static id="Static03" taborder="7" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_00" taborder="8" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	frmThemeSetting.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/06/23
+*  @Desction    테마 설정 화면
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/06/23			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.objApp = nexacro.getApplication();
+ 
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj,e);
+	// 초기화
+	this.fnInit();
+};
+
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+/**
+ * @description 사용자 검색
+*/
+this.fnSearch = function()
+{
+	var strSvcId    = "searchUserSetting";
+	var strSvcUrl   = "searchUserSetting.do";
+	var inData      = "";
+	var outData     = "dsTheme=dsList";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]
+}
+
+/**
+ * @description 마이메뉴 저장 트랜잭션
+ */
+this.fnSaveUserSetting = function()
+{
+	if(this.btnLignt.cssclass == "btn_WF_RdoS"){
+		this.dsTheme.setColumn(0,"THEME_ID", "01");
+	}else{
+		this.dsTheme.setColumn(0,"THEME_ID", "02");
+	}
+	// 테마 설정 저장
+	var sSvcId   	= "saveUserSetting";
+	var sSvcUrl   	= "saveUserSetting.do";
+	var sInData     = "dsList=dsTheme:U";
+	var sOutData    = "";
+	var sArg      	= "";	
+	var sCallBackFnc = "fnCallback";
+	
+	this.gfnTransaction(sSvcId , 		// transaction을 구분하기 위한 svc id값
+						sSvcUrl , 		// trabsaction을 요청할 주소
+						sInData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						sOutData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						sArg, 			// 입력갑스로 보낼 arguments, strFormData="20120607"
+						sCallBackFnc);  // 통신방법 정의 [생략가능]
+};
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+//transaction
+this.fnCallback = function (sSvcId, nErrCd, sErrMsg)
+{
+	switch(sSvcId) {
+		case "searchUserSetting":
+			//trace(this.dsTheme.saveXML());
+			var sThemeId = this.dsTheme.getColumn(0,"THEME_ID");
+			if(!this.gfnIsNull(sThemeId)){
+				if(sThemeId == "02"){
+					this.btnLignt.set_cssclass("btn_WF_Rdo");
+					this.btnDark.set_cssclass("btn_WF_RdoS");
+					nexacro.loadStyle("xcssrc::darkMode.xcss");
+				}else{
+					this.btnLignt.set_cssclass("btn_WF_RdoS");
+					this.btnDark.set_cssclass("btn_WF_Rdo");
+					nexacro.loadStyle("xcssrc::lightMode.xcss");
+				}
+			}
+			break;
+		case "saveUserSetting":
+			if(this.btnLignt.cssclass == "btn_WF_Rdo"){
+				nexacro.loadStyle("xcssrc::darkMode.xcss");
+			}else{
+				nexacro.loadStyle("xcssrc::lightMode.xcss");
+			}
+
+			this.close();
+			//this.fnSearch();
+			//nexacro.loadStyle("xcssrc::darkMode.xcss");
+			break;
+		default: break;
+	}
+};
+
+/**
+ * @description 메세지 콜백
+*/
+this.fnMsgCallback = function (sMsgId, sVal)
+{
+	// 해당 메뉴를 즐겨찾기 목록에서 삭제하시겠습니까?
+	if(sMsgId =="confirm.general")
+	{		
+		if(sVal == true)
+		{		
+			// 마이메뉴 저장 트랜잭션 호출
+			this.fnSaveUserSetting();
+		} 
+	}
+};
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+/**
+ * @description 초기화
+*/
+this.fnInit = function()
+{
+	//this.dsCond.clearData();
+	//var nRow = this.dsCond.addRow();
+	this.dsCond.setColumn(0, "USER_ID"		, this.objApp.gdsUser.getColumn(0, "USER_ID"));
+	//this.dsCond.setColumn(nRow, "CUR_PASSWORD"	, this.objApp.gdsUser.getColumn(0, "CUR_PASSWORD"));
+    this.fnSearch();
+}
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+/**
+ * @description 취소 버튼 클릭 이벤트
+*/
+this.btnClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfnClosePopup();
+};
+
+/**
+ * @description 확인 버튼 클릭 이벤트
+*/
+this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if (this.gfnDsIsUpdated(this.dsTheme) == false) {
+		// 저장할 데이터가 없습니다.
+		this.gfnAlert("msg.save.nochange");
+		return;
+	}
+	var sMsgId = "confirm.general";
+	var sPopId = sMsgId;
+	var sCallback = "fnMsgCallback";
+	var arrArg = ["테마 설정을 저장하시겠습니까?"];
+	
+	// 해당 메뉴를 즐겨찾기 목록에서 삭제하시겠습니까?
+	this.gfnAlert(sMsgId, arrArg, sPopId, sCallback);	
+
+};
+
+this.btnLignt_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.btnLignt.set_cssclass("btn_WF_RdoS");
+	this.btnDark.set_cssclass("btn_WF_Rdo");
+	this.dsTheme.setColumn(0, "THEME_ID", "01");
+};
+
+this.btnDark_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.btnLignt.set_cssclass("btn_WF_Rdo");
+	this.btnDark.set_cssclass("btn_WF_RdoS");
+	this.dsTheme.setColumn(0, "THEME_ID", "02");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsTheme" canrowposchange="dsList_canrowposchange" cancolumnchange="dsList_cancolumnchange">
+        <ColumnInfo>
+          <Column id="PASSWORD" type="STRING" size="256"/>
+          <Column id="THEME_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="USER_ID" type="STRING" size="256"/>
+          <Column id="CUR_PASSWORD" type="STRING" size="256"/>
+          <Column id="NEW_PASSWORD" type="STRING" size="256"/>
+          <Column id="CONFIRM_PASSWORD" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CONFIRM_PASSWORD"/>
+            <Col id="NEW_PASSWORD"/>
+            <Col id="CUR_PASSWORD"/>
+            <Col id="USER_ID"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsUser" canrowposchange="dsList_canrowposchange" cancolumnchange="dsList_cancolumnchange">
+        <ColumnInfo>
+          <Column id="PASSWORD" type="STRING" size="256"/>
+          <Column id="THEME_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

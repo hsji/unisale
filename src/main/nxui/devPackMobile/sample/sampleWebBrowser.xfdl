@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleWebBrowser" width="480" height="768" titletext="웹 브라우저" onload="form_onload">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" width="480">
+        <WebBrowser id="WebBrowser00" taborder="0" left="32" top="30" height="320" leftbase="" topbase="" bottombase="" rightbase="" widthbase="" heightbase="" onloadcompleted="WebBrowser00_onloadcompleted" onusernotify="WebBrowser00_onusernotify" right="30"/>
+        <Button id="Button00" taborder="1" text="Get input value" left="30" top="370" height="60" onclick="Button00_onclick" right="51.04%"/>
+        <Button id="Button05" taborder="2" text="Call Function" left="Button00:10" top="370" height="60" onclick="Button05_onclick" right="30"/>
+        <TextArea id="TextArea00" taborder="3" left="30" top="440" height="288" wordWrap="char" right="30"/>
+        <Static id="Static02" taborder="4" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="5" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static03_00" taborder="6" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="7" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_01" taborder="8" text="H20" left="0" top="350" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_00" taborder="9" text="H10" left="0" top="430" cssclass="sta_WF_GSize" visible="false" right="0" height="10"/>
+        <Static id="Static02_01_01_01_00_00_00" taborder="10" text="H40" left="0" top="728" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleWebBrowser.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.03
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.03			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.objApp = this.gfnGetApplication();
+this.fvWebBrowserHideList = [this.WebBrowser00];	//[필수] 안드로이드 런타임인 경우, 화면 내 웹브라우저 컴포넌트 목록 설정
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+	
+	 //system.osversion      nexacro._Browser    system.navigatorname
+	//WINDOWS 7  		    RUNTIME 		    nexacro   	        - 윈도우 런타임
+	//WINDOWS 7  		    CHROME 		        Chrome     	        - 윈도우 html5
+	//Android 6.0.1   	    RUNTIME 	        nexacro		        - 안드로이드 런타임
+	//Android 6.0.1   	    CHROME 		        CHROME		        - 안드로이드 html5
+	//iOS 10.3.3   		    MobileSafari        nexacro		        - iOS 런타임
+	//iOS 10.3.3   		    MobileSafari        MobileSafari	    - iOS html5
+
+	var sUrl = "";
+    var sADL  = nexacro.getProjectPath();
+    
+	if (system.osversion.indexOf("Windows") >= 0)
+	{		//윈도우 런타임 , 윈도우 html5      
+        sUrl = this.objApp.gvResUrl + "htmlContent.html";
+	}
+	else if (system.navigatorname == "nexacro")
+	{       
+        if (system.osversion.indexOf("Android") >= 0)
+        {   //안드로이드 런타임 디플로이 업데이트 방식일때 사용확인
+//             var userappUrl = system.convertRealPath("%USERAPP%");			
+//             sUrl = "file://" + userappUrl + "res/htmlContent.html";
+			//안드로이드 런타임 디플로이 서버 방식 
+			sUrl = this.objApp.gvResUrl + "htmlContent.html";
+        }
+        else    
+        {   //iOS 런타임
+            //RP80544 wk웹뷰 제약으로 크로스도메인 웹브라우저 접근이 안돼어 업데이트 타입을 서버로 해야함
+            sUrl = this.objApp.gvResUrl + "htmlContent.html";
+        }
+       
+	}
+    else    //안드로이드 html5, iOS html5
+    {
+        sUrl = this.objApp.gvResUrl + "htmlContent.html";
+    }
+    
+    this.WebBrowser00.set_url(sUrl);    
+};
+
+this.fnClose = function()
+{
+    trace("fnClose 호출");
+}
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.WebBrowser00_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	trace("===========>WebBrowser00_onloadcompleted");
+};
+
+this.WebBrowser00_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUserNotifyEventInfo)
+{
+	trace ("===========>WebBrowser00_onusernotify " + e.userdata);
+
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//안드로이드 런타임은 사용불가 방식
+	if (system.navigatorname =="nexacro" && this.objApp.gvOs.indexOf("ANDROID") > -1)
+	{
+		alert("현재 브라우저에서는 지원하지 않습니다");
+		return;
+	}
+     
+	var _doc = this.WebBrowser00.getProperty("document");
+	var dom = _doc.callMethod("getElementById", "inputText");
+	var str1 = dom.getProperty("value");	
+    //    dom.setProperty("value", "1234");
+ 
+    dom = _doc.callMethod("getElementById" ,"contents");
+    var str2 = dom.getProperty("innerHTML");	
+
+	_doc = this.WebBrowser00.getProperty("window");	
+	var str3 = _doc.getProperty("strHTML");	
+    
+    this.TextArea00.set_value(str1 + " \n\n "+ str2 + " \n\n "+ str3);
+
+	if(_doc && dom)
+	{
+		_doc.destroy();
+		_doc = null;
+
+		dom.destroy();
+		dom = null;
+	}
+};
+
+this.Button05_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    var objWb =  null;
+
+	if (nexacro._Browser == "Runtime") { 
+        try {        
+            // 윈도우 런타임
+            objWb = this.WebBrowser00.getProperty("Document").getProperty("parentWindow");
+       //     objWb = this.WebBrowser00.getProperty("window");	
+        } catch (e) {
+            //안드로이드 런타임
+            objWb = this.WebBrowser00;
+        }
+	} 
+    else 
+    {
+		//윈도우 html5, 안드로이드 html5,  iOS html5 , iOS런타임확인중?
+		objWb = this.WebBrowser00.getProperty("window");
+	}
+
+    //onusernotify 이벤트 발생
+    objWb.callMethod("fn_getContent" ,"contents");  //윈도우 런타임(결과잘림256byte), 윈도우 html5, 안드로이드 런타임, 안드로이드 html5,  iOS html5 , iOS런타임(업데이트타입 서버만 가능)
+
+};]]></Script>
+  </Form>
+</FDL>

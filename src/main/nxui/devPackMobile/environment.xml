@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ENV version="2.1">
+  <Environment themeid="theme::devPackM" datatyperule="2.0" enableinspector="true" filesecurelevel="all" loadingimage="url('theme::devPackM/images/loadingimage.gif')">
+    <ScreenDefinition>
+      <Screen id="mobile" type="mobile_small" themeid="theme::devPackM" icon="url('theme::devPackM/images/mobiletong.ico')" scrollbartype="none autoindicator"/>
+    </ScreenDefinition>
+    <Variables>
+      <Variable id="evMessagePopup" initval="true"/>
+      <Variable id="evQuickView" initval="Y"/>
+      <Variable id="evSytmFlagCd" initval="MO"/>
+    </Variables>
+    <Cookies/>
+    <httpheader/>
+  </Environment>
+</ENV>

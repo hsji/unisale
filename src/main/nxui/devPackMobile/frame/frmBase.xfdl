@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frameBase" width="480" height="768" onload="frameBase_onload" dragscrolltype="vert" ondevicebuttonup="frameBase_ondevicebuttonup" ontimer="frameBase_ontimer" titletext="바탕프레임">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" width="480">
+        <Div id="divTop" taborder="0" left="0" top="0" height="55" right="0">
+          <Layouts>
+            <Layout>
+              <Static id="Static02" taborder="3" left="0" height="1" cssclass="sta_TF_Line" right="0" bottom="0"/>
+              <Static id="sta00" taborder="0" text="타이틀영역" left="65" top="0" height="55" cssclass="sta_TF_Title" right="65"/>
+              <Static id="sta01" taborder="4" left="65" top="0" height="55" cssclass="sta_WF_Logo" visible="false" text="DevPro" right="65"/>
+              <Button id="btnMenu" taborder="2" top="0" width="55" height="55" right="20" cssclass="btn_TF_Menu" text="" onclick="divTop_btnMenu_onclick"/>
+              <Button id="btnBack" taborder="1" left="20" top="0" width="55" height="55" cssclass="btn_TF_Pre" onclick="divTop_btnBack_onclick" text=""/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divCenter" taborder="1" left="0" top="55" right="0" url="frame::frmWork.xfdl" visible="false" bottom="0"/>
+        <Div id="divMain" taborder="2" left="0" top="55" right="0" bottom="0"/>
+        <Button id="btnAdd" taborder="5" width="65" cssclass="btn_WF_AddSchedule" right="20" onclick="btnAdd_onclick" visible="false" height="65" bottom="20"/>
+        <Div id="divMenu" taborder="3" left="980" top="0" bottom="0" url="frame::frmMenu.xfdl" right="-980" visible="false"/>
+        <Div id="divLogin" taborder="4" left="490" top="0" right="-490" bottom="0" url="frame::frmLogin.xfdl" text="" visible="false"/>
+        <Div id="divIosPadding" taborder="6" text="div00" left="0" top="divCenter:0" right="0" bottom="0" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  컨설팅 표준화 작업
+*  @MenuPath    frame > frmBase
+*  @FileName 	frmBase.xfdl 
+*  @Creator 	mobile_consulting
+*  @CreateDate 	2017.11.14
+*  @Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2022.03.24     	mobile_consulting		 	최초 생성 
+*******************************************************************************
+*/
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+ this.objApp = nexacro.getApplication();
+ this.fvBtnTop = 0;
+ /************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose)
+ ************************************************************************************************/
+/**
+ * @description 화면 onload시 처리내역(필수)
+*/
+this.frameBase_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// Frame 변수 저장
+	this.objApp.gvBase 	    = this;
+ 	// 로그인 화면 open
+	this.divLogin.set_left(0);
+	this.divLogin.set_right(0);
+	this.divLogin.set_visible(true);
+	this.divMenu.set_left(0);
+	this.divMenu.set_right(0);
+    this.divMenu.set_width(0);
+	this.divMenu.set_visible(false);
+	this.divMain.set_visible(false);
+	this.divTop.set_visible(false);
+	
+	if (system.navigatorname != "nexacro") 
+	{
+ 		MyHistory.init(this.fn_onChangeHistory, this);
+		
+ 		var hash = MyHistory.getLocationHash();
+		
+		if (hash)
+		{
+			var data = MyHistory.getData(hash);
+			if (data)
+			{
+            //새로고침시 처리가 필요한 경우
+			//	this.objApp.gdsArguments.loadXML(data.menuParam); 
+				this.fn_onChangeHistory(hash, data);                
+				return;
+			}
+		}
+	}	
+	else
+	{
+		if (system.osversion.toUpperCase().indexOf("WINDOWS") == -1)
+		{
+			this.addChild("standardPlugin",new nexacro.Standard());
+			this.standardPlugin.addEventHandler("on_callback", this.on_standardPlugin_callback, this);   
+			this.standardPlugin.callMethod("getPackageVersion", {});	
+
+			if (this.objApp.gvOs.indexOf("ANDROID") == -1)	
+			{
+				this.btnAdd.set_bottom(60);
+				this.divCenter.set_bottom(60);
+			}			
+		}
+	}
+	
+};
+
+this.frameBase_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{	
+	if (e.timerid == 0)
+	{
+		this.killTimer(e.timerid);
+	//	system.execBrowser("https://mobiletong.tobesoft.com/app.html");
+	
+		if (system.osversion.toUpperCase().indexOf("IOS") > -1)
+		{
+			system.execBrowser("https://apps.apple.com/kr/app/devpack/id6448317217");
+		}	
+		else
+		{
+			system.execBrowser("https://play.google.com/store/apps/details?id=com.tobesoft.DevPackN");
+		}	
+	
+		this.fnLogout();
+	}
+};
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분(Transaction, Popup)
+ ************************************************************************************************/
+//transaction
+this.fnCallback = function (sSvcId, nErrCd, sErrMsg)
+{
+	switch(sSvcId) {
+		case "saveLog":
+			this.fnLogout();
+			break;
+	}
+};
+
+//message
+this.fnMsgCallback = function (sMsgId, sRtn)
+{
+	switch (sMsgId) 
+	{
+		case "logout":
+			if (sRtn)
+			{
+				this.fnLogoutLogTran();
+			}
+			break;
+		case "exit":
+			if (sRtn)
+			{		
+				nexacro.getApplication().exit();
+			}
+			break;		
+		case "confirm.before.movepage":
+			if (sRtn)
+			{   
+				this._gfnCallM(this.fvsMenuId, this.fvoObj);
+			}
+			else
+			{
+				this.fnAction("MENU", false);
+			}
+			break;				
+	}
+};
+
+this.on_standardPlugin_callback = function(obj, e)
+{
+	if (e.reason == 0)
+	{
+		if (e.svcid == "getPackageVersion")
+		{		
+			var osVersion = this.objApp.gvAppVersionA;	
+			var deviceVersion =  e.returnvalue.versionName;
+			if (system.osversion.toUpperCase().indexOf("IOS") > -1)
+			{
+				osVersion = this.objApp.gvAppVersionI;
+			//	deviceVersion =  e.returnvalue.message.versionName;	//1.6
+				deviceVersion =  e.returnvalue.message;				//1.4
+			}
+			//trace("**************************************** "+ JSON.stringify(e.returnvalue)+ " ********* " + osVersion);
+			this.divLogin.form.staVersion.set_visible(true);
+			this.divLogin.form.staVersion.set_text("V "+ deviceVersion);			
+			
+			if (deviceVersion < osVersion)
+			{
+				var param = {
+					toastText : "업데이트가 필요합니다",
+					duration : 0// 0 : LENGTH_SHORT, 1 : LENGTH_LONG
+				};
+				this.standardPlugin.callMethod("viewToast", param);				
+				this.setTimer(0, 2000);
+			}
+		}		
+	}
+}
+/************************************************************************************************
+ * CRUD 및 TRANSACTION 서비스 호출 처리
+ ************************************************************************************************/
+this.fnLogoutLogTran = function ()
+{
+	var oDs = nexacro.getApplication().gdsLog;
+	oDs.clearData();
+	var nRow = oDs.addRow();
+	oDs.setColumn(nRow, "LOG_TYPE", "LOGOUT");
+	
+	var strSvcId    = "saveLog";
+	var strSvcUrl   = "saveLog.do";
+	var inData      = "dsList=gdsLog:U";
+	var outData     = "";
+	var strArg      = "";				// System별 접속차단자 체크
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]
+};
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+ 
+ this.fn_onChangeHistory = function(hash, data)
+{
+	//히스토리 동작시 팝업 close
+	if (nexacro.getPopupFrames().length > 0)
+	{
+		var objframes = nexacro.getPopupFrames();
+		for(var i=0; i< objframes.length; i++)
+		{
+			objframes[i].form.close();
+		}
+		return;
+	}
+	//메뉴화면 열려있는 경우 닫기.
+	if(this.divMenu.visible)
+	{
+		this.fnAction("MENU", false);
+		return;
+	}
+	//직전 화면이 없는 경우.
+	if (this.gfnIsNull(hash))
+	{
+		this.fnAction("LOGIN", false);		
+	}
+	//직전 화면이 Home인 경우
+	else if (hash == "HOME")
+    {
+        this.fnAction("HOME", true);
+    }
+	//Home이 아닌 직전 화면이 있는 경우 해당 메뉴 data 통해 form open
+	else
+	{   
+ 		if (this.objApp.gvLogin == "Y")
+ 		{
+			var sMenuId = data.oArg.MENU_ID;
+			this.divMenu.form.fnSetGrd(sMenuId);
+			var objDs = this.divMenu.form.dsGrdMenu;
+			
+			var oObj = {
+				ds    : objDs,  	
+				nRow  : objDs.findRow(this.FRAME_MENUCOLUMNS.menuId, sMenuId),
+				sMenu : "N"         // 메뉴클릭 여부. 
+									// Y일 경우와 차이는 메뉴 open Log Tran 동작 여부.
+									// 메뉴를 통해 이동했을 때만 메뉴 open Log Tran 동작
+			};
+			this.setBtnAndGridByHistoryChange(sMenuId);
+			this.gfnCallM(oObj);
+ 		}
+ 		else
+ 		{
+			MyHistory.setLocationHash("", "");//hash setting
+ 		} 		
+	}
+}
+ 
+ 
+ this.fnAction = function(sID, arg)
+{
+	switch(sID)
+	{
+		case "MENU":		
+			//메뉴 열기 (true)
+			if (arg)
+			{ 
+				this.divMenu.set_visible(true);
+				var nWidth = this.getOffsetWidth();
+				this.divMenu.set_width(nWidth);
+				this.divCenter.set_visible(false);
+				this.divIosPadding.set_visible(false);
+				this.divMain.set_visible(false);
+				this.btnAdd.set_visible(false);
+			}
+			//메뉴버튼 닫기 (false)
+			//메뉴 클릭 & 이동에 의한 처리는 _gfnCallM
+			else
+			{						
+				this.divMenu.set_width(0);
+				this.divMenu.set_visible(false);
+				if(this.gfnIsNull(this.divCenter.form.divWork.url))
+				{
+					this.divMain.set_visible(true);
+					this.btnAdd.set_visible(true);
+				}else{
+					this.divCenter.set_visible(true);
+					this.divIosPadding.set_visible(true);
+					this.divTop.form.sta00.set_visible(true);
+					this.divTop.form.sta01.set_visible(false);
+					this.gfnSetCommonBtnM();
+				}
+
+			}
+			break;
+		
+		case "LOGIN":
+		//로그인시(true)
+		if(arg)
+		{
+			this.objApp.gvLogin = "Y";
+			
+			//메뉴 상단 sta01, sta02 text 세팅
+ 			var sNameCol	= "USER_NAME";
+			var sEmpNoCol	= "EMP_NO";
+ 			this.divMenu.form.sta01.set_text(this.objApp.gdsUser.getColumn(0, sNameCol));
+			
+			//Login 폼 invisible처리.
+			this.divLogin.set_visible(false);
+			this.fnAction("HOME", false);
+		}else{
+			if (system.navigatorname != "nexacro") 
+			{
+				//NRE아닐경우 MyHistory, window.location.reload() 추가
+				window.location.reload();
+			}
+			this.objApp.gvLogout = "Y";
+			this.divMenu.set_visible(false);
+			this.divMain.set_visible(false);
+			this.divTop.set_visible(false);
+			this.btnAdd.set_visible(false);
+			this.divLogin.set_visible(true);
+		}
+		break;
+		
+		//History 동작시 state 저장
+		case "History":
+			//history setting
+			if (system.navigatorname != "nexacro") 
+			{
+				var data;
+				var hash;
+				if(this.gfnIsNull(arg))
+				{
+					hash = "HOME"
+					data = null;
+				}else
+				{
+					hash = "Menu:"+arg.sMenuId;
+					data = {oArg : arg.oArgs};
+				}
+				MyHistory.setLocationHash(hash, data);	
+			}
+
+			break;		
+ 
+// 		case "PARAM_CLEAR":
+// 			nexacroApp.gdsArguments.clearData();
+// 			break;	
+
+		// arg : reload 여부
+		case "HOME":
+			this.divTop.set_visible(true);
+			this.divTop.form.btnBack.set_visible(false);
+			this.divTop.form.sta00.set_visible(false);
+			this.divTop.form.sta01.set_visible(true);
+			this.divMain.set_visible(true);
+			this.btnAdd.set_visible(true);
+			this.divCenter.set_visible(false);
+			this.divIosPadding.set_visible(false);
+			this.divMenu.set_visible(false);
+			//arg : false일 경우 초기 로드이므로 main reload X
+			if(arg && !this.gfnIsNull(this.divMain.url)) this.divMain.form.reload();
+			break;
+			
+		case "EXIT":
+            this.gfnAlert("confirm.logout", "", "logout", "fnMsgCallback");    
+			break; 
+	}
+}
+
+
+//히스토리 동작시 해당 메뉴에 맞게 버튼 css 및 grid 변경
+this.setBtnAndGridByHistoryChange = function(sMenuId)
+{
+	var targetForm = this.divMenu.form;
+	targetForm.fnSetClickedBtnCss(targetForm.dsGrdMenu.lookup(this.FRAME_MENUCOLUMNS.menuId, sMenuId, "MENU_PATH").split(",")[1]);
+	targetForm.fnSetGrd(sMenuId);
+}
+
+/**
+ * @description workFrame close 시 처리
+*/
+this.fnWorkFrameClose = function(sMenuId, oObj)
+{
+	//this.gfn_formClose();
+	if (this.gfnIsNull(this.divCenter.form.divWork.form.lookup("fnClose")))
+	{
+		//로컬환경에서 fnClose 함수 없음 알림
+		if (nexacro.getEnvironmentVariable("evRunMode") == "S" || nexacro.getEnvironmentVariable("evRunMode") == "L") {
+			trace("해당화면에 fnClose 함수가 없습니다. fnClose 함수가 없으면 데이타 변경여부 체크를 하지 않습니다.");
+		}    
+        this._gfnCallM(sMenuId, oObj);
+	}
+    else
+    {
+		if (this.divCenter.form.divWork.form.fnClose() == false)
+		{
+			var sMsgId = "confirm.before.movepage";	
+			var arrArg = "";						
+			var sPopId = sMsgId;					
+			this.fvsMenuId = sMenuId;
+            this.fvoObj = oObj;
+            
+			// 변경된 데이터가 있습니다. 현재 화면을 닫겠습니까?            
+            this.gfnAlert(sMsgId, arrArg, sPopId, "fnMsgCallback");
+		}
+        else
+        {	
+			this._gfnCallM(sMenuId, oObj);
+		} 
+	}	
+}
+
+this.fnLogout = function ()
+{
+	if(system.navigatorname == "nexacro")
+	{		
+		nexacro.getApplication().exit();
+	}
+	else
+	{
+		window.top.location.reload(true);
+	}	
+};
+
+//프로팅 버튼 초기 위치 설정하는 함수.
+this.fnSetFloatBtnInitPos = function(objVscrollBar, objBtn, nPadding)
+{
+	if(this.gfnIsNull(objVscrollBar) || this.gfnIsNull(objBtn)) return;
+	if(this.gfnIsNull(nPadding)) nPadding = 20;
+	objBtn.set_top(objVscrollBar.height - objBtn.height - nPadding);
+	this.fvBtnTop = objBtn.top;
+}
+
+//popup화면에서 뒤로가기 디바이스 버튼 클릭시 팝업 닫기.
+this.fnClosePopupByDeviceButton = function(objForm)
+{
+	objForm.close();
+}
+
+/**
+ * @description 안드로이드앱에서 메뉴 오픈 시 웹브라우저 컴포넌트 숨기는 처리
+*/
+this.fnWebBrowserChk = function(sVisible)
+{
+	this.webBrowserVisible(this.objApp.gvBase.divMain.form, sVisible);
+} 
+
+ /************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+this.divTop_btnMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnAction("MENU", true);
+};
+
+this.divTop_btnBack_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCenter.form.divWork.set_url("");
+	this.fnAction("HOME", true);
+};
+
+this.frameBase_ondevicebuttonup = function(obj:nexacro.Form,e:nexacro.DeviceButtonEventInfo)
+{
+	if(this.objApp.gvOs.indexOf("ANDROID") >= 0)
+	{
+		if(e.button == 1) // MENU     
+		{	
+			
+		}     
+		else if(e.button == 2) // CANCEL     
+		{   
+			//경우 1. 로그인 화면에서 back, 2. Main 화면에서 back, 3. 메뉴 화면에서 back, 4. frmWork에서 back
+			if(this.divLogin.visible)
+			{
+				this.gfnAlert("confirm.exit", "", "exit", "fnMsgCallback");    
+			}
+			else if(this.divMain.visible && !this.divLogin.visible)
+			{
+				if(this.objApp.gvIsLogin == "Y")
+				{
+					this.fnAction("EXIT");
+				}				
+			} else if(this.divMenu.visible)
+			{
+				this.fnAction("MENU", false);
+			}else if(this.divCenter.form.divWork.url)
+			{
+				this.fnAction("HOME", true);
+			}
+		}
+	}
+	
+	return false;
+};
+
+this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var bDivCenterVisible = this.divCenter.visible;
+	var bDivMainVisible = this.divMain.visible;
+
+	var targetDiv = bDivCenterVisible ? this.divCenter : (bDivMainVisible ? this.divMain : null);
+	if(this.gfnIsNull(targetDiv)) return;
+	
+	if(targetDiv == this.divCenter)
+	{
+		if(targetDiv.form.divWork.form.lookup("cfnAdd")) targetDiv.form.divWork.form.cfnAdd();
+	}else if(targetDiv == this.divMain)
+	{
+		if(targetDiv.form.lookup("cfnAdd")) targetDiv.form.cfnAdd();
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

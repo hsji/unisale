@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp01" width="480" height="770" titletext="Organization Detail">
+    <Layouts>
+      <Layout height="770" mobileorientation="portrait" screenid="mobile" width="480">
+        <Grid id="grd00" taborder="5" left="30" top="80" cssclass="grd_WF_UserInfo" right="30" bottom="0" binddataset="ds00" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="246"/>
+                <Column size="50"/>
+                <Column size="50"/>
+              </Columns>
+              <Rows>
+                <Row size="54"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:구분" cssclass="label_Info"/>
+                <Cell col="1" text="bind:내용"/>
+                <Cell col="2" cssclass="label_Mobile" displaytype="imagecontrol"/>
+                <Cell col="3" cssclass="label_Message" displaytype="imagecontrol"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="1" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00_00" taborder="2" text="홍길동 책임" top="10" height="50" cssclass="sta_WF_ConTit" left="30" right="30"/>
+        <Static id="Static02_01_01" taborder="3" text="H20" left="0" top="Static00_00:0" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static03_00" taborder="4" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds00">
+        <ColumnInfo>
+          <Column id="구분" type="STRING" size="256"/>
+          <Column id="내용" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="구분">사용자ID</Col>
+            <Col id="내용">hong</Col>
+          </Row>
+          <Row>
+            <Col id="구분">부서</Col>
+            <Col id="내용">투비소프트</Col>
+          </Row>
+          <Row>
+            <Col id="구분">직급</Col>
+            <Col id="내용">책임</Col>
+          </Row>
+          <Row>
+            <Col id="구분">직잭</Col>
+            <Col id="내용">팀원</Col>
+          </Row>
+          <Row>
+            <Col id="구분">핸드폰</Col>
+            <Col id="내용">010-1234-5678</Col>
+          </Row>
+          <Row>
+            <Col id="구분">이메일</Col>
+            <Col id="내용">tobe@tobesoft.com</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

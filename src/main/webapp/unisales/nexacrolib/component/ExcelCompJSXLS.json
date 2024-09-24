@@ -1,0 +1,25 @@
+﻿{
+	"name": "ExcelCompJSXLS",
+	"version": "17.0.0.800",
+	"description": "nexacro platform 17 Unified Framework Library",
+	"license": "",
+	"scripts": [
+		"ExcelCompJSXLS/opensource/jszip.js",
+		"ExcelCompJSXLS/opensource/xlsx.js",
+		"ExcelCompJSXLS/FileUtil.js",
+		"ExcelCompJSXLS/ExportObjectJS.js",
+		"ExcelCompJSXLS/ImportObjectJS.js"
+	],
+	"objInfo": [
+		"ExcelCompJSXLS/metainfo/ExcelExportObjectJS.info",
+		"ExcelCompJSXLS/metainfo/ExportItemEx.info",
+		"ExcelCompJSXLS/metainfo/ExcelExportErrorEventInfoEx.info",
+		"ExcelCompJSXLS/metainfo/ExcelExportEventInfoEx.info",
+		"ExcelCompJSXLS/metainfo/ExcelExportProgressEventInfoEx.info",
+		"ExcelCompJSXLS/metainfo/ExcelImportObjectJS.info",
+		"ExcelCompJSXLS/metainfo/ExcelImportEventInfoEx.info",
+		"ExcelCompJSXLS/metainfo/ExcelImportErrorEventInfoEx.info"
+	],
+	"designscripts": [
+	]
+}

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="PopupTitle" width="480" height="55" titletext="팝업상세타이틀">
+    <Layouts>
+      <Layout height="55" mobileorientation="landscape" width="480" screenid="mobile">
+        <Static id="Static00" taborder="1" text="팝업 상세타이틀영역" left="30" top="0" height="55" cssclass="sta_TF_DTitle" right="60"/>
+        <Button id="Button00_00" taborder="0" top="0" width="55" height="55" right="0" cssclass="btn_TF_Close"/>
+        <Static id="Static01" taborder="2" left="0" height="1" cssclass="sta_TF_Line" right="0" bottom="0"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

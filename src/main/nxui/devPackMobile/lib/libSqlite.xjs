@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script version="1.0" type="xscript5.1"><![CDATA[/**
+*  컨설팅 표준화 작업
+*  @MenuPath    
+*  @FileName 	lib_sqlite.xjs
+*  @Creator 	mobile_consulting
+*  @CreateDate 	2022.05.04
+*  @Desction     
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2022.05.04     	mobile_consulting 	        최초 생성 
+*******************************************************************************
+*/
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+this.objAction = {
+				"00001" : "Parameter error"
+			,	"1201" 	: "Connection busytimeout Fail"
+			,	"1202" 	: "Connection asyncBegin Fail"
+			,	"1203" 	: "Connection asyncClose Fail"
+			,	"1204" 	: "Connection asyncCommit Fail"
+			,	"1205" 	: "Connection asyncIsConnected Fail"
+			,	"1206" 	: "Connection asyncOpen Fail"
+			,	"1207" 	: "Connection asyncRollback Fail"
+			,	"1210" 	: "Connection executeQuery Fail"
+			,	"1211" 	: "Connection executeUpdate Fail"	//안드로이드O 
+			};
+this.arrAction = ["", "begin", "Connection_close", "commit", "connected", "open", "rollback", "executeQuery", "executeUpdate", "Statement_close"];			
+this.objSqlConn 	= null;
+this.objSqlStat 	= null;
+this.fvCallback 	= "";		//콜백명
+this.fvCallID   	= "";		//콜백ID
+this.fvTranBegin 	= false;	//트랜여부
+this.fvStatCnt		= 0;		//new 시퀀스
+this.gfvDELIM		= ", ";		//구분자
+this.fvDb 			= "";
+
+/**
+* @class ldb 초기화
+* @param {LiteDBConnection} objConn - LiteDBConnection	
+* @param {LiteDBStatement}  objStat - LiteDBStatement 
+* @return N/A
+*/
+this.gfnLocalDbInit = function (objConn:LiteDBConnection, objStat:LiteDBStatement)
+{
+	this.objSqlConn = objConn;
+	this.objSqlStat = objStat;
+	
+	this.objSqlConn.addEventHandler("onsuccess"	, this.objSql_onsuccess	, this);
+ 	this.objSqlConn.addEventHandler("onerror"	, this.objSql_onerror	, this); 
+	this.objSqlStat.addEventHandler("onsuccess"	, this.objSql_onsuccess	, this);
+ 	this.objSqlStat.addEventHandler("onerror"	, this.objSql_onerror	, this);
+	nexacro.getApplication().gfvPath =  system.osversion.indexOf("Windows") >= 0 ?  "%MYDOCUMENT%" : "%USERAPP%";
+
+//trace(nexacro.getApplication().gfvPath);
+	this.fvDb = nexacro.getApplication().gfvPath + "Test17.db";
+	//없으면 생성
+ 	this.objSqlConn.open(this.fvDb, this.objSqlConn.openReadWrite);
+	this.objSqlConn.set_datasource(this.fvDb);
+	this.objSqlStat.set_ldbconnection(this.objSqlConn);  	
+}
+
+/**
+* @class LiteDBConnection open
+* @return N/A
+*/
+this.gfnLocalDbConOpen = function()
+{
+	this.objSqlConn.open();
+}
+
+/**
+* @class LiteDBConnection begin
+* @return N/A
+*/
+this.gfnLocalDbConBegin = function()
+{
+	this.objSqlConn.begin();
+}
+
+/**
+* @class LiteDBConnection commit
+* @return N/A
+*/
+this.gfnLocalDbConCommit = function()
+{
+	this.objSqlConn.commit();
+}
+
+/**
+* @class select문 처리
+* @param {String} sID - sql id	
+* @param {String} sCall - sql callback
+* @param {String} sQueryStr - sql 
+* @return N/A
+*/
+this.gfnLocalDBSelecter = function(sID, sCall, sQueryStr)
+{
+	var param = new Array();
+	
+	this.fvCallback = sCall;
+	this.fvCallID   = sID;
+	
+	this.objSqlConn.open();
+	this.objSqlStat.set_parameters(param);		// 파라미터초기화
+	this.objSqlStat.set_query(sQueryStr);		
+	this.objSqlStat.executeQuery();
+}
+
+/**
+* @class insert, delete, upate문 처리
+* @param {String} sID - sql id	
+* @param {String} sCall - sql callback
+* @param {String} sQueryStr - sql 
+* @param {boolean} bBegin - begin 사용여부
+* @return N/A
+*/
+this.gfnLocalDBUpdater = function(sID, sCall, sQueryStr, bBegin)
+{
+	this.fvCallback  = sCall;
+	this.fvCallID    = sID;
+
+	this.objSqlConn.open();
+
+	bBegin	= (bBegin == false) ? false : true;
+	
+	if (bBegin == true) 
+	{
+		this.objSqlConn.begin();
+	}
+
+	this.fvTranBegin = bBegin;
+	this.objSqlStat.set_query(sQueryStr);
+	this.objSqlStat.executeUpdate();
+}
+
+/**
+* @class dataset -> table insert(parameters사용)	all or nothing
+* @param {String} sID - sql id	
+* @param {String} sCall - sql callback
+* @param {String} sQueryStr - sql 
+* @param {boolean} bBegin - begin 사용여부
+* @return N/A
+*/
+this.gfnLocalDBInsert = function(sID, sCall, objDatset, sTable, bBegin)
+{
+	var sQuery 		= "";
+	var nColCnt 	= -1;
+	var sColName 	= "";
+	var sTmpCol 	= "";
+	this.fvCallback = sCall;
+	this.fvCallID   = sID;
+
+// 	var ds = this.objects[sDatset];
+// 	if (this.gfnIsNull(ds)) 
+// 	{
+// 		ds = nexacro.getApplication().all[sDatset];
+// 	}
+	
+	var ds = objDatset;
+	nColCnt = ds.colcount;
+	if (nColCnt < 1 || ds.rowcount < 1) 
+	{
+		return -1;
+	}
+
+	for (var j = 0; j < nColCnt; j++) 
+	{
+		sColName += ds.getColumnInfo(j).name + ",";
+		sTmpCol += ":" + ds.getColumnInfo(j).name + ",";
+	}
+
+	sQuery = "insert into " + sTable + " ( "; //Query Setting
+	sQuery += sColName.substr(0, sColName.length -1 ) + " ) values ( ";
+	sQuery += sTmpCol.substr(0, sTmpCol.length -1 ) + " )";
+
+	this.objSqlConn.open();
+	bBegin	= (bBegin == false) ? false : true;	
+	if (bBegin == true) 
+	{
+		this.objSqlConn.begin();
+	}		
+
+	this.fvTranBegin = bBegin;
+	this.objSqlStat.set_query(sQuery); 
+	this.objSqlStat.set_parameters(ds);	
+	this.objSqlStat.executeUpdate();
+}
+
+/**
+* @class DB Connection 성공 이벤트
+* @param {LiteDBConnection} obj - LiteDBConnection, LiteDBStatement 	
+* @param {LiteDBEventInfo} e - LiteDBEventInfo
+* @return N/A
+*/
+this.objSql_onsuccess = function (obj, e)
+{
+	trace("[objSql_onsuccess] [" + this.arrAction[e.reason] + "] e.reason[" + e.reason + "] e.returnvalue : " + e.returnvalue + " - " + this.fvCallID);
+	switch (e.reason) 
+	{
+		case 1:	// begin
+			break;
+		case 2:	// close
+			break;
+		case 3:	// commit	
+			this.objSqlStat.close();	
+			this.objSqlConn.close();
+			this.fvTranBegin 	= false;
+			if (typeof(this.fvCallback) == "function")
+			{
+				this.fvCallback.call(this, this.fvCallID, 0, "SUC", e.returnvalue);
+			}					
+		
+			break;
+		case 4:	// connected
+			break;
+		case 5:	// open
+	
+			break;
+		case 6:	// rollback			
+			this.objSqlStat.close();
+			this.objSqlConn.close();
+			this.fvTranBegin 	= false;
+			break;
+		case 7:	// Statement executeQuery success
+			this.objSqlStat.close();		
+			this.objSqlConn.close();
+			
+			if (typeof(this.fvCallback) == "function")
+			{
+				this.fvCallback.call(this, this.fvCallID, 0, "SUC", e.returnvalue);
+			}	
+
+			break;
+		case 8:	// Statement executeUpdate success	
+
+			if (this.fvTranBegin) 
+			{
+				this.fvTranBegin 	= false;
+				this.objSqlConn.commit();
+			}
+			else
+			{		
+				this.objSqlStat.close();
+				this.objSqlConn.close();
+				
+				if (typeof(this.fvCallback) == "function")
+				{
+					this.fvCallback.call(this, this.fvCallID, 0, "SUC", e.returnvalue);
+				}					
+			}	
+
+			break;
+		case 9:	// Statement close success
+			break;			
+	}	
+}
+
+/**
+* @class DB Connection 실패 이벤트
+* @param {LiteDBConnection} obj - LiteDBConnection	, LiteDBStatement 
+* @param {LiteDBErrorEventInfo} e - LiteDBErrorEventInfo
+* @return N/A
+*/
+this.objSql_onerror = function (obj, e)
+{
+	trace("[objSql_onerror] [" + this.objAction[e.statuscode] + "] e.statuscode: " + e.statuscode + "::" + e.errormsg + " e.ldberrorcode: " + e.ldberrorcode + "::" + e.ldberrormsg + "\ne.errortype: "+e.errortype + " - " + this.fvCallID);	
+	switch (e.statuscode) 
+	{
+		case "00001":	// Parameter error
+			break;
+		case "1201":	// Connection busytimeout Fail
+			break;
+		case "1202":	// Connection asyncBegin Fail
+			break;
+		case "1203":	// Connection asyncClose Fail
+			break;
+		case "1204":	// Connection asyncCommit Fail
+			this.fvTranBegin 	= false;
+			break;
+		case "1205":	// Connection asyncIsConnected Fail
+			break;
+		case "1206":	// Connection asyncOpen Fail			
+			break;
+		case "1207":	// Connection asyncRollback Fail			
+			this.fvTranBegin 	= false;
+			break;
+		case "1210":	// Statement executeQuery Fail
+			this.objSqlStat.close();
+			this.objSqlConn.close();
+			break;
+		case "1211":	// Statement executeUpdateFail
+			
+			if (this.fvTranBegin == true) 
+			{
+				this.fvTranBegin 	= false;
+				this.objSqlConn.rollback();
+			}				
+		
+			this.objSqlStat.close();
+			this.objSqlConn.close();
+			
+			if (typeof(this.fvCallback) == "function")
+			{
+				this.fvCallback.call(this, this.fvCallID, -1, e.statuscode + " : " + e.errormsg);
+			}				
+						
+			break;
+	}
+}
+
+/**
+* @class insert, delete, upate문 처리 - new (bBegin 처리 X)
+* @param {String} sID - sql id	
+* @param {String} sCall - sql callback
+* @param {String} sQueryStr - sql 
+* @return N/A
+*/
+this.gfnLocalDBUpdaterNew = function(sID, sCall, sQueryStr)
+{
+	this.fvCallback  = sCall;
+	this.fvCallID    = sID;
+	++this.fvStatCnt;
+	var objConn = new LiteDBConnection("objConn"+ this.fvStatCnt);
+	var objStat = new LiteDBStatement("objStat"+ this.fvStatCnt);
+	this.addChild("objConn"+ this.fvStatCnt, objConn);
+	objConn.set_datasource(this.fvDb);
+	objStat.set_ldbconnection(objConn); 	
+
+	objConn.addEventHandler("onsuccess"	, this.objSqlNew_onsuccess	, this);
+ 	objConn.addEventHandler("onerror"		, this.objSqlNew_onerror	, this);	
+	objStat.addEventHandler("onsuccess"		, this.objSqlNew_onsuccess	, this);
+ 	objStat.addEventHandler("onerror"			, this.objSqlNew_onerror	, this);	
+	objConn.open();	
+	objStat.set_query(sQueryStr);
+	objStat.executeUpdate();
+}
+
+/**
+* @class DB Connection 성공 이벤트 - new
+* @param {LiteDBConnection} obj - LiteDBConnection, LiteDBStatement 	
+* @param {LiteDBEventInfo} e - LiteDBEventInfo
+* @return N/A
+*/
+this.objSqlNew_onsuccess = function (obj, e)
+{
+	trace("[objSqlNew_onsuccess] [" + this.arrAction[e.reason] + "] e.reason[" + e.reason + "] e.returnvalue : " + e.returnvalue + " - " + this.fvCallID + " : " + obj.name);
+	switch (e.reason) 
+	{
+		case 2:	// close
+			this.removeChild(obj.name);	
+			obj.destroy();
+			obj = null;
+			break;
+		case 8:	// Statement executeUpdate success		
+			obj.close();	
+			if (typeof(this.fvCallback) == "function")
+			{
+				this.fvCallback.call(this, this.fvCallID, 0, "SUC", e.returnvalue);
+			}				
+			break;
+		case 9:	// Statement close success
+			this.objects["objConn" + obj.name.substr(7)].close();	//"objStat"+ this.fvStatCnt
+			obj.destroy();
+			obj = null;		
+			break;			
+	}	
+}
+
+/**
+* @class DB Connection 실패 이벤트
+* @param {LiteDBConnection} obj - LiteDBConnection	, LiteDBStatement 
+* @param {LiteDBErrorEventInfo} e - LiteDBErrorEventInfo
+* @return N/A
+*/
+this.objSqlNew_onerror = function (obj, e)
+{
+	trace("[objSqlNew_onerror] [" + this.objAction[e.statuscode] + "] e.statuscode: " + e.statuscode + "::" + e.errormsg + " e.ldberrorcode: " + e.ldberrorcode + "::" + e.ldberrormsg + "\ne.errortype: "+e.errortype + " - " + this.fvCallID);	
+	switch (e.statuscode) 
+	{
+		case "1203":	// Connection asyncClose Fail
+			this.removeChild(obj.name);	
+			obj.destroy();
+			obj = null;
+			break;
+		case "1211":	// Statement executeUpdateFail
+			obj.close();
+			if (typeof(this.fvCallback) == "function")
+			{
+				this.fvCallback.call(this, this.fvCallID, -1, e.statuscode + " : " + e.errormsg);
+			}
+			this.objects["objConn" + obj.name.substr(7)].close();	//"objStat"+ this.fvStatCnt
+			obj.destroy();
+			obj = null;					
+			break;
+	}
+}
+///////////////////////////////////////////////////////////////
+/**
+* @class Sql 작성시 널처리
+* @param {String} sColName - 컬럼명	
+* @param {var} val - value
+* @return {String} 처리된문자
+*/
+this.gfnSetVal = function(sColName, val)
+{
+	if (this.gfnIsNull(val)) 
+	{
+		return sColName + "=NULL";
+	}
+	return sColName + "=" + val;
+}
+
+/**
+* @class Sql 작성시 '값' 처리
+* @param {String} sColName - 컬럼명	
+* @param {var} val - value
+* @return {String} 처리된문자
+*/
+this.gfnSetValS = function(sColName, val)
+{
+	if (this.gfnIsNull(val)) 
+	{
+		return sColName + "=NULL";
+	}
+	return sColName + "=\'" + val + "\'";
+}
+
+/**
+* @class Sql 작성시 널, '값', 특수문자치환
+* @param {String} sColName - 컬럼명	
+* @param {var} val - value
+* @return {String} 처리된문자
+*/
+this.gfnSetUValS = function(sVal)
+{
+	if (this.gfnIsNull(sVal)) 
+	{
+		return "NULL";
+	}
+	return "\'" + this.gfnReplaceChar(sVal) + "\'";
+}
+
+
+/**
+* @class DB insert시 특수문자 취환
+* @param {String} str - 치환할 문자	
+* @return {String} 처리된문자
+*/
+this.gfnReplaceChar = function(str)
+{
+	if (!this.gfnIsNull(str))
+ 	{
+		if( str.indexOf("'") > -1 )
+		{
+            str = str.replace(/\"/g, "&quot;");
+            str = str.replace(/\'/g, "&apos;");
+		}
+ 	}
+	
+	return str;
+}]]></Script>

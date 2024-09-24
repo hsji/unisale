@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleFileUpDown" width="480" height="914" titletext="파일 업/다운로드" onload="form_onload">
+    <Layouts>
+      <Layout height="914" mobileorientation="portrait" width="480">
+        <Static id="Static03" taborder="0" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_00_00" taborder="1" text="W30" top="0" cssclass="sta_WF_GSize" visible="false" right="0" width="30" bottom="0"/>
+        <Static id="Static02_00" taborder="2" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_01_00_00" taborder="3" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="staTitle00" taborder="7" text="파일업로드" left="30" top="30" height="50" cssclass="sta_WF_SubTitle" right="250"/>
+        <Button id="btnFileSelect" taborder="9" text="파일 선택" top="staTitle00:20" height="60" visible="true" onclick="btnFileupload_onclick" left="30" right="30"/>
+        <Button id="btnFileSave" taborder="11" text="저장" left="30" top="btnFileSelect:20" height="60" cssclass="btn_WF_Full" right="30" onclick="btnFileSave_onclick"/>
+        <Grid id="grdUpload" taborder="8" top="btnFileSave:20" binddataset="dsUpload" autofittype="col" oncellclick="grdUpload_oncellclick" left="30" right="30" height="212">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="300"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="50" band="head"/>
+                <Row size="54"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="FileName"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FileName"/>
+                <Cell col="1" displaytype="buttoncontrol" edittype="button" text="삭제"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02_01_01_01_00_00_00_00" taborder="4" text="H40" left="-20" top="grdUpload:0" cssclass="sta_WF_GSize" visible="false" right="20" height="40"/>
+        <Static id="staTitle" taborder="5" text="파일다운로드" left="30" top="Static02_01_01_01_00_00_00_00:0" width="220" height="50" cssclass="sta_WF_SubTitle"/>
+        <Button id="btnSearch" taborder="10" text="조회" left="30" top="staTitle:20" height="60" cssclass="btn_WF_Full" right="30" onclick="divSearch_btnSearch_onclick"/>
+        <Grid id="grdList" taborder="6" left="30" top="btnSearch:20" binddataset="dsList" autofittype="col" right="30" oncellclick="grdList_oncellclick" height="212">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="243"/>
+                <Column size="80"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="50" band="head"/>
+                <Row size="54"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="IDX"/>
+                <Cell col="1" text="파일명"/>
+                <Cell col="2" text="파일 사이즈"/>
+                <Cell col="3" text="다운로드"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ATTC_FILE_IDX" textAlign="center"/>
+                <Cell col="1" text="bind:ATTC_FILE_NM"/>
+                <Cell col="2" text="bind:ATTC_FILE_SIZE" displaytype="number"/>
+                <Cell col="3" displaytype="buttoncontrol" edittype="button" cssclass="btn_WF_Down"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleFileUpDown.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.03
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.03			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+	
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+this.cfnSearch = function ()
+{
+	this.fnSearch();
+};
+
+this.cfnRefresh = function ()
+{
+	//TODO
+};
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+this.fnSearch = function()
+{
+	// DB 저장이 아닌 현재 저장경로에 있는  fileList를 불러옴
+	var strSvcId 	= "searchFileList";
+	var strSvcUrl 	= "searchFileList.do";
+	var inData 		= "inDs=dsSearch";
+	var outData 	= "dsList=outDs";
+	var strArg 		= "";
+	this.gfnTransaction(strSvcId, strSvcUrl, inData, outData, strArg);
+};
+
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+this.fnCallback = function (sSvcId, nErrCd, sErrMsg)
+{
+	switch(sSvcId) {
+		case "searchFileList":
+			//TODO..
+			this.fnInit();
+			break;
+		default: break;
+	}
+};
+
+this.fnMsgCallback = function (sMsgId, sRtn)
+{
+	//TODO..
+};
+
+this.fnFileDialogCallback= function (objDs, objFileDialog, e)
+{
+	//TODO..
+};
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+this.fnInit = function ()
+{
+	this.dsUpload.clearData();
+	this.futFile.clearFileList();
+	
+
+};
+
+
+this.fnFileDownload = function (nRow)
+{
+	this.fdtFile.setPostData("filePath"		, this.dsList.getColumn(nRow, "ATTC_FILE_PATH"));
+	this.fdtFile.setPostData("saveFileName"	, this.dsList.getColumn(nRow, "SERV_ATTC_FILE_NM"));
+	this.fdtFile.setPostData("orgFileName"	, this.dsList.getColumn(nRow, "ATTC_FILE_NM"));
+	
+	this.fdtFile.set_downloadfilename( this.dsList.getColumn(nRow, "ATTC_FILE_NM"))
+	this.fdtFile.download("svcUrl::fileDownload.do");
+};
+
+this.fnFileDialogOpen = function()
+{
+//	this.fdgFile.open("file upload..", FileDialog.MULTILOAD);
+	this.fdgFile.open("file upload..", FileDialog.LOAD);
+};
+
+this.fnFileUploadTran = function ()
+{
+	// 파일 업로드 시 Dataset 전달 샘플 코드
+	// PostData : Dataset 전달 --------------------------------------- Start
+	var listDs = [];
+		listDs.push(this.dsList);
+		listDs.push(this.dsTest);
+	var dsList = this.fnSerializeXML(listDs);
+	//var dsList = this.fnSerializeSSV(listDs);
+	
+	dsList = encodeURIComponent(dsList);
+	this.futFile.setPostData("infoDatasets", dsList);
+	this.setWaitCursor( true );
+	this.futFile.upload("svcUrl::fileUpload.do");
+};
+
+this.fnSetFile = function (aVFiles)
+{
+	for (var  i=0; i<aVFiles.length;i++){
+		this.futFile.addFile("VFile"+i, aVFiles[i]);
+
+		var nRow = this.dsUpload.addRow();
+		this.dsUpload.setColumn(nRow, "FileName", aVFiles[i].filename);
+		this.dsUpload.setColumn(nRow, "Path", aVFiles[i].fullpath);
+		this.dsUpload.setColumn(nRow, "FileSize",  aVFiles[i].getFileSize());
+	}
+};
+
+// PlatformData 구성 : DataSet XML
+this.fnSerializeXML = function (arrDataset) 
+{
+	var depth = 0;
+	var list = [];
+	
+	if (system.navigatorname != "nexacro") {
+		//[START] xml 통신시 아래의 특수문자가 서버쪽 SAX parser 에러가 발생해서 임시 추가함.
+		this.fnWriteData(list, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>", depth);
+		//this._writeData(list, "<!DOCTYPE p_nexacro [ <!ENTITY nbsp '&#160;'> <!ENTITY quot '&#34;'>" +
+		//		" <!ENTITY amp '&#38;'> <!ENTITY lt '&#60;'> <!ENTITY gt '&#62;'> ]>", depth);
+		//[END] xml 통신시 아래의 특수문자가 서버쪽 SAX parser 에러가 발생해서 임시 추가함.
+		
+		this.fnWriteData(list, "<Root xmlns=\"http://www.nexacroplatform.com/platform/dataset\">", depth++);
+		
+		for (var i = 0; i < arrDataset.length; i++) {
+			list.push(arrDataset[i].saveXML(arrDataset.name, "normal", depth, false));
+		}
+		
+		this.fnWriteData(list, "</Root>", --depth);
+		
+		var rtnList = list.join("\n");
+		
+	} else {
+		// 런타임의 경우.......... ??????? 
+		//[START] xml 통신시 아래의 특수문자가 서버쪽 SAX parser 에러가 발생해서 임시 추가함.
+		this.fnWriteData(list, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>", depth);
+		//this._writeData(list, "<!DOCTYPE p_nexacro [ <!ENTITY nbsp '&#160;'> <!ENTITY quot '&#34;'>" +
+		//		" <!ENTITY amp '&#38;'> <!ENTITY lt '&#60;'> <!ENTITY gt '&#62;'> ]>", depth);
+		//[END] xml 통신시 아래의 특수문자가 서버쪽 SAX parser 에러가 발생해서 임시 추가함.
+		
+		this.fnWriteData(list, "<Root xmlns=\"http://www.nexacroplatform.com/platform/dataset\">", depth++);
+		
+		for (var i = 0; i < arrDataset.length; i++) {
+			list.push(arrDataset[i].saveXML(arrDataset.name, "normal", depth, false));
+		}
+		
+		this.fnWriteData(list, "</Root>", --depth);
+		
+		var rtnList = list.join("\n");
+	}
+	
+	return rtnList;
+};
+
+
+// PlatformData 구성 : DataSet 
+this._TABS = ["", "\t", "\t\t", "\t\t\t", "\t\t\t\t", "\t\t\t\t\t", "\t\t\t\t\t\t"];
+this.fnWriteData = function (list, str, depth) 
+{
+	list[list.length] = this._TABS[depth] + str;
+};
+
+// PlatformData 구성 : DataSet SSV
+this.fnSerializeSSV = function (arrDataset)
+{
+	var _rs_ = String.fromCharCode(30);
+	var _cs_ = String.fromCharCode(31);
+
+	var list = [];
+		list.push("SSV:utf-8" + _rs_);
+	
+	// Dataset
+	for (var i = 0; i < arrDataset.length; i++) {
+		list.push(arrDataset[i].saveSSV(arrDataset[i].name, "normal"));
+	}
+	
+	var rtnVal = list.join("");
+	return rtnVal;
+};
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.grdList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if (e.cell == 3)
+	{
+		this.fnFileDownload(e.row);
+	}
+};
+
+this.fdtFile_onerror = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferErrorEventInfo)
+{
+	trace(e.errormsg + "}}"+ "fdtFile_onerror : " + e.requesturi +"__"+ e.locationuri);
+};
+
+this.fdtFile_onsuccess = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferEventInfo)
+{
+	trace("fdtFile_onsuccess : " + e.targetfullpath);
+};
+
+this.divSearch_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.cfnSearch();
+};
+
+this.btnFileupload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnFileDialogOpen();
+};
+
+this.btnFileSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnFileUploadTran();
+};
+
+
+this.fdgFile_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	if( e.reason == 1 || e.reason == 3 ){
+		this.fnSetFile(e.virtualfiles);
+	}
+};
+
+this.grdUpload_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.col == 1) {
+		this.futFile.removeFile("VFile"+e.row);
+		this.dsUpload.deleteRow(this.dsUpload.rowposition);
+	}
+};
+
+
+this.futFile_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	this.futFile.clearFileList();
+	this.dsUpload.clearData();
+	this.setWaitCursor( false );
+	this.cfnSearch();
+};
+
+this.futFile_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferErrorEventInfo)
+{
+	this.setWaitCursor( false );
+	this.gfnAlert("msg.server.error.msg" ,[e.errormsg]);
+};
+
+]]></Script>
+    <Objects>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="ATTC_FILE_NM" type="STRING" size="256"/>
+          <Column id="SERV_ATTC_FILE_NM" type="STRING" size="256"/>
+          <Column id="ATTC_FILE_SIZE" type="STRING" size="256"/>
+          <Column id="ATTC_FILE_TYPE" type="STRING" size="256"/>
+          <Column id="ATTC_FILE_PATH" type="STRING" size="256"/>
+          <Column id="ATTC_FILE_IDX" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDownTransfer id="fdtFile" url="svcUrl::fileDownload.do" onerror="fdtFile_onerror" onsuccess="fdtFile_onsuccess"/>
+      <FileUpTransfer id="futFile" onsuccess="futFile_onsuccess" onerror="futFile_onerror"/>
+      <FileDialog id="fdgFile" onclose="fdgFile_onclose"/>
+      <Dataset id="dsUpload">
+        <ColumnInfo>
+          <Column id="FileName" type="STRING" size="256"/>
+          <Column id="Path" type="STRING" size="256"/>
+          <Column id="FileSize" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTest">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">11</Col>
+            <Col id="Column1">AA</Col>
+            <Col id="Column2">가나다</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">22</Col>
+            <Col id="Column1">BB</Col>
+            <Col id="Column2">가A나B</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

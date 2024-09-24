@@ -1,0 +1,8081 @@
+﻿
+        
+.nexainput.nexaleftalign
+{
+  text-align:left;
+}
+.nexainput.nexarightalign
+{
+  text-align:right;
+}
+.nexainput.nexacenteralign
+{
+  text-align:center;
+}
+
+.nexacontentsbox.nexaleftalign
+{
+  text-align:left;
+}
+.nexacontentsbox.nexarightalign
+{
+  text-align:right;
+}
+.nexacontentsbox.nexacenteralign
+{
+  text-align:center;
+}
+.celltreeline
+{
+  border : 1px dotted #999999;
+}
+.Edit, .MaskEdit, .TextArea, .EditControl, .MaskEditControl, .TextAreaControl
+{
+  cursor:text;
+}
+.Button .nexacontentsbox, .ButtonControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.FileDownload  .nexacontentsbox, .FileDownloadControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.IconTextControl .nexacontentsbox, .IconControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.DatePickerDayItemControl .nexacontentsbox, .DatePickerWeekItemControl .nexacontentsbox, .DatepickerYearItemControl .nexacontentsbox, .TitleBarButtonControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.MainFrame, .VScrollBarControl, .HScrollBarControl
+{
+  cursor:default;
+}
+
+.Sketch .nexacontentsbox
+{
+   text-align:center;
+}
+
+.nexainput
+{
+  cursor:inherit;
+}
+
+.Form
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+	background : #ffffff;
+	border : 0px none;
+}
+.MainFrame
+{
+	border : 0px none;
+}
+.ChildFrame
+{
+	border : 0px none;
+}
+.FrameSet
+{
+	border : 0px none;
+}
+.VFrameSet
+{
+	border : 0px none;
+}
+.HFrameSet
+{
+	border : 0px none;
+}
+.TileFrameSet
+{
+	border : 0px none;
+}
+.Button
+{
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+}
+.FileDownload
+{
+	border : 1px solid #cccccc;
+	background : linear-gradient(to top,#eaeaea,#ffffff);
+	border-radius : 4px;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+}
+.ButtonControl
+{
+	background : transparent;
+	border : 0px none;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit
+{
+	background : transparent;
+	border : 0px none;
+	padding : 1px 9px 0px 9px;
+	border-radius : 0px;
+	-nexa-edge : url('./images/edt_N.png?nexaversion=20240531') 10px 10px;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton
+{
+	background : linear-gradient(to top,#eaeaea,#ffffff);
+	border : 1px solid #c2c2c2;
+	border-radius : 4px;
+	color : #c2c2c2;
+}
+.Calendar
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.CalendarControl
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.Calendar .calendaredit
+{
+	background : transparent;
+}
+.CalendarControl .calendaredit
+{
+	background : transparent;
+}
+.CheckBox
+{
+	background : transparent;
+	cursor : pointer;
+}
+.CheckBoxControl
+{
+	background : transparent;
+	cursor : pointer;
+}
+.Combo
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.ComboControl
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.Combo .comboedit
+{
+	padding : 1px 1px 0px 9px;
+	background : transparent;
+}
+.ComboControl .comboedit
+{
+	padding : 1px 1px 0px 9px;
+	background : transparent;
+}
+.ListBoxControl.popupCombocombolist.dummy
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #555555;
+	background : #ffffff;
+	border : 1px solid #b1b1b1;
+}
+.ListBoxControl.popupComboControlcombolist.dummy
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #555555;
+	background : #ffffff;
+	border : 1px solid #b1b1b1;
+}
+.Edit
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 1px 9px 0px 9px;
+	border-radius : 4px;
+}
+.EditControl
+{
+	background : #ffffff;
+	border : 0px none;
+	padding : 1px 9px 0px 9px;
+	border-radius : 4px;
+}
+.Grid
+{
+	background : #ffffff;
+	border : 1px solid #ebeef5;
+}
+.Grid .head
+{
+	background : #f2f6fc;
+	border : 0px none,0px none,1px solid #08a44d;
+}
+.Grid .head .row .cell
+{
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+	background : #f2f6fc;
+	border : 1px solid #ebeef5;
+}
+.Grid .head .row .cell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid .body .row .cell
+{
+	color : #555555;
+	border : 1px solid #ebeef5;
+}
+.Grid .body .row .cell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid .body .row .cell.Expr_Case_SubSum
+{
+	background : #DEF6FF;
+	color : #333333;
+}
+.Grid .body .row .cell.goalplus
+{
+	color : #0000ff;
+}
+.Grid .body .row .cell.goalminus
+{
+	color : #ff0000;
+}
+.Grid .body .row .cell .subcell
+{
+	color : #555555;
+	border : 1px solid #ebeef5;
+}
+.Grid .body .row .cell .subcell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid .body .selection
+{
+	border : 2px solid #0ca950;
+}
+.Grid .summary
+{
+	border : 1px solid #f1d49a, 0px none, 0px none, 0px none;
+	background : #faeed6;
+}
+.Grid .summary .row .cell
+{
+	font : normal 700 13px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+	background : #faeed6;
+	border : 1px solid #f1d49a;
+}
+.Grid .summary .row .cell .nexacontentsbox
+{
+	text-align : right;
+}
+.Grid .hscrollbar
+{
+	border : 0px none;
+	background : #f7f7f7;
+}
+.Grid .vscrollbar
+{
+	border : 0px none;
+	background : #f7f7f7;
+}
+.GridCellControl .cellbutton
+{
+	border : 1px solid #cccccc;
+	background : linear-gradient(to top,#eaeaea,#ffffff);
+	border-radius : 4px;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.GridCellControl .cellcalendar
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.GridCellControl .cellcheckbox
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.GridCellControl .cellcombo
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.ListBoxControl.popupGridCellControlcellcombocombolist.dummy.dummy
+{
+	font : normal 400 13px/normal "noto","Roboto","RobotoWeb"
+	color : #555555;
+}
+.GridCellControl .celledit
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 1px 9px 0px 9px;
+}
+.GridCellControl .cellimage
+{
+	border : 0px none;
+	background : transparent;
+}
+.GridCellControl .cellexpandbutton .nexacontentsbox
+{
+	text-align : left;
+}
+.GridCellControl .cellselection
+{
+	border : 2px dotted #909090;
+}
+.GridCellControl .cellmaskedit
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 1px 9px 0px 9px;
+}
+.GridCellControl .cellprogressbar
+{
+	font : normal 400 11px/normal "noto","Malgun Gothic","Arial";
+}
+.GridCellControl .celltextarea
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.GridCellControl .celltreeline
+{
+	border : 1px dotted #cccccc;
+}
+.GroupBox .groupboxcontents
+{
+	background : transparent;
+	border-radius : 8px;
+	border : 1px solid #ededed;
+}
+.GroupBox .groupboxtitle
+{
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	background : #ffffff;
+	border-radius : 50%;
+}
+.ImageViewer
+{
+	background : transparent;
+	border : 0px none #cccccc;
+}
+.ImageViewer .imagetext .nexacontentsbox
+{
+	text-align : center;
+}
+.ListBox
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.ListBoxControl
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.ListBox .listboxitem
+{
+	color : #222222;
+}
+.ListBoxControl .listboxitem
+{
+	color : #222222;
+}
+.MaskEdit
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 1px 9px 0px 9px;
+	border-radius : 4px;
+}
+.MaskEditControl
+{
+	background : #ffffff;
+	border : 0px none;
+	padding : 1px 9px 0px 9px;
+	border-radius : 4px;
+}
+.Menu
+{
+	background : #3c413b;
+}
+.Menu .prevbutton
+{
+	cursor : pointer;
+}
+.Menu .nextbutton
+{
+	cursor : pointer;
+}
+.Menu .menuitem
+{
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	color : #cccccc;
+	cursor : pointer;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #555555;
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	box-shadow : 2px 4px 5px 0px rgba(0,0,0,0.24);
+	border-radius : 0px 0px 4px 4px;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .prevbutton
+{
+	cursor : pointer;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .nextbutton
+{
+	cursor : pointer;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem
+{
+	color : #555555;
+	border : 0px none;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem .popupmenuitemtext
+{
+	color : #555555;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem .popupmenuitemhotkeytext
+{
+	color : #9d9d9d;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem .popupmenuitemhotkeytext .nexacontentsbox
+{
+	text-align : right;
+}
+.Plugin
+{
+	border : 1px solid #cccccc;
+}
+.PluginControl
+{
+	border : 1px solid #cccccc;
+}
+.PopupMenu
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #555555;
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	box-shadow : 2px 4px 5px 0px rgba(0,0,0,0.24);
+	border-radius : 0px 0px 4px 4px;
+}
+.PopupMenuControl
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #555555;
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	box-shadow : 2px 4px 5px 0px rgba(0,0,0,0.24);
+	border-radius : 0px 0px 4px 4px;
+}
+.PopupMenu .popupmenuitem
+{
+	color : #555555;
+}
+.PopupMenuControl .popupmenuitem
+{
+	color : #555555;
+}
+.PopupMenu .popupmenuitem .popupmenuitemcheckbox
+{
+	background : URL('./images/chk_N.png?nexaversion=20240531') no-repeat left center;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemcheckbox
+{
+	background : URL('./images/chk_N.png?nexaversion=20240531') no-repeat left center;
+}
+.PopupMenu .popupmenuitem .popupmenuitemhotkeytext
+{
+	color : #9d9d9d;
+}
+.PopupMenu .popupmenuitem .popupmenuitemhotkeytext .nexacontentsbox
+{
+	text-align : right;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemhotkeytext
+{
+	color : #9d9d9d;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemhotkeytext .nexacontentsbox
+{
+	text-align : right;
+}
+.ProgressBar
+{
+	background : #f0f0f0;
+	border : 1px solid #cccccc;
+	border-radius : 10px;
+}
+.ProgressBarControl
+{
+	background : #f0f0f0;
+	border : 1px solid #cccccc;
+	border-radius : 10px;
+}
+.ProgressBar .progressbaritem
+{
+	background : #0ca950;
+}
+.ProgressBarControl .progressbaritem
+{
+	background : #0ca950;
+}
+.ProgressBar .progressbartext
+{
+	color : #ffffff;
+	font : normal 400 11px/normal "noto","Malgun Gothic","Arial";
+}
+.ProgressBar .progressbartext .nexacontentsbox
+{
+	text-align : left;
+}
+.ProgressBarControl .progressbartext
+{
+	color : #ffffff;
+	font : normal 400 11px/normal "noto","Malgun Gothic","Arial";
+}
+.ProgressBarControl .progressbartext .nexacontentsbox
+{
+	text-align : left;
+}
+.Radio .radioitem
+{
+	cursor : pointer;
+}
+.Sketch
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+}
+.Spin
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.Spin .spinedit
+{
+	padding : 0px 3px 0px 3px;
+	background : transparent;
+}
+.Spin .spinedit .nexainput
+{
+	text-align : right;
+}
+.Spin .spinedit .nexacontentsbox
+{
+	text-align : right;
+}
+.TextArea
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 9px 9px 9px 9px;
+	border-radius : 4px;
+}
+.TextAreaControl
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 9px 9px 9px 9px;
+	border-radius : 4px;
+}
+.Tab .tabpageTab
+{
+	border : 2px solid #ebeef5, 0px none, 0px none, 0px none;
+	background : #ffffff;
+}
+.Tab .tabbuttonitemTab
+{
+	color : #555555;
+	background : #ffffff;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+	border : 2px solid #ffffff,0px none,2px solid #ebeef5;
+	cursor : pointer;
+}
+.DatePickerControl
+{
+	border : 1px solid #cccccc;
+	background : #ffffff;
+	font : normal 400 12px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 4px;
+}
+.DatePickerControl .head
+{
+	background : #ffffff;
+}
+.DatePickerControl .head .yearstatic
+{
+	font : normal 700 14px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+}
+.DatePickerControl .head .monthstatic
+{
+	font : normal 700 14px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+}
+.DatePickerControl .head .yearspin
+{
+	border : 1px solid #f0f0f0;
+	border-radius : 4px;
+	background : #f0f0f0;
+}
+.DatePickerControl .head .monthspin
+{
+	border : 1px solid #f0f0f0;
+	border-radius : 4px;
+	background : #f0f0f0;
+}
+.DatePickerControl .head .yearspin .spinedit
+{
+	border : 0px none;
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+	background : transparent;
+	padding : 0px 4px;
+}
+.DatePickerControl .head .monthspin .spinedit
+{
+	border : 0px none;
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+	background : transparent;
+	padding : 0px 4px;
+}
+.DatePickerControl .body
+{
+	border : 0px none;
+}
+.DatePickerControl .body .weekband
+{
+	background : #ffffff;
+}
+.DatePickerControl .body .weekitem
+{
+	color : #777777;
+}
+.DatePickerControl .body .dayitem
+{
+	color : #333333;
+}
+.DatePickerControl .body .monthitem
+{
+	color : #333333;
+}
+.DatePickerControl .body .yearitem
+{
+	color : #333333;
+}
+.VScrollBarControl
+{
+	background : transparent;
+	border : 0px none;
+}
+.HScrollBarControl
+{
+	background : transparent;
+	border : 0px none;
+}
+.VScrollBarControl .trackbar
+{
+	-nexa-edge : url('./images/vscroll_tracker_N.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollBarControl .trackbar
+{
+	-nexa-edge : url('./images/hscroll_tracker_N.png?nexaversion=20240531') 8px 8px;
+}
+.VScrollIndicatorControl
+{
+	background : transparent;
+}
+.HScrollIndicatorControl
+{
+	background : transparent;
+}
+.VScrollIndicatorControl .trackbar
+{
+	-nexa-edge : url('./images/vscroll_tracker_N.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollIndicatorControl .trackbar
+{
+	-nexa-edge : url('./images/hscroll_tracker_N.png?nexaversion=20240531') 8px 8px;
+}
+.StatusBarControl
+{
+	background : #e7e7e7;
+}
+.StatusBarControl .progressbar
+{
+	background : #eaeaea;
+	border : 1px solid #d2d0d0;
+}
+.StatusBarControl .progressbar .progressbaritem
+{
+	background : #4ca0e2;
+}
+.StatusBarControl .resizegrip .nexacontentsbox
+{
+	vertical-align : bottom;
+}
+.TitleBarControl
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #ffffff;
+	background : #3A3C43;
+}
+.TitleBarControl .titleicon
+{
+	color : #ffffff;
+	font : bold 14px "Malgun Gothic";
+}
+.ListViewCellControl .cellbutton
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #555555;
+	background : linear-gradient(to top,#eaeaea,#ffffff);
+	border : 1px solid #c2c2c2;
+}
+.ListViewCellControl .cellcalendar
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.ListViewCellControl .cellcheckbox
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.ListViewCellControl .cellcombo
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.ListBoxControl.popupListViewCellControlcellcombocombolist.dummy.dummy
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #555555;
+}
+.ListViewCellControl .celledit
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 1px 9px 0px 9px;
+}
+.ListViewCellControl .cellmaskedit
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 1px 9px 0px 9px;
+}
+.ListViewCellControl .cellprogressbar
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.ListViewCellControl .celltextarea
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+}
+.ListView .body .expandbar
+{
+	background : linear-gradient(to top,#eaeaea,#ffffff);
+	border : 1px solid #c2c2c2;
+}
+.CheckBoxSet
+{
+	background : #ffffff;
+	border-radius : 4px;
+	border : 1px solid #dedede;
+}
+.CheckBoxSetControl
+{
+	background : #ffffff;
+	border-radius : 4px;
+	border : 1px solid #dedede;
+}
+.CheckBoxSetControl .checkboxsetitem
+{
+	color : #333333;
+}
+.MultiCombo
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.MultiComboControl
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+}
+.MultiCombo .multicombotext
+{
+	padding : 1px 9px 0px 9px;
+}
+.MultiComboControl .multicombotext
+{
+	padding : 1px 9px 0px 9px;
+}
+.MultiComboTagBoxControl
+{
+	border : 0px none;
+	border-radius : 4px;
+}
+.MultiComboTagBoxControl .tagboxedit
+{
+	padding : 3px;
+}
+.TagBoxControl
+{
+	border-radius : 10px;
+	background : #f0f0f0;
+	border : 1px solid #f0f0f0;
+}
+.TagBoxControl .tagbutton
+{
+	border-radius : 50%;
+	background : transparent;
+}
+.MultiComboListControl
+{
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+	background : #ffffff;
+}
+.MultiComboListControl .checkboxset
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #555555;
+	background : #ffffff;
+	border : 0px none;
+}
+.MultiComboListControl .selectallcheckbox
+{
+	color : #555555;
+	background : transparent;
+	border : 0px none,0px none,1px solid #ebeef5;
+}
+.Button.btn_POP_close
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 0px;
+}
+.Div.div_POP_lev0
+{
+	border : 0px none;
+	background : #ffffff;
+	border-radius : 20px;
+	box-shadow : 3px 3px 18px 0px rgba(0,0,0,0.24);
+}
+.Div.div_POP_lev1
+{
+	border : 0px none;
+	background : #ffffff;
+	border-radius : 8px;
+	box-shadow : 4px 6px 16px 0px rgba(0,0,0,0.24);
+}
+.Div.div_POP_lev2
+{
+	border : 0px none;
+	background : #ffffff;
+	border-radius : 0px 0px 4px 4px;
+	box-shadow : 3px 6px 12px 0px rgba(0,0,0,0.24);
+}
+.Div.div_POP_lev3
+{
+	border : 1px solid #cccccc;
+	background : #ffffff;
+	border-radius : 4px;
+	box-shadow : 1px 2px 3px 0px rgba(0,0,0,0.08);
+}
+.PopupDiv.pdiv_POP_lev1
+{
+	border : 0px none;
+	background : #ffffff;
+	border-radius : 8px;
+	box-shadow : 4px 6px 16px 0px rgba(0,0,0,0.24);
+}
+.PopupDiv.pdiv_POP_lev2
+{
+	border : 0px none;
+	background : #ffffff;
+	border-radius : 0px 0px 4px 4px;
+	box-shadow : 3px 6px 12px 0px rgba(0,0,0,0.24);
+}
+.PopupDiv.pdiv_POP_lev3
+{
+	border : 1px solid #cccccc;
+	background : #ffffff;
+	border-radius : 4px;
+	box-shadow : 1px 2px 3px 0px rgba(0,0,0,0.08);
+}
+.Static.sta_WF_SchLabel2
+{
+	background : URL("./images/sta_WF_SchLabel.png?nexaversion=20240531") no-repeat left;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+	letter-spacing : -1px;
+	color : #0E3B85;
+}
+.Static.sta_POP_divLine_top
+{
+	border : 0px none,0px none,1px solid #dddedf;
+}
+.Static.sta_POP_divLine_bottom
+{
+	border : 1px solid #dddedf,0px none,0px none;
+}
+.Static.sta_POP_title
+{
+	color : #222222;
+	font : normal 500 18px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_meet_item
+{
+	border : 1px solid #8796A7;
+	background : #ffffff;
+	color : #000000;
+	font : normal 500 12px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 10px;
+}
+.Static.sta_meet_item_O
+{
+	border : 1px solid #8796A7;
+	background : #3F516B;
+	color : #ffffff;
+	font : normal 500 12px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 10px;
+}
+.Static.sta_meet_itemtitle
+{
+	border : 0px none;
+	background : #ffffff;
+	color : #000000;
+	font : bold 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_meet_itemtitle_O
+{
+	border : 0px none;
+	background : #3F516B;
+	color : #ffffff;
+	font : bold 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_meet_itemdate
+{
+	border : 0px none;
+	background : #ffffff;
+	color : #000000;
+	font : 13px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_meet_itemdate_O
+{
+	border : 0px none;
+	background : #3F516B;
+	color : #ffffff;
+	font : 13px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_yes
+{
+	border : 1px solid #0ca950;
+	background : #0ca950;
+	color : #ffffff;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_no
+{
+	border : 0px none;
+	background : transparent;
+	color : #0ca950;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Div.div_POP_search
+{
+	background : #ffffff;
+	border : 0px none, 0px none, 1px solid #dedede;
+}
+.PopupDiv.pdiv_POP_calMonth
+{
+	border : 1px solid #cccccc;
+	background : #ffffff;
+	border-radius : 4px;
+	box-shadow : 1px 2px 3px 0px rgba(0,0,0,0.08);
+}
+.Static.sta_POP_calHead_green
+{
+	background : #0ca950;
+	color : #ffffff;
+	font : normal 700 17px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_POP_calHead_green .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_POP_calHead
+{
+	background : #ffffff;
+	color : #333333;
+	font : normal 700 16px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_POP_calHead .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_POP_calPrev
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_POP_calNext
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNumber
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+	border-radius : 4px;
+	color : #333333;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_calNumber_S
+{
+	border : 1px solid #ffffff;
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_calNumber_B
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+	border-radius : 4px;
+	color : #d1d1d1;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Combo.cbo_Pop_cal
+{
+	background : transparent;
+	border : 1px solid transparent;
+}
+.Grid.grd_Pop_week
+{
+	background : #ffffff;
+	border : 0px none;
+}
+.Grid.grd_Pop_week .head
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Grid.grd_Pop_week .head .row .cell
+{
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	color : #666666;
+	background : #ffffff;
+	border : 0px none;
+}
+.Grid.grd_Pop_week .head .row .cell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_Pop_week .body .row .cell
+{
+	background : #ffffff;
+	color : #666666;
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	border : 0px none;
+	border-radius : 32px;
+}
+.Grid.grd_Pop_week .body .row .cell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_Pop_week .body .row .cell .subcell
+{
+	background : #ffffff;
+	color : #666666;
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	border : 0px none;
+}
+.Grid.grd_Pop_week .body .row .cell .subcell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_Pop_week .head .row .cell.cell_sunday
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .head .row .cell.cell_sunday.oddcell
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_sunday
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_sunday.oddcell
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_sunday
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_sunday.oddcell
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .head .row .cell.cell_saturday
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .head .row .cell.cell_saturday.oddcell
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_saturday
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_saturday.oddcell
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_saturday
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_saturday.oddcell
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .head .row .cell.cell_trailingday
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .head .row .cell.cell_trailingday.oddcell
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_trailingday
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_trailingday.oddcell
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_trailingday
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_trailingday.oddcell
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_today
+{
+	background : #b0e8ff;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_today
+{
+	background : #b0e8ff;
+}
+.Calendar.cal_POP_period
+{
+	background : #ffffff;
+	border : 0px none;
+	border-radius : 0px;
+}
+.Static.sta_WF_doctitle
+{
+	background : url('./images/bullet_mainTitle.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #222222;
+	font : normal 500 16px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_WF_docsubTitle
+{
+	border : 0px none,0px none,0px none,8px solid transparent;
+	background : url('./images/bullet_subTitle.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #222222;
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+}
+.Form.frm_iconMenu
+{
+	background : #3c413b;
+}
+.Form.frm_popDetail
+{
+	font : normal 400 12px/normal "noto","Malgun Gothic","Arial";
+	background : #ffffff;
+}
+.Static.sta_LF_logo
+{
+	background : url('./../../../_resource_/_images_/left/ci40.png?nexaversion=20240531') no-repeat left center;
+}
+.Static.sta_LF_logo_wide
+{
+	background : url('./../../../_resource_/_images_/left/ci40_wide.png?nexaversion=20240531') no-repeat left center;
+}
+.Static.sta_LF_divline
+{
+	border : 1px solid #5b605a,0px none;
+}
+.Button.btn_LF_menu01
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu01 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu01_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu01_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu02
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu02 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu02_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu02_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu03
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu03 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu03_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu03_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu04
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu04 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu04_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu04_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu05
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu05 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu05_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu05_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu06
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu06 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu06_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu06_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu07
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu07 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu07_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu07_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu08
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu08 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu08_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu08_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu09
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu09 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu09_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu09_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu10
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu10 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu10_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu10_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu11
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu11 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu11_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu11_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu12
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu12 .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu12_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu12_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_help
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_help .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_foldingOff
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_foldingOff .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_foldingOn
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_foldingOn .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_sampleTip
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_sampleTip .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_sampleTip_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_sampleTip_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_folder
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_folder .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_folder_S
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_folder_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_close
+{
+	border : 0px none;
+	background : #ffffff;
+	border-radius : 50%;
+	box-shadow : 3px 3px 5px 0px rgba(0,0,0,0.24);
+}
+.Static.sta_subMenuTop_view
+{
+	background : transparent;
+	-nexa-edge : url('./../../../_resource_/_images_/left/bg_subMenu_show.png?nexaversion=20240531') 90px 0px;
+}
+.Static.sta_subMenuTop_title
+{
+	border : 1px solid transparent,0px none,1px solid #e6e6e6;
+	color : #222222;
+	font : normal 700 16px/normal "noto","Malgun Gothic","Arial";
+}
+.Div.div_subMenuTop_hide
+{
+	background : url('./../../../_resource_/_images_/left/bg_subMenu_hide.png?nexaversion=20240531') no-repeat left bottom transparent;
+}
+.Static.sta_subMenuBottom_view
+{
+	background : transparent;
+	-nexa-edge : url('./../../../_resource_/_images_/left/bg_menuDown_view.png?nexaversion=20240531') 22px 22px;
+}
+.Div.div_subMenuBottom_hide
+{
+	background : transparent;
+	-nexa-edge : url('./../../../_resource_/_images_/left/bg_menuDown_hide.png?nexaversion=20240531') 14px 24px;
+}
+.Edit.edt_subMenu_search
+{
+	border : 1px solid #f4f4f5;
+	padding : 1px 26px 0px 13px;
+	background : #f4f4f5;
+	border-radius : 8px;
+}
+.Edit.edt_subMenu_search_F
+{
+	border : 1px solid transparent,0px none,1px solid #0ca950;
+	padding : 1px 27px 0px 14px;
+	background : #ffffff;
+	border-radius : 0px;
+}
+.Button.btn_subMenu_search
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_subMenu_foliderClose
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_subMenu_foliderOpen
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Grid.grd_subMenu
+{
+	background : transparent;
+	border : 0px none;
+}
+.Grid.grd_subMenu .body .row .cell
+{
+	border : 0px none;
+	background : transparent;
+}
+.Grid.grd_subMenu .body .row .cell .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev0
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_N.png?nexaversion=20240531') no-repeat right center #0ca950;
+	color : #333333;
+	cursor : pointer;
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 8px 16px 16px 8px;
+}
+.Grid.grd_subMenu .body .row .cell.lev0 .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev0.oddcell
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_N.png?nexaversion=20240531') no-repeat right center #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+	color : #ffffff;
+	cursor : pointer;
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 8px 16px 16px 8px;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S.oddcell
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev1
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_N.png?nexaversion=20240531') no-repeat right center transparent;
+	color : #0ca950;
+	cursor : pointer;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev1 .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev1.oddcell
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_N.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+	color : #0ca950;
+	cursor : pointer;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S.oddcell
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev2
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_N.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #777777;
+	cursor : pointer;
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev2 .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev2.oddcell
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_N.png?nexaversion=20240531') no-repeat left center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #000000;
+	cursor : pointer;
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S.oddcell
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+}
+.Grid.grd_subMenu .hscrollbar
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Grid.grd_subMenu .vscrollbar
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Grid.grd_LF_searchResult
+{
+	background : #ffffff;
+	border : 0px none;
+}
+.Grid.grd_LF_searchResult .body .row .cell
+{
+	color : #777777;
+	border : 0px none;
+}
+.Grid.grd_LF_searchResult .body .row .cell .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_LF_searchResult .body .row .cell.reject
+{
+	color : #ff0000;
+	border : 0px none;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+}
+.Grid.grd_LF_searchResult .body .row .cell.reject .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv0
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name0.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv0 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv1
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name1.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv1 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv2
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name2.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv2 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv3
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name3.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv3 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv4
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name4.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv4 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv5
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name5.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv5 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv6
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name6.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv6 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv7
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name7.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv7 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv8
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name8.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv8 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv9
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name9.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv9 .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .hscrollbar
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Grid.grd_LF_searchResult .vscrollbar
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Form.frm_top
+{
+	border : 0px none;
+	background : #f2f5f7;
+	-nexa-edge : url('./../../../_resource_/_images_/top/bg_TF.png?nexaversion=20240531') 15px 15px;
+}
+.Static.sta_TF_systemName
+{
+	font : normal 700 22px/normal "noto","Malgun Gothic","Arial";
+	color : #909399;
+}
+.ImageViewer.img_TF_user
+{
+	background : #c0c4cc;
+	border : 0px none;
+	border-radius : 50%;
+	cursor : pointer;
+}
+.ImageViewer.img_TF_user .imagetext
+{
+	font : normal 400 16px/normal "noto","Malgun Gothic","Arial";
+	color : #ffffff;
+}
+.ImageViewer.img_TF_user .imagetext .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_TF_counter
+{
+	background : #f32e2e;
+	border-radius : 8px;
+	font : normal 400 10px/normal "noto","Malgun Gothic","Arial";
+	color : #ffffff;
+	cursor : pointer;
+}
+.Static.sta_TF_counter .nexacontentsbox
+{
+	text-align : center;
+	vertical-align : middle;
+}
+.CheckBox.chk_TF_bell
+{
+	border-radius : 50%;
+}
+.CheckBox.chk_TF_bell .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TF_bell
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_closeAll
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_openList
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_tabBtn
+{
+	border : 0px none;
+	color : #444444;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+	border-radius : 0px;
+}
+.Button.btn_TF_tabBtn_S
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+	border-radius : 0px;
+	-nexa-edge : url('./../../../_resource_/_images_/top/tab_TF_S.png?nexaversion=20240531') 60px 5px;
+}
+.Button.btn_TF_extra
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_next
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_prev
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Tab.tab_TF_screen .tabpageTab.tabpageTabtab_TF_screen
+{
+	border : 0px none;
+}
+.Tab.tab_TF_screen .tabbuttonitemTab.tabbuttonitemTabtab_TF_screen
+{
+	border : 0px none;
+	color : #444444;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+	border-radius : 0px;
+}
+.Tab.tab_TF_screen .prevbuttonTab.prevbuttonTabtab_TF_screen
+{
+	background : transparent;
+	border-radius : 50%;
+}
+.Tab.tab_TF_screen .nextbuttonTab.nextbuttonTabtab_TF_screen
+{
+	background : transparent;
+	border-radius : 50%;
+}
+.Grid.grd_TF_openList
+{
+	background : #ffffff;
+	border : 0px none;
+}
+.Grid.grd_TF_openList .body .row .cell
+{
+	color : #555555;
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	border : 0px none,0px none,1px solid #ffffff;
+}
+.Grid.grd_TF_openList .body .row .cell .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_TF_openList .hscrollbar
+{
+	border : 0px none;
+	background : transparent;
+}
+.Grid.grd_TF_openList .vscrollbar
+{
+	border : 0px none;
+	background : transparent;
+}
+.Form.frm_login
+{
+	background : #fafafa;
+}
+.Div.div_login
+{
+	border : 0px none;
+	background : #ffffff;
+	border-radius : 8px;
+	box-shadow : 5px 5px 24px 0px rgba(0,0,0,0.24);
+}
+.Div.div_login_banner
+{
+	border : 0px none;
+	background : #3c413b;
+}
+.Static.sta_login_sysName
+{
+	color : #0ca950;
+	font : normal 500 60px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_login_sysName .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_login_guide
+{
+	color : #ffffff;
+	font : normal 400 12px/1.6 "noto","Malgun Gothic","Arial";
+}
+.Static.sta_login_guide .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_login_copyright
+{
+	color : #b9beb8;
+	font : normal 300 12px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_login_copyright .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_LOGIN_Logobg
+{
+	background : URL("./../../../_resource_/_images_/login/visual02.png?nexaversion=20240531") no-repeat center transparent;
+}
+.Static.sta_LOGIN_background
+{
+	background : URL("./../../../_resource_/_images_/login/login_bg.svg?nexaversion=20240531") no-repeat center transparent;
+}
+.Static.sta_login_title
+{
+	background : URL("./images/sta_LOGIN_Title.png?nexaversion=20240531") no-repeat center transparent;
+}
+.Static.sta_login_help
+{
+	color : #909399;
+	font : normal 400 13px/1.5 "noto","Malgun Gothic","Arial";
+}
+.Static.sta_login_help .nexacontentsbox
+{
+	text-align : center;
+}
+.Edit.edt_Login_input
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 1px 18px 0px 18px;
+	border-radius : 4px;
+	font : normal 400 16px/normal "noto","Malgun Gothic","Arial";
+}
+.Edit.edt_Login_input_PW
+{
+	background : #ffffff;
+	border : 1px solid #cccccc;
+	padding : 1px 58px 0px 18px;
+	border-radius : 4px;
+	font : normal 400 16px/normal "noto","Malgun Gothic","Arial";
+}
+.CheckBox.chk_login
+{
+	border-radius : 50%;
+}
+.CheckBox.chk_login .nexacontentsbox
+{
+	text-align : center;
+}
+.CheckBox.chk_login_save
+{
+	background : transparent;
+	cursor : pointer;
+	color : #222222;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_login_forgot
+{
+	border : 0px none;
+	background : transparent;
+	color : #0ca950;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_login_login
+{
+	border : 1px solid #0ca950;
+	background : #0ca950;
+	color : #ffffff;
+	font : normal 500 16px/normal "noto","Malgun Gothic","Arial";
+}
+.Static.sta_TFDM_User
+{
+	border : 0px none;
+	background : url('./../../../_resource_/_images_/UbiDocuMaker/img_WF_Name2.png?nexaversion=20240531') no-repeat center center transparent;
+	color : #ffffff;
+	font : normal bold 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_User .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_TFDM_Group
+{
+	border : 0px none;
+	background : url('./../../../_resource_/_images_/UbiDocuMaker/img_WF_Name5.png?nexaversion=20240531') no-repeat center center transparent;
+	color : #ffffff;
+	font : normal bold 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_Group .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_TFDM_Company
+{
+	border : 0px none;
+	background : url('./../../../_resource_/_images_/UbiDocuMaker/img_WF_Name9.png?nexaversion=20240531') no-repeat center center transparent;
+	color : #ffffff;
+	font : normal bold 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_Company .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_TFDM_Black
+{
+	border : 0px none;
+	background : transparent;
+	color : #333333;
+	font : normal bold 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_Black .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_TFDM_Step
+{
+	border : 0px none;
+	background : transparent;
+	color : #6C789C;
+	font : normal 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_Step .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_TFDM_IntroTitle
+{
+	border : 0px none;
+	background : transparent;
+	color : #566795;
+	font : normal bold 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_IntroTitle .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_TFDM_IntroSubTitle
+{
+	border : 0px none;
+	background : transparent;
+	color : #000000;
+	font : normal 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_IntroSubTitle .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_TFDM_StepNext
+{
+	border : 0px none;
+	background : transparent;
+	color : #5271C1;
+	font : normal 700 18px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_StepNext .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_TFDM_StepD
+{
+	border : 0px none;
+	background : transparent;
+	color : #B3BCD4;
+	font : normal 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_StepD .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_TFDM_StepTitle
+{
+	border : 0px none;
+	background : transparent;
+	color : #5271C1;
+	font : normal bold 18px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_StepTitle .nexacontentsbox
+{
+	text-align : left;
+	text-decoration : underline;
+}
+.Static.sta_TFDM_StepTitleD
+{
+	border : 0px none;
+	background : transparent;
+	color : #B3BCD4;
+	font : normal bold 14px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_StepTitleD .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_TFDM_SchLabel
+{
+	background : URL("./../../../_resource_/_images_/UbiDocuMaker/sta_WF_SchLabel.png?nexaversion=20240531") no-repeat left;
+	font : normal 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	letter-spacing : -1px;
+}
+.Static.sta_TFDM_Title
+{
+	background : url('./../../../_resource_/_images_/UbiDocuMaker/bul_dot.png?nexaversion=20240531') no-repeat left 60%;
+	font : bold 14px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Static.sta_TFDM_Title .nexacontentsbox
+{
+	vertical-align : bottom;
+}
+.Button.btn_TFDM_Crud
+{
+	border : 1px solid #3073c7;
+	background : #3683e2;
+	color : #ffffff;
+	font : bold 13px "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_TFDM_CloseEdit
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DelN.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Search
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DetailSearchN.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Save
+{
+	border : 0px solid #e1e1e1;
+	background : #00AADA;
+	color : #ffffff;
+	font : normal 700 14px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 5px;
+}
+.Button.btn_TFDM_Save .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Step
+{
+	border : 0px solid #F4F7FF;
+	background : #ffffff;
+	color : #8CA0D4;
+	font : normal 700 15px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 0px;
+	box-shadow : 1px 1px 1px 0px #cccccc;
+}
+.Button.btn_TFDM_Step .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Add
+{
+	border : 1px solid #5271C1;
+	background : transparent;
+	color : #5271C1;
+	font : normal 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_TFDM_Add .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Refresh
+{
+	border : 0px none;
+	background : url('./images/btn_Refresh.png?nexaversion=20240531') no-repeat center center;
+}
+.Div.div_TFDM_BasicProc
+{
+	border : 0px none;
+	background : #E0A038;
+}
+.Div.div_TFDM_BottomStep
+{
+	border : 1px solid #e1e1e1;
+	background : #F4F7FF;
+}
+.Div.div_TFDM__Search
+{
+	border : 1px solid #c8cdd7,0px solid #c8cdd7,1px solid #a9aeb7;
+	background : #ffffff;
+	box-shadow : 0px 3px 3px 0px #e1e3eb;
+}
+.Edit.edt_TFDM_Input
+{
+	background : #ffffff;
+	border : 1px solid #d5d5d5;
+	padding : 1px 9px 0px 9px;
+	color : #0c0c0c;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Edit.edt_TFDM_essential
+{
+	background : URL("./../../../_resource_/_images_/UbiDocuMaker/essential.png?nexaversion=20240531") no-repeat left top #ffffff;
+	border : 1px solid #d5d5d5;
+	padding : 1px 9px 0px 9px;
+	color : #0c0c0c;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Grid.grd_TFDM_user
+{
+	background : transparent;
+	border : 0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none;
+}
+.Grid.grd_TFDM_user .head .row .cell
+{
+	color : #ffffff;
+	background : transparent;
+	border : 0px none;
+	font : normal 700 14px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Grid.grd_TFDM_user .hscrollbar
+{
+	border : 1px solid #b1b1b1, 0px none, 0px none, 0px none;
+}
+.Grid.grd_TFDM_user .vscrollbar
+{
+	border : 0px none, 0px none, 0px none, 1px solid #b1b1b1;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_bottom
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,0px none,1px solid #dbdee2,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_left
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,0px none,0px none,1px solid #dbdee2;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_right
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,1px solid #dbdee2,0px none,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_top
+{
+	background : transparent;
+	color : transparent;
+	border : 1px solid #dbdee2,0px none,0px none,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_edit
+{
+	background : #ffffff;
+	color : #999999;
+	border : 1px solid #dbdee2;
+}
+.Button.btn_WF_ProjectCardAdd
+{
+	background : url("./images/btn_WF_ProjectCardAddN.png?nexaversion=20240531") no-repeat center center;
+	border : 0px none;
+	border-radius : 0px;
+}
+.ChildFrame.modal
+{
+	border : 1px solid #ffffff;
+	border-radius : 10px;
+	background : #ffffff;
+}
+.ChildFrame.modal .titlebarChildFramemodal
+{
+	background : #ffffff;
+	color : #222222;
+	font : normal 500 18px/normal "noto","Malgun Gothic","Arial";
+}
+.ChildFrame.modal .titlebarChildFramemodal .closebutton
+{
+	opacity : 0.7;
+	border-radius : 3px;
+}
+.ChildFrame.modal .titlebarChildFramemodal .maxbutton
+{
+	opacity : 0.7;
+	border-radius : 3px;
+}
+.ChildFrame.modal .titlebarChildFramemodal .minbutton
+{
+	opacity : 0.7;
+	border-radius : 3px;
+}
+.ChildFrame.modal .titlebarChildFramemodal .normalbutton
+{
+	opacity : 0.7;
+	border-radius : 3px;
+}
+.ChildFrame.alert
+{
+	border : 1px solid #ffffff;
+	border-radius : 10px;
+	background : #ffffff;
+}
+.Static.sta_alert_circle
+{
+	border : 1px solid #ffe897;
+	background : #ffe897;
+	border-radius : 16px;
+}
+.TextArea.txa_alert_message
+{
+	border : 0px none;
+	padding : 0px;
+	background : #ffffff;
+	border-radius : 0px;
+	color : #333333;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_WF_time
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 0px;
+}
+.Button.btn_WF_timeUp
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeDown
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_alert_yes
+{
+	border : 0px none;
+	background : transparent;
+	color : #0ca950;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_alert_no
+{
+	border : 0px none;
+	background : transparent;
+	color : #0ca950;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_alert_close
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 4px;
+}
+.Static.sta_alert_lineH
+{
+	border : 1px solid #e0e0e0, 0px none, 0px none;
+}
+.Static.sta_alert_lineV
+{
+	border : 0px none, 0px none, 0px none, 1px solid #e0e0e0;
+}
+.ImageViewer.img_alert_icon
+{
+	background : transparent;
+	border : 0px none;
+	border-radius : 0px;
+}
+.Button.btn_POP_setting
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Tab.tab_POP_notice .tabpageTab.tabpageTabtab_POP_notice
+{
+	border : 1px solid #dddedf, 0px none, 0px none, 0px none;
+}
+.Tab.tab_POP_notice .tabbuttonitemTab.tabbuttonitemTabtab_POP_notice
+{
+	color : #777777;
+	background : transparent;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+	border : 1px solid transparent,0px none,1px solid #dddedf;
+	cursor : pointer;
+}
+.Grid.grd_POP_notice
+{
+	background : #ffffff;
+	border : 0px none;
+}
+.Grid.grd_POP_notice .body .row .cell
+{
+	border : 0px none,0px none,1px solid #ebedf0;
+	background : #ffffff;
+	color : #909399;
+	font : normal 400 12px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_POP_notice .body .row .cell .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_POP_notice .hscrollbar
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Grid.grd_POP_notice .vscrollbar
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG
+{
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG2
+{
+	border : 0px none,0px none,1px solid #ffffff,0px none;
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_date
+{
+	color : #909399;
+	font : normal 500 12px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_POP_notice .body .row .cell.cell_titleLink
+{
+	color : #222222;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_POP_notice .body .row .cell.cell_POP_icon .cellimage
+{
+	border : 0px none;
+	background : transparent;
+}
+.Static.sta_POP_label
+{
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+}
+.Static.sta_POP_help
+{
+	color : #555555;
+	font : normal 400 13px/1.5 "noto","Malgun Gothic","Arial";
+}
+.Static.sta_POP_groupTitle
+{
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+	color : #333333;
+}
+.ImageViewer.img_POP_user
+{
+	border : 0px none;
+	background : #c0c4cc;
+	border-radius : 50%;
+	cursor : pointer;
+}
+.ImageViewer.img_POP_user .imagetext
+{
+	font : normal 400 32px/normal "noto","Malgun Gothic","Arial";
+	color : #ffffff;
+}
+.ImageViewer.img_POP_user .imagetext .nexacontentsbox
+{
+	text-align : center;
+}
+.ImageViewer.img_POP_photo
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 90px;
+	cursor : pointer;
+}
+.ImageViewer.img_POP_photo .imagetext
+{
+	font : normal 400 32px/normal "noto","Malgun Gothic","Arial";
+	color : #ffffff;
+}
+.ImageViewer.img_POP_photo .imagetext .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_POP_edit
+{
+	border : 0px none;
+	background : transparent;
+	color : #262626;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_photo
+{
+	border : 0px none;
+	background : transparent;
+	color : #262626;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.ImageViewer.img_POP_photoBack
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 0px;
+	opacity : 0.2;
+}
+.ImageViewer.img_POP_photoBack .imagetext
+{
+	font : normal 400 32px/normal "noto","Malgun Gothic","Arial";
+	color : #ffffff;
+}
+.ImageViewer.img_POP_photoBack .imagetext .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_POP_remove
+{
+	border : 0px none;
+	background : transparent;
+	color : #262626;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.Calendar.cal_POP_period .datepicker
+{
+	border : 0px none;
+	border-radius : 0px;
+}
+.DatePickerControl.popupCalendarcal_POP_perioddatepicker.dummy.dummy
+{
+	border : 0px none;
+	border-radius : 0px;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+	-nexa-edge : url('./images/edt_O.png?nexaversion=20240531') 10px 10px;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+	-nexa-edge : url('./images/edt_O.png?nexaversion=20240531') 10px 10px;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit[status=readonly]
+{
+	background : transparent;
+	border : 0px none;
+	-nexa-edge : url('./images/edt_D.png?nexaversion=20240531') 10px 10px;
+}
+.Button[status=mouseover]
+{
+	border : 1px solid #707070;
+}
+.Button[status=focused]
+{
+	border : 1px solid #707070;
+}
+.FileDownload[status=mouseover]
+{
+	background : linear-gradient(to top,#e7e7e7,#fefefe);
+	border : 1px solid #707070;
+	color : #262626;
+}
+.FileDownload[status=focused]
+{
+	background : linear-gradient(to top,#e7e7e7,#fefefe);
+	border : 1px solid #707070;
+	color : #262626;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[status=mouseover]
+{
+	background : linear-gradient(to top,#e7e7e7,#fefefe);
+	border : 1px solid #707070;
+	color : #262626;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[status=focused]
+{
+	background : linear-gradient(to top,#e7e7e7,#fefefe);
+	border : 1px solid #707070;
+	color : #262626;
+}
+.Calendar[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.CalendarControl[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.Calendar[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.CalendarControl[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.Calendar[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.CalendarControl[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.CheckBox[status=mouseover]
+{
+	background : transparent;
+}
+.CheckBoxControl[status=mouseover]
+{
+	background : transparent;
+}
+.CheckBox[status=readonly]
+{
+	cursor : default;
+	color : #555555;
+}
+.CheckBoxControl[status=readonly]
+{
+	cursor : default;
+	color : #555555;
+}
+.Combo[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.Combo[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.ComboControl[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.ComboControl[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.Combo[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.ComboControl[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.Edit[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.Edit[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.Edit[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.Grid .body .row .cell[status=mouseover]
+{
+	background : #f2f6fc;
+}
+.Grid .body .row .cell .subcell[status=mouseover]
+{
+	background : #f2f6fc;
+}
+.GridCellControl .cellbutton[status=mouseover]
+{
+	border : 1px solid #707070;
+	color : #262626;
+}
+.GridCellControl .cellbutton[status=focused]
+{
+	border : 1px solid #707070;
+	color : #262626;
+}
+.GridCellControl .celledit[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.GridCellControl .celledit[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.GridCellControl .cellmaskedit[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.GridCellControl .cellmaskedit[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.ListBox[status=mouseover]
+{
+	border : 1px solid #cccccc;
+}
+.ListBox[status=focused]
+{
+	border : 1px solid #cccccc;
+}
+.ListBoxControl[status=mouseover]
+{
+	border : 1px solid #cccccc;
+}
+.ListBoxControl[status=focused]
+{
+	border : 1px solid #cccccc;
+}
+.ListBox .listboxitem[status=mouseover]
+{
+	background : #f2f6fc;
+}
+.ListBoxControl .listboxitem[status=mouseover]
+{
+	background : #f2f6fc;
+}
+.MaskEdit[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.MaskEdit[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.MaskEdit[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.Menu .menuitem[status=mouseover]
+{
+	background : #1d1f1d;
+	color : #ffffff;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem[status=mouseover]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem[status=focused]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem .popupmenuitemtext[status=mouseover]
+{
+	color : #000000;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem .popupmenuitemhotkeytext[status=mouseover]
+{
+	color : #9d9d9d;
+}
+.PopupMenu .popupmenuitem[status=mouseover]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.PopupMenu .popupmenuitem[status=focused]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.PopupMenuControl .popupmenuitem[status=mouseover]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.PopupMenuControl .popupmenuitem[status=focused]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.PopupMenu .popupmenuitem .popupmenuitemcheckbox[status=mouseover]
+{
+	background : URL('./images/chk_N.png?nexaversion=20240531') no-repeat left center;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemcheckbox[status=mouseover]
+{
+	background : URL('./images/chk_N.png?nexaversion=20240531') no-repeat left center;
+}
+.Radio .radioitem[status=readonly]
+{
+	cursor : default;
+	color : #555555;
+}
+.Spin[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.Spin[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.Spin[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.TextArea[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.TextArea[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.TextAreaControl[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.TextAreaControl[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.TextArea[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+	border : 1px solid #cccccc;
+}
+.TextAreaControl[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+	border : 1px solid #cccccc;
+}
+.Tab .tabpageTab[status=mouseover]
+{
+	border : 2px solid #ebeef5, 0px none, 0px none, 0px none;
+	background : #ffffff;
+}
+.Tab .tabpageTab[status=focused]
+{
+	border : 2px solid #ebeef5, 0px none, 0px none, 0px none;
+	background : #ffffff;
+}
+.Tab .tabbuttonitemTab[status=mouseover]
+{
+	background : #ffffff;
+	color : #08a44d;
+}
+.Tab .tabbuttonitemTab[status=focused]
+{
+	background : #ffffff;
+	color : #08a44d;
+}
+.DatePickerControl .head .yearspin[status=mouseover]
+{
+	border : 1px solid #0ca950;
+	background : #ffffff;
+}
+.DatePickerControl .head .yearspin[status=focused]
+{
+	border : 1px solid #0ca950;
+	background : #ffffff;
+}
+.DatePickerControl .head .monthspin[status=mouseover]
+{
+	border : 1px solid #0ca950;
+	background : #ffffff;
+}
+.DatePickerControl .head .monthspin[status=focused]
+{
+	border : 1px solid #0ca950;
+	background : #ffffff;
+}
+.DatePickerControl .body .dayitem[status=mouseover]
+{
+	color : #333333;
+	background : #c3e9cd;
+	border-radius : 50%;
+}
+.DatePickerControl .body .dayitem[status=focused]
+{
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 50%;
+}
+.DatePickerControl .body .monthitem[status=mouseover]
+{
+	color : #333333;
+	background : #c3e9cd;
+	border-radius : 4px;
+	border : 1px solid #ffffff;
+}
+.DatePickerControl .body .monthitem[status=focused]
+{
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+}
+.DatePickerControl .body .yearitem[status=mouseover]
+{
+	color : #333333;
+	background : #c3e9cd;
+	border-radius : 4px;
+}
+.DatePickerControl .body .yearitem[status=focused]
+{
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+}
+.VScrollBarControl .incbutton[status=mouseover]
+{
+	background : #c7c9cc;
+}
+.VScrollBarControl .decbutton[status=mouseover]
+{
+	background : #c7c9cc;
+}
+.HScrollBarControl .incbutton[status=mouseover]
+{
+	background : #c7c9cc;
+}
+.HScrollBarControl .decbutton[status=mouseover]
+{
+	background : #c7c9cc;
+}
+.VScrollBarControl .trackbar[status=mouseover]
+{
+	-nexa-edge : url('./images/vscroll_tracker_O.png?nexaversion=20240531') 8px 8px;
+}
+.VScrollBarControl .trackbar[status=focused]
+{
+	-nexa-edge : url('./images/vscroll_tracker_O.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollBarControl .trackbar[status=mouseover]
+{
+	-nexa-edge : url('./images/hscroll_tracker_O.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollBarControl .trackbar[status=focused]
+{
+	-nexa-edge : url('./images/hscroll_tracker_O.png?nexaversion=20240531') 8px 8px;
+}
+.VScrollIndicatorControl .trackbar[status=mouseover]
+{
+	-nexa-edge : url('./images/vscroll_tracker_O.png?nexaversion=20240531') 8px 8px;
+}
+.VScrollIndicatorControl .trackbar[status=focused]
+{
+	-nexa-edge : url('./images/vscroll_tracker_O.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollIndicatorControl .trackbar[status=mouseover]
+{
+	-nexa-edge : url('./images/hscroll_tracker_O.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollIndicatorControl .trackbar[status=focused]
+{
+	-nexa-edge : url('./images/hscroll_tracker_O.png?nexaversion=20240531') 8px 8px;
+}
+.TitleBarControl .titleicon[status=mouseover]
+{
+	color : #ffffff;
+	font : bold 14px "Malgun Gothic";
+}
+.TitleBarControl .titleicon[status=deactivate]
+{
+	color : #ffffff;
+	font : bold 14px "Malgun Gothic";
+}
+.ListViewCellControl .cellbutton[status=mouseover]
+{
+	background : linear-gradient(to top,#e7e7e7,#fefefe);
+	border : 1px solid #a0a0a0;
+}
+.ListViewCellControl .cellbutton[status=focused]
+{
+	background : linear-gradient(to top,#e7e7e7,#fefefe);
+	border : 1px solid #a0a0a0;
+}
+.ListBoxControl.popupListViewCellControlcellcombocombolist.dummy.dummy .listboxitem[status=mouseover]
+{
+	background : #e8e9ed;
+}
+.ListViewCellControl .celledit[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.ListViewCellControl .celledit[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.ListViewCellControl .cellmaskedit[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.ListViewCellControl .cellmaskedit[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.ListView .body .expandbar[status=mouseover]
+{
+	background : linear-gradient(to top,#e7e7e7,#fefefe);
+	border : 1px solid #a0a0a0;
+}
+.ListView .body .expandbar[status=focused]
+{
+	background : linear-gradient(to top,#e7e7e7,#fefefe);
+	border : 1px solid #a0a0a0;
+}
+.CheckBoxSetControl .checkboxsetitem[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.MultiCombo[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.MultiCombo[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.MultiComboControl[status=mouseover]
+{
+	border : 1px solid #0ca950;
+}
+.MultiComboControl[status=focused]
+{
+	border : 1px solid #0ca950;
+}
+.MultiCombo[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.MultiComboControl[status=readonly]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.TagBoxControl[status=mouseover]
+{
+	border : 1px solid #c3e9cd;
+	background : #c3e9cd;
+}
+.TagBoxControl .tagbutton[status=mouseover]
+{
+	border-radius : 50%;
+}
+.MultiComboListControl[status=mouseover]
+{
+	border : 1px solid #cccccc;
+}
+.MultiComboListControl .selectallcheckbox[status=mouseover]
+{
+	background : transparent;
+}
+.MultiComboListControl .selectallcheckbox[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Button.btn_POP_close[status=mouseover]
+{
+	border : 0px none;
+	background : #e9e9e9;
+}
+.Button.btn_POP_yes[status=mouseover]
+{
+	border : 1px solid #1ab85a;
+	background : #1ab85a;
+	color : #ffffff;
+}
+.Button.btn_POP_yes[status=focused]
+{
+	border : 1px solid #1ab85a;
+	background : #1ab85a;
+	color : #ffffff;
+}
+.Button.btn_POP_no[status=mouseover]
+{
+	border : 0px none;
+	background : #e7f6ee;
+	color : #0ca950;
+}
+.Button.btn_POP_no[status=focused]
+{
+	border : 0px none;
+	background : #e7f6ee;
+	color : #0ca950;
+}
+.Button.btn_POP_calPrev[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calPrev[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNext[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNext[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNumber[status=mouseover]
+{
+	color : #333333;
+	background : #c3e9cd;
+	border-radius : 4px;
+	border : 1px solid #ffffff;
+}
+.Button.btn_POP_calNumber[status=focused]
+{
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+}
+.Button.btn_POP_calNumber_S[status=mouseover]
+{
+	border : 1px solid #ffffff;
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_calNumber_S[status=focused]
+{
+	border : 1px solid #ffffff;
+	color : #ffffff;
+	background : #0ca950;
+}
+.Button.btn_POP_calNumber_B[status=mouseover]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+	border-radius : 4px;
+	color : #d1d1d1;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_calNumber_B[status=focused]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+	border-radius : 4px;
+	color : #d1d1d1;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Combo.cbo_Pop_cal[status=mouseover]
+{
+	border : 1px solid #e9e9e9;
+	background : #e9e9e9;
+}
+.Combo.cbo_Pop_cal[status=focused]
+{
+	border : 1px solid #e9e9e9;
+	background : #e9e9e9;
+}
+.Combo.cbo_Pop_cal[status=readonly]
+{
+	border : 1px solid #f7f7f7;
+	background : #f7f7f7;
+}
+.Grid.grd_Pop_week .body .row .cell[status=mouseover]
+{
+	border : 0px none;
+	background : #b0e8ff;
+}
+.Grid.grd_Pop_week .body .row .cell .subcell[status=mouseover]
+{
+	border : 0px none;
+	background : #e6f4fa;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_sunday[status=mouseover]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_sunday.oddcell[status=mouseover]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_sunday[status=focused]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_sunday.oddcell[status=focused]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_sunday[status=mouseover]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_sunday.oddcell[status=mouseover]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_sunday[status=focused]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_sunday.oddcell[status=focused]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_saturday[status=mouseover]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_saturday.oddcell[status=mouseover]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_saturday[status=focused]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_saturday.oddcell[status=focused]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_saturday[status=mouseover]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_saturday.oddcell[status=mouseover]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_saturday[status=focused]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_saturday.oddcell[status=focused]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_trailingday[status=mouseover]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_trailingday.oddcell[status=mouseover]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_trailingday[status=focused]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_trailingday.oddcell[status=focused]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_trailingday[status=mouseover]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_trailingday.oddcell[status=mouseover]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_trailingday[status=focused]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_trailingday.oddcell[status=focused]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_today[status=mouseover]
+{
+	background : #b0e8ff;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_today[status=focused]
+{
+	background : #b0e8ff;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_today[status=mouseover]
+{
+	background : #b0e8ff;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_today[status=focused]
+{
+	background : #b0e8ff;
+}
+.Button.btn_LF_menu01[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu01[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu01_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu01_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu01_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu01_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu02[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu02[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu02_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu02_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu02_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu02_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu03[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu03[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu03_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu03_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu03_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu03_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu04[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu04[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu04_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu04_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu04_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu04_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu05[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu05[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu05_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu05_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu05_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu05_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu06[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu06[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu06_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu06_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu06_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu06_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu07[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu07[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu07_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu07_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu07_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu07_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu08[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu08[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu08_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu08_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu08_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu08_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu09[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu09[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu09_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu09_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu09_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu09_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu10[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu10[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu10_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu10_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu10_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu10_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu11[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu11[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu11_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu11_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu11_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu11_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu12[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu12[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_menu12_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu12_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu12_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu12_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_help[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_help[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_foldingOff[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_foldingOff[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_foldingOn[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_foldingOn[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_sampleTip[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_sampleTip[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_sampleTip_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_sampleTip_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_sampleTip_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_sampleTip_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_folder[status=mouseover]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_folder[status=focused]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_folder_S[status=mouseover]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_folder_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_folder_S[status=focused]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_folder_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_close[status=mouseover]
+{
+	border : 0px none;
+	background : #e7f6ee;
+}
+.Button.btn_LF_close[status=focused]
+{
+	border : 0px none;
+	background : #e7f6ee;
+}
+.Edit.edt_subMenu_search[status=mouseover]
+{
+	border : 1px solid #f4f4f5;
+	padding : 1px 26px 0px 13px;
+	background : #f4f4f5;
+	border-radius : 8px;
+}
+.Edit.edt_subMenu_search[status=focused]
+{
+	border : 1px solid #f4f4f5;
+	padding : 1px 26px 0px 13px;
+	background : #f4f4f5;
+	border-radius : 8px;
+}
+.Edit.edt_subMenu_search[status=readonly]
+{
+	border : 1px solid #f4f4f5;
+	background : #f4f4f5;
+}
+.Edit.edt_subMenu_search_F[status=mouseover]
+{
+	border : 1px solid transparent,0px none,1px solid #0ca950;
+	padding : 1px 27px 0px 14px;
+	background : #ffffff;
+	border-radius : 0px;
+}
+.Edit.edt_subMenu_search_F[status=focused]
+{
+	border : 1px solid transparent,0px none,1px solid #0ca950;
+	padding : 1px 27px 0px 14px;
+	background : #ffffff;
+	border-radius : 0px;
+}
+.Edit.edt_subMenu_search_F[status=readonly]
+{
+	border : 1px solid transparent,0px none,1px solid #0ca950;
+	padding : 1px 27px 0px 14px;
+	background : #ffffff;
+	border-radius : 0px;
+}
+.Button.btn_subMenu_search[status=focused]
+{
+	border : 1px dashed #222222;
+	background : #e7f6ee;
+}
+.Button.btn_subMenu_search[status=mouseover]
+{
+	border : 1px solid transparent;
+	background : #e7f6ee;
+}
+.Button.btn_subMenu_foliderClose[status=focused]
+{
+	border : 1px solid transparent;
+	background : #f7f7f7;
+}
+.Button.btn_subMenu_foliderClose[status=mouseover]
+{
+	border : 1px solid transparent;
+	background : #f7f7f7;
+}
+.Button.btn_subMenu_foliderOpen[status=focused]
+{
+	border : 1px solid transparent;
+	background : #f7f7f7;
+}
+.Button.btn_subMenu_foliderOpen[status=mouseover]
+{
+	border : 1px solid transparent;
+	background : #f7f7f7;
+}
+.Grid.grd_subMenu .body .row .cell[status=mouseover]
+{
+	background : transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev0[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_N.png?nexaversion=20240531') no-repeat right center #e7e9f0;
+	color : #333333;
+}
+.Grid.grd_subMenu .body .row .cell.lev0[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_N.png?nexaversion=20240531') no-repeat right center #e7e9f0;
+	color : #333333;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+	color : #ffffff;
+	cursor : pointer;
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 8px 16px 16px 8px;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S.oddcell[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+	color : #ffffff;
+	cursor : pointer;
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 8px 16px 16px 8px;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S.oddcell[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev1[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_N.png?nexaversion=20240531') no-repeat right center transparent;
+	color : #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev1[status=focused] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Grid.grd_subMenu .body .row .cell.lev1[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_N.png?nexaversion=20240531') no-repeat right center transparent;
+	color : #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev1[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+	color : #0ca950;
+	cursor : pointer;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S.oddcell[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+	color : #0ca950;
+	cursor : pointer;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S.oddcell[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev2[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #000000;
+}
+.Grid.grd_subMenu .body .row .cell.lev2[status=focused] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Grid.grd_subMenu .body .row .cell.lev2[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #000000;
+}
+.Grid.grd_subMenu .body .row .cell.lev2[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #000000;
+	cursor : pointer;
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S.oddcell[status=focused]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #000000;
+	cursor : pointer;
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S.oddcell[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+}
+.Grid.grd_LF_searchResult .body .row .cell[status=mouseover]
+{
+	background : transparent;
+	color : #000000;
+}
+.Grid.grd_LF_searchResult .body .row .cell[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Grid.grd_LF_searchResult .body .row .cell.reject[status=mouseover]
+{
+	color : #ff0000;
+	border : 0px none;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+}
+.Grid.grd_LF_searchResult .body .row .cell.reject[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv0[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name0.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv0[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv1[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name1.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv1[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv2[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name2.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv2[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv3[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name3.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv3[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv4[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name4.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv4[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv5[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name5.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv5[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv6[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name6.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv6[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv7[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name7.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv7[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv8[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name8.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv8[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv9[status=mouseover]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name9.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv9[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.CheckBox.chk_TF_bell[status=mouseover]
+{
+	background : #ffffff;
+}
+.CheckBox.chk_TF_bell[status=readonly]
+{
+	cursor : default;
+}
+.Button.btn_TF_bell[status=mouseover]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_bell[status=focused]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_closeAll[status=mouseover]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_closeAll[status=focused]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_openList[status=mouseover]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_openList[status=focused]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_tabBtn[status=mouseover]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Button.btn_TF_tabBtn[status=focused]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Button.btn_TF_tabBtn_S[status=mouseover]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+	border-radius : 0px;
+	-nexa-edge : url('./../../../_resource_/_images_/top/tab_TF_S.png?nexaversion=20240531') 60px 5px;
+}
+.Button.btn_TF_tabBtn_S[status=focused]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+	border-radius : 0px;
+	-nexa-edge : url('./../../../_resource_/_images_/top/tab_TF_S.png?nexaversion=20240531') 60px 5px;
+}
+.Button.btn_TF_extra[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_TF_extra[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_TF_next[status=mouseover]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_next[status=focused]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_prev[status=mouseover]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_prev[status=focused]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Tab.tab_TF_screen .tabbuttonitemTab.tabbuttonitemTabtab_TF_screen[status=mouseover]
+{
+	border : 0px none;
+	border-radius : 0px;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Tab.tab_TF_screen .tabbuttonitemTab.tabbuttonitemTabtab_TF_screen[status=focused]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Tab.tab_TF_screen .prevbuttonTab.prevbuttonTabtab_TF_screen[status=mouseover]
+{
+	background : #ffffff;
+}
+.Tab.tab_TF_screen .nextbuttonTab.nextbuttonTabtab_TF_screen[status=mouseover]
+{
+	background : #ffffff;
+}
+.Grid.grd_TF_openList .body .row .cell[status=mouseover]
+{
+	background : #e7f6ee;
+}
+.Edit.edt_Login_input[status=mouseover]
+{
+	border : 2px solid #0ca950;
+	padding : 1px 17px 0px 17px;
+}
+.Edit.edt_Login_input[status=focused]
+{
+	border : 2px solid #0ca950;
+	padding : 1px 17px 0px 17px;
+}
+.Edit.edt_Login_input_PW[status=mouseover]
+{
+	border : 2px solid #0ca950;
+	padding : 1px 57px 0px 17px;
+}
+.Edit.edt_Login_input_PW[status=focused]
+{
+	border : 2px solid #0ca950;
+	padding : 1px 57px 0px 17px;
+}
+.CheckBox.chk_login[status=focused]
+{
+	border-radius : 50%;
+}
+.CheckBox.chk_login[status=focused] .nexacontentsbox
+{
+	text-align : center;
+}
+.CheckBox.chk_login[status=mouseover]
+{
+	background : #ffffff;
+}
+.CheckBox.chk_login[status=readonly]
+{
+	cursor : default;
+}
+.CheckBox.chk_login_save[status=focused]
+{
+	background : transparent;
+	cursor : pointer;
+	color : #222222;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.CheckBox.chk_login_save[status=mouseover]
+{
+	background : transparent;
+}
+.CheckBox.chk_login_save[status=readonly]
+{
+	cursor : default;
+	color : #555555;
+}
+.Button.btn_login_forgot[status=mouseover]
+{
+	border : 0px none;
+	background : #e7f6ee;
+	color : #0ca950;
+}
+.Button.btn_login_forgot[status=focused]
+{
+	border : 0px none;
+	background : #e7f6ee;
+	color : #0ca950;
+}
+.Button.btn_login_login[status=mouseover]
+{
+	border : 1px solid #1ab85a;
+	background : #1ab85a;
+	color : #ffffff;
+}
+.Button.btn_login_login[status=focused]
+{
+	border : 1px solid #1ab85a;
+	background : #1ab85a;
+	color : #ffffff;
+}
+.Button.btn_TFDM_Crud[status=focused]
+{
+	border : 1px solid #3073c7;
+	background : #3683e2;
+	color : #ffffff;
+	font : bold 13px "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_TFDM_Crud[status=mouseover]
+{
+	border : 1px solid #3073c7;
+	background : #4a96f3;
+}
+.Button.btn_TFDM_CloseEdit[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DelN.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_CloseEdit[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DelO.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Search[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DetailSearchN.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Search[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DetailSearchO.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Save[status=focused]
+{
+	border : 0px solid #e1e1e1;
+	background : #00AADA;
+	color : #ffffff;
+	font : normal 700 14px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 5px;
+}
+.Button.btn_TFDM_Save[status=focused] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Save[status=mouseover]
+{
+	border : 1px solid #e1e1e1;
+	background : #00AADA;
+	color : #ffffff;
+	font : normal 700 14px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 5px;
+}
+.Button.btn_TFDM_Save[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Step[status=focused]
+{
+	border : 0px solid #F4F7FF;
+	background : #ffffff;
+	color : #8CA0D4;
+	font : normal 700 15px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 0px;
+	box-shadow : 1px 1px 1px 0px #cccccc;
+}
+.Button.btn_TFDM_Step[status=focused] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Step[status=mouseover]
+{
+	border : 1px solid #F4F7FF;
+	background : #789DF8;
+	color : #ffffff;
+	font : normal 700 15px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 0px;
+	box-shadow : 1px 1px 1px 0px #cccccc;
+}
+.Button.btn_TFDM_Step[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Add[status=focused]
+{
+	border : 1px solid #5271C1;
+	background : transparent;
+	color : #5271C1;
+	font : normal 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_TFDM_Add[status=focused] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Add[status=mouseover]
+{
+	border : 1px solid #F89066;
+	background : transparent;
+	color : #5271C1;
+	font : normal 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_TFDM_Add[status=mouseover] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Refresh[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_Refresh.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Refresh[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_Refresh_O.png?nexaversion=20240531') no-repeat center center;
+}
+.Edit.edt_TFDM_Input[status=mouseover]
+{
+	border : 1px solid #5a86cd;
+	color : #0c0c0c;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Edit.edt_TFDM_Input[status=focused]
+{
+	border : 1px solid #5a86cd;
+	color : #0c0c0c;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Edit.edt_TFDM_Input[status=readonly]
+{
+	background : #efefef;
+	color : #0c0c0c;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Edit.edt_TFDM_essential[status=mouseover]
+{
+	background : url('./../../../_resource_/_images_/UbiDocuMaker/essential.png?nexaversion=20240531') no-repeat left top #ffffff;
+	color : #0c0c0c;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Edit.edt_TFDM_essential[status=focused]
+{
+	background : url('./../../../_resource_/_images_/UbiDocuMaker/essential.png?nexaversion=20240531') no-repeat left top #ffffff;
+	color : #0c0c0c;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Edit.edt_TFDM_essential[status=readonly]
+{
+	background : URL("./../../../_resource_/_images_/UbiDocuMaker/essential.png?nexaversion=20240531") no-repeat left top #efefef
+	font 			: normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	color : #0c0c0c;
+}
+.Grid.grd_TFDM_user .body .row .cell[status=mouseover]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_bottom[status=mouseover]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,0px none,1px solid #313340,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_left[status=mouseover]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,0px none,0px none,1px solid #313340;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_right[status=mouseover]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,1px solid #313340,0px none,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_top[status=mouseover]
+{
+	background : transparent;
+	color : transparent;
+	border : 1px solid #313340,0px none,0px none,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_edit[status=mouseover]
+{
+	background : #ffffff;
+	color : #999999;
+	border : 1px solid #313340;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_WF_ProjectCardAdd[status=focused]
+{
+	background : url("./images/btn_WF_ProjectCardAddN.png?nexaversion=20240531") no-repeat center center;
+	border : 0px none;
+	border-radius : 0px;
+}
+.Button.btn_WF_ProjectCardAdd[status=mouseover]
+{
+	background : url("./images/btn_WF_ProjectCardAddO.png?nexaversion=20240531") no-repeat center center;
+	border : 0px none;
+	border-radius : 0px;
+}
+.ChildFrame.modal .titlebarChildFramemodal[status=deactivate]
+{
+	background : #ffffff;
+	color : #999999;
+}
+.ChildFrame.modal .titlebarChildFramemodal .closebutton[status=mouseover]
+{
+	background : #e9e9e9;
+	opacity : 1;
+}
+.ChildFrame.modal .titlebarChildFramemodal .maxbutton[status=mouseover]
+{
+	background : #e9e9e9;
+	opacity : 1;
+}
+.ChildFrame.modal .titlebarChildFramemodal .minbutton[status=mouseover]
+{
+	background : #e9e9e9;
+	opacity : 1;
+}
+.ChildFrame.modal .titlebarChildFramemodal .normalbutton[status=mouseover]
+{
+	background : #e9e9e9;
+	opacity : 1;
+}
+.TextArea.txa_alert_message[status=mouseover]
+{
+	border : 0px none;
+}
+.TextArea.txa_alert_message[status=focused]
+{
+	border : 0px none;
+}
+.TextArea.txa_alert_message[status=readonly]
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Button.btn_WF_time[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_time[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeUp[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeUp[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeDown[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeDown[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_alert_yes[status=mouseover]
+{
+	border : 0px none;
+	background : #e7f6ee;
+	color : #0ca950;
+}
+.Button.btn_alert_yes[status=focused]
+{
+	border : 0px none;
+	background : #e7f6ee;
+	color : #0ca950;
+}
+.Button.btn_alert_no[status=mouseover]
+{
+	border : 0px none;
+	background : #e7f6ee;
+	color : #0ca950;
+}
+.Button.btn_alert_no[status=focused]
+{
+	border : 0px none;
+	background : #e7f6ee;
+	color : #0ca950;
+}
+.Button.btn_alert_close[status=mouseover]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_alert_close[status=focused]
+{
+	border : 1px dashed #000000;
+	background : transparent;
+}
+.Button.btn_POP_setting[status=mouseover]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_POP_setting[status=focused]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Tab.tab_POP_notice .tabbuttonitemTab.tabbuttonitemTabtab_POP_notice[status=mouseover]
+{
+	background : transparent;
+	color : #0ca950;
+}
+.Tab.tab_POP_notice .tabbuttonitemTab.tabbuttonitemTabtab_POP_notice[status=focused]
+{
+	background : transparent;
+	color : #0ca950;
+}
+.Grid.grd_POP_notice .body .row .cell[status=mouseover]
+{
+	background : #ffffff;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG[status=mouseover]
+{
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG2[status=mouseover]
+{
+	border : 0px none,0px none,1px solid #ffffff,0px none;
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_date[status=mouseover]
+{
+	color : #909399;
+	font : normal 500 12px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_POP_notice .body .row .cell.cell_titleLink[status=mouseover]
+{
+	color : #222222;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_POP_notice .body .row .cell.cell_titleLink[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Button.btn_POP_edit[status=mouseover]
+{
+	border : 0px none;
+	background : #f7f7f7;
+	color : #262626;
+}
+.Button.btn_POP_edit[status=focused]
+{
+	border : 0px none;
+	background : #f7f7f7;
+	color : #262626;
+}
+.Button.btn_POP_photo[status=mouseover]
+{
+	border : 0px none;
+	background : #f7f7f7;
+	color : #262626;
+}
+.Button.btn_POP_photo[status=focused]
+{
+	border : 0px none;
+	background : #f7f7f7;
+	color : #262626;
+}
+.Button.btn_POP_remove[status=mouseover]
+{
+	border : 0px none;
+	background : #f7f7f7;
+	color : #262626;
+}
+.Button.btn_POP_remove[status=focused]
+{
+	border : 0px none;
+	background : #f7f7f7;
+	color : #262626;
+}
+.Form[userstatus=contents]
+{
+	background : transparent;
+}
+.Button[userstatus=selected]
+{
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[userstatus=selected]
+{
+	background : linear-gradient(to top,#eaeaea,#ffffff);
+	border : 1px solid #c2c2c2;
+	border-radius : 4px;
+	color : #c2c2c2;
+}
+.FileDownload[userstatus=pushed]
+{
+	border : 1px solid #afafaf;
+	background : #f3f3f3;
+	color : #000000;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[userstatus=pushed]
+{
+	border : 1px solid #afafaf;
+	background : #f3f3f3;
+	color : #000000;
+}
+.CheckBox[userstatus=selected]
+{
+	color : #222222;
+}
+.CheckBoxControl[userstatus=selected]
+{
+	color : #222222;
+}
+.Edit[userstatus=nulltext]
+{
+	color : #b2b2b2;
+}
+.EditControl[userstatus=nulltext]
+{
+	color : #b2b2b2;
+}
+.MaskEdit[userstatus=nulltext]
+{
+	color : #b2b2b2;
+}
+.MaskEditControl[userstatus=nulltext]
+{
+	color : #b2b2b2;
+}
+.TextArea[userstatus=nulltext]
+{
+	color : #b2b2b2;
+}
+.TextAreaControl[userstatus=nulltext]
+{
+	color : #b2b2b2;
+}
+.Calendar[userstatus=invalidtext]
+{
+	color : #999999;
+}
+.CalendarControl[userstatus=invalidtext]
+{
+	color : #999999;
+}
+.MaskEdit[userstatus=invalidtext]
+{
+	color : #999999;
+}
+.MaskEditControl[userstatus=invalidtext]
+{
+	color : #999999;
+}
+.Spin[userstatus=invalidtext]
+{
+	color : #999999;
+}
+.SpinControl[userstatus=invalidtext]
+{
+	color : #999999;
+}
+.Grid .body .row .cell[userstatus=selected]
+{
+	background : #c3e9cd;
+	color : #000000;
+}
+.Grid .body .row .cell .subcell[userstatus=selected]
+{
+	background : #c3e9cd;
+	color : #000000;
+}
+.Grid .body .row .cell .subcell[userstatus=blinked]
+{
+	background : #c3e9cd;
+	color : #000000;
+}
+.GridCellControl .cellbutton[userstatus=selected]
+{
+	border : 1px solid #cccccc;
+	background : linear-gradient(to top,#eaeaea,#ffffff);
+	border-radius : 4px;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.GridCellControl .cellbutton[userstatus=pushed]
+{
+	border : 1px solid #afafaf;
+	background : #f3f3f3;
+	color : #000000;
+}
+.Grid .body .row .cell[userstatus=blinked]
+{
+	background : #c3e9cd;
+	color : #000000;
+}
+.ListBox .listboxitem[userstatus=selected]
+{
+	color : #ffffff;
+	background : #0ca950;
+}
+.ListBoxControl .listboxitem[userstatus=selected]
+{
+	color : #ffffff;
+	background : #0ca950;
+}
+.Menu .menuitem[userstatus=selected]
+{
+	background : #0ca950;
+	color : #ffffff;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem[userstatus=selected]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.PopupMenu .popupmenuitem[userstatus=selected]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.PopupMenuControl .popupmenuitem[userstatus=selected]
+{
+	color : #000000;
+	background : #c3e9cd;
+}
+.Radio .radioitem[userstatus=selected]
+{
+	color : #0ca950;
+}
+.Tab .tabbuttonitemTab[userstatus=selected]
+{
+	color : #08a44d;
+	background : #ffffff;
+	border : 2px solid #ffffff,0px none,2px solid #08a44d;
+}
+.DatePickerControl .body .weekitem[userstatus=saturday]
+{
+	color : #239cf0;
+}
+.DatePickerControl .body .weekitem[userstatus=sunday]
+{
+	color : #ee5555;
+}
+.DatePickerControl .body .dayitem[userstatus=selected]
+{
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 50%;
+}
+.DatePickerControl .body .monthitem[userstatus=selected]
+{
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+	border : 1px solid #ffffff;
+}
+.DatePickerControl .body .dayitem[userstatus=today]
+{
+	color : #000000;
+	background : #ffffff;
+	border-radius : 50%;
+	border : 1px solid #000000;
+}
+.DatePickerControl .body .dayitem[userstatus=saturday]
+{
+	color : #239cf0;
+}
+.DatePickerControl .body .dayitem[userstatus=sunday]
+{
+	color : #ee5555;
+}
+.DatePickerControl .body .dayitem[userstatus=trailingday]
+{
+	color : #d1d1d1;
+}
+.DatePickerControl .body .yearitem[userstatus=selected]
+{
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+}
+.DatePickerControl .body .yearitem[userstatus=trailingyear]
+{
+	color : #d1d1d1;
+}
+.VScrollBarControl .incbutton[userstatus=pushed]
+{
+	background : #a9abae;
+}
+.VScrollBarControl .decbutton[userstatus=pushed]
+{
+	background : #a9abae;
+}
+.HScrollBarControl .incbutton[userstatus=pushed]
+{
+	background : #a9abae;
+}
+.HScrollBarControl .decbutton[userstatus=pushed]
+{
+	background : #a9abae;
+}
+.VScrollBarControl .trackbar[userstatus=selected]
+{
+	-nexa-edge : url('./images/vscroll_tracker_N.png?nexaversion=20240531') 8px 8px;
+}
+.VScrollBarControl .trackbar[userstatus=pushed]
+{
+	-nexa-edge : url('./images/vscroll_tracker_P.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollBarControl .trackbar[userstatus=selected]
+{
+	-nexa-edge : url('./images/hscroll_tracker_N.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollBarControl .trackbar[userstatus=pushed]
+{
+	-nexa-edge : url('./images/hscroll_tracker_P.png?nexaversion=20240531') 8px 8px;
+}
+.VScrollIndicatorControl .trackbar[userstatus=selected]
+{
+	-nexa-edge : url('./images/vscroll_tracker_N.png?nexaversion=20240531') 8px 8px;
+}
+.VScrollIndicatorControl .trackbar[userstatus=pushed]
+{
+	-nexa-edge : url('./images/vscroll_tracker_P.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollIndicatorControl .trackbar[userstatus=selected]
+{
+	-nexa-edge : url('./images/hscroll_tracker_N.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollIndicatorControl .trackbar[userstatus=pushed]
+{
+	-nexa-edge : url('./images/hscroll_tracker_P.png?nexaversion=20240531') 8px 8px;
+}
+.ListViewCellControl .cellbutton[userstatus=pushed]
+{
+	background : linear-gradient(to top,#fefefe,#e9e9e9);
+}
+.CheckBoxSetControl .checkboxsetitem[userstatus=selected]
+{
+	color : #222222;
+	background : transparent;
+}
+.MultiComboListControl .selectallcheckbox[userstatus=selected]
+{
+	color : #555555;
+	background : transparent;
+}
+.Button.btn_POP_close[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 0px;
+}
+.Button.btn_POP_close[userstatus=pushed]
+{
+	border : 0px none;
+	background : #e9e9e9;
+}
+.Button.btn_POP_yes[userstatus=selected]
+{
+	border : 1px solid #0ca950;
+	background : #0ca950;
+	color : #ffffff;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_yes[userstatus=pushed]
+{
+	border : 1px solid #009744;
+	background : #009744;
+	color : #ffffff;
+}
+.Button.btn_POP_no[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	color : #0ca950;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_no[userstatus=pushed]
+{
+	border : 0px none;
+	background : #ceeedc;
+	color : #0ca950;
+}
+.Button.btn_POP_calPrev[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_POP_calPrev[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNext[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNext[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNumber[userstatus=selected]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+	border-radius : 4px;
+	color : #333333;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_calNumber[userstatus=pushed]
+{
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+	border : 1px solid #ffffff;
+}
+.Button.btn_POP_calNumber_S[userstatus=selected]
+{
+	border : 1px solid #ffffff;
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_calNumber_S[userstatus=pushed]
+{
+	border : 1px solid #ffffff;
+	color : #ffffff;
+	background : #0ca950;
+	border-radius : 4px;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_calNumber_B[userstatus=selected]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+	border-radius : 4px;
+	color : #d1d1d1;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_calNumber_B[userstatus=pushed]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+	border-radius : 4px;
+	color : #d1d1d1;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_Pop_week .body .row .cell[userstatus=selected]
+{
+	border : 0px none;
+	background : #2cb1e5;
+	color : #ffffff;
+}
+.Grid.grd_Pop_week .body .row .cell .subcell[userstatus=selected]
+{
+	border : 0px none;
+	color : #ffffff;
+	background : #2cb1e5;
+}
+.Grid.grd_Pop_week .body .row .cell .subcell[userstatus=blinked]
+{
+	background : #cacaca;
+	color : #ffffff;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_sunday[userstatus=selected]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_sunday.oddcell[userstatus=selected]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_sunday[userstatus=selected]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_sunday.oddcell[userstatus=selected]
+{
+	color : #ff6a6a;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_saturday[userstatus=selected]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_saturday.oddcell[userstatus=selected]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_saturday[userstatus=selected]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_saturday.oddcell[userstatus=selected]
+{
+	color : #2798d7;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_trailingday[userstatus=selected]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_trailingday.oddcell[userstatus=selected]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_trailingday[userstatus=selected]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_trailingday.oddcell[userstatus=selected]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell.cell_today[userstatus=selected]
+{
+	background : #b0e8ff;
+}
+.Grid.grd_Pop_week .body .row .cell.subcell.cell_today[userstatus=selected]
+{
+	background : #b0e8ff;
+}
+.Button.btn_LF_menu01[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu01[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu01[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu01_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu01_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu01_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu01_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu02[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu02[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu02[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu02_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu02_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu02_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu02_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu03[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu03[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu03[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu03_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu03_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu03_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu03_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu04[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu04[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu04[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu04_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu04_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu04_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu04_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu05[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu05[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu05[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu05_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu05_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu05_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu05_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu06[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu06[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu06[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu06_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu06_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu06_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu06_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu07[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu07[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu07[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu07_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu07_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu07_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu07_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu08[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu08[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu08[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu08_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu08_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu08_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu08_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu09[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu09[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu09[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu09_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu09_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu09_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu09_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu10[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu10[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu10[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu10_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu10_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu10_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu10_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu11[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu11[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu11[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu11_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu11_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu11_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu11_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu12[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_menu12[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu12[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu12_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu12_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu12_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu12_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_help[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_help[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_help[userstatus=pushed]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_foldingOff[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_foldingOff[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_foldingOff[userstatus=pushed]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_foldingOn[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 8px;
+	color : #a2a5a4;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_foldingOn[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_foldingOn[userstatus=pushed]
+{
+	border : 0px none;
+	background : #5b605a;
+	color : #ffffff;
+}
+.Button.btn_LF_sampleTip[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_sampleTip[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_sampleTip[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_sampleTip_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_sampleTip_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_sampleTip_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_sampleTip_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_folder[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	color : #ffffff;
+}
+.Button.btn_LF_folder[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_folder[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_folder_S[userstatus=selected]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_folder_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_folder_S[userstatus=pushed]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_folder_S[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_close[userstatus=selected]
+{
+	border : 0px none;
+	background : #ffffff;
+	border-radius : 50%;
+	box-shadow : 3px 3px 5px 0px rgba(0,0,0,0.24);
+}
+.Button.btn_LF_close[userstatus=pushed]
+{
+	border : 0px none;
+	background : #e7f6ee;
+}
+.Edit.edt_subMenu_search[userstatus=nulltext]
+{
+	color : #909399;
+}
+.Edit.edt_subMenu_search_F[userstatus=nulltext]
+{
+	color : #909399;
+}
+.Button.btn_subMenu_search[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_subMenu_search[userstatus=pushed]
+{
+	border : 1px solid transparent;
+	background : #e7f6ee;
+}
+.Button.btn_subMenu_foliderClose[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_subMenu_foliderClose[userstatus=pushed]
+{
+	border : 1px solid transparent;
+	background : #f7f7f7;
+}
+.Button.btn_subMenu_foliderOpen[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_subMenu_foliderOpen[userstatus=pushed]
+{
+	border : 1px solid transparent;
+	background : #f7f7f7;
+}
+.Grid.grd_subMenu .body .row .cell[userstatus=selected]
+{
+	background : transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev0[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+	color : #ffffff;
+}
+.Grid.grd_subMenu .body .row .cell.lev0.oddcell[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+	color : #ffffff;
+	cursor : pointer;
+	font : normal 500 15px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 8px 16px 16px 8px;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev0_S.oddcell[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev0_S.png?nexaversion=20240531') no-repeat right center #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev1[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+	color : #0ca950;
+}
+.Grid.grd_subMenu .body .row .cell.lev1.oddcell[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+	color : #0ca950;
+	cursor : pointer;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev1_S.oddcell[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev1_S.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev2[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #000000;
+}
+.Grid.grd_subMenu .body .row .cell.lev2.oddcell[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+	color : #000000;
+	cursor : pointer;
+	font : normal 400 13px/normal "noto","Malgun Gothic","Arial";
+	border-radius : 0px;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Grid.grd_subMenu .body .row .cell.lev2_S.oddcell[userstatus=selected]
+{
+	background : url('./../../../_resource_/_images_/left/bg_menu_lev2_S.png?nexaversion=20240531') no-repeat left center transparent;
+}
+.Grid.grd_LF_searchResult .body .row .cell[userstatus=selected]
+{
+	background : transparent;
+	color : #000000;
+}
+.Grid.grd_LF_searchResult .body .row .cell.reject[userstatus=selected]
+{
+	color : #ff0000;
+	border : 0px none;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+}
+.Grid.grd_LF_searchResult .body .row .cell.reject[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv0[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name0.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv0[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv1[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name1.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv1[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv2[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name2.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv2[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv3[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name3.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv3[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv4[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name4.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv4[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv5[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name5.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv5[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv6[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name6.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv6[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv7[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name7.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv7[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv8[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name8.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv8[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv9[userstatus=selected]
+{
+	color : #ffffff;
+	border : 0px none;
+	background : url('./images/img_WF_Name9.png?nexaversion=20240531') no-repeat center center;
+	font : bold 13px "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_LF_searchResult .body .row .cell.lv9[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TF_bell[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_bell[userstatus=pushed]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_closeAll[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_closeAll[userstatus=pushed]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_openList[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_openList[userstatus=pushed]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_tabBtn[userstatus=pushed]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+}
+.Button.btn_TF_tabBtn[userstatus=selected]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center #f2f5f7;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+	border-radius : 0px;
+	-nexa-edge : url('./../../../_resource_/_images_/top/tab_TF_S.png?nexaversion=20240531') 60px 5px;
+}
+.Button.btn_TF_tabBtn_S[userstatus=selected]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+	border-radius : 0px;
+	-nexa-edge : url('./../../../_resource_/_images_/top/tab_TF_S.png?nexaversion=20240531') 60px 5px;
+}
+.Button.btn_TF_tabBtn_S[userstatus=pushed]
+{
+	border : 0px none;
+	color : #000000;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+	cursor : pointer;
+	border-radius : 0px;
+	-nexa-edge : url('./../../../_resource_/_images_/top/tab_TF_S.png?nexaversion=20240531') 60px 5px;
+}
+.Button.btn_TF_extra[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_extra[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_TF_next[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_next[userstatus=pushed]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Button.btn_TF_prev[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_TF_prev[userstatus=pushed]
+{
+	border : 1px solid #ffffff;
+	background : #ffffff;
+}
+.Tab.tab_TF_screen .tabbuttonitemTab.tabbuttonitemTabtab_TF_screen[userstatus=selected]
+{
+	border : 2px solid #1ab85a;
+	color : #000000;
+	background : #ffffff;
+	border-radius : 18px;
+}
+.Grid.grd_TF_openList .body .row .cell[userstatus=selected]
+{
+	background : #ffffff;
+	color : #0ca950;
+}
+.CheckBox.chk_login_save[userstatus=selected]
+{
+	color : #222222;
+}
+.Button.btn_login_forgot[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	color : #0ca950;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_login_forgot[userstatus=pushed]
+{
+	border : 0px none;
+	background : #ceeedc;
+	color : #0ca950;
+}
+.Button.btn_login_login[userstatus=selected]
+{
+	border : 1px solid #0ca950;
+	background : #0ca950;
+	color : #ffffff;
+	font : normal 500 16px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_login_login[userstatus=pushed]
+{
+	border : 1px solid #009744;
+	background : #009744;
+	color : #ffffff;
+}
+.Button.btn_TFDM_Crud[userstatus=pushed]
+{
+	border : 1px solid #3073c7;
+	background : #1f589d;
+}
+.Button.btn_TFDM_Crud[userstatus=selected]
+{
+	border : 1px solid #3073c7;
+	background : #1f589d;
+}
+.Button.btn_TFDM_CloseEdit[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DelO.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_CloseEdit[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DelO.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Search[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DetailSearchO.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Search[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DetailSearchO.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Save[userstatus=selected]
+{
+	border : 1px solid #e1e1e1;
+	background : #00AADA;
+	color : #ffffff;
+	font : normal 700 14px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 5px;
+}
+.Button.btn_TFDM_Save[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Save[userstatus=pushed]
+{
+	border : 1px solid #e1e1e1;
+	background : #00AADA;
+	color : #ffffff;
+	font : normal 700 14px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 5px;
+}
+.Button.btn_TFDM_Save[userstatus=pushed] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Step[userstatus=selected]
+{
+	border : 1px solid #F4F7FF;
+	background : #789DF8;
+	color : #ffffff;
+	font : normal 700 15px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 0px;
+	box-shadow : 1px 1px 1px 0px #cccccc;
+}
+.Button.btn_TFDM_Step[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Step[userstatus=pushed]
+{
+	border : 1px solid #F4F7FF;
+	background : #789DF8;
+	color : #ffffff;
+	font : normal 700 15px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	border-radius : 0px;
+	box-shadow : 1px 1px 1px 0px #cccccc;
+}
+.Button.btn_TFDM_Step[userstatus=pushed] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Add[userstatus=selected]
+{
+	border : 1px solid #F89066;
+	background : transparent;
+	color : #5271C1;
+	font : normal 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_TFDM_Add[userstatus=selected] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Add[userstatus=pushed]
+{
+	border : 1px solid #F89066;
+	background : transparent;
+	color : #5271C1;
+	font : normal 700 12px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_TFDM_Add[userstatus=pushed] .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_TFDM_Refresh[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_Refresh_O.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Refresh[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_Refresh_O.png?nexaversion=20240531') no-repeat center center;
+}
+.Grid.grd_TFDM_user .body .row .cell[userstatus=selected]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_bottom[userstatus=selected]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,0px none,1px solid #313340,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_left[userstatus=selected]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,0px none,0px none,1px solid #313340;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_right[userstatus=selected]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,1px solid #313340,0px none,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_top[userstatus=selected]
+{
+	background : transparent;
+	color : transparent;
+	border : 1px solid #313340,0px none,0px none,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_edit[userstatus=selected]
+{
+	background : #ffffff;
+	color : #999999;
+	border : 1px solid #313340;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Button.btn_WF_ProjectCardAdd[userstatus=selected]
+{
+	background : url("./images/btn_WF_ProjectCardAddO.png?nexaversion=20240531") no-repeat center center;
+	border : 0px none;
+	border-radius : 0px;
+}
+.Button.btn_WF_ProjectCardAdd[userstatus=pushed]
+{
+	background : url("./images/btn_WF_ProjectCardAddO.png?nexaversion=20240531") no-repeat center center;
+	border : 0px none;
+	border-radius : 0px;
+}
+.ChildFrame.modal .titlebarChildFramemodal .closebutton[userstatus=pushed]
+{
+	background : #e9e9e9;
+	opacity : 1;
+}
+.ChildFrame.modal .titlebarChildFramemodal .maxbutton[userstatus=pushed]
+{
+	background : #e9e9e9;
+	opacity : 1;
+}
+.ChildFrame.modal .titlebarChildFramemodal .minbutton[userstatus=pushed]
+{
+	background : #e9e9e9;
+	opacity : 1;
+}
+.ChildFrame.modal .titlebarChildFramemodal .normalbutton[userstatus=pushed]
+{
+	background : #e9e9e9;
+	opacity : 1;
+}
+.Button.btn_WF_time[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	border-radius : 0px;
+}
+.Button.btn_WF_time[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeUp[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeUp[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeDown[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeDown[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_alert_yes[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	color : #0ca950;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_alert_yes[userstatus=pushed]
+{
+	border : 0px none;
+	background : #ceeedc;
+	color : #0ca950;
+}
+.Button.btn_alert_no[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	color : #0ca950;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_alert_no[userstatus=pushed]
+{
+	border : 0px none;
+	background : #ceeedc;
+	color : #0ca950;
+}
+.Button.btn_alert_close[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 4px;
+}
+.Button.btn_alert_close[userstatus=pushed]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_POP_setting[userstatus=selected]
+{
+	border : 1px solid transparent;
+	background : transparent;
+	border-radius : 50%;
+}
+.Button.btn_POP_setting[userstatus=pushed]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Tab.tab_POP_notice .tabbuttonitemTab.tabbuttonitemTabtab_POP_notice[userstatus=selected]
+{
+	color : #0ca950;
+	background : transparent;
+	border : 2px solid transparent,0px none,2px solid #0ca950;
+}
+.Grid.grd_POP_notice .body .row .cell[userstatus=selected]
+{
+	border : 0px none,0px none,1px solid #ebedf0;
+	background : #ffffff;
+	color : #909399;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG[userstatus=selected]
+{
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG2[userstatus=selected]
+{
+	border : 0px none,0px none,1px solid #ffffff,0px none;
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_date[userstatus=selected]
+{
+	color : #909399;
+	font : normal 500 12px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_POP_notice .body .row .cell.cell_titleLink[userstatus=selected]
+{
+	color : #222222;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_edit[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	color : #262626;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_edit[userstatus=pushed]
+{
+	border : 0px none;
+	background : #e9e9e9;
+	color : #262626;
+}
+.Button.btn_POP_photo[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	color : #262626;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_photo[userstatus=pushed]
+{
+	border : 0px none;
+	background : #e9e9e9;
+	color : #262626;
+}
+.Button.btn_POP_remove[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	color : #262626;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_remove[userstatus=pushed]
+{
+	border : 0px none;
+	background : #e9e9e9;
+	color : #262626;
+}
+.Form[status=disabled]
+{
+	color : #999999;
+}
+.FileUpload .fileuploaditem[status=disabled]
+{
+	color : #999999;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit[status=disabled]
+{
+	background : transparent;
+	color : #999999;
+	border : 0px none;
+	-nexa-edge : url('./images/edt_D.png?nexaversion=20240531') 10px 10px;
+}
+.Button[status=disabled]
+{
+	color : #c4c4c4;
+	background : #f7f7f7;
+	border : 1px solid #ededed;
+	cursor : default;
+}
+.FileDownload[status=disabled]
+{
+	color : #c4c4c4;
+	background : #f7f7f7;
+	border : 1px solid #ededed;
+	cursor : default;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[status=disabled]
+{
+	color : #c4c4c4;
+	background : #f7f7f7;
+	border : 1px solid #ededed;
+	cursor : default;
+}
+.Calendar[status=disabled]
+{
+	color : #999999;
+	background : #f7f7f7;
+	border : 1px solid #ededed;
+}
+.CalendarControl[status=disabled]
+{
+	color : #999999;
+	background : #f7f7f7;
+	border : 1px solid #ededed;
+}
+.CheckBox[status=disabled]
+{
+	color : #999999;
+	cursor : default;
+}
+.CheckBoxControl[status=disabled]
+{
+	color : #999999;
+	cursor : default;
+}
+.Combo[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f7f7f7;
+}
+.ComboControl[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f7f7f7;
+}
+.Combo .dropbutton[status=disabled]
+{
+	opacity : 0.50;
+}
+.ComboControl .dropbutton[status=disabled]
+{
+	opacity : 0.50;
+}
+.Edit[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f7f7f7;
+}
+.Grid .head .row .cell[status=disabled]
+{
+	color : #999999;
+}
+.Grid .body .row .cell[status=disabled]
+{
+	color : #999999;
+}
+.Grid .body .row .cell .subcell[status=disabled]
+{
+	color : #999999;
+}
+.GridCellControl .cellbutton[status=disabled]
+{
+	color : #c4c4c4;
+	background : #f7f7f7;
+	border : 1px solid #ededed;
+}
+.GridCellControl .celledit[status=disabled]
+{
+	color : #999999;
+	background : #f7f7f7;
+}
+.GridCellControl .cellmaskedit[status=disabled]
+{
+	color : #999999;
+	background : #f7f7f7;
+}
+.GroupBox .groupboxcontents[status=disabled]
+{
+	background : transparent;
+}
+.GroupBox .groupboxtitle[status=disabled]
+{
+	color : #999999;
+	background : #ffffff;
+}
+.ImageViewer[status=disabled]
+{
+	background : transparent;
+}
+.ImageViewer .imagetext[status=disabled]
+{
+	color : #999999;
+}
+.ListBox[status=disabled]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.ListBoxControl[status=disabled]
+{
+	border : 1px solid #ededed;
+	background : #f7f7f7;
+}
+.ListBox .listboxitem[status=disabled]
+{
+	color : #999999;
+}
+.ListBoxControl .listboxitem[status=disabled]
+{
+	color : #999999;
+}
+.MaskEdit[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f2f2f2;
+}
+.Menu[status=disabled]
+{
+	background : #3c413b;
+}
+.Menu .menuitem[status=disabled]
+{
+	color : #6b6d6f;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem[status=disabled]
+{
+	color : #999999;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem .popupmenuitemtext[status=disabled]
+{
+	color : #999999;
+}
+.PopupMenuControl.popupMenumenupopupmenu.dummy .popupmenuitem .popupmenuitemhotkeytext[status=disabled]
+{
+	color : #c4c4c4;
+}
+.PopupMenu .popupmenuitem[status=disabled]
+{
+	color : #999999;
+}
+.PopupMenuControl .popupmenuitem[status=disabled]
+{
+	color : #999999;
+}
+.PopupMenu .popupmenuitem .popupmenuitemcheckbox[status=disabled]
+{
+	background : URL('./images/chk_D.png?nexaversion=20240531') no-repeat left center;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemcheckbox[status=disabled]
+{
+	background : URL('./images/chk_D.png?nexaversion=20240531') no-repeat left center;
+}
+.PopupMenu .popupmenuitem .popupmenuitemhotkeytext[status=disabled]
+{
+	color : #c4c4c4;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemhotkeytext[status=disabled]
+{
+	color : #c4c4c4;
+}
+.ProgressBar[status=disabled]
+{
+	background : #f7f7f7;
+	border : 1px solid #ededed;
+}
+.ProgressBarControl[status=disabled]
+{
+	background : #f7f7f7;
+	border : 1px solid #ededed;
+}
+.ProgressBar .progressbaritem[status=disabled]
+{
+	background : #c7c9cc;
+}
+.ProgressBarControl .progressbaritem[status=disabled]
+{
+	background : #c7c9cc;
+}
+.ProgressBar .progressbartext[status=disabled]
+{
+	color : #ffffff;
+	font : normal 400 11px/normal "noto","Malgun Gothic","Arial";
+}
+.ProgressBar .progressbartext[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.ProgressBarControl .progressbartext[status=disabled]
+{
+	color : #ffffff;
+	font : normal 400 11px/normal "noto","Malgun Gothic","Arial";
+}
+.ProgressBarControl .progressbartext[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Radio .radioitem[status=disabled]
+{
+	cursor : default;
+	color : #999999;
+}
+.Sketch[status=disabled]
+{
+	background : #f7f7f7;
+}
+.Spin[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f7f7f7;
+}
+.Spin .spinedit[status=disabled]
+{
+	padding : 1px 2px 0px 9px;
+}
+.Static[status=disabled]
+{
+	color : #999999;
+}
+.StaticControl[status=disabled]
+{
+	color : #999999;
+}
+.TextArea[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f7f7f7;
+}
+.TextAreaControl[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f7f7f7;
+}
+.Tab .tabpageTab[status=disabled]
+{
+	border : 2px solid #ebeef5, 0px none, 0px none, 0px none;
+	background : #ffffff;
+}
+.Tab .tabbuttonitemTab[status=disabled]
+{
+	color : #999999;
+	background : #ffffff;
+	cursor : default;
+}
+.DatePickerControl .head[status=disabled]
+{
+	background : #94a9bf;
+	color : #999999;
+}
+.DatePickerControl .head .yearstatic[status=disabled]
+{
+	color : #999999;
+}
+.DatePickerControl .head .monthstatic[status=disabled]
+{
+	color : #999999;
+}
+.DatePickerControl .body[status=disabled]
+{
+	border : 0px none;
+}
+.DatePickerControl .body .weekband[status=disabled]
+{
+	background : #ffffff;
+}
+.DatePickerControl .body .weekitem[status=disabled]
+{
+	color : #777777;
+}
+.DatePickerControl .body .dayitem[status=disabled]
+{
+	color : #999999;
+}
+.DatePickerControl .body .monthitem[status=disabled]
+{
+	color : #999999;
+}
+.DatePickerControl .body .yearitem[status=disabled]
+{
+	color : #999999;
+}
+.VScrollBarControl .trackbar[status=disabled]
+{
+	-nexa-edge : url('./images/vscroll_tracker_D.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollBarControl .trackbar[status=disabled]
+{
+	-nexa-edge : url('./images/hscroll_tracker_D.png?nexaversion=20240531') 8px 8px;
+}
+.VScrollIndicatorControl .trackbar[status=disabled]
+{
+	-nexa-edge : url('./images/vscroll_tracker_D.png?nexaversion=20240531') 8px 8px;
+}
+.HScrollIndicatorControl .trackbar[status=disabled]
+{
+	-nexa-edge : url('./images/hscroll_tracker_D.png?nexaversion=20240531') 8px 8px;
+}
+.TitleBarControl .titleicon[status=disabled]
+{
+	color : #ffffff;
+	font : bold 14px "Malgun Gothic";
+}
+.ListViewCellControl .cellbutton[status=disabled]
+{
+	color : #bbbbbb;
+	background : #f5f5f5;
+	border : 1px solid #d9d9d9;
+}
+.ListViewCellControl .celledit[status=disabled]
+{
+	color : #999999;
+	background : #f7f7f7;
+}
+.ListViewCellControl .cellmaskedit[status=disabled]
+{
+	color : #999999;
+	background : #f7f7f7;
+}
+.ListView .body .expandbar[status=disabled]
+{
+	color : #bbbbbb;
+	background : #f5f5f5;
+	border : 1px solid #d9d9d9;
+	opacity : 0.50;
+}
+.CheckBoxSet[status=disabled]
+{
+	background : #ffffff;
+	border : 1px solid #dedede;
+}
+.CheckBoxSetControl[status=disabled]
+{
+	background : #ffffff;
+	border : 1px solid #dedede;
+}
+.CheckBoxSetControl .checkboxsetitem[status=disabled]
+{
+	color : #999999;
+}
+.MultiCombo[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f7f7f7;
+}
+.MultiComboControl[status=disabled]
+{
+	border : 1px solid #ededed;
+	color : #999999;
+	background : #f7f7f7;
+}
+.MultiComboListControl[status=disabled]
+{
+	background : #f7f7f7;
+}
+.MultiComboListControl .selectallcheckbox[status=disabled]
+{
+	color : #999999;
+}
+.Button.btn_POP_close[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	cursor : default;
+	opacity : 0.4;
+}
+.Button.btn_POP_yes[status=disabled]
+{
+	border : 1px solid #86d4a8;
+	background : #86d4a8;
+	color : #ffffff;
+}
+.Button.btn_POP_no[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	color : #c4c4c4;
+}
+.Button.btn_POP_calPrev[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNext[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_calNumber[status=disabled]
+{
+	border : 2px solid #ffffff;
+	background : #b0e8ff;
+	color : #8b8b8b;
+}
+.Button.btn_POP_calNumber_S[status=disabled]
+{
+	border : 1px solid #0ca950;
+	color : #ffffff;
+	background : #0ca950;
+	opacity : 0.5;
+}
+.Button.btn_POP_calNumber_B[status=disabled]
+{
+	border : 1px solid #ffffff;
+	background : #b0e8ff;
+	color : #8b8b8b;
+}
+.Combo.cbo_Pop_cal[status=disabled]
+{
+	color : #ffffff;
+	background : transparent;
+}
+.Grid.grd_Pop_week .head .row .cell[status=disabled]
+{
+	color : #666666;
+}
+.Grid.grd_Pop_week .body .row .cell[status=disabled]
+{
+	color : #959595;
+}
+.Grid.grd_Pop_week .body .row .cell .subcell[status=disabled]
+{
+	color : #8b8b8b;
+}
+.Button.btn_LF_menu01[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu01_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu01_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu02[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu02_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu02_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu03[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu03_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu03_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu04[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu04_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu04_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu05[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu05_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu05_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu06[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu06_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu06_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu07[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu07_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu07_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu08[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu08_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu08_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu09[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu09_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu09_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu10[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu10_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu10_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu11[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu11_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu11_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_menu12[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_menu12_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_menu12_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_help[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_foldingOff[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_foldingOn[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_sampleTip[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_sampleTip_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_sampleTip_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_folder[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	opacity : 0.4;
+}
+.Button.btn_LF_folder_S[status=disabled]
+{
+	border : 0px none;
+	background : #0ca950;
+	border-radius : 8px;
+	color : #ffffff;
+	font : normal 400 14px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_LF_folder_S[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_LF_close[status=disabled]
+{
+	border : 0px none;
+	background : #ffffff;
+}
+.Edit.edt_subMenu_search[status=disabled]
+{
+	border : 1px solid #f4f4f5;
+	background : #f4f4f5;
+	color : #999999;
+}
+.Edit.edt_subMenu_search_F[status=disabled]
+{
+	border : 1px solid transparent,0px none,1px solid #0ca950;
+	padding : 1px 27px 0px 14px;
+	background : #ffffff;
+	border-radius : 0px;
+}
+.Button.btn_subMenu_search[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_subMenu_foliderClose[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_subMenu_foliderOpen[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Grid.grd_subMenu .body .row .cell[status=disabled]
+{
+	color : #999999;
+}
+.Grid.grd_LF_searchResult .body .row .cell[status=disabled]
+{
+	color : #999999;
+}
+.ImageViewer.img_TF_user[status=disabled]
+{
+	background : #c4c4c4;
+	border : 0px none;
+	cursor : default;
+}
+.ImageViewer.img_TF_user .imagetext[status=disabled]
+{
+	color : #ffffff;
+}
+.CheckBox.chk_TF_bell[status=disabled]
+{
+	cursor : default;
+}
+.Button.btn_TF_bell[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_TF_closeAll[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_TF_openList[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_TF_tabBtn[status=disabled]
+{
+	border : 0px none;
+	color : #999999;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	cursor : default;
+}
+.Button.btn_TF_tabBtn_S[status=disabled]
+{
+	border : 0px none;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	border-radius : 0px;
+	color : #999999;
+	cursor : default;
+}
+.Button.btn_TF_extra[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_TF_next[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Button.btn_TF_prev[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Tab.tab_TF_screen .tabbuttonitemTab.tabbuttonitemTabtab_TF_screen[status=disabled]
+{
+	color : #999999;
+	background : url('./../../../_resource_/_images_/top/bg_tab_divline.png?nexaversion=20240531') no-repeat right center transparent;
+	cursor : default;
+}
+.Grid.grd_TF_openList .body .row .cell[status=disabled]
+{
+	color : #999999;
+}
+.CheckBox.chk_login[status=disabled]
+{
+	cursor : default;
+}
+.CheckBox.chk_login_save[status=disabled]
+{
+	color : #999999;
+	cursor : default;
+}
+.Button.btn_login_forgot[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	color : #c0c4cc;
+}
+.Button.btn_login_login[status=disabled]
+{
+	border : 1px solid #d4d7de;
+	background : #d4d7de;
+	color : #ffffff;
+}
+.Button.btn_TFDM_Crud[status=disabled]
+{
+	opacity : 0.5;
+}
+.Button.btn_TFDM_CloseEdit[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DelN.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Search[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_DetailSearchN.png?nexaversion=20240531') no-repeat center center;
+}
+.Button.btn_TFDM_Refresh[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_Refresh.png?nexaversion=20240531') no-repeat center center;
+}
+.Edit.edt_TFDM_Input[status=disabled]
+{
+	color : #999999;
+	background : #efefef;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.Edit.edt_TFDM_essential[status=disabled]
+{
+	background : URL("./../../../_resource_/_images_/UbiDocuMaker/essential.png?nexaversion=20240531") no-repeat left top #efefef
+	font 			: normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+	color : #999999;
+}
+.Grid.grd_TFDM_user .body .row .cell[status=disabled]
+{
+	color : transparent;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_bottom[status=disabled]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,0px none,1px solid #313340,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_left[status=disabled]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,0px none,0px none,1px solid #313340;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_right[status=disabled]
+{
+	background : transparent;
+	color : transparent;
+	border : 0px none,1px solid #313340,0px none,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_top[status=disabled]
+{
+	background : transparent;
+	color : transparent;
+	border : 1px solid #313340,0px none,0px none,0px none;
+}
+.Grid.grd_TFDM_user .body .row .cell.grd_MF_edit[status=disabled]
+{
+	background : #ffffff;
+	color : #999999;
+	border : 1px solid #313340;
+	font : normal 700 11px/normal "noto","Malgun Gothic","Tahoma","Dotum","Helvetica","Apple SD Gothic Neo","Sans-serif";
+}
+.ChildFrame.modal .titlebarChildFramemodal[status=disabled]
+{
+	background : #ffffff;
+	color : #999999;
+}
+.ChildFrame.modal .titlebarChildFramemodal .closebutton[status=disabled]
+{
+	opacity : 0.4;
+}
+.ChildFrame.modal .titlebarChildFramemodal .maxbutton[status=disabled]
+{
+	opacity : 0.4;
+}
+.ChildFrame.modal .titlebarChildFramemodal .minbutton[status=disabled]
+{
+	opacity : 0.4;
+}
+.ChildFrame.modal .titlebarChildFramemodal .normalbutton[status=disabled]
+{
+	opacity : 0.4;
+}
+.TextArea.txa_alert_message[status=disabled]
+{
+	border : 0px none;
+	color : #333333;
+	background : #ffffff;
+}
+.Button.btn_WF_time[status=disabled]
+{
+	border : 0px none;
+}
+.Button.btn_WF_timeUp[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_timeDown[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_alert_yes[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	color : #c0c4cc;
+}
+.Button.btn_alert_no[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	color : #c0c4cc;
+}
+.Button.btn_alert_close[status=disabled]
+{
+	opacity : 0.4;
+}
+.ImageViewer.img_alert_icon[status=disabled]
+{
+	background : transparent;
+}
+.Button.btn_POP_setting[status=disabled]
+{
+	border : 1px solid transparent;
+	background : transparent;
+}
+.Tab.tab_POP_notice .tabbuttonitemTab.tabbuttonitemTabtab_POP_notice[status=disabled]
+{
+	border : 1px solid transparent,0px none,1px solid #dddedf;
+	color : #999999;
+	background : transparent;
+	cursor : default;
+}
+.Grid.grd_POP_notice .body .row .cell[status=disabled]
+{
+	color : #909399;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG[status=disabled]
+{
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG2[status=disabled]
+{
+	border : 0px none,0px none,1px solid #ffffff,0px none;
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_date[status=disabled]
+{
+	color : #909399;
+	font : normal 500 12px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_POP_notice .body .row .cell.cell_titleLink[status=disabled]
+{
+	color : #222222;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}
+.ImageViewer.img_POP_user[status=disabled]
+{
+	border : 0px none;
+	background : #c4c4c4;
+	cursor : default;
+}
+.ImageViewer.img_POP_user .imagetext[status=disabled]
+{
+	color : #ffffff;
+}
+.ImageViewer.img_POP_photo[status=disabled]
+{
+	border : 0px none;
+	background : #c4c4c4;
+	cursor : default;
+}
+.ImageViewer.img_POP_photo .imagetext[status=disabled]
+{
+	color : #ffffff;
+}
+.Button.btn_POP_edit[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.Button.btn_POP_photo[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.ImageViewer.img_POP_photoBack[status=disabled]
+{
+	border : 0px none;
+	background : #c4c4c4;
+	cursor : default;
+}
+.ImageViewer.img_POP_photoBack .imagetext[status=disabled]
+{
+	color : #ffffff;
+}
+.Button.btn_POP_remove[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+	font : normal 500 13px/normal "noto","Malgun Gothic","Arial";
+}
+.CheckBox[status=readonly][userstatus=selected]
+{
+	cursor : default;
+	color : #555555;
+}
+.CheckBoxControl[status=readonly][userstatus=selected]
+{
+	cursor : default;
+	color : #555555;
+}
+.CheckBox[status=disabled][userstatus=selected]
+{
+	color : #999999;
+	cursor : default;
+}
+.CheckBoxControl[status=disabled][userstatus=selected]
+{
+	color : #999999;
+	cursor : default;
+}
+.Grid .body .row .cell[status=disabled][userstatus=selected]
+{
+	background : #f0f2f5;
+}
+.ListBox .listboxitem[userstatus=selected][status=mouseover]
+{
+	color : #ffffff;
+	background : #0ca950;
+}
+.ListBoxControl .listboxitem[userstatus=selected][status=mouseover]
+{
+	color : #ffffff;
+	background : #0ca950;
+}
+.ListBox .listboxitem[status=disabled][userstatus=selected]
+{
+	color : #ffffff;
+	background : #c7c9cc;
+}
+.ListBoxControl .listboxitem[status=disabled][userstatus=selected]
+{
+	color : #ffffff;
+	background : #c7c9cc;
+}
+.Radio .radioitem[status=readonly][userstatus=selected]
+{
+	cursor : default;
+	color : #555555;
+}
+.Radio .radioitem[status=disabled][userstatus=selected]
+{
+	cursor : default;
+	color : #999999;
+}
+.Tab .tabbuttonitemTab[status=focused][userstatus=selected]
+{
+	color : #08a44d;
+	background : #ffffff;
+	border : 2px solid #ffffff,0px none,2px solid #08a44d;
+}
+.Tab .tabbuttonitemTab[status=disabled][userstatus=selected]
+{
+	border : 2px solid #ffffff,0px none,2px solid #c7c9cc;
+	color : #777777;
+	background : #ffffff;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+	cursor : default;
+}
+.DatePickerControl .body .dayitem[status=mouseover][userstatus=saturday]
+{
+	color : #333333;
+	background : #c3e9cd;
+}
+.DatePickerControl .body .dayitem[status=mouseover][userstatus=sunday]
+{
+	color : #333333;
+	background : #c3e9cd;
+}
+.DatePickerControl .body .dayitem[status=mouseover][userstatus=trailingday]
+{
+	color : #ffffff;
+}
+.DatePickerControl .body .dayitem[status=disabled][userstatus=selected]
+{
+	background : #f0f0f0;
+}
+.DatePickerControl .body .yearitem[status=mouseover][userstatus=trailingyear]
+{
+	color : #ffffff;
+}
+.DatePickerControl .body .yearitem[status=disabled][userstatus=selected]
+{
+	background : #f0f0f0;
+	border-radius : 4px;
+}
+.Grid.grd_subMenu .body .row .cell[status=disabled][userstatus=selected]
+{
+	background : transparent;
+}
+.Grid.grd_LF_searchResult .body .row .cell[status=disabled][userstatus=selected]
+{
+	color : #999999;
+	background : transparent;
+}
+.CheckBox.chk_TF_bell[status=readonly][userstatus=selected]
+{
+	cursor : default;
+}
+.CheckBox.chk_TF_bell[status=disabled][userstatus=selected]
+{
+	cursor : default;
+}
+.Tab.tab_TF_screen .tabbuttonitemTab.tabbuttonitemTabtab_TF_screen[status=focused][userstatus=selected]
+{
+	border : 2px solid #1ab85a;
+	color : #000000;
+	background : #ffffff;
+	border-radius : 18px;
+}
+.Tab.tab_TF_screen .tabbuttonitemTab.tabbuttonitemTabtab_TF_screen[status=disabled][userstatus=selected]
+{
+	border : 2px solid #1ab85a;
+	color : #000000;
+	background : #ffffff;
+	border-radius : 18px;
+}
+.Grid.grd_TF_openList .body .row .cell[status=disabled][userstatus=selected]
+{
+	background : #ffffff;
+}
+.CheckBox.chk_login[status=readonly][userstatus=selected]
+{
+	cursor : default;
+}
+.CheckBox.chk_login[status=disabled][userstatus=selected]
+{
+	cursor : default;
+}
+.CheckBox.chk_login_save[status=readonly][userstatus=selected]
+{
+	cursor : default;
+	color : #555555;
+}
+.CheckBox.chk_login_save[userstatus=selected][status=mouseover]
+{
+	color : #222222;
+}
+.CheckBox.chk_login_save[status=disabled][userstatus=selected]
+{
+	color : #999999;
+	cursor : default;
+}
+.Tab.tab_POP_notice .tabbuttonitemTab.tabbuttonitemTabtab_POP_notice[status=focused][userstatus=selected]
+{
+	color : #0ca950;
+	background : transparent;
+	border : 2px solid transparent,0px none,2px solid #0ca950;
+}
+.Tab.tab_POP_notice .tabbuttonitemTab.tabbuttonitemTabtab_POP_notice[status=disabled][userstatus=selected]
+{
+	border : 2px solid transparent,0px none,2px solid #c7c9cc;
+	color : #777777;
+	background : transparent;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+	cursor : default;
+}
+.Grid.grd_POP_notice .body .row .cell[status=disabled][userstatus=selected]
+{
+	background : #ffffff;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG[status=disabled][userstatus=selected]
+{
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_newNoticeBG2[status=disabled][userstatus=selected]
+{
+	border : 0px none,0px none,1px solid #ffffff,0px none;
+	background : #e7f6ee;
+}
+.Grid.grd_POP_notice .body .row .cell.cell_date[status=disabled][userstatus=selected]
+{
+	color : #909399;
+	font : normal 500 12px/normal "noto","Malgun Gothic","Arial";
+}
+.Grid.grd_POP_notice .body .row .cell.cell_titleLink[status=disabled][userstatus=selected]
+{
+	color : #222222;
+	font : normal 500 14px/normal "noto","Malgun Gothic","Arial";
+}

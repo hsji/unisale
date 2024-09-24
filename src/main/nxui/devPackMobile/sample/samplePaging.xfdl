@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="samplePaging" width="480" height="930" titletext="그리드 페이징" onload="form_onload">
+    <Layouts>
+      <Layout height="930" mobileorientation="portrait" width="480">
+        <Grid id="grdList" taborder="0" left="30" top="130" binddataset="dsList" autofittype="col" onvscroll="grdList_onvscroll" right="30" height="690">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="50" band="head"/>
+                <Row size="54"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="아이디"/>
+                <Cell col="1" text="성명"/>
+                <Cell col="2" text="부서"/>
+                <Cell col="3" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ID"/>
+                <Cell col="1" text="bind:NAME"/>
+                <Cell col="2" text="bind:DEPARTMENT"/>
+                <Cell col="3" text="bind:DESCRIPTION"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="divPage" taborder="1" left="30" height="50" right="30" url="common::cmmPagingM.xfdl" top="840" text=""/>
+        <Static id="Static03" taborder="2" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="3" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Button id="btn_select" taborder="4" text="조회" cssclass="btn_WF_Full" right="30" height="60" left="30" top="30" onclick="btn_select_onclick"/>
+        <Static id="Static02_00" taborder="5" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02" taborder="6" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_01_00_00" taborder="7" text="H40" left="0" top="90" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_02" taborder="8" text="H20" left="0" top="820" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00_02_00" taborder="9" text="H40" left="0" top="890" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	samplePaging.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.04
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.04			TOBESOFT					최초생성
+* 2022.10.14			TOBESOFT					수정
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+//페이징
+this.fvPage  = -1;
+this.fvStart = -1;
+this.fvEnd   = -1;
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+};
+
+this.fnClose = function()
+{
+    trace("fnClose 호출");
+	if (this.gfnDsIsUpdated(this.dsList)) {
+		return false;
+	} 
+	else {
+		return true;
+	}    
+}
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+/**
+ * @description 조회이벤트
+*/
+this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// 조회조건 설정
+	//데이터를 넘길 경우 데이터셋에 추가해서 넘기는 방식과
+	//아규먼트를 추가해서 넘기는 방식 모두 사용가능
+	this.dsSearch.clearData();
+	var nRow = this.dsSearch.addRow();
+	this.dsSearch.setColumn(nRow, "startNum", this.fvStart);
+	this.dsSearch.setColumn(nRow, "endNum", this.fvEnd);
+	
+ 	var strSvcId    = "search";
+	var strSvcUrl   = "searchPagingSampleList.do";
+	var inData      = "inDs=dsSearch";
+	var outData     = "dsList=outDs dsPagingInfo=outDs1";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	var isAsync   	= true;
+	
+	this.gfnTransaction(strSvcId , 		// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc, 	// transaction의 결과를 받을 Function 이름
+						isAsync); 		// 비동기통신 여부 [생략가능]
+};
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+/**
+ * @description TRANSACTION콜백 트랜젝션 후, 반드시페이지 메이킹 함수 호출
+*/
+this.fnCallback = function(svcID,errorCode,errorMsg)
+{
+	switch(svcID)
+	{
+		case "search":
+			var nTotal = this.dsPagingInfo.getColumn(0, "TOTALCOUNT");
+			this.divPage.form.fnCreatePage(this.grdList, "fnPageCallback", this.fvPage, "", nTotal);											
+											
+			break;
+	}
+};
+
+/**
+ * @description 페이징콜백 페이징화면에서 눌린페이지 넘겨줌
+*/
+this.fnPageCallback = function(nPage, nRecrod)
+{
+	this.fvPage  = nPage;
+	this.fvStart = ((this.fvPage-1)*nRecrod) + 1;
+	this.fvEnd   = this.fvPage*nRecrod;
+	//TODO
+	this.fnSearch(); //조회함수호출
+};
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+/**
+ * @description 최초조회시, 전역변수 초기화
+*/
+this.fnPageInit = function ()
+{
+	this.fvPage  = 1;
+	this.fvStart = 1;
+	this.fvEnd   = this.divPage.form.cboCnt.value;
+	//TODO	
+	this.fnSearch();
+};
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.btn_select_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnPageInit(); //최초조회조건세팅
+};]]></Script>
+    <Objects>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="USE_YN" type="STRING" size="256"/>
+          <Column id="REG_USER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearch">
+        <ColumnInfo>
+          <Column id="records" type="STRING" size="256"/>
+          <Column id="page" type="STRING" size="256"/>
+          <Column id="recordsOffset" type="STRING" size="256"/>
+          <Column id="pageCount" type="STRING" size="256"/>
+          <Column id="startNum" type="STRING" size="256"/>
+          <Column id="endNum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPagingInfo">
+        <ColumnInfo>
+          <Column id="totalCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

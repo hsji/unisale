@@ -1,0 +1,630 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="scheduleUpdatePu" width="480" height="1177" titletext="일정 수정" onload="scheduleUpdatePu_onload">
+    <Layouts>
+      <Layout height="1177" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00_02_00" taborder="6" text="일정마스터" left="30" top="20" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Combo id="cboScdCd" taborder="7" text="" left="30" top="Static00_02_00:0" height="50" value="" index="-1" codecolumn="SCD_CD" datacolumn="SCD_NM" innerdataset="dsScdNm" onitemchanged="cboScdCd_onitemchanged" right="51.04%"/>
+        <Static id="Static00_00" taborder="1" text="유형" left="30" top="cboScdCd:0" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Combo id="cboSectCd" taborder="2" left="30" top="Static00_00:0" height="50" value="" index="-1" cssclass="essential" right="51.04%" onitemchanged="cboSectCd_onitemchanged"/>
+        <Calendar id="calStartDay" taborder="8" left="30" top="270" height="50" popuptype="system" onchanged="fnDateTime_onchanged" right="51.04%"/>
+        <Static id="Static00_01" taborder="3" text="시작시간" left="calStartDay:10" top="cboSectCd:0" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Static id="Static02_00" taborder="4" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00" taborder="5" text="시작일" left="30" top="cboSectCd:0" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Combo id="cboStartTime" taborder="9" left="calStartDay:10" top="Static00_01:0" height="50" value="" index="-1" innerdataset="dsTime" codecolumn="NAME" datacolumn="NAME" onitemchanged="fnDateTime_onchanged" right="28.96%"/>
+        <Calendar id="calEndDay" taborder="12" left="30" top="370" height="50" popuptype="system" onchanged="fnDateTime_onchanged" right="51.04%"/>
+        <Static id="Static00_01_00" taborder="10" text="종료시간" left="calEndDay:10" top="cboStartTime:0" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Static id="Static00_02" taborder="11" text="종료일" left="30" top="calStartDay:0" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Static id="Static00_02_00_00" taborder="13" text="제목" left="30" width="120" height="50" cssclass="sta_WF_Label" top="calEndDay:0"/>
+        <Edit id="edtTitle" taborder="14" left="30" top="Static00_02_00_00:0" height="50" right="30" oninput="edtTitle_oninput" cssclass="essential"/>
+        <TextArea id="txaContent" taborder="15" left="30" top="edtTitle:10" onchanged="TextArea00_onchanged" right="30" height="377"/>
+        <Button id="btnAddFile" taborder="26" left="112" top="txaContent:33" width="36" height="36" cssclass="btn_WF_Attachment" onclick="btnAddFile_onclick" visible="false" text=""/>
+        <Static id="sta00" taborder="25" text="첨부파일" left="30" top="txaContent:20" width="80" height="50" cssclass="sta_WF_Label" visible="false"/>
+        <Div id="divFile" taborder="16" left="30" top="sta00:10" height="70" cssclass="div_WF_Attachment" right="30" visible="false">
+          <Layouts>
+            <Layout>
+              <Grid id="grdFile" taborder="0" cssclass="grd_WF_Attachment" left="15" top="10" right="15" bottom="10" autofittype="col" ondrop="divFile_grdFile_ondrop" oncellclick="divFile_grdFile_oncellclick" binddataset="dsUpload">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="48"/>
+                      <Column size="279"/>
+                      <Column size="48"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="48"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell displaytype="imagecontrol" cssclass="Icon_Attachment"/>
+                      <Cell col="1" text="bind:OTXT_FILE_NM"/>
+                      <Cell col="2" displaytype="buttoncontrol"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02_01_01_01_00" taborder="17" text="H20" left="0" top="1056" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Button id="btnSave" taborder="18" text="저장" left="30" cssclass="btn_WF_Full" right="30" height="60" onclick="btnSave_onclick" top="divFile:20"/>
+        <Static id="Static02_01_01_01_01" taborder="19" text="H20" left="0" top="907" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="sta01" taborder="20" text=":" left="cboStartTime:4" top="Static00_01:0" width="10" height="50"/>
+        <Combo id="cboStartMinutes" taborder="21" top="Static00_01:0" height="50" value="" index="-1" innerdataset="dsMinutes" codecolumn="NAME" datacolumn="NAME" onitemchanged="fnDateTime_onchanged" left="cboStartTime:14" text="" right="30"/>
+        <Combo id="cboEndTime" taborder="22" left="calEndDay:10" top="Static00_01_00:0" height="50" value="" index="-1" innerdataset="dsTime" codecolumn="NAME" datacolumn="NAME" onitemchanged="fnDateTime_onchanged" right="28.96%"/>
+        <Static id="sta01_00" taborder="24" text=":" left="cboEndTime:4" top="Static00_01_00:0" width="10" height="50"/>
+        <Combo id="cboEndMinutes" taborder="23" top="Static00_01_00:0" height="50" value="" index="-1" innerdataset="dsMinutes" codecolumn="NAME" datacolumn="NAME" onitemchanged="fnDateTime_onchanged" left="cboEndTime:14" right="30"/>
+        <Static id="Static02_01_01" taborder="27" text="H20" left="0" top="0" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static00_01_00_00" taborder="28" text="작성자" left="cboScdCd:10" top="20" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Edit id="edtInputId" taborder="29" top="Static00_01_00_00:0" height="50" enable="false" left="cboScdCd:10" right="30"/>
+        <Static id="Static02_01_01_01_00_00_00" taborder="30" text="H40" left="0" top="1137" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_00" taborder="31" text="H10" left="0" top="980" cssclass="sta_WF_GSize" visible="false" right="0" height="10"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	scheduleUpdate.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/05
+*  @Desction   설명
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/05		    TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvApndYn	= "";
+this.fvScdCd	= "";
+this.fvScdId	= "";
+this.fvTitle	= "";
+
+this.fvInputId	= "";
+
+this.fvOpenType = "";
+
+//데이터 수정 시 파일 수정 여부
+this.fvFileDelUp = ""; //파일 수정 및 업데이트			
+this.fvFileDel	 = ""; //파일 삭제만 진행
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.scheduleUpdatePu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+	
+	//공통 코드 (일정 유형 코드)
+	var param = [{bixtype : "Combo", code : "CM03", objid : this.cboSectCd}];
+	//공통 코드 콤보 설정
+	this.gfnGetCommonCode(param);	
+	
+	this.fvApndYn	= this.getOwnerFrame().pvApndYn;
+	this.fvScdCd	= this.getOwnerFrame().pvScdCd;
+	this.fvScdId	= this.getOwnerFrame().pvScdId;
+	this.fvTitle	= this.getOwnerFrame().pvTitle;
+	
+	this.fvOpenType = this.getOwnerFrame().pvOpenType;
+	this.fvInputId = nexacro.getApplication().gdsUser.getColumn(0, "USER_ID");
+	
+	//txaContent minheight
+	this.txaContent.set_minheight(377);	
+	
+	//일정 마스터
+	this.cboScdCd.set_text(this.fvTitle);
+	
+	//첨부파일 컴포넌트
+	this.fnSetApndYn(this.fvApndYn);
+	
+	//데이터 조회
+	this.fnGetContentsTran();
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+//데이터 조회
+this.fnGetContentsTran = function()
+{
+	this.dsCond.clearData();
+	var nRow = this.dsCond.addRow();
+	this.dsCond.setColumn(nRow, "SCD_CD", this.fvScdCd);
+	this.dsCond.setColumn(nRow, "SCD_ID", this.fvScdId);
+	
+	this.dsList.clearData();
+	this.dsUpload.clearData();
+	
+	var strSvcId    = "searchScheduleContents";
+	var strSvcUrl   = "searchScheduleContents.do";
+	var inData      = "dsCond=dsCond";
+	var outData     = "dsList=dsList dsUpload=dsFile";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	
+};
+
+//파일 삭제
+this.fnTranDeleteFile = function ()
+{
+	var strSvcId    = "deleteScheduleFile";
+	var strSvcUrl   = "deleteScheduleFile.do";
+	var inData      = "dsUpload=dsUpload:U";
+	var outData     = "";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]
+};
+
+
+//파일업로드
+this.fnFileUploadTran = function ()
+{
+	var sScdId = this.dsList.getColumn(0,"SCD_CD");
+	var sFileId = this.dsList.getColumn(0, "FILE_ID");
+	
+	if(this.gfnIsNull(sFileId)) sFileId = "";
+		
+	this.futFile.setPostData("SCD_CD", sScdId);
+	this.futFile.setPostData("FILE_ID" , sFileId);	
+	//22.04.26 IOS앱에서 파일 첨부 에러, 임시처리를 위해 USER_ID넘겨주기	
+	this.futFile.setPostData("USER_ID" , nexacro.getApplication().gdsUser.getColumn(0, "USER_ID"));	
+	
+	this.futFile.upload("svcUrl::scheduleFileUpload.do");
+};
+
+//저장
+this.fnTranSave = function()
+{
+	this.dsList.setColumn(0, "STATUS", this.fvOpenType);
+	this.dsList.setColumn(0, "CHGE_ID", this.fvInputId);
+	
+	//파일 등록 후 모두 삭제한다면 FILE_ID도 삭제해줘야한다.
+	if(this.dsUpload.getRowCount()==0) this.dsList.setColumn(0,"FILE_ID","");
+	
+	var strSvcId    = "saveScheduleContents";
+	var strSvcUrl   = "saveScheduleContents.do";
+	var inData      = "dsList=dsList:A";
+	var outData     = "";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]		
+};
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+//Transaction Callback
+this.fnCallback = function(sSvcId, ErrCd, ErrMsg)
+{
+	switch(sSvcId){
+		case "searchScheduleContents" :
+			//유형 setFocus
+			this.cboSectCd.setFocus();
+						
+			//첨부파일 갯수에 맞게 divFile 조절
+			if(this.fvApndYn =="1"){
+				this.fnDivFileSetSize();
+			}
+			break;
+		case "deleteScheduleFile" :
+			if(this.fvFileDelUp == "Y"){
+				this.fnFileUploadTran();
+			}else if(this.fvFileDel =="Y"){
+				this.fnTranSave();
+			}
+			break;
+		case "saveScheduleContents" :
+			this.gfnAlert("msg.save.success");
+			nexacro.getApplication().gvPopup.close(this.dsList.getColumn(0,"START_DAY"));
+			break;
+	}
+}
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+//첨부파일 유무
+this.fnSetApndYn = function(sApndYn)
+{	
+	var nHeight;
+	var nBtnTop;	
+	//첨부파일 없음
+	if(sApndYn == "0"){
+		this.divFile.set_height("0");
+		this.txaContent.set_bottom("50");	
+		nHeight = this.txaContent.getOffsetHeight();
+		nBtnTop = "txaContent:20px";
+	}else if(sApndYn =="1"){
+		this.sta00.set_visible(true);
+		this.btnAddFile.set_visible(true);
+		this.divFile.set_visible(true);
+		this.divFile.set_height("0");
+		this.txaContent.set_bottom("194");
+		nHeight = this.txaContent.getOffsetHeight();		
+		nBtnTop = "divFile:20px";
+	}
+	this.txaContent.set_height(nHeight);	
+	this.btnSave.set_top(nBtnTop);
+	this.resetScroll();		
+};
+
+//파일세팅
+this.fnSetFile = function (aVFiles)
+{
+	var nLen	= aVFiles.length;
+	
+	var sFileId	= "";
+	var oFile	= null;
+	
+	for(var i=0; i<nLen; i++){
+		sFileId	= aVFiles[i].filename;
+		oFile  	= aVFiles[i];
+		
+		//중복확인
+		if(this.futFile.existFile(oFile)){
+			sFileId += "_" + this.dsUpload.getRowCount();
+		}
+		this.futFile.addFile(sFileId, oFile);
+		var nRow = this.dsUpload.addRow();
+		this.dsUpload.setColumn(nRow, "OTXT_FILE_NM", sFileId);
+	}
+	//divFile 사이즈 조절
+	this.fnDivFileSetSize();
+};
+
+
+//divFile 사이즈 조절
+this.fnDivFileSetSize = function()
+{
+	var nRow = this.dsUpload.getRowCount();
+
+	if(nRow==0) {
+		this.divFile.set_height("0");
+	}else{
+		this.divFile.set_height(48*nRow+22);
+		//저장버튼 하단에 40px추가 임시로 Design쪽에서 Static visible처리 후 top 어레인지먼트 걸어줌.
+		//추후에 수정하기			
+	}
+	this.resetScroll();	
+};
+
+//1~9까지 앞에 0 붙임.
+this.fnMakeTime = function(nTime)
+{
+	if(this.gfnIsNull(nTime)) return;
+	if(10 > nTime)  nTime = "0"+nTime;
+	return nTime;	
+}
+
+// 일자 변경(종료일을 시작일보다 빠르게 설정할 수 없음)
+this.fnDateTime_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
+{
+	var nCalStart		= this.calStartDay.value;
+	var nCalEnd			= this.calEndDay.value;
+	var nStartTime		= this.cboStartTime.value;
+	var nStartMinutes	= this.cboStartMinutes.value;
+	var nEndTime		= this.cboEndTime.value;
+	var nEndMinutes		= this.cboEndMinutes.value;
+	
+	if(nCalStart > nCalEnd){
+		this.calEndDay.set_value(nCalStart);
+	}else if(nCalStart+nStartTime > nCalEnd+nEndTime){
+		if(Number(nStartTime)+1 != "24"){
+			//시작시간 +1 ->24시가 아닐 경우 해당 시간으로 셋팅
+			this.cboEndTime.set_value(this.fnMakeTime(Number(nStartTime)+1));
+		}else if(Number(nStartTime)+1 == "24"){
+			//시작시간 +1 -> 24일 경우  다음 날 00시로 셋팅
+			this.calEndDay.set_value(Number(nCalEnd)+1);
+			this.cboEndTime.set_value("00");
+		}
+	}else if(nCalStart+nStartTime+nStartMinutes > nCalEnd+nEndTime+nEndMinutes){
+		if(Number(nStartMinutes)+10 !="60"){
+			//시작 분 +10 -> 60이 아닐 경우 해당 시간으로 셋팅
+			this.cboEndMinutes.set_value(Number(nStartMinutes)+10);
+		}else if(Number(nStartMinutes)+10 =="60"){
+		    //시작 분 +10 -> 60일 경우 한시간 뒤 00분으로 이동
+			this.cboEndTime.set_value(this.fnMakeTime(Number(nEndTime)+1));
+			this.cboEndMinutes.set_value("00");
+		}
+	}
+};
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+//저장 버튼
+this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sCont = "";
+	sCont = this.txaContent.text;
+	sCont = this.gfnIsNull(sCont) ? "" : nexacro.replaceAll(sCont,"\n", "<br>");
+	
+	this.dsList.setColumn(0, "CNTN", sCont);
+	this.dsList.setColumn(0, "TITLE", this.gfnTrim(this.edtTitle.value));
+
+	var nStartDayTime = this.dsList.getColumn(0,"START_DAY") + this.dsList.getColumn(0,"START_TIME") + this.dsList.getColumn(0,"START_MINUTES");
+	var nEndDayTime = this.dsList.getColumn(0,"END_DAY") + this.dsList.getColumn(0,"END_TIME") + this.dsList.getColumn(0,"END_MINUTES");
+	if(nStartDayTime > nEndDayTime) {
+		this.gfnAlert("msg.err.validator.date.great");
+		return;
+	}
+	
+	// 정합성 체크
+	this.gfnClearValidation(this.dsList);
+	this.gfnSetValidation(this.dsList, "SCD_SECT_CD", "유형", "required");
+	this.gfnSetValidation(this.dsList, "TITLE", "제목"	, "required");
+	// Dataset의 변경된 Row Validation check
+	if (this.gfnValidation(this.dsList, "U") == false) return;	
+	
+	
+    // 파일과 내용 모두 변경된 Data가 없다면.
+	if(!this.gfnDsIsUpdated(this.dsUpload)&&!this.gfnDsIsUpdated(this.dsList)){
+		this.gfnAlert("msg.save.nochange"); // 저장할 데이터가 없습니다.
+		return;
+	}else{
+		//file 삭제 및 추가
+		if(this.dsUpload.getDeletedRowCount()> 0 && this.futFile.filelist.length > 0){
+			this.fvFileDelUp = "Y";
+		    this.fnTranDeleteFile();
+		//file 삭제만
+		}else if(this.dsUpload.getDeletedRowCount()> 0 && this.futFile.filelist.length == 0){
+			this.fvFileDel	 = "Y";
+			this.fnTranDeleteFile();
+		//file 추가만	
+		}else if(this.dsUpload.getDeletedRowCount()== 0 && this.futFile.filelist.length > 0){
+			this.fnFileUploadTran();
+		//내용만
+		}else if(this.dsUpload.getDeletedRowCount()== 0 && this.futFile.filelist.length == 0){
+			this.fnTranSave();
+		}
+	}	
+
+};
+
+//파일 추가
+this.btnAddFile_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fdgFile.open("file upload..", FileDialog.MULTILOAD);			
+};
+
+//드래그 앤 드랍
+this.divFile_grdFile_ondrop = function(obj:nexacro.Grid,e:nexacro.GridDragEventInfo)
+{
+	this.fnSetFile(e.filelist);			
+};
+
+//파일다이얼로그 클로즈
+this.fdgFile_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	// 1 : open() 메소드를 실행하여 파일 한개를 선택하였을 경우 (IOS 앱)
+	// 3 : open() 메소드를 실행하여 파일을 한개 이상 선택하였을 경우
+	if( e.reason == 1 || e.reason == 3 ){
+		//멀티업로드일경우
+		this.fnSetFile(e.virtualfiles);
+	}	
+};
+
+//파일 업로드 에러
+this.futFile_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferErrorEventInfo)
+{
+	this.gfnAlert("msg.server.error.msg" ,[e.errormsg]);	
+};
+
+//파일 업로드 성공
+this.futFile_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	this.dsList.setColumn(0, "FILE_ID", e.datasets[0].getColumn(0,"FILE_ID"));
+	//파일 업로드 성공 후 내용 업로드
+	this.fnTranSave();	
+};
+
+//파일 삭제
+this.divFile_grdFile_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var nRow = e.row;
+	if(e.cell == 2){
+		var sFileNm = this.dsUpload.getColumn(nRow, "OTXT_FILE_NM");
+		this.futFile.removeFile(sFileNm);
+		this.dsUpload.deleteRow(nRow);
+	}		
+	//divFile 사이즈 조절
+	this.fnDivFileSetSize();	
+};
+
+
+
+this.cboSectCd_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	if(this.cboSectCd.value == "MT"){
+		//내용 가져옴
+		var sRemk = this.objects[this.cboSectCd.innerdataset].lookup("SSC_CD","MT", "REMK");
+		if(!this.gfnIsNull(sRemk)){
+			this.txaContent.set_value(sRemk);
+		}
+	}else{
+		this.txaContent.set_value("");
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsTime">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NAME">00</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">01</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">02</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">03</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">04</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">05</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">06</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">07</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">08</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">09</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">10</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">11</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">12</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">13</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">14</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">15</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">16</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">17</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">18</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">19</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">20</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">21</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">22</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">23</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMinutes">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NAME">00</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">10</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">20</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">30</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">40</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">50</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="SCD_CD" type="STRING" size="256"/>
+          <Column id="SCD_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="SCD_CD" type="STRING" size="256"/>
+          <Column id="SCD_SECT_CD" type="STRING" size="256"/>
+          <Column id="TITLE" type="STRING" size="256"/>
+          <Column id="START_DAY" type="STRING" size="256"/>
+          <Column id="START_TIME" type="STRING" size="256"/>
+          <Column id="START_MINUTES" type="STRING" size="256"/>
+          <Column id="END_DAY" type="STRING" size="256"/>
+          <Column id="END_TIME" type="STRING" size="256"/>
+          <Column id="END_MINUTES" type="STRING" size="256"/>
+          <Column id="CNTN" type="STRING" size="256"/>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="DEL_YN" type="STRING" size="256"/>
+          <Column id="INPT_EMP_NO" type="STRING" size="256"/>
+          <Column id="INPT_ID" type="STRING" size="256"/>
+          <Column id="CHGE_ID" type="STRING" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsUpload">
+        <ColumnInfo>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="FILE_SEQ" type="STRING" size="256"/>
+          <Column id="SAVE_FILE_NM" type="STRING" size="256"/>
+          <Column id="OTXT_FILE_NM" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="FILE_TYPE" type="STRING" size="256"/>
+          <Column id="FILE_PATH_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDialog id="fdgFile" onclose="fdgFile_onclose"/>
+      <FileUpTransfer id="futFile" onerror="futFile_onerror" onsuccess="futFile_onsuccess"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="cboSectCd" propid="value" datasetid="dsList" columnid="SCD_SECT_CD"/>
+      <BindItem id="item1" compid="cboScdCd" propid="value" datasetid="dsList" columnid="SCD_CD"/>
+      <BindItem id="item2" compid="calStartDay" propid="value" datasetid="dsList" columnid="START_DAY"/>
+      <BindItem id="item3" compid="cboStartTime" propid="value" datasetid="dsList" columnid="START_TIME"/>
+      <BindItem id="item4" compid="calEndDay" propid="value" datasetid="dsList" columnid="END_DAY"/>
+      <BindItem id="item5" compid="edtTitle" propid="value" datasetid="dsList" columnid="TITLE"/>
+      <BindItem id="item6" compid="txaContent" propid="value" datasetid="dsList" columnid="CNTN"/>
+      <BindItem id="item7" compid="cboStartMinutes" propid="value" datasetid="dsList" columnid="START_MINUTES"/>
+      <BindItem id="item8" compid="cboEndTime" propid="value" datasetid="dsList" columnid="END_TIME"/>
+      <BindItem id="item9" compid="cboEndMinutes" propid="value" datasetid="dsList" columnid="END_MINUTES"/>
+      <BindItem id="item10" compid="edtInputId" propid="value" datasetid="dsList" columnid="INPT_EMP_NO"/>
+    </Bind>
+  </Form>
+</FDL>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="팝업" width="420" height="300" titletext="Popup">
+    <Layouts>
+      <Layout height="300" width="420">
+        <Button id="Button00" taborder="0" text="취소" left="30" top="440" height="60" cssclass="btn_WF_Revised" right="51.25%"/>
+        <Button id="Button00_01" taborder="1" text="삭제" left="Button00:10" top="440" height="60" cssclass="btn_WF_Full" right="30"/>
+        <Button id="Button00_01_01" taborder="3" text="저장" left="30" top="340" height="60" cssclass="btn_WF_Full" right="30"/>
+        <Static id="Static02_01_01_01" taborder="4" text="H40" left="0" cssclass="sta_WF_GSize" visible="false" right="0" bottom="0" height="40"/>
+        <Static id="Static02_00" taborder="5" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02" taborder="6" text="W30" left="390" top="0" cssclass="sta_WF_GSize" visible="false" bottom="0" width="30"/>
+        <Button id="Button00_01_00" taborder="2" text="확인" left="30" cssclass="btn_WF_Full" right="30" height="60" bottom="40"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

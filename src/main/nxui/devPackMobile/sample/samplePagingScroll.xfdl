@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="samplePagingScroll" width="480" height="930" titletext="그리드 스크롤 페이징" onload="form_onload">
+    <Layouts>
+      <Layout height="930" mobileorientation="portrait" width="480">
+        <Button id="btn_more" taborder="0" text="more" left="30" top="830" height="60" enable="false" onclick="btn_more_onclick" right="30"/>
+        <Grid id="grdList" taborder="1" left="30" top="250" binddataset="dsListGrid" autofittype="col" onvscroll="grdList_onvscroll" right="30" height="560">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="50" band="head"/>
+                <Row size="54"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="아이디"/>
+                <Cell col="1" text="성명"/>
+                <Cell col="2" text="부서"/>
+                <Cell col="3" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ID"/>
+                <Cell col="1" text="bind:NAME"/>
+                <Cell col="2" text="bind:DEPARTMENT"/>
+                <Cell col="3" text="bind:DESCRIPTION"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btnTop" taborder="2" width="50" height="50" onclick="btnTop_onclick" right="15" cssclass="btn_WF_topMove" visible="false" top="703"/>
+        <Static id="Static01_00" taborder="3" text="Rows per page" left="30" top="30" width="120" height="50" cssclass="sta_WF_Label" uWord="listcount" fittocontents="width" minwidth="100" maxwidth=""/>
+        <ExtCombo id="cboLimit" taborder="4" left="30" top="80" height="50" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="10" text="10" index="0" combotitle="목록갯수" popupurl="common::pExtCombo.xfdl" right="30">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">10</Col>
+                <Col id="datacolumn">10</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">20</Col>
+                <Col id="datacolumn">20</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">50</Col>
+                <Col id="datacolumn">50</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </ExtCombo>
+        <Static id="Static03" taborder="5" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="6" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_01_00" taborder="7" text="H20" left="0" top="130" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Button id="btn_select" taborder="8" text="조회" cssclass="btn_WF_Full" right="30" height="60" left="30" top="150" onclick="btn_select_onclick"/>
+        <Static id="Static02_01_01_01_00_00" taborder="9" text="H40" left="0" top="210" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_00_00" taborder="10" text="H40" left="0" top="890" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Static id="Static02_01_01_01_00_01" taborder="11" text="H20" left="0" top="810" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	samplePagingScroll.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.04
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.04			TOBESOFT					최초생성
+* 2022.10.14			TOBESOFT					수정
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+this.fvSync = true;	            //조회중 체크
+
+this.fvStart = -1;
+this.fvEnd   = -1;
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+/**
+ * @description 조회이벤트
+*/
+this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fvSync = false;
+
+	// 조회조건 설정
+	//데이터를 넘길 경우 데이터셋에 추가해서 넘기는 방식과
+	//아규먼트를 추가해서 넘기는 방식 모두 사용가능
+	this.dsSearch.clearData();
+	var nRow = this.dsSearch.addRow();
+	this.dsSearch.setColumn(nRow, "startNum", this.fvStart);
+	this.dsSearch.setColumn(nRow, "endNum", this.fvEnd);	
+	
+	
+ 	var strSvcId    = "search";
+	var strSvcUrl   = "searchPagingSampleList.do";
+	var inData      = "inDs=dsSearch";
+	var outData     = "dsList=outDs dsPagingInfo=outDs1";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	var isAsync   	= true;
+	
+	this.gfnTransaction(strSvcId , 		// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc, 	// transaction의 결과를 받을 Function 이름
+						isAsync); 		// 비동기통신 여부 [생략가능]
+};
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+/**
+ * @description TRANSACTION콜백 트랜젝션 후, 반드시페이지 메이킹 함수 호출
+*/
+this.fnCallback = function(svcID,nErrorCode,sErrorMsg)
+{
+	if (nErrorCode < 0)
+	{
+
+	}	
+
+	switch(svcID)
+	{
+		case "search":
+			
+			this.dsListGrid.appendData(this.dsList, true);
+            this.fvTotalCount = nexacro.toNumber(this.dsPagingInfo.getColumn("TOTALCOUNT")); //전체로우갯수
+
+            if (this.dsListGrid.rowcount == this.fvTotalCount)
+            {
+				this.fvSync = false;
+				this.btn_more.set_enable(false);
+            }
+            else
+            {	
+				this.fvSync = true;
+				var nRecrod = nexacro.toNumber(this.cboLimit.value);
+				this.fvStart = this.dsListGrid.getRowCount() + 1;
+				this.fvEnd   = this.dsListGrid.getRowCount() + nRecrod;		
+				this.btn_more.set_enable(true);
+            }
+			
+			break;
+	}
+};
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.btn_select_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    this.dsListGrid.clearData();
+    
+	this.fvStart = 1;
+	this.fvEnd   = this.cboLimit.value;	
+	//TODO
+    this.fnSearch();
+};
+
+this.btn_more_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//TODO
+	this.fnSearch();	
+};
+
+this.grdList_onvscroll = function(obj:nexacro.Grid,e:nexacro.ScrollEventInfo)
+{
+	if (e.pos == 0)
+	{
+		this.btnTop.set_visible(false);
+	}
+	else
+	{
+		this.btnTop.set_visible(true);
+        if (e.pos == obj.vscrollbar.max && this.fvSync)
+        {
+			//TODO
+            this.fnSearch();            
+        }         
+	}
+};
+
+this.btnTop_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.grdList.vscrollbar.set_pos(0);
+};]]></Script>
+    <Objects>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="USE_YN" type="STRING" size="256"/>
+          <Column id="REG_USER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearch">
+        <ColumnInfo>
+          <Column id="records" type="STRING" size="256"/>
+          <Column id="page" type="STRING" size="256"/>
+          <Column id="recordsOffset" type="STRING" size="256"/>
+          <Column id="pageCount" type="STRING" size="256"/>
+          <Column id="startNum" type="STRING" size="256"/>
+          <Column id="endNum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPagingInfo">
+        <ColumnInfo>
+          <Column id="totalCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsListGrid">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="USE_YN" type="STRING" size="256"/>
+          <Column id="REG_USER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

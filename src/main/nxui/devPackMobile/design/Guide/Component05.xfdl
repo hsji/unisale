@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Guide00" width="480" height="1259" titletext="search, detail" cssclass="frm_WF_GFrame" onload="form_onload">
+    <Layouts>
+      <Layout height="1259" width="480">
+        <Static id="sta00" taborder="6" left="0" top="0" cssclass="sta_WF_GBg" right="0" height="1259"/>
+        <Static id="sta109" taborder="3" left="10" top="160" height="568" cssclass="sta_WF_Box" right="10"/>
+        <Static id="sta109_00" taborder="5" left="10" top="sta109:20" height="491" cssclass="sta_WF_Box" right="10" text=""/>
+        <Static id="Static03_00" taborder="4" left="30" top="sta109:45" width="72" height="21" cssclass="sta_WF_GTxt01" text="Detail"/>
+        <Div id="div01" taborder="14" text="div01" left="30" top="Static03_00:20" height="400" right="30">
+          <Layouts>
+            <Layout>
+              <Combo id="Combo00_00_00_00" taborder="0" text="김지영" left="246" top="-89" height="50" value="" index="-1" right="-10"/>
+              <Combo id="Combo00_00_00_00_00" taborder="1" text="컨설팅사업그룹" left="30" top="-89" height="50" value="" index="-1" right="0.00%"/>
+              <Static id="Static00_01_00_00_00" taborder="2" text="작성자" left="0.00%" top="-123" height="24" cssclass="sta_WF_Label" right="0.00%"/>
+              <Static id="Static00_02_00" taborder="3" text="일정마스터" left="30" top="-123" width="120" height="24" cssclass="sta_WF_Label"/>
+              <Calendar id="Calendar00_00" taborder="4" left="30" top="-193" height="50" right="0.00%"/>
+              <Combo id="Combo00_00_00" taborder="5" text="09:00" left="246" top="-193" height="50" value="" index="-1" right="-10"/>
+              <Static id="Static00_01_00_00" taborder="6" text="종료시간" left="0.00%" top="-228" width="120" height="24" cssclass="sta_WF_Label"/>
+              <Static id="Static00_02" taborder="7" text="종료일" left="30" top="-228" width="120" height="24" cssclass="sta_WF_Label"/>
+              <Calendar id="Calendar00" taborder="8" left="30" top="-298" height="50" right="0.00%"/>
+              <Combo id="Combo00_00" taborder="9" text="09:00" left="246" top="-298" height="50" value="" index="-1" right="-10"/>
+              <Static id="Static00_01_00" taborder="10" text="시작시간" left="0.00%" top="-333" width="120" height="24" cssclass="sta_WF_Label"/>
+              <Static id="Static00_01" taborder="11" text="시작일" left="30" top="-333" width="120" height="24" cssclass="sta_WF_Label"/>
+              <Combo id="Combo00" taborder="12" text="유형선택" left="30" top="-403" height="50" value="" index="-1" cssclass="essential" right="-11"/>
+              <Static id="Static00_00" taborder="13" text="유형" left="30" top="-438" width="120" height="25" cssclass="sta_WF_Label"/>
+              <Combo id="Combo00_00_00_00_00_00" taborder="15" text="컨설팅사업그룹" left="0" top="350" height="50" value="" index="-1" right="51.19%"/>
+              <Combo id="Combo00_00_00_00_01" taborder="14" text="홍길동" left="Combo00_00_00_00_00_00:10" top="350" height="50" value="" index="-1" right="0"/>
+              <Static id="Static00_01_00_00_00_00" taborder="16" text="작성자" left="Combo00_00_00_00_00_00:10" top="300" height="50" cssclass="sta_WF_Label" width="120"/>
+              <Static id="Static00_02_00_00" taborder="17" text="일정마스터" left="0" top="300" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Calendar id="Calendar00_00_00" taborder="18" left="0" top="250" height="50" right="51.19%"/>
+              <Combo id="Combo00_00_00_01" taborder="19" text="09:00" left="Calendar00_00_00:10" top="250" height="50" value="" index="-1" right="0"/>
+              <Static id="Static00_01_00_00_01" taborder="20" text="종료시간" left="Calendar00_00_00:10" top="200" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Static id="Static00_02_01" taborder="21" text="종료일" left="0" top="200" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Calendar id="Calendar00_01" taborder="22" left="0" top="150" height="50" right="51.19%"/>
+              <Combo id="Combo00_00_01" taborder="23" text="09:00" left="Calendar00_01:10" top="150" height="50" value="" index="-1" right="0"/>
+              <Static id="Static00_01_00_01" taborder="24" text="시작시간" left="Calendar00_01:10" top="100" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Static id="Static00_01_01" taborder="25" text="시작일" left="0" top="100" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Combo id="Combo00_01" taborder="26" text="유형선택" left="0" top="50" height="50" value="" index="-1" cssclass="essential" right="0"/>
+              <Static id="Static00_00_00" taborder="27" text="유형" left="0" top="0" width="120" height="50" cssclass="sta_WF_Label"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="0" left="0" top="0" height="150" cssclass="sta_WF_GBar" text="&lt;fc v='#445BEC'&gt;&lt;fs v='13'&gt;TOBESOFT&lt;/fs&gt;&lt;/fc&gt;&#13;&#10;Component KIT&#13;&#10;&lt;fc v='#acafbb'&gt;&lt;fs v='11'&gt;search, detail&lt;/fs&gt;&lt;/fc&gt;" right="0" usedecorate="true"/>
+        <Static id="Static03" taborder="1" left="35" top="185" width="72" height="21" cssclass="sta_WF_GTxt01" text="Search"/>
+        <Static id="sta01" taborder="2" top="53" width="61" height="50" right="20" text="05" cssclass="sta_WF_GNum"/>
+        <Button id="btn00_00" taborder="7" left="527" top="684" width="107" height="30" cssclass="btn_WF_OpenConG" visible="false"/>
+        <Static id="Static02_01_01_00_00_00_00_00" taborder="8" text="H20" left="0" top="233" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_00_00_01" taborder="9" text="H20" left="0" top="1239" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static03_00_00" taborder="10" left="11" top="223" height="10" cssclass="sta_WF_Boundary" right="11"/>
+        <Div id="div00" taborder="11" text="div00" left="30" right="30" top="253" height="419">
+          <Layouts>
+            <Layout>
+              <Static id="Static00_00" taborder="0" text="고객명" left="0" top="0" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Edit id="Edit09_00" taborder="1" left="0" top="50" height="50" text="홍길동" value="홍길동" cssclass="essential" right="0"/>
+              <Combo id="cbo00" taborder="4" text="투비" left="0" top="350" height="50" value="" index="-1" right="51.19%"/>
+              <Combo id="cbo00_00" taborder="2" text="투비" left="cbo00:10" top="350" height="50" value="" index="-1" right="0"/>
+              <Static id="Static00_00_00_00_00" taborder="3" text="검색타이틀" top="300" height="50" cssclass="sta_WF_Label" width="29.29%" left="cbo00:10"/>
+              <Static id="Static00_00_00_01" taborder="5" text="검색타이틀" left="0" top="300" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Calendar id="Calendar00_01" taborder="6" left="0" top="250" height="50" right="51.19%"/>
+              <Static id="Static00_03" taborder="7" text="검색타이틀" left="0" top="200" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Calendar id="Calendar00_00_00" taborder="8" left="Calendar00_01:10" top="250" height="50" right="0"/>
+              <Static id="Static00_01_01" taborder="9" text="검색타이틀" top="200" cssclass="sta_WF_Label" height="50" width="29.29%" left="Calendar00_01:10"/>
+              <Edit id="Edit09_00_00" taborder="12" left="0" top="150" height="50" text="Devpack" value="Devpack" right="51.19%"/>
+              <Edit id="Edit09_00_00_00" taborder="10" left="Edit09_00_00:10" top="150" height="50" text="Devpack" value="Devpack" right="0"/>
+              <Static id="Static00_00_00" taborder="13" text="검색타이틀" left="0" top="100" width="120" height="50" cssclass="sta_WF_Label"/>
+              <Static id="Static00_00_00_00" taborder="11" text="검색타이틀" top="100" cssclass="sta_WF_Label" height="50" left="Edit09_00_00:10" right="81"/>
+              <Button id="Button02" taborder="14" left="Edit09_00:-50" top="50" width="50" height="50" cssclass="btn_WF_Search" visible="true"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03_01" taborder="12" left="11" top="div00:0" height="10" cssclass="sta_WF_Boundary" right="11"/>
+        <Button id="btn00" taborder="13" left="39%" top="div00:0" height="30" cssclass="btn_WF_CloseConG" text="" onclick="btn00_onclick" right="39%"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[//버튼 클릭
+this.btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//버튼 css변경 + div00, staTop 조절
+	var sCss = obj.cssclass;
+
+	if(sCss.indexOf("Close")>0){
+		obj.set_cssclass("btn_WF_OpenCon");
+		this.div00.set_height(115);
+		this.sta109.set_height(264);
+	}else if(sCss.indexOf("Open")>0){
+		obj.set_cssclass("btn_WF_CloseCon");			
+		this.div00.set_height(419);	
+		this.sta109.set_height(568);
+	}
+	this.resetScroll();
+};
+]]></Script>
+  </Form>
+</FDL>

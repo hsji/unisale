@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp01" width="480" height="721" titletext="Schedule Detail">
+    <Layouts>
+      <Layout height="721" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="1" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00_00" taborder="2" text="홍길동 오후 반차" top="24" height="24" cssclass="sta_WF_ConTit" right="30" width="370"/>
+        <Static id="Static02_01_01" taborder="3" text="H20" left="0" top="100" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static00_02_00_01" taborder="4" text="홍길동｜2022.02.06(월) 09:00｜첨부파일 0" left="30" top="64" width="420" height="20" cssclass="sta_WF_ConSub"/>
+        <Static id="Static02_01_01_01" taborder="5" text="H40" left="0" cssclass="sta_WF_GSize" visible="false" right="0" bottom="0" height="40"/>
+        <Button id="Button00" taborder="6" text="수정" left="30" top="621" height="60" cssclass="btn_WF_Revised" right="51.88%"/>
+        <Button id="Button00_01" taborder="7" text="삭제" left="Button00:20" top="621" height="60" cssclass="btn_WF_Full" right="30"/>
+        <Static id="Static02_01_01_00_00" taborder="8" text="H20" left="0" top="510" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static01" taborder="9" text="넥사크로 17은 기존의 아키텍처를 대폭 개선하여 웹의 기능은 최대한 수용하면서 전용브라우저에 대한 노하우를 집약하여 현존하는 IT 기술의 한계를 극복하고 어떤 환경에서도 최고의 속도와 성능을 제공합니다." left="30" top="120" height="390" right="30" cssclass="sta_WF_ConView"/>
+        <Static id="Static03" taborder="10" left="30" top="19" width="40" height="40" cssclass="sta_WF_label_VC" text="휴가"/>
+        <Static id="Static02_01_01_00" taborder="11" text="H20" left="0" top="0" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Div id="Div00" taborder="12" left="30" top="530" height="70" cssclass="div_WF_Attachment" right="30">
+          <Layouts>
+            <Layout>
+              <Grid id="grd00" taborder="0" cssclass="grd_WF_Attachment" left="15" top="10" right="15" bottom="10" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="48"/>
+                      <Column size="279"/>
+                      <Column size="48"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell rowspan="2" displaytype="imagecontrol" cssclass="Icon_Attachment"/>
+                      <Cell col="1" text="image.png"/>
+                      <Cell col="2" rowspan="2" displaytype="buttoncontrol"/>
+                      <Cell row="1" col="1" cssclass="label_AttachSize" text="600 kb"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02_01_01_01_00" taborder="13" text="H20" left="0" top="601" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static00_01" taborder="14" left="0" top="0" height="1" cssclass="sta_WF_ConLine" right="0"/>
+        <Static id="Static00" taborder="15" left="30" top="99" height="1" cssclass="sta_WF_ConLine" right="30"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

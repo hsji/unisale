@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleGridSchedule" width="480" height="768" titletext="그리드 달력" onload="form_onload">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" width="480">
+        <Grid id="grdCalendar" taborder="0" left="9" top="11" width="466" height="471" binddataset="dsCalendar" onheadclick="grdCalendar_onheadclick" autofittype="col" selecttype="cell" oncellclick="grdCalendar_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
+                <Row size="40"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="◀"/>
+                <Cell col="1" colspan="5"/>
+                <Cell col="6" text="▶"/>
+                <Cell row="1" text="SUN"/>
+                <Cell row="1" col="1" text="MON"/>
+                <Cell row="1" col="2" text="TUE"/>
+                <Cell row="1" col="3" text="WED"/>
+                <Cell row="1" col="4" text="THU"/>
+                <Cell row="1" col="5" text="FRI"/>
+                <Cell row="1" col="6" text="SAT"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:day0" textAlign="left"/>
+                <Cell col="1" text="bind:day1" textAlign="left"/>
+                <Cell col="2" text="bind:day2" textAlign="left"/>
+                <Cell col="3" text="bind:day3" textAlign="left"/>
+                <Cell col="4" text="bind:day4" textAlign="left"/>
+                <Cell col="5" text="bind:day5" textAlign="left"/>
+                <Cell col="6" text="bind:day6" textAlign="left"/>
+                <Cell row="1" text="bind:hol0" textAlign="right"/>
+                <Cell row="1" col="1" text="bind:hol1" textAlign="right"/>
+                <Cell row="1" col="2" text="bind:hol2" textAlign="right"/>
+                <Cell row="1" col="3" text="bind:hol3" textAlign="right"/>
+                <Cell row="1" col="4" text="bind:hol4" textAlign="right"/>
+                <Cell row="1" col="5" text="bind:hol5" textAlign="right"/>
+                <Cell row="1" col="6" text="bind:hol6" textAlign="right"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid02" taborder="1" left="16" top="485" width="214" height="285" binddataset="dsDate" autofittype="col" fillareatype="none" nodatatext="No Data">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="50" band="head"/>
+                <Row size="54"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="List"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:TITLE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <TextArea id="txtOutput" taborder="2" left="235" top="529" width="233" height="241" wordWrap="" displaynulltext="No Data" enable="true" readonly="true"/>
+        <Grid id="Grid00" taborder="3" left="235" top="485" width="233" height="44" autofittype="col" fillareatype="none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="45" band="head"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Detail"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="txtOutput" propid="value" datasetid="dsDate" columnid="MEMO"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleGridSchedule.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.04
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.04			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+	
+	var objDate 	= new Date();	
+	this.fvYear  	= objDate.getYear();
+	this.fvMonth 	= objDate.getMonth()+1;	
+	this.fvDay 		= objDate.getDate();
+	var sYYYYMM 	=  this.fvYear + (this.fvMonth >= 10 ? "" : "0") + this.fvMonth;
+	
+	//오늘 날짜로 더미 데이터 가공
+	for (var i = 0; i < this.dsMonth.rowcount; i++)
+	{
+		this.dsMonth.setColumn( i, "DATE", this.dsMonth.getColumn(i, "DATE").replace(/201301/g, sYYYYMM));  
+	}
+	
+	for (var i = 0; i < this.dsDate.rowcount; i++)
+	{
+		this.dsDate.setColumn(i, "DATE",  this.dsDate.getColumn(i, "DATE").replace(/201301/g, sYYYYMM));  
+	}	
+
+	this.fnDrawCalendar(this.dsCalendar, this.grdCalendar, sYYYYMM);		
+	this.fnSetDate(this.fvDay);						//오늘일정표시
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+// yyyymm 달력 그리기
+this.fnDrawCalendar = function(objDs, objGrid, sYYYYMM)
+{
+	this.sYYYYMM =  sYYYYMM;
+
+	// Grid Header설정
+	objGrid.setCellProperty("Head", 1, "text", sYYYYMM.substr(0, 4) + ". " + nexacro.toNumber(sYYYYMM.substr(4,2)));
+
+	// Dataset 만들기
+	objDs.clearData();
+	var nDay = -1;
+	var nStartDay = this.gfnGetDay(sYYYYMM+"01");			//요일
+	var nLastDate = this.gfnGetLastDate(sYYYYMM+"01").substr(6,2);	//마지막날짜
+
+	var nRow = objDs.addRow();
+	for (var i = 1, nDay = nStartDay; i <= nLastDate ; i++ )
+	{
+		// 달력 Data설정		
+		objDs.setColumn(nRow, "day"+nDay, i);
+
+		if (this.fvDay == i)	//오늘날짜 표시를 위한값
+		{
+			this.nTodayRow = nRow;
+			this.nTodayCol = nDay;
+		}	
+			
+		// 달력 Data Row추가
+		nDay = (nDay+1)%7;
+		if ( nDay == 0 && i != nLastDate )
+			nRow = objDs.addRow();
+	}
+	this.grdCalendar.selectCell(this.nTodayRow, this.nTodayCol, true);
+	this.fnTranMonth();
+}
+
+
+this.fnTranMonth = function()
+{	
+	this.fnUpdateMonth();
+}
+
+//일정 표시하기
+this.fnUpdateMonth = function()  
+{
+	var count = this.dsMonth.getRowCount();
+	var objDate = new Date();
+	var strDate = "";	
+	var nDay = -1;
+	var nRow = 0;
+	var nStartDay = -1;
+	var nLastDate = -1;
+		
+	for (var i = 0; i < count; i++)
+	{
+		strDate = this.dsMonth.getColumn(i, "DATE");		
+		objDate.setFullYear(strDate.substr(0,4), strDate.substr(4,2)-1, strDate.substr(6));
+
+		if (objDate.getYear() == this.fvYear && objDate.getMonth()+1 == this.fvMonth)
+		{		
+			nRow = 0;
+			nStartDay = this.gfnGetDay(this.sYYYYMM+"01");			//요일
+			nLastDate = this.gfnGetLastDate(this.sYYYYMM+"01").substr(6,2);	//마지막날짜
+			
+			for (var j = 1, nDay = nStartDay; j <= nLastDate ; j++ )
+			{
+				if (this.dsCalendar.getColumn(nRow, "day"+nDay) == nexacro.toNumber(strDate.substr(6)))
+				{
+					this.dsCalendar.setColumn(nRow, "hol"+nDay, this.dsMonth.getColumn(i,"TOTAL"));
+				}
+
+				nDay = (nDay+1)%7;
+				if ( nDay == 0 && j != nLastDate )
+					nRow++;
+			}
+		}
+	}
+}
+
+
+this.fnSetDate = function(nDate)   
+{
+	this.fnTranDate( this.fvYear  + (this.fvMonth >= 10 ? "" : "0") 
+						+ this.fvMonth + (nDate   >= 10 ? "" : "0")
+						+ nDate);
+}
+
+this.fnTranDate = function(nDate)   
+{
+    this.dsDate.filter("DATE == '" +nDate + "'");
+    this.dsDate.set_rowposition(0);
+}
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+
+this.grdCalendar_onheadclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if ( e.cell == 0 )
+	{
+		var add_date = this.gfnAddMonth(this.sYYYYMM+"01", -1);
+	}
+	else if ( e.cell == 2 )
+	{
+		var add_date = this.gfnAddMonth(this.sYYYYMM+"01", 1);
+	}
+	this.fvYear  = add_date.substr(0, 4);
+	this.fvMonth = nexacro.toNumber(add_date.substr(4, 2));
+	this.fnDrawCalendar(this.dsCalendar, obj, add_date.substr(0, 6));
+}
+
+this.grdCalendar_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.fnSetDate(this.dsCalendar.getColumn(e.row,  e.col));
+};]]></Script>
+    <Objects>
+      <Dataset id="dsCalendar">
+        <ColumnInfo>
+          <Column type="STRING" size="256" id="day0"/>
+          <Column type="STRING" size="256" id="day1"/>
+          <Column type="STRING" size="256" id="day2"/>
+          <Column type="STRING" size="256" id="day3"/>
+          <Column type="STRING" size="256" id="day4"/>
+          <Column type="STRING" size="256" id="day5"/>
+          <Column type="STRING" size="256" id="day6"/>
+          <Column type="STRING" size="256" id="hol0"/>
+          <Column type="STRING" size="256" id="hol1"/>
+          <Column type="STRING" size="256" id="hol2"/>
+          <Column type="STRING" size="256" id="hol3"/>
+          <Column type="STRING" size="256" id="hol4"/>
+          <Column type="STRING" size="256" id="hol5"/>
+          <Column type="STRING" size="256" id="hol6"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="dsMonth">
+        <ColumnInfo>
+          <Column id="DATE" size="256" type="STRING"/>
+          <Column id="TOTAL" size="256" type="INT"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="DATE">20130101</Col>
+            <Col id="TOTAL">4</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130104</Col>
+            <Col id="TOTAL">1</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130112</Col>
+            <Col id="TOTAL">2</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130113</Col>
+            <Col id="TOTAL">1</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130128</Col>
+            <Col id="TOTAL">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDate">
+        <ColumnInfo>
+          <Column id="DATE" type="STRING" size="256"/>
+          <Column id="TITLE" type="STRING" size="256"/>
+          <Column id="MEMO" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="DATE">20130101</Col>
+            <Col id="TITLE">미팅</Col>
+            <Col id="MEMO">협력업체&#13;
+2층회의실</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130101</Col>
+            <Col id="TITLE">회의</Col>
+            <Col id="MEMO">주간회의</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130101</Col>
+            <Col id="TITLE">저녁약속</Col>
+            <Col id="MEMO">친구랑</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130101</Col>
+            <Col id="TITLE">보고서 작성</Col>
+            <Col id="MEMO">이날까지!!!</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130104</Col>
+            <Col id="TITLE">오늘</Col>
+            <Col id="MEMO">까지</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130112</Col>
+            <Col id="TITLE">회의</Col>
+            <Col id="MEMO">3층 회의실</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130112</Col>
+            <Col id="TITLE">점심약속</Col>
+            <Col id="MEMO">양꼬치엔&#13;
+칭따오</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130113</Col>
+            <Col id="TITLE">칼퇴</Col>
+            <Col id="MEMO">13일의 금요일</Col>
+          </Row>
+          <Row>
+            <Col id="DATE">20130128</Col>
+            <Col id="TITLE">월말회의</Col>
+            <Col id="MEMO">TEST28&#13;
+111</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

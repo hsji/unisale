@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp03" width="480" height="770" titletext="ListDetail(List)" cssclass="frm_WF_Bg" onload="form_onload">
+    <Layouts>
+      <Layout height="770" mobileorientation="portrait" screenid="mobile" width="480">
+        <Button id="Button00" taborder="1" text="행추가" top="30" width="63" height="50" cssclass="btn_WF_RowAdd" right="30"/>
+        <Button id="Button00_00" taborder="0" text="행삭제" top="30" width="63" height="50" cssclass="btn_WF_RowDel" right="Button00:20"/>
+        <Button id="Button00_00_00" taborder="2" text="커스컴버튼" top="30" width="105" height="50" cssclass="btn_WF_Custom" right="Button00_00:5"/>
+        <Static id="Static03" taborder="3" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_01" taborder="4" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02" taborder="5" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="6" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Grid id="Grid00" taborder="7" left="30" top="Button00_00_00:20" right="30" cssclass="grd_WF_SearchBoard" binddataset="Dataset00" autofittype="col" bottom="0">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="420"/>
+              </Columns>
+              <Rows>
+                <Row size="50"/>
+                <Row size="55"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="2022년 2월 10일 목 주간보고"/>
+                <Cell row="1" text="홍길동 ｜ 2022.02.10 09: 30 ｜ 첨부파일 0건" cssclass="cell_WF_Line"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	Temp04.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/21
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/21			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+//조회
+this.cfnSearch = function ()
+{
+	//TODO..
+};
+
+//저장
+this.cfnSave = function ()
+{
+	//TODO..
+};
+
+//추가
+this.cfnAdd = function ()
+{
+	//TODO..
+};
+
+//삭제
+this.cfnDel = function ()
+{
+	//TODO..
+};
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/]]></Script>
+  </Form>
+</FDL>

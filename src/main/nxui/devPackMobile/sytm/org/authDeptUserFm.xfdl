@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="authDeptUserFm" width="480" height="770" onload="authDeptUserFm_onload" titletext="조직도">
+    <Layouts>
+      <Layout height="770" mobileorientation="portrait" screenid="mobile" width="480">
+        <Grid id="grdDeptUserList" taborder="0" left="30" top="30" right="30" treeusecheckbox="false" cssclass="grd_WF_Organization" binddataset="dsDeptUserList" treeinitstatus="expand,null" height="740" oncellclick="grdDeptUserList_oncellclick" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="209"/>
+                <Column size="88"/>
+                <Column size="97"/>
+              </Columns>
+              <Rows>
+                <Row size="45"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:KORN_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:DEPT_LVL" cssclass="expr:TYPE == 'D'  ? 'cell_WF_Only' : ''"/>
+                <Cell col="1" text="expr:WKDT_CD == '0050' ? WKGD_NM : WKDT_NM"/>
+                <Cell col="2" text="bind:EMP_NO"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02_01" taborder="1" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static03" taborder="2" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_00_00" taborder="3" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_01_00" taborder="4" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	authDeptUserFm.xfdl 
+*  @Creator 	mobile_consulting
+*  @CreateDate 	2022/04/25
+*  @Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2022.04.25     	mobile_consulting		 	최초 생성 
+*******************************************************************************
+*/
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+this.objApp = nexacro.getApplication();
+ 
+ /************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose)
+ ************************************************************************************************/
+/**
+ * @description 화면 onload시 처리내역(필수)
+*/
+this.authDeptUserFm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(this);
+	//재직중인 사용자
+	this.dsDeptUserCond.setColumn(0, "HOOF_STAT_CD", "HO");
+	//부서 사용 여부
+	this.dsDeptUserCond.setColumn(0, "DEPT_YN", '1');
+	//사용자 리스트는 부서 조회 CallBack에서 수행
+	this.cfnSearch();
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+//조회
+this.cfnSearch = function ()
+{
+	this.fnTranSearchDeptUser();
+};
+
+/************************************************************************************************
+ * CRUD 및 TRANSACTION 서비스 호출 처리
+ ************************************************************************************************/
+ //부서 및 사용자 조회
+this.fnTranSearchDeptUser = function()
+{
+	var strSvcId    = "searchDeptUserList2";
+	var strSvcUrl   = "searchDeptUserList2.do";
+	var inData      = "dsCond=dsDeptUserCond";
+	var outData     = "dsDeptUserList=dsList";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]
+}
+
+//선택한 사용자 조회
+this.fnTranSearchUser = function()
+{
+	var strSvcId    = "searchUserInfo";
+	var strSvcUrl   = "searchUserInfo.do";
+	var inData      = "dsCond=dsUserCond";
+	var outData     = "dsUserInfo=dsList";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]	
+}
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분(Transaction, Popup)
+ ************************************************************************************************/
+/**
+ * @description Transaction CallBack 함수(선택)
+*/
+this.fnCallback = function(svcID,errorCode,errorMsg)
+{
+	// 에러 시 화면 처리 내역
+	if(errorCode != 0){
+		return;
+	}
+	
+	switch(svcID)
+	{
+		case "searchDeptUserList2":
+			this.fnSetDsDeptUserList();
+			break;
+		
+		case "searchUserInfo":
+			this.fnOpenUserInfoPu();
+			
+		default :
+			break;
+	}
+};
+
+//popup Callback
+this.fnPopupCallback = function (sPopupId, sRtn)
+{
+	
+};
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+this.fnSetDsDeptUserList = function()
+{
+	this.gfnSetGrdResize(this.grdDeptUserList, this.grdDeptUserList.rowcount);
+	this.gfnResizeComp(this, true);
+}
+
+/**
+사용자 상세 팝업오픈
+ */
+ 
+this.fnOpenUserInfoPu = function ()
+{
+	//(sPopupId, sUrl, oArg, sPopupCallback, oOption)
+	
+	var spopupId = "";
+	var sUrl = "";
+	var oArg = {};
+	var sPopupCallback = "";
+	var oOption = {};
+	
+	
+	var sWKDT = this.dsUserInfo.getColumn(0, "WKDT_CD");
+	var sWKGD = sWKDT == "0050" ? this.dsUserInfo.getColumn(0, "WKGD_NM") : this.dsUserInfo.getColumn(0, "WKDT_NM");
+	
+	var sTitle = this.dsUserInfo.getColumn(0, "KORN_NM") + " " + sWKGD;
+	
+	oOption	= {title :"사용자 상세"
+	,isDetail:false};
+
+	oArg.title = sTitle;
+	oArg.ds = this.dsUserInfo;
+	
+	sPopupId = "userInfo";
+	sUrl	 = "sytm::org/authUserDetailPu.xfdl";
+	sPopupCallback = "fnPopupCallback";
+	
+	this.gfnOpenPopupM(sPopupId, sUrl, oArg, sPopupCallback, oOption);
+}
+
+this.fnClose = function()
+{
+}
+ /************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+
+this.grdDeptUserList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objDs = obj.getBindDataset();
+	
+	if(obj.isTreeLeafRow(e.row))
+	{
+		var sUserId = objDs.getColumn(e.row, "USER_ID");
+		var sEmpNo = objDs.getColumn(e.row, "EMP_NO");
+		if(this.gfnIsNull(sUserId)) return;
+		
+		this.dsUserCond.setColumn(0, "USER_ID", sUserId);
+		this.dsUserCond.setColumn(0, "EMP_NO", sEmpNo);
+
+		this.fnTranSearchUser();
+	}
+
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsUserInfo">
+        <ColumnInfo>
+          <Column id="WKDT_CD" type="string" size="32"/>
+          <Column id="OCCU_CD" type="string" size="32"/>
+          <Column id="JOIN_DATE" type="string" size="32"/>
+          <Column id="BASC_ADDR" type="undefined" size="0"/>
+          <Column id="USER_ID" type="string" size="32"/>
+          <Column id="DEPT_NM" type="string" size="32"/>
+          <Column id="RETR_DATE" type="undefined" size="0"/>
+          <Column id="EMAIL" type="undefined" size="0"/>
+          <Column id="THEME_ID" type="undefined" size="0"/>
+          <Column id="WKGD_NM" type="string" size="32"/>
+          <Column id="HUS_TELP_NUMB" type="undefined" size="0"/>
+          <Column id="KORN_NM" type="string" size="32"/>
+          <Column id="EMP_NO" type="string" size="32"/>
+          <Column id="CELL_NUMB" type="string" size="32"/>
+          <Column id="USER_FLAG_CD" type="string" size="32"/>
+          <Column id="ENGL_NM" type="undefined" size="0"/>
+          <Column id="WKDT_NM" type="string" size="32"/>
+          <Column id="ZIP_NUMB" type="undefined" size="0"/>
+          <Column id="WKGD_CD" type="string" size="32"/>
+          <Column id="DEPT_CD" type="string" size="32"/>
+          <Column id="REGI_NUMB" type="undefined" size="0"/>
+          <Column id="BIR_DT" type="string" size="32"/>
+          <Column id="DTL_ADDR" type="undefined" size="0"/>
+          <Column id="PASSWORD" type="string" size="32"/>
+          <Column id="WKPL_TELP_NUMB" type="undefined" size="0"/>
+          <Column id="HOOF_STAT_CD" type="string" size="32"/>
+          <Column id="PHONE3" type="string" size="32"/>
+          <Column id="CHAG_WORK" type="undefined" size="0"/>
+          <Column id="PHONE2" type="string" size="32"/>
+          <Column id="PHONE1" type="string" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDeptUserCond">
+        <ColumnInfo>
+          <Column id="USER_ID" type="STRING" size="256"/>
+          <Column id="USER_NM" type="STRING" size="256"/>
+          <Column id="EMP_NO" type="STRING" size="256"/>
+          <Column id="HOOF_STAT_CD" type="STRING" size="256"/>
+          <Column id="DEPT_CD" type="STRING" size="256"/>
+          <Column id="DEPT_YN" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDeptUserList">
+        <ColumnInfo>
+          <Column id="DEPT_ORDR" type="bigdecimal" size="16"/>
+          <Column id="WKDT_CD" type="string" size="32"/>
+          <Column id="DEPT_LVL" type="bigdecimal" size="16"/>
+          <Column id="WKDT_NM" type="string" size="32"/>
+          <Column id="USER_ID" type="undefined" size="0"/>
+          <Column id="ROW_ORDER" type="bigdecimal" size="16"/>
+          <Column id="WKGD_CD" type="string" size="32"/>
+          <Column id="DEPT_CD" type="string" size="32"/>
+          <Column id="WKGD_NM" type="string" size="32"/>
+          <Column id="KORN_NM" type="string" size="32"/>
+          <Column id="HIPO_DEPT_NM" type="undefined" size="0"/>
+          <Column id="EMP_NO" type="undefined" size="0"/>
+          <Column id="TYPE" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsUserCond">
+        <ColumnInfo>
+          <Column id="USER_ID" type="STRING" size="256"/>
+          <Column id="USER_NM" type="STRING" size="256"/>
+          <Column id="EMP_NO" type="STRING" size="256"/>
+          <Column id="HOOF_STAT_CD" type="STRING" size="256"/>
+          <Column id="DEPT_CD" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

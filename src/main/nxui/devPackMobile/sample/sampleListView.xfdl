@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sampleListView" width="480" height="768" titletext="리스트뷰" onload="form_onload">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" width="480">
+        <ListView id="lstList" taborder="0" left="5" top="60" right="5" bottom="3" binddataset="dsList" bandinitstatus="collapse" bandexpandtype="accordion" oncellclick="lstList_oncellclick" onbandstatuschanged="lstList_onbandstatuschanged" formatid="default">
+          <Formats>
+            <Format id="default">
+              <Band id="body" left="0" width="100%" top="0" height="50" expandbartype="true" expandbarsize="50 50">
+                <Cell id="Cell00" left="10" top="6" width="155" height="35" text="bind:ORG_NM" font="bold 14pt/normal &quot;맑은 고딕&quot;,&quot;Noto Sans KR&quot;,&quot;Helvetica&quot;"/>
+                <Cell id="Cell01" left="172" top="6" height="35" text="bind:EMP_NM" right="60"/>
+              </Band>
+              <Band id="detail" left="0" width="100%" top="0" height="180">
+                <Cell id="Cell00" left="10" top="10" width="90" displaytype="imagecontrol" text="bind:IMG_URL" bottom="10"/>
+                <Cell id="Cell01" left="110" top="10" width="80" height="40" text="성명 :"/>
+                <Cell id="Cell02" left="197" top="10" width="257" height="40" text="bind:EMP_NM"/>
+                <Cell id="Cell03" left="110" top="49" width="80" height="40" text="직위 :"/>
+                <Cell id="Cell04" left="197" top="49" width="257" height="40" text="bind:JOB_NM"/>
+                <Cell id="Cell05" left="110" top="88" width="80" height="40" text="Tel :"/>
+                <Cell id="Cell06" left="197" top="88" width="257" height="40" text="bind:TEL_NO"/>
+                <Cell id="Cell07" left="110" top="127" width="80" height="40" text="E-mail :"/>
+                <Cell id="Cell08" left="197" top="127" width="257" height="40" text="bind:EMAIL"/>
+              </Band>
+            </Format>
+            <Format id="cross">
+              <Band id="body" left="0" width="50%" top="0" height="210" border="0px none,1px solid #dbdee2,1px solid #dbdee2,0px none">
+                <Cell id="Cell00" left="93" top="10" height="35" text="bind:ORG_NM" right="10"/>
+                <Cell id="Cell02" left="10" top="10" width="90" displaytype="imagecontrol" text="bind:IMG_URL" height="95"/>
+                <Cell id="Cell06" left="93" top="41" height="25" text="bind:JOB_NM" font="bold 10pt/normal &quot;맑은 고딕&quot;,&quot;Noto Sans KR&quot;,&quot;Helvetica&quot;" width="130"/>
+                <Cell id="Cell04" left="103" top="60" height="35" text="bind:EMP_NM" right="10"/>
+                <Cell id="Cell07" left="10" top="94" width="68" height="35" text="Tel."/>
+                <Cell id="Cell08" left="10" top="117" height="35" text="bind:TEL_NO" right="5" font="bold 10pt/normal &quot;맑은 고딕&quot;,&quot;Noto Sans KR&quot;,&quot;Helvetica&quot;"/>
+                <Cell id="Cell09" left="10" top="150" width="68" height="35" text="E-mail :"/>
+                <Cell id="Cell10" left="10" top="173" height="35" text="bind:EMAIL" right="5" font="bold 10pt/normal &quot;맑은 고딕&quot;,&quot;Noto Sans KR&quot;,&quot;Helvetica&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </ListView>
+        <Button id="btnList" taborder="1" text="≡" left="375" top="5" width="50" height="50" onclick="btnList_onclick" cssclass="btn_Bottom_On"/>
+        <Button id="btnCross" taborder="2" text="▦" top="5" height="50" width="50" cssclass="btn_Bottom_Off" onclick="btnCross_onclick" left="425"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="EMP_NO" type="STRING" size="256"/>
+          <Column id="ORG_NM" type="STRING" size="256"/>
+          <Column id="EMP_NM" type="STRING" size="256"/>
+          <Column id="IMG_URL" type="STRING" size="256"/>
+          <Column id="JOB_NM" type="STRING" size="256"/>
+          <Column id="TEL_NO" type="STRING" size="256"/>
+          <Column id="EMAIL" type="STRING" size="256"/>
+          <Column id="BRITHDAY" type="STRING" size="256"/>
+          <Column id="REMARK" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ORG_NM">투비소프트</Col>
+            <Col id="EMP_NM">홍길동</Col>
+            <Col id="IMG_URL"/>
+            <Col id="JOB_NM">대표이사</Col>
+            <Col id="EMP_NO">01070101</Col>
+            <Col id="TEL_NO">010-1111-1234</Col>
+            <Col id="EMAIL">ceo@tobesoft.com</Col>
+            <Col id="BRITHDAY">19650105</Col>
+            <Col id="REMARK">비고1</Col>
+          </Row>
+          <Row>
+            <Col id="ORG_NM">연구소</Col>
+            <Col id="EMP_NM">김철수</Col>
+            <Col id="IMG_URL"/>
+            <Col id="JOB_NM">소장</Col>
+            <Col id="EMP_NO">01070102</Col>
+            <Col id="TEL_NO">010-2222-2345</Col>
+            <Col id="EMAIL">CheolsuKim@tobesoft.com</Col>
+            <Col id="BRITHDAY">20180725</Col>
+            <Col id="REMARK">비고2</Col>
+          </Row>
+          <Row>
+            <Col id="ORG_NM">기획부</Col>
+            <Col id="EMP_NM">김영희</Col>
+            <Col id="IMG_URL"/>
+            <Col id="JOB_NM">부서장</Col>
+            <Col id="EMP_NO">01070103</Col>
+            <Col id="TEL_NO">010-3333-4567</Col>
+            <Col id="EMAIL">YeonghuiKim@tobesoft.com</Col>
+            <Col id="BRITHDAY">20180725</Col>
+            <Col id="REMARK">비고3</Col>
+          </Row>
+          <Row>
+            <Col id="ORG_NM">구현부</Col>
+            <Col id="EMP_NM">박길동</Col>
+            <Col id="IMG_URL"/>
+            <Col id="JOB_NM">부서장</Col>
+            <Col id="EMP_NO">01070104</Col>
+            <Col id="TEL_NO">010-4444-5555</Col>
+            <Col id="EMAIL">GildongPark@tobesoft.com</Col>
+            <Col id="BRITHDAY">20180725</Col>
+            <Col id="REMARK">비고4</Col>
+          </Row>
+          <Row>
+            <Col id="ORG_NM">지원부</Col>
+            <Col id="EMP_NM">강철수</Col>
+            <Col id="IMG_URL"/>
+            <Col id="JOB_NM">부서장</Col>
+            <Col id="EMP_NO">01070105</Col>
+            <Col id="TEL_NO">010-5555-9874</Col>
+            <Col id="EMAIL">Cheolsu@tobesoft.com</Col>
+            <Col id="BRITHDAY">20180725</Col>
+            <Col id="REMARK">비고5</Col>
+          </Row>
+          <Row>
+            <Col id="IMG_URL"/>
+            <Col id="ORG_NM">관리본부</Col>
+            <Col id="EMP_NM">김관리</Col>
+            <Col id="JOB_NM">본부장</Col>
+            <Col id="EMP_NO">01070106</Col>
+            <Col id="TEL_NO">010-6666-9632</Col>
+            <Col id="EMAIL">Gwanri@tobesoft.com</Col>
+            <Col id="BRITHDAY">20180725</Col>
+            <Col id="REMARK">비고6</Col>
+          </Row>
+          <Row>
+            <Col id="IMG_URL"/>
+            <Col id="ORG_NM">인사팀</Col>
+            <Col id="EMP_NM">김인사</Col>
+            <Col id="JOB_NM">팀장</Col>
+            <Col id="EMP_NO">01070107</Col>
+            <Col id="TEL_NO">010-7777-0258</Col>
+            <Col id="EMAIL">KimInsa@tobesoft.com</Col>
+            <Col id="BRITHDAY">20180725</Col>
+            <Col id="REMARK">비고7</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	sampleListView.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.04
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.04			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvExpandRow = -1;
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+this.lstList_oncellclick = function(obj:nexacro.ListView,e:nexacro.ListViewClickEventInfo)
+{
+	// 셀 클릭시 expand/collapse 되도록 설정. 왜 getDetailBandStatus()함수가 없는걸까...
+	if (this.fvExpandRow == e.row) {
+		this.lstList.hideDetailBand(e.row);
+	} else {
+		this.lstList.showDetailBand(e.row);
+	}
+};
+
+this.lstList_onbandstatuschanged = function(obj:nexacro.ListView,e:nexacro.ListViewBandStatusEventInfo)
+{
+	if (e.bandstatus == "expand") {
+		this.fvExpandRow = e.row;
+	} else {
+		if (this.fvExpandRow == e.row)	this.fvExpandRow = -1;
+	}
+};
+
+this.btnList_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.btnList.set_cssclass("btn_Bottom_On");
+	this.btnCross.set_cssclass("btn_Bottom_Off");
+	this.lstList.set_formatid("default");
+};
+
+this.btnCross_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.btnList.set_cssclass("btn_Bottom_Off");
+	this.btnCross.set_cssclass("btn_Bottom_On");
+	this.lstList.set_formatid("cross");
+};]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp01" width="480" height="700" titletext="Theme Settings">
+    <Layouts>
+      <Layout height="700" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="1" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static00_00" taborder="2" text="테마설정" left="30" top="30" width="120" height="50" cssclass="sta_WF_Label"/>
+        <Button id="Button00" taborder="3" text="저장" left="30" height="60" cssclass="btn_WF_Full" right="30" bottom="40"/>
+        <Static id="Static02_01_01_01_00_00" taborder="4" text="H40" left="0" top="660" cssclass="sta_WF_GSize" visible="false" right="0" height="40"/>
+        <Button id="Button01" taborder="5" text="라이트 모드" left="30" top="80" height="60" cssclass="btn_WF_RdoS" right="50%"/>
+        <Button id="Button01_00" taborder="6" text="다크 모드" top="80" height="60" cssclass="btn_WF_Rdo" left="Button01:0" right="30"/>
+        <Static id="Static03" taborder="7" left="0" top="0" height="10" cssclass="sta_WF_Boundary" right="0"/>
+        <Static id="Static02_01_01_00" taborder="8" text="H20" left="0" top="10" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

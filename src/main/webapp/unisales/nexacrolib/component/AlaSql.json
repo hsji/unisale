@@ -1,0 +1,13 @@
+﻿{
+	"name": "alasql",
+	"version": "17.0.0.800",
+	"description": "https://alasql.org/ opensource",
+	"license": "",
+	"scripts": [
+		"AlaSql/alasql.js"
+	],
+	"objInfo": [
+	],
+	"designscripts": [
+	]
+}

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="cmmPopupMobile" width="410" height="260" titletext="팝업샘플" onload="form_onload">
+    <Layouts>
+      <Layout height="260" mobileorientation="portrait" width="410">
+        <Edit id="edtRtn" taborder="0" left="48" top="87" width="219" height="46" value="가나다123" text="가나다123"/>
+        <Static id="sta00" taborder="1" left="0" top="0" height="50" background="black" right="0"/>
+        <Button id="btnClose" taborder="2" text="X" width="89" height="46" onclick="btnClose_onclick" top="1" right="3"/>
+        <Button id="btnOk" taborder="3" text="확인" left="147" top="171" width="120" height="50" onclick="btnOk_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	cmmPopupMobile.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.03
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.03			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoadM(obj); //필수함수
+	
+	trace("paramTitle : " + this.getOwnerFrame().paramTitle);	
+    trace("paramCode : " + this.getOwnerFrame().paramCode);	
+    trace("paramNum : " + this.getOwnerFrame().paramNum);	
+	trace("paramUrl : " + this.getOwnerFrame().paramUrl);	
+	
+	//타이틀세팅
+	if( !this.gfnIsNull(this.getOwnerFrame().paramTitle)){
+		this.set_titletext(this.getOwnerFrame().paramTitle);
+	}
+	//divForm url 세팅
+	if( !this.gfnIsNull(this.getOwnerFrame().paramUrl)){
+		this.divForm.set_url(this.getOwnerFrame().paramUrl);
+	}
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+/**
+ * @description popup close
+*/
+this.btnClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var strReturnValue = this.edtRtn.value;
+	this.close(strReturnValue);
+};
+
+this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var rtnObj = {a:"aaaa",b:"bbbb"};
+	this.gfnClose(rtnObj);	
+};]]></Script>
+  </Form>
+</FDL>

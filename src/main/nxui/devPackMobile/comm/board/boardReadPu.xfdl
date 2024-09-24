@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="boardReadPu" width="480" height="720" titletext="게시판 상세조회" onload="form_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="portrait" screenid="mobile" width="480">
+        <Static id="Static02" taborder="0" text="W30" left="451" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_00" taborder="1" text="W30" left="0" top="0" width="30" cssclass="sta_WF_GSize" visible="false" bottom="0"/>
+        <Static id="Static02_01_01_00" taborder="8" text="H20" left="0" cssclass="sta_WF_GSize" visible="false" right="0" height="20" top="0"/>
+        <Static id="staTitle" taborder="2" top="Static02_01_01_00:4" height="24" cssclass="sta_WF_ConTit" left="30" right="30"/>
+        <Static id="staInfo" taborder="4" left="30" top="staTitle:16" height="20" cssclass="sta_WF_ConSub" right="30" text=""/>
+        <Static id="Static00" taborder="6" left="30" top="staInfo:15" height="1" cssclass="sta_WF_ConLine" right="30"/>
+        <Static id="Static02_01_01" taborder="3" text="H20" left="0" top="Static00:0" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <WebBrowser id="web00" taborder="10" left="30" top="Static02_01_01:0" right="30" onloadcompleted="web00_onloadcompleted" bottom="210"/>
+        <Div id="divFile" taborder="12" left="30" cssclass="div_WF_Attachment" right="30" height="70" visible="false" top="web00:20">
+          <Layouts>
+            <Layout>
+              <Grid id="grdFile" taborder="0" cssclass="grd_WF_Attachment" left="15" top="10" right="15" bottom="10" autofittype="col" binddataset="dsFile" oncellclick="divFile_grdFile_oncellclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="48"/>
+                      <Column size="327"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="48"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell displaytype="imagecontrol" cssclass="Icon_Attachment"/>
+                      <Cell col="1" text="expr:OTXT_FILE_NM"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divBtn" taborder="11" left="29" width="423" height="60" visible="false" top="divFile:20">
+          <Layouts>
+            <Layout>
+              <Button id="btnModi" taborder="0" text="수정" left="0" top="0" height="60" cssclass="btn_WF_Revised" onclick="divBtn_btnModi_onclick" right="52.72%"/>
+              <Button id="btnDelete" taborder="1" text="삭제" top="0" height="60" cssclass="btn_WF_Full" onclick="divBtn_btnDelete_onclick" left="btnModi:23" right="0"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02_01_01_01" taborder="5" left="0" visible="true" right="0" height="40" top="divBtn:0"/>
+        <Static id="Static02_01_01_00_00" taborder="7" text="H20" left="0" top="510" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+        <Static id="Static02_01_01_00_00_00" taborder="9" text="H20" left="0" top="600" cssclass="sta_WF_GSize" visible="false" right="0" height="20"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @FileName 	boardPu.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022/04/08
+*  @Desction   설명
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022/04/08		    TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvApndYn	= ""; //파일첨부여부
+this.fvBoardCd	= ""; //게시판코드
+this.fvNotiNo	= ""; //게시물번호
+this.fvOpenType	= ""; //오픈타입
+this.fvMgrCd	= ""; //관리자ID
+
+this.fvLoginUser	  = ""; //로그인유저ID
+this.fvLoginUserEmpNo = ""; //로그인유저EMP_NO
+
+this.fvFileRow	= ""; //파일다운 시 선택한 row저장
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//필수함수
+	this.gfnFormOnLoadM(obj,e);
+	
+	this.fvApndYn	= this.getOwnerFrame().pvApndYn;
+	this.fvBoardCd	= this.getOwnerFrame().pvBoardCd;
+	this.fvNotiNo	= this.getOwnerFrame().pvNotiNo;
+	this.fvOpenType	= this.getOwnerFrame().pvOpenType;
+	this.fvMgrCd	= this.getOwnerFrame().pvMgrCd;
+
+	this.fvLoginUser	  = nexacro.getApplication().gdsUser.getColumn(0,"USER_ID"); //로그인유저ID
+	this.fvLoginUserEmpNo = nexacro.getApplication().gdsUser.getColumn(0,"EMP_NO"); //로그인유저EMP_NO
+	
+	//첨부파일 유무
+	this.fnSetApndYn(this.fvApndYn);	
+	
+	//게시물 내용 조회
+	this.fnGetContentsTran();	
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+//조회
+this.fnGetContentsTran = function ()
+{
+	this.dsCond.clearData();
+	var nRow = this.dsCond.addRow();
+	this.dsCond.setColumn(nRow, "BOARD_CD", this.fvBoardCd);
+	this.dsCond.setColumn(nRow, "NOTI_NO", this.fvNotiNo);
+	
+	var strSvcId    = "searchBoardContentDetail";
+	var strSvcUrl   = "searchBoardContentDetail.do";
+	var inData      = "dsCond=dsCond";
+	var outData     = "dsList=dsList dsFile=dsFile";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]
+};
+
+//삭제
+this.fnTranDelete = function ()
+{
+	var strSvcId    = "delete";
+	var strSvcUrl   = "saveBoardContents.do";
+	var inData      = "dsList=dsList:A";
+	var outData     = "";
+	var strArg      = "";	
+	var callBackFnc = "fnCallback";
+	
+	this.gfnTransaction( strSvcId , 	// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력갑스로 보낼 arguments, strFormData="20120607"
+						callBackFnc); 	// 통신방법 정의 [생략가능]
+};
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+//Transaction Callback
+this.fnCallback = function(sSvcId, nErrCd, nErrMsg)
+{
+	switch(sSvcId) {
+		case "searchBoardContentDetail" :
+			this.fnSetContents();
+			break;
+		case "delete" :
+			this.gfnAlert("msg.delete.success");
+			nexacro.getApplication().gvPopup.close();			
+			break;
+	}
+};
+
+//message Callback
+this.fnMsgCallback = function(sMsgId, sRtn)
+{
+	if(sRtn=="false" || sRtn==false || this.gfnIsNull(sRtn)){
+		return;
+	}
+	
+	switch(sMsgId) {
+		case "fileDownload" :
+			var sFileId 	= this.dsFile.getColumn(this.fvFileRow, "FILE_ID");
+			var sFileNm 	= this.dsFile.getColumn(this.fvFileRow, "OTXT_FILE_NM");
+			var sSaveFileNm = this.dsFile.getColumn(this.fvFileRow, "SAVE_FILE_NM");
+			if( !this.gfnIsNull(sFileId)){
+				this.fdtFile.setPostData("saveFileName"	, sSaveFileNm);
+				this.fdtFile.setPostData("orgFileName"	, sFileNm);
+				
+				this.fdtFile.set_downloadfilename(sFileNm)
+				this.fdtFile.download("svcUrl::fileDownload.do");
+			}else{
+				this.gfnAlert("msg.err.nofile");
+				return;
+			}	
+		
+			break;
+			
+		case "delete" :
+			this.dsList.setColumn(0, "STATUS", "delete");
+			this.fnTranDelete();
+			break;
+	}
+}
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+//첨부파일 유무
+this.fnSetApndYn = function(sApndYn)
+{
+	//divFile은 첨부파일 유무에 따라 달라지기 때문에 동일하게 설정.
+	this.web00.set_bottom("120px");	
+	
+	//첨부파일 없음
+	if(sApndYn == "0"){
+		this.divFile.set_height("0");
+		this.divBtn.set_top("web00:20px");
+	}else if(sApndYn == "1"){
+		this.divFile.set_visible(true);
+		this.divFile.set_height("0");		
+		this.divBtn.set_top("divFile:20px");
+	}	
+		this.resetScroll();	
+};
+
+//데이터 셋팅
+this.fnSetContents = function()
+{
+	//HTML viewer 생성
+	var oWeb = this.web00;
+	this.gfnCreateHtmlViewer(oWeb);		
+	
+	//Title
+	this.staTitle.set_fittocontents("height");
+	this.resetScroll();
+	
+	//divBtn보이기/숨기기(작성자/관리자일 때만)
+	var sInputUser = this.dsList.getColumn(0,"INPT_ID"); //작성자
+	var btnVisible = "";
+	if(sInputUser==this.fvLoginUser || this.fvMgrCd==this.fvLoginUser){
+		this.divBtn.set_visible(true);
+		this.resetScroll();
+	}else if(sInputUser!=this.fvLoginUser || this.fvMgrCd!=this.fvLoginUser) {
+		this.divBtn.set_visible(false);
+		this.resetScroll();
+	}	
+	
+	var sUser		= this.dsList.getColumn(0,"INPT_EMP_NO").substr(0, this.dsList.getColumn(0,"INPT_EMP_NO").indexOf("("));
+	var sDate		= this.dsList.getColumn(0,"INPT_DTTM")+"";
+	var sWriteDt	= sDate.substr(0,4) + "." + sDate.substr(4,2) + "." +sDate.substr(6,2);
+	var sTime		= sDate.substr(8,2);
+	var sMinutes	= sDate.substr(10,2);
+	var sDay		= this.gfnGetDayKor(sWriteDt);//시작요일
+
+	//작성자|날짜  + 첨부파일 갯수 셋팅
+	var sInfo = sUser + " | " + sWriteDt+"("+sDay+") "+sTime+":"+sMinutes;
+	
+	var nFileCount	= this.dsFile.getRowCount();
+	if(this.fvApndYn=="1"){
+		sInfo = sInfo +  " | 첨부파일 " + nFileCount;
+		//divFile 사이즈 조절
+		this.fnDivFileSetSize();
+	}
+	this.staInfo.set_text(sInfo); 	
+};
+
+//divFile 사이즈 조절
+this.fnDivFileSetSize = function()
+{
+	var nRow = this.dsFile.getRowCount();
+
+	if(nRow==0) {
+		this.divFile.set_height("0");
+	}else{
+		this.web00.set_bottom("210px");
+		this.divFile.set_height(48*nRow+22);
+	}
+	this.resetScroll();	
+};
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+//웹브라우저 load complete
+this.web00_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	//내용세팅
+	var sContents = this.dsList.getColumn(0, "CNTN");
+	var oWeb = this.web00;
+	this.gfnSetHtmlView(oWeb, sContents);		
+};
+
+//파일 다운로드
+this.divFile_grdFile_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.gfnAlert("confirm.before.filedownload",[],"fileDownload", "fnMsgCallback");	
+	
+	this.fvFileRow = e.row;	
+};
+
+//파일 다운로드트랜스퍼 온에러
+this.fdtFile_onerror = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferErrorEventInfo)
+{
+	this.gfnAlert("msg.file.downloadfail");		
+};
+
+
+//수정버튼
+this.divBtn_btnModi_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	nexacro.getApplication().gvPopup.close("rUpdate");
+};
+
+//삭제버튼
+this.divBtn_btnDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfnAlert("confirm.before.delete",[],"delete", "fnMsgCallback");	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsCond">
+        <ColumnInfo>
+          <Column id="BOARD_CD" type="STRING" size="256"/>
+          <Column id="NOTI_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="INPT_EMP_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsFile"/>
+      <FileDownTransfer id="fdtFile" url="svcUrl::fileDownload.do" onerror="fdtFile_onerror" onsuccess="fdtFile_onsuccess"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="staTitle" propid="text" datasetid="dsList" columnid="TITLE"/>
+    </Bind>
+  </Form>
+</FDL>

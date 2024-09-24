@@ -1,0 +1,2735 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XCSS version="1.0"><![CDATA[/***********************************************************************/
+/***** PROJECT NAME : 투비소프트 템플릿			********/
+/***** CREATION DATES : 2022. 02				********/
+/***** DRAFTER : TOBESOFT Design Team 				********/
+/***** DISTRIBUTION DATE : 					********/
+/***** 1st AMENDER : 						********/
+/***** 1st MODIFICATION DATE : 					********/
+/***********************************************************************/
+
+/*******************************************************************/
+/*******************	FRAME START	****************************/
+/*******************************************************************/
+.Form
+{
+	-nexa-border : 0px none;
+	background : #FFFFFF;
+	color : #000000;
+	font : 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Form[userstatus=contents]
+{
+	background : transparent;
+}
+/*******************************************************************/
+/*******************	FRAME END	****************************/
+/*******************************************************************/
+
+/***************************************************************************/
+/*******************	BASE COMPONENT START	****************************/
+/***************************************************************************/
+/***** Button *****/
+.Button
+{
+	-nexa-border : 1px solid #707070;
+	-nexa-padding : 0px 12px 0px 12px;
+	-nexa-text-align : center;
+	background : #FFFFFF;
+	color : #585858;
+	letter-spacing : -1px;
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button[userstatus=pushed],.Button[userstatus=selected]
+{
+	background : #F2F2F2;
+	color : #585858;
+}
+.Button[status=disabled]
+{
+	opacity : 0.3;
+}
+/***** Calendar *****/
+.Calendar,
+.CalendarControl
+{
+	-nexa-border : 1px solid #D4D4D4;
+	background : #FFFFFF;
+}
+.Calendar[status=focused],
+.CalendarControl[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+	background : #FFFFFF;
+	color : #000000;
+}
+.Calendar[status=readonly],
+.CalendarControl[status=readonly]
+{
+	background : #F9F9F9;
+}
+.Calendar[status=disabled],
+.CalendarControl[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+	background : #F9F9F9;
+	color : #AEAEAE;
+}
+.Calendar .calendaredit,
+.Calendar .calendaredit[status=focused],.Calendar .calendaredit[status=readonly],
+.Calendar .calendaredit[status=disabled],
+.CalendarControl .calendaredit,
+.CalendarControl .calendaredit[status=focused],.CalendarControl .calendaredit[status=readonly],
+.CalendarControl .calendaredit[status=disabled]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 15px;
+	-nexa-text-align : left;
+	background : transparent;
+}
+.Calendar .calendaredit[userstatus=nulltext],
+.CalendarControl .calendaredit[userstatus=nulltext]
+{
+	color : #AEAEAE;
+}
+.Calendar .dropbutton,
+.Calendar .dropbutton[status=focused],.Calendar .dropbutton[userstatus=pushed],
+.Calendar .dropbutton[userstatus=selected],
+.CalendarControl .dropbutton,
+.CalendarControl .dropbutton[status=focused],.CalendarControl .dropbutton[userstatus=pushed],
+.CalendarControl .dropbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/cal_WF_DropBtn.png");
+}
+.Calendar .dropbutton[status=disabled],
+.CalendarControl .dropbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/cal_WF_DropBtnD.png");
+}
+.CalendarControl .calendarspindownbutton,
+.CalendarControl .calendarspindownbutton[status=focused],.Calendar .calendarspindownbutton[userstatus=pushed],
+.CalendarControl .calendarspindownbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/cal_WF_SpnDnBtn.png");
+}
+.CalendarControl .calendarspindownbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/cal_WF_SpnDnBtn.png");
+}
+.CalendarControl .calendarspinupbutton,
+.CalendarControl .calendarspinupbutton[status=focused],.Calendar .calendarspinupbutton[userstatus=pushed],
+.CalendarControl .calendarspinupbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/cal_WF_SpnUpBtn.png");
+}
+.CalendarControl .calendarspinupbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/cal_WF_SpnUpBtn.png");
+}
+/***** CheckBox *****/
+.CheckBox,
+.CheckBox[status=focused],.CheckBox[status=readonly],
+.CheckBoxControl,
+.CheckBoxControl[status=focused],.CheckBoxControl[status=readonly]
+{
+	-nexa-icon 		: URL("theme://images/chk_WF_box.png");
+	-nexa-text-padding 	: 0px 0px 0px 12px;
+}
+.CheckBox[userstatus=selected],
+.CheckBoxControl[userstatus=selected]
+{
+	-nexa-icon 		: URL("theme://images/chk_WF_boxS.png");
+}
+.CheckBox[status=disabled],
+.CheckBoxControl[status=disabled]
+{
+	-nexa-icon 		: URL("theme://images/chk_WF_boxD.png");
+}
+.CheckBox[status=disabled][userstatus=selected],
+.CheckBoxControl[status=disabled][userstatus=selected]
+{
+	-nexa-icon 		: URL("theme://images/chk_WF_boxDS.png");
+}
+/***** Combo *****/
+.Combo,
+.ComboControl
+{
+	-nexa-border : 1px solid #D4D4D4;
+	background : #FFFFFF;
+}
+.Combo[status=mouseover],.Combo[status=focused],
+.ComboControl[status=mouseover],.ComboControl[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+	background : #FFFFFF;
+	color : #000000;
+}
+.Combo[status=readonly],
+.ComboControl[status=readonly]
+{
+	background : #F9F9F9;
+}
+.Combo[status=disabled],
+.ComboControl[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+	background : #F9F9F9;
+}
+.Combo .comboedit,
+.Combo .comboedit[status=focused],.Combo .comboedit[status=readonly],
+.ComboControl .comboedit,
+.ComboControl .comboedit[status=focused],.ComboControl .comboedit[status=readonly]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 15px;
+	background : transparent;
+}
+.Combo .comboedit[status=disabled],.Combo .comboedit[userstatus=nulltext],
+.ComboControl .comboedit[status=disabled],.ComboControl .comboedit[userstatus=nulltext]
+{
+	-nexa-border : 0px none;
+	color : #AEAEAE;
+}
+.Combo .dropbutton,
+.ComboControl .dropbutton,
+.Combo .dropbutton[userstatus=pushed],.Combo .dropbutton[userstatus=selected],
+.ComboControl .dropbutton[userstatus=pushed],.ComboControl .dropbutton[userstatus=selected]/*,
+.Combo.essential .dropbutton,
+.Combo.essential .dropbutton[status=mouseover],.Combo.essential .dropbutton[userstatus=pushed],
+.Combo.essential .dropbutton[userstatus=selected],.Combo.essential .dropbutton[status=focused]*/
+{
+	-nexa-icon : URL("theme://images/cbo_WF_Drop.png");
+	background : transparent;
+}
+.Combo .dropbutton[status=disabled],
+.ComboControl .dropbutton[status=disabled]
+{	
+	-nexa-icon : URL("theme://images/cbo_WF_DropD.png");
+}
+.Combo .combolist,
+.ComboControl .combolist
+{
+	-nexa-border : 1px solid #D4D4D4;
+	background : #FFFFFF;
+}
+.Combo .combolist .listboxitem,
+.ComboControl .combolist .listboxitem
+{
+	-nexa-padding : 10px 0px 10px 15px;
+	color : #000000;
+}
+.Combo .combolist .listboxitem[userstatus=selected],
+.ComboControl .combolist .listboxitem[userstatus=selected]
+{
+	background : #F1F3FF;
+}
+/***** Div *****/
+.Div
+{
+	background : transparent;
+}
+/***** Edit *****/
+.Edit,
+.EditControl
+{
+	-nexa-border : 1px solid #D4D4D4;
+	-nexa-padding : 0px 0px 0px 15px;
+	background : #FFFFFF;
+}
+.Edit[status=focused],
+.EditControl[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+	background : #FFFFFF;
+}
+.Edit[status=readonly],
+.EditControl[status=readonly]
+{
+	background : #F9F9F9;
+}
+.Edit[userstatus=nulltext],
+.EditControl[userstatus=nulltext]
+{
+	color : #AEAEAE;
+}
+.Edit[status=disabled],
+.EditControl[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+	background : #F9F9F9;
+	color : #AEAEAE;
+}
+/***** FileDownload *****/
+.FileDownload
+{
+	-nexa-padding : 0px 15px 0px 15px;
+	background : #646982;
+	color : #FFFFFF;
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.FileDownload[userstatus=pushed],.FileDownload[status=focused]
+{
+	background : #313340;
+}
+.FileDownload[status=disabled]
+{
+	opacity : 0.5;
+}
+/***** FileUpload *****/
+.FileUpload,
+.FileUpload[status=focused],.FileUpload[userstatus=selected]
+{
+	-nexa-border : 0px none;
+}
+.FileUpload[status=disabled]
+{
+	opacity : 0.5;
+}
+.FileUpload .fileuploaditem,
+.FileUpload .fileuploaditem[status=focused]
+{
+	-nexa-border : 0px none;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit,
+.FileUpload .fileuploaditem .fileuploaditemedit[status=focused],.FileUpload .fileuploaditem .fileuploaditemedit[status=readonly]
+{
+	background : #FFFFFF;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit[userstatus=nulltext]
+{
+	color : #AEAEAE;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton
+{
+	-nexa-padding : 0px 15px 0px 15px;
+	background : #646982;
+	color : #FFFFFF;
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[userstatus=pushed],.FileUpload .fileuploaditem .fileuploaditembutton[userstatus=selected],
+.FileUpload .fileuploaditem .fileuploaditembutton[status=focused]
+{
+	background : #313340;
+}
+/***** Grid *****/
+.Grid
+{
+	-nexa-border : 1px solid #313340, 1px solid #e1e2e7, 1px solid #e1e2e7, 1px solid #e1e2e7;
+}
+.Grid .head
+{
+	background : #f7f8fa;
+}
+.Grid .head .row .cell
+{
+	-nexa-border : 1px solid #e1e2e7;
+	-nexa-text-align : center;
+	color : #666666;
+	font : bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid .body .row .cell
+{
+	-nexa-border : 1px solid #eeeeee;
+	-nexa-padding : 4px 4px 4px 4px;
+}
+.Grid .body .row .cell[userstatus=selected]
+{
+	background : #F1F3FF;
+}
+.Grid .summary
+{
+	background : #b2b9c6;
+}
+.Grid .summary .row .cell
+{
+	-nexa-border : 1px solid #c8cdd7;
+	-nexa-padding : 4px 10px 4px 10px;
+	color : #FFFFFF;
+	font : bold 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+/*cellcontrol Start*/
+.GridCellControl .cellbutton
+{
+	-nexa-border : 1px solid #dddddd;
+	background : linear-gradient(to bottom,#FFFFFF,#f6f7f8);
+	border-radius : 1px;
+	color : #646982;
+	font : bold 13px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.GridCellControl .cellbutton[userstatus=pushed],
+.GridCellControl .cellbutton[userstatus=selected]
+{
+	-nexa-border : 1px solid #313340;
+}
+.GridCellControl .cellbutton[status=disabled]
+{
+	-nexa-border : 1px solid #eeeeee;
+	color : #aaaaaa;
+}
+.GridCellControl .cellexpandbutton,
+.GridCellControl .cellexpandbutton[status=focused],
+.GridCellControl .cellexpandbutton[userstatus=pushed],.GridCellControl .cellexpandbutton[userstatus=selected],
+.GridCellControl .cellexpandbutton[status=disabled]
+{
+	background : URL("theme://images/btn_WF_Search.png") no-repeat center transparent;
+}
+.GridCellControl .celltreeitem .treeitembutton[userstatus=expand]
+{
+	-nexa-icon : URL("theme://images/grd_WF_TreeClose.png");
+}
+.GridCellControl .celltreeitem .treeitembutton[userstatus=collapse]
+{
+	-nexa-icon : URL("theme://images/grd_WF_TreeOpen.png");
+}
+.GridCellControl .celltreeitem .treeitemimage[userstatus=leaf]
+{
+	-nexa-icon : URL("theme://images/grd_WF_TreeLeafImg.png");
+}
+.GridCellControl .celltreeline
+{
+	-nexa-border : 1px dotted #999999;
+}
+.GridCellControl .celltreeline[status=disabled]
+{
+	-nexa-border : 1px dotted #aeaeae;
+}
+/***** GropBox *****/
+.GroupBox .groupboxtitle
+{
+	-nexa-text-padding : 0px 5px 0px 5px;
+	background : #FFFFFF;
+}
+.GroupBox .groupboxtitle[status=disabled]
+{
+	color : #AEAEAE;
+}
+.GroupBox .groupboxcontents
+{
+	-nexa-border : 1px solid #D4D4D4;
+}
+.GroupBox .groupboxcontents[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+}
+/***** ImageViewer *****/
+.ImageViewer
+{
+	-nexa-border : 1px solid #D4D4D4;
+}
+.ImageViewer[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+}
+/***** ListBox *****/
+.ListBox
+{
+	-nexa-border : 1px solid #D4D4D4;
+	background : #FFFFFF;
+}
+.ListBox[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+	background : #F9F9F9;
+	color : #AEAEAE;
+}
+.ListBox .listboxitem,
+.ListBox .listboxitem[status=readonly],.ListBox .listboxitem[status=focused]
+{
+	-nexa-padding : 10px 0px 10px 15px;
+}
+.ListBox .listboxitem[userstatus=selected]
+{
+	background : #F1F3FF;
+	color : #000000;
+}
+.ListBox .listboxitem[status=disabled]
+{
+	color : #AEAEAE;
+}
+/***** ListView *****/
+.ListView,.ListView[status=focused],
+.ListView[status=disabled],.ListView[status=readonly]
+{
+	-nexa-border : 2px solid #3F3F47, 1px solid #D4D4D4, 1px solid #D4D4D4, 1px solid #D4D4D4;
+}
+.ListView .body,.ListView .body[status=disabled]
+{
+	-nexa-border : 0px none, 0px none, 1px solid #AEAEAE, 0px none;
+	background : #FFFFFF;
+}
+.ListView .body .cell,.ListView .body .cell[status=focused],
+.ListView .body .cell[status=disabled],.ListView .body .cell[status=readonly]
+{
+	-nexa-border : 0px none;
+}
+.ListView .detail
+{
+	background : #F4F5F9;
+}
+.ListView .body .expandbar,.ListView .body .expandbar[userstatus=expand],
+.ListViewControl .body .expandbar,.ListViewControl .body .expandbar[userstatus=expand]
+{
+	-nexa-icon : URL("theme://images/lstv_WF_Expand.png");
+}
+.ListView .body .expandbar[userstatus=collapse],
+.ListViewControl .body .expandbar[userstatus=collapse]
+{
+	-nexa-icon : URL("theme://images/lstv_WF_Collapse.png");
+}
+/***** MaskEdit *****/
+.MaskEdit,
+.MaskEditControl
+{
+	-nexa-border : 1px solid #D4D4D4;
+	-nexa-padding : 0px 15px 0px 0px;
+	-nexa-text-align: right;
+	background : #FFFFFF;
+}
+.MaskEdit[status=focused],
+.MaskEditControl[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+	background : #FFFFFF;
+	color : #000000;
+}
+.MaskEdit[status=readonly],
+.MaskEditControl[status=readonly]
+{
+	background : #F9F9F9;
+}
+.MaskEdit[userstatus=nulltext],
+.MaskEditControl[userstatus=nulltext]
+{
+	color : #AEAEAE;
+}
+.MaskEdit[status=disabled],
+.MaskEditControl[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+	background : #F9F9F9;
+	color : #AEAEAE;
+}
+/***** Menu *****/
+.Menu,
+.Menu[status=focused]
+{
+	background : transparent;
+}
+.Menu .prevbutton,
+.Menu .prevbutton[status=focused]
+{
+	background : URL("theme://images/mnu_WF_Prev.png") no-repeat center transparent;
+}
+.Menu .prevbutton[userstatus=pushed],.Menu .prevbutton[userstatus=selected]
+{
+	background : URL("theme://images/mnu_WF_Prev.png") no-repeat center #F4F5F9;
+}
+.Menu .prevbutton[status=disabled]
+{
+	background : URL("theme://images/mnu_WF_PrevD.png") no-repeat center transparent;
+}
+.Menu .nextbutton,
+.Menu .nextbutton[status=focused]
+{
+	background : URL("theme://images/mnu_WF_Next.png") no-repeat center transparent;
+}
+.Menu .nextbutton[userstatus=pushed],.Menu .nextbutton[userstatus=selected]
+{
+	background : URL("theme://images/mnu_WF_Next.png") no-repeat center #F4F5F9;
+}
+.Menu .nextbutton[status=disabled]
+{
+	background : URL("theme://images/mnu_WF_NextD.png") no-repeat center transparent;
+}
+.Menu .menuitem
+{
+	-nexa-padding : 0px 25px 0px 25px;
+	color : #000000;
+	font : 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Menu .menuitem[userstatus=selected],.Menu .menuitem[status=focused]
+{
+	color :#3815DC;
+	font : bold 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Menu .menuitem[status=disabled]
+{
+	opacity : 0.3;
+}
+/***** Plugin *****/
+.Plugin
+{
+}
+/***** PopupDiv *****/
+.PopupDiv
+{
+	background : transparent;
+}
+/***** PopupMenu *****/
+.PopupMenu
+{
+	-nexa-border : 1px solid #646982;
+	background : #FFFFFF;
+}
+.PopupMenu .prevbutton,
+.PopupMenu .prevbutton[status=focused],
+.PopupMenu .prevbutton[userstatus=pushed],.PopupMenu .prevbutton[userstatus=selected]
+{
+	background : URL("theme://images/pmnu_WF_Prev.png") no-repeat center #F4F5F9;
+}
+.PopupMenu .prevbutton[status=disabled]
+{
+	background : URL("theme://images/pmnu_WF_PrevD.png") no-repeat center #F4F5F9;
+}
+.PopupMenu .nextbutton,
+.PopupMenu .nextbutton[status=focused],
+.PopupMenu .nextbutton[userstatus=pushed],.PopupMenu .nextbutton[userstatus=selected]
+{
+	background : URL("theme://images/pmnu_WF_Next.png") no-repeat center #F4F5F9;
+}
+.PopupMenu .nextbutton[status=disabled]
+{
+	background : URL("theme://images/pmnu_WF_NextD.png") no-repeat center #F4F5F9;
+}
+.PopupMenu .popupmenuitem,
+.PopupMenu .popupmenuitem[status=focused],.PopupMenu .popupmenuitem[status=disabled]
+{
+	-nexa-padding : 20px 0px 20px 10px;
+}
+.PopupMenu .popupmenuitem[userstatus=selected]
+{
+	background : #F1F3FF;
+}
+.PopupMenu .popupmenuitem .popupmenuitemcheckbox,
+.PopupMenu .popupmenuitem .popupmenuitemcheckbox[status=disabled]
+{
+	-nexa-icon : URL("theme:://images/mnu_WF_PmnuChk.png");
+}
+.PopupMenu .popupmenuitem .popupmenuitemhotkeytext,
+.PopupMenu .popupmenuitem .popupmenuitemhotkeytext[status=disabled]
+{
+	color : #DDDDDD;
+	-nexa-padding : 0px 0px 0px 5px;
+}
+.PopupMenu .popupmenuitem .popupmenuitemtext,
+.PopupMenu .popupmenuitem .popupmenuitemtext[status=disabled]
+{
+	-nexa-padding : 0px 20px 0px 0px;
+	color : #333333;
+}
+.PopupMenu .popupmenuitem .popupmenuitemexpandimage,
+.PopupMenu .popupmenuitem .popupmenuitemexpandimage[status=disabled]
+{
+	-nexa-icon : URL("theme://images/pmnu_WF_SelBtn.png");
+	-nexa-padding : 0px;
+	-nexa-vertical-align : middle;
+}
+.PopupMenuControl,
+.PopupMenuControl[status=disabled]
+{
+	-nexa-border : 1px solid #646982;
+	background : #FFFFFF;
+}
+.PopupMenuControl .popupmenuitem,
+.PopupMenuControl .popupmenuitem[status=focused],.PopupMenuControl .popupmenuitem[status=disabled]
+{
+	-nexa-padding : 0px 10px 0px 0px;
+	color : #333333;
+}
+.PopupMenuControl .popupmenuitem[userstatus=selected]
+{
+	background : #F1F3FF;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemcheckbox,
+.PopupMenuControl .popupmenuitem .popupmenuitemcheckbox[status=disabled]
+{
+	-nexa-icon : URL("theme://images/mnu_WF_PmnuChk.png");
+	-nexa-padding : 5px 0px 5px 5px;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemtext,
+.PopupMenuControl .popupmenuitem .popupmenuitemtext[status=disabled]
+{
+	-nexa-padding : 5px 0px 5px 0px;
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemhotkeytext,
+.PopupMenuControl .popupmenuitem .popupmenuitemhotkeytext[status=disabled]
+{
+	-nexa-padding : 0px 10px 0px 0px;
+	color : #B2B2B2;
+}
+/****** ProgressBar ****/
+.ProgressBar,
+.ProgressBar[status=focused],
+.ProgressBarControl,
+.ProgressBarControl[status=focused]
+{
+	-nexa-border : 1px solid #D4D4D4;
+	background : #FFFFFF;
+}
+.ProgressBar[status=disabled],
+.ProgressBarControl[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+}
+.ProgressBar .progressbaritem,
+.ProgressBarControl .progressbaritem
+{
+	background : #445BEC;
+}
+.ProgressBar .progressbaritem[status=disabled],
+.ProgressBarControl .progressbaritem[status=disabled]
+{
+	background : #E6E6E6;
+}
+.ProgressBar .progressbartext,
+.ProgressBar .progressbartext[status=disabled],
+.ProgressBarControl .progressbartext,
+.ProgressBarControl .progressbartext[status=disabled]
+{
+	-nexa-padding : 0px 10px 0px 10px;
+	color : #FFFFFF;
+}
+.ProgressBar .progressstartcap,
+.ProgressBarControl .progressstartcap
+{
+	background : #5A54FF;
+}
+.ProgressBar .progressstartcap[status=disabled],
+.ProgressBarControl .progressstartcap[status=disabled]
+{
+	background : #E6E6E6;
+}
+.ProgressBar .progressendcap,
+.ProgressBarControl .progressendcap
+{
+	background : #5A54FF;
+}
+.ProgressBar .progressendcap[status=disabled],
+.ProgressBarControl .progressendcap[status=disabled]
+{
+	background : #E6E6E6;
+}
+/***** Sketch *****/
+.Sketch
+{
+}
+/***** Spin (유저컴퍼넌트로 대체)*****/
+.Spin
+{
+}
+.Button.btn_WF_Spinup,
+.Button.btn_WF_Spinup[userstatus=pushed],.Button.btn_WF_Spinup[userstatus=selected],
+.Button.btn_WF_Spinup[status=focused]
+{
+	background : URL("theme://images/dark/btn_WF_Spinup.png") no-repeat center transparent;
+	-nexa-border : 0px none;
+}
+.Button.btn_WF_Spinup[status=disabled]
+{
+	background : URL("theme://images/dark/btn_WF_Spinup.png") no-repeat center transparent;
+}
+.Button.btn_WF_Spindown,
+.Button.btn_WF_Spindown[userstatus=pushed],.Button.btn_WF_Spindown[userstatus=selected],
+.Button.btn_WF_Spindown[status=focused]
+{
+	background : URL("theme://images/dark/btn_WF_Spindown.png") no-repeat center transparent;
+	-nexa-border : 0px none;
+}
+.Button.btn_WF_Spindown[status=disabled]
+{
+	background : URL("theme://images/dark/btn_WF_Spindown.png") no-repeat center transparent;
+}
+.MaskEdit.msk_WF_Spin
+{
+	-nexa-text-align: center;
+}
+/***** Static *****/
+.Static
+{
+	-nexa-word-wrap : char;
+}
+.Static[status=disabled]
+{
+	color : #AEAEAE;
+}
+/***** Tab *****/
+.Tab .prevbutton,
+.Tab .prevbutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/tab_WF_PreBtn.png");
+	-nexa-padding : 3px;
+}
+.Tab .prevbutton[userstatus=pushed],
+.Tab .prevbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/tab_WF_PreBtnO.png");
+}
+.Tab .nextbutton,
+.Tab .nextbutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/tab_WF_NxtBtn.png");
+	-nexa-padding : 3px;
+}
+.Tab .nextbutton[userstatus=pushed],
+.Tab .nextbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/tab_WF_NxtBtnO.png");
+}
+.Tab .tabbuttonitem,
+.Tab .tabbuttonitem[status=focused]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 20px;
+	background : #FFFFFF;
+	color : #222222;
+	font : 18px/56px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Tab .tabbuttonitem[userstatus=selected]
+{
+	-nexa-border : 0px none, 0px none, 4px solid #445BEC, 0px none;
+	-nexa-padding : 0px 20px;
+	background : #FFFFFF;
+	color : #000000;
+	font: bold 18px/30px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Tab .tabbuttonitem[status=disabled]
+{
+	color: #aeaeae;
+}
+.Tab .tabbuttonitem .tabbuttonitemtext
+{
+	-nexa-text-align : center;
+}
+.Tab .tabbuttonitem .tabbuttonitemtext[status=disabled]
+{
+	color : #aeaeae;
+}
+.Tab .tabbuttonitem .extrabutton,
+.Tab .tabbuttonitem .extrabutton[status=focused],
+.Tab .tabbuttonitem .extrabutton[userstatus=pushed],.Tab .tabbuttonitem .extrabutton[userstatus=selected],
+.Tab .tabbuttonitem .extrabutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/tab_WF_Close.png");
+	-nexa-padding : 0px 0px 0px 10px;
+}
+.Tab .tabpage,
+.Tab .tabpage[status=focused]
+{
+	background : #FFFFFF;
+}
+.Tab .tabpage[status=disabled]
+{
+	background : #f4f5f9;
+}
+/***** TextArea *****/
+.TextArea,
+.TextAreaControl
+{
+	-nexa-border : 1px solid #D4D4D4;
+	-nexa-padding : 10px;
+	-nexa-word-wrap : char;
+	background : #FFFFFF;
+	font : 18px/30px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.TextArea[status=focused],
+.TextAreaControl[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+}
+.TextArea[status=readonly],
+.TextAreaControl[status=readonly]
+{
+	background : #F9F9F9;
+}
+.TextArea[userstatus=nulltext],
+.TextAreaControl[userstatus=nulltext]
+{
+	color : #AEAEAE;
+}
+.TextArea[status=disabled],
+.TextAreaControl[status=disabled]
+{
+	-nexa-border : 1px solid #EBEBEB;
+	background : #F9F9F9;
+	color : #AEAEAE;
+}
+/***** Radio *****/
+.Radio .radioitem,
+.Radio .radioitem[status=readonly]
+{
+	-nexa-icon : URL("theme://images/rdo_WF_Item.png");
+	-nexa-text-padding : 0px 16px 0px 6px;
+}
+.Radio .radioitem[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/rdo_WF_ItemS.png");
+}
+.Radio .radioitem[status=disabled]
+{
+	-nexa-icon : URL("theme://images/rdo_WF_ItemD.png");
+}
+.Radio .radioitem[status=disabled][userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/rdo_WF_ItemSD.png");
+}
+/***** WebBrowser *****/
+.WebBrowser
+{
+}
+/***************************************************************************/
+/*******************	BASE COMPONENT END	****************************/
+/***************************************************************************/
+
+/***************************************************************************/
+/*******************	TOPFRAME START	************************************/
+/***************************************************************************/
+.Button.btn_TF_Menu
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_TF_Menu.png") no-repeat center transparent;
+}
+.Button.btn_TF_Menu[userstatus=pushed],.Button.btn_TF_Menu[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_TF_Menu.png") no-repeat center transparent;
+}
+.Button.btn_TF_Pre
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_TF_Pre.png") no-repeat center transparent;
+}
+.Button.btn_TF_Pre[userstatus=pushed],.Button.btn_TF_Pre[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_TF_Pre.png") no-repeat center transparent;
+}
+.Button.btn_TF_Close
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_TF_Close.png") no-repeat center transparent;
+}
+.Button.btn_TF_Close[userstatus=pushed],.Button.btn_TF_Close[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_TF_Close.png") no-repeat center transparent;
+}
+.Static.sta_TF_Title
+{
+	-nexa-border : 0px none;
+	-nexa-text-align : center;
+	font : bold 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Static.sta_TF_Title.sta_TF_DTitle
+{
+	-nexa-border : 0px none;
+	-nexa-text-align : left;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #222222;
+}
+/***************************************************************************/
+/*******************	TOPFRAME END	************************************/
+/***************************************************************************/
+
+/***************************************************************************/
+/*******************	WORKFRAME START	************************************/
+/***************************************************************************/
+.Static.sta_WF_MainBg
+{
+	-nexa-border : 1px solid #DEDEDE, 0px none, 0px none, 0px none;
+	background : #F8F9FE;
+}
+.Static.sta_WF_Logo
+{
+	-nexa-text-align : center;
+	font : bold 28px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Static.sta_WF_Label
+{
+	font : 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #6A6E75;
+	-nexa-vertical-align : bottom;
+	-nexa-padding : 0px 0px 10px 0px;
+}
+.Static.sta_WF_GLabel
+{
+	-nexa-border : 1px solid #e1e2e7;
+	-nexa-padding : 0px 0px 0px 15px;
+	background : #f7f8f9;
+	color : #666666;
+	font : bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GLabelBg
+{
+	-nexa-border : 1px solid #e1e2e7;
+	background : #ffffff;
+	color : #000000;
+}
+.Static.sta_WF_Label_Essential
+{
+	font : 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #6A6E75;
+	background : url("theme://images/sta_WF_Essential.png") no-repeat left center transparent;
+	-nexa-padding : 0px 0px 0px 10px;
+}
+.Static.sta_WF_Boundary
+{
+	-nexa-border : 1px solid #DEDEDE, 0px none, 0px none, 0px none;
+	background : #F6F6F6;
+}
+.Static.sta_WF_Result
+{
+	-nexa-border : 1px solid #D1D1D1, 0px none, 0px none, 0px none;
+	background : #F6F8FE;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-padding : 0px 0px 0px 30px;
+}
+.Static.sta_WF_ResultNumber
+{
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #585A60;
+}
+.Static.sta_WF_ConLabel
+{
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_ConTit
+{
+	font : bold 20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Static.sta_WF_ConSub
+{
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #8D939D;
+}
+.Static.sta_WF_ConLine
+{
+	background : #F1F1F1;
+}
+.Static.sta_WF_PopLine
+{
+	background : #F1F1F1;
+}
+.Static.sta_WF_ConView
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px;
+	-nexa-word-wrap : char;
+	-nexa-vertical-align : top;
+	background : transparent;
+	font : 18px/30px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_NoticeTit
+{
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #FFFFFF;
+}
+.Static.sta_WF_NoticeDate
+{
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #FFFFFF;
+}
+.Static.sta_WF_Page
+{
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #999999;
+	-nexa-text-align : center;
+}
+.Static.sta_WF_label01
+{
+	background : #F3E5F4;
+	border-radius : 13px;
+	color : #5E34B0;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label02
+{
+	background : #FFF2E1;
+	border-radius : 13px;
+	color : #F67C01;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label03
+{
+	background : #E2F4FE;
+	border-radius : 13px;
+	color : #1F87E6;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label04
+{
+	background : #FBE9E7;
+	border-radius : 13px;
+	color : #F5511E;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label05
+{
+	background : #E0F2F2;
+	border-radius : 13px;
+	color : #00887A;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label06
+{
+	background : #EFEBE8;
+	border-radius : 13px;
+	color : #6E4C42;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label07
+{
+	background : #E8F2F3;
+	border-radius : 13px;
+	color : #007499;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label08
+{
+	background : #FBE4EC;
+	border-radius : 13px;
+	color : #D81A60;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label09
+{
+	background : #F9FBE6;
+	border-radius : 13px;
+	color : #488910;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_label10
+{
+	background : #E9EAF5;
+	border-radius : 13px;
+	color : #1D37D6;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_CalViews
+{
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #8B8B8B;
+	-nexa-text-align : right;
+}
+.Static.sta_WF_CalDate
+{
+	font : 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #606072;
+	letter-spacing : -1px;
+}
+.Static.sta_WF_Title
+{
+	font : bold 23px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Static.sta_WF_SubTitle
+{
+	font : bold 20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+	-nexa-text-decoration : underline;
+}
+.Static.sta_WF_Date
+{
+	-nexa-text-align: right;
+	color : #b4b4b4;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_LabelSub
+{
+	color : #111111;
+	font : bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_LabelDetail
+{
+	color : #666666;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_LabelDetailLine
+{
+	-nexa-border : 0px none, 0px none, 1px solid #eceef0, 0px none;
+	color : #666666;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_Output
+{
+	font 			: bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_OutputR
+{
+	-nexa-text-align 	: right;
+	font 			: bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_OutputP
+{
+	-nexa-text-align 	: right;
+	color : #f55d5d;
+	font 			: bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_MF_CalDate
+{
+	background : #FFFFFF;
+	font : 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #404040;
+}
+.Static.sta_label_ED
+{
+	background : #FFF0D4;
+	border-radius : 14px;
+	color : #E49A43;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_label_EV
+{
+	background : #FEE1DD;
+	border-radius : 14px;
+	color : #F16363;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_label_IV
+{
+	background : #CFECFF;
+	border-radius : 14px;
+	color : #35A5E9;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_label_MT
+{
+	background : #EAE2FE;
+	border-radius : 14px;
+	color : #8D56D5;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_label_VC
+{
+	background : #DAF6F4;
+	border-radius : 14px;
+	color : #389D6C;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_WF_GBg
+{
+	background : #f4f5f9;
+}
+.Static.sta_WF_GBg03
+{
+	background : #f4f5f9;
+}
+.Div.div_WF_Main
+{
+	background : #FFFFFF;
+}
+.Static.sta_WF_Paging
+{
+	-nexa-text-align : center;
+	color : #6A6E75;
+}
+.Div.div_WF_DetailBox
+{
+	background : #FFFFFF;
+	border-radius : 5px;
+}
+.Div.div_WF_Attachment
+{
+	-nexa-border : 1px solid #EEEEEE;
+	border-radius : 10px;
+	background : #FFFFFF;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Div.div_WF_NoticeBg
+{
+	border-radius : 15px;
+	background : linear-gradient(to right,#3852f6 0%,#aea8fb 50%,#fba2bd 100%);
+}
+.Div.div_WF_BoxColor
+{
+	background : linear-gradient(to right top,#5b3cd9 0%,#9557d2 100%);
+	border-radius : 5px;
+	box-shadow : -2px 5px 10px 0px #d3d4e0;
+}
+.Button.btn_WF_Attachment,.Button.btn_WF_Attachment[userstatus=pushed],.Button.btn_WF_Attachment[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : url("theme://images/btn_WF_Attachment.png") no-repeat center center transparent;
+}
+.Button.btn_WF_Line,.Button.btn_WF_Line[userstatus=pushed],.Button.btn_WF_Line[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	border-radius : 10px;
+	background : #445BEC;
+	color : #FFFFFF;
+}
+.Button.btn_WF_Full,.Button.btn_WF_Full[userstatus=pushed],.Button.btn_WF_Full[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	border-radius : 10px;
+	background : #445BEC;
+	color : #FFFFFF;
+}
+.Button.btn_BF_Save,.Button.btn_BF_Save[userstatus=pushed],.Button.btn_BF_Save[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : #445BEC;
+	color : #FFFFFF;
+}
+.Button.btn_WF_CloseCon,.Button.btn_WF_CloseCon[userstatus=pushed],.Button.btn_WF_CloseCon[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : url("theme://images/btn_WF_CloseCon.png") no-repeat center center transparent;
+}
+.Button.btn_WF_OpenCon,.Button.btn_WF_OpenCon[userstatus=pushed],.Button.btn_WF_OpenCon[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : url("theme://images/btn_WF_OpenCon.png") no-repeat center center transparent;
+}
+.Button.btn_WF_CloseConG,.Button.btn_WF_CloseConG[userstatus=pushed],.Button.btn_WF_CloseConG[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : url("theme://images/btn_WF_CloseConG.png") no-repeat center center transparent;
+}
+.Button.btn_WF_OpenConG,.Button.btn_WF_OpenConG[userstatus=pushed],.Button.btn_WF_OpenConG[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : url("theme://images/btn_WF_OpenConG.png") no-repeat center center transparent;
+}
+.Button.btn_Main_01,.Button.btn_Main_01[userstatus=pushed],.Button.btn_Main_01[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-edge : url("theme://images/btn_Main_01.png") 0px 0px;
+	color : #7283C6;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-vertical-align : bottom;
+	-nexa-padding : 0px;
+}
+.Button.btn_Main_02,.Button.btn_Main_02[userstatus=pushed],.Button.btn_Main_02[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-edge : url("theme://images/btn_Main_02.png") 0px 0px;
+	color : #7283C6;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-vertical-align : bottom;
+	-nexa-padding : 0px;
+}
+.Button.btn_Main_03,.Button.btn_Main_03[userstatus=pushed],.Button.btn_Main_03[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-edge : url("theme://images/btn_Main_03.png") 0px 0px;
+	color : #7283C6;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-vertical-align : bottom;
+	-nexa-padding : 0px;
+}
+.Button.btn_Main_04,.Button.btn_Main_04[userstatus=pushed],.Button.btn_Main_04[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-edge : url("theme://images/btn_Main_04.png") 0px 0px;
+	color : #7283C6;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-vertical-align : bottom;
+	-nexa-padding : 0px;
+}
+.Button.btn_WF_Attachment[status=disabled]
+{
+	opacity : 0.3;
+}
+.Button.btn_WF_Add,.Button.btn_WF_Add[userstatus=pushed],.Button.btn_WF_Add[userstatus=selected]
+{
+	background : url("theme://images/btn_WF_Add.png") no-repeat left center #8182EE;
+	-nexa-padding : 0px 15px 0px 35px;
+	-nexa-text-align : center;
+	border-radius : 8px;
+	font : 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #FFFFFF;
+	cursor : pointer;
+}
+.Button.btn_WF_Search,.Button.btn_WF_Search[userstatus=pushed],.Button.btn_WF_Search[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : url("theme://images/btn_WF_Search.png") no-repeat center center transparent;
+	cursor : pointer;
+}
+.Button.btn_WF_Revised,.Button.btn_WF_Revised[userstatus=pushed],.Button.btn_WF_Revised[userstatus=selected]
+{
+	-nexa-border : 1px solid #707070;
+	border-radius : 10px;
+	background : #FFFFFF;
+	color : #000000;
+	cursor : pointer;
+}
+.Button.btn_WF_AddSchedule,.Button.btn_WF_AddSchedule[userstatus=pushed],.Button.btn_WF_AddSchedule[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	border-radius : 60px;
+	background : url("theme://images/btn_WF_AddSchedule.png") no-repeat center center #0933DB;
+	box-shadow : 0px 3px 5px 5px #D1DAFC;
+	cursor : pointer;
+}
+.Button.btn_WF_PageL,.Button.btn_WF_PageL[userstatus=pushed],.Button.btn_WF_PageL[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : url("theme://images/btn_WF_PageL.png") no-repeat center center transparent;
+	cursor : pointer;
+}
+.Button.btn_WF_PageR,.Button.btn_WF_PageR[userstatus=pushed],.Button.btn_WF_PageR[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : url("theme://images/btn_WF_PageR.png") no-repeat center center transparent;
+	cursor : pointer;
+}
+.Button.btn_WF_Rdo
+{
+	-nexa-border : 1px solid #e1e2e7;
+	background : #FFFFFF;
+	color : #666666;
+	font : 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_WF_Rdo[userstatus=pushed],.Button.btn_WF_Rdo[userstatus=selected],
+.Button.btn_WF_RdoS,
+.Button.btn_WF_RdoS[userstatus=pushed],.Button.btn_WF_RdoS[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : #3B63FF;
+	color : #FFFFFF;
+}
+.Button.btn_WF_Help,
+.Button.btn_WF_Help[userstatus=pushed],.Button.btn_WF_Help[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_WF_Help.png") no-repeat center transparent;
+}
+.Button.btn_WF_Custom,
+.Button.btn_WF_Custom[userstatus=pushed],.Button.btn_WF_Custom[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : transparent;
+	color : #111111;
+	font : bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_WF_RowAdd,
+.Button.btn_WF_RowAdd[userstatus=pushed],.Button.btn_WF_RowAdd[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 15px;
+	background : URL("theme://images/btn_WF_RowAdd.png") no-repeat left center transparent;
+	color : #111111;
+	font : bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_WF_RowDel,
+.Button.btn_WF_RowDel[userstatus=pushed],.Button.btn_WF_RowDel[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 15px;
+	background : URL("theme://images/btn_WF_RowDel.png") no-repeat left center transparent;
+	color : #111111;
+	font : bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_WF_Reset,
+.Button.btn_WF_Reset[userstatus=pushed],.Button.btn_WF_Reset[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 15px;
+	background : URL("theme://images/btn_WF_Reset.png") no-repeat left center transparent;
+	color : #2773d0;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_WF_Default,
+.Button.btn_WF_Default[userstatus=pushed],.Button.btn_WF_Default[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-text-padding : 0px 0px 0px 10px;
+	background : #23273C;
+	color : #FFFFFF;
+}
+.Button.btn_WF_Sch,
+.Button.btn_WF_Sch[userstatus=pushed],.Button.btn_WF_Sch[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-icon : URL("theme://images/btn_WF_Sch.png");
+	-nexa-text-padding : 0px 0px 0px 10px;
+	background : #3B63FF;
+	color : #FFFFFF;
+}
+.Button.btn_WF_ShuttleUp,
+.Button.btn_WF_ShuttleUp[userstatus=pushed],.Button.btn_WF_ShuttleUp[userstatus=selected]
+{
+	-nexa-padding : 10px 25px 10px 25px;
+	background : URL("theme://images/btn_WF_ShuttleUp.png") no-repeat center transparent;
+}
+.Button.btn_WF_ShuttleDown,
+.Button.btn_WF_ShuttleDown[userstatus=pushed],.Button.btn_WF_ShuttleDown[userstatus=selected]
+{
+	-nexa-padding : 10px 25px 10px 25px;
+	background : URL("theme://images/btn_WF_ShuttleDown.png") no-repeat center transparent;
+}
+.Button.btn_WF_topMove,
+.Button.btn_WF_topMove[userstatus=pushed],.Button.btn_WF_topMove[userstatus=selected]
+{
+	background : URL("theme://images/btn_WF_topMove.png") no-repeat center #FFFFFF;
+}
+.Button.btn_WF_Prev,
+.Button.btn_WF_Prev[userstatus=pushed],.Button.btn_WF_Prev[userstatus=selected]
+{
+	background : URL("theme://images/btn_WF_Prev.png") no-repeat center transparent;
+}
+.Button.btn_WF_Next,
+.Button.btn_WF_Next[userstatus=pushed],.Button.btn_WF_Next[userstatus=selected]
+{
+	background : URL("theme://images/btn_WF_Next.png") no-repeat center transparent;
+}
+.Button.btn_pop_calNum_P,
+.Button.btn_pop_calNum_P[userstatus=pushed],.Button.btn_pop_calNum_P[userstatus=selected]
+{
+	background : URL("theme://images/btn_WF_Prev.png") no-repeat center center transparent;
+	-nexa-border : 0px none;
+}
+.Button.btn_pop_calNum_N,
+.Button.btn_pop_calNum_N[userstatus=pushed],.Button.btn_pop_calNum_N[userstatus=selected]
+{
+	background : URL("theme://images/btn_WF_Next.png") no-repeat center center transparent;
+	-nexa-border : 0px none;
+}
+.Button.btn_pop_calNum_yP,
+.Button.btn_pop_calNum_yP[userstatus=pushed],.Button.btn_pop_calNum_yP[userstatus=selected]
+{
+	background : URL("theme://images/btn_WF_yPrev.png") no-repeat center center #FFFFFF;
+	-nexa-border : 0px none;
+}
+.Button.btn_pop_calNum_yN,
+.Button.btn_pop_calNum_yN[userstatus=pushed],.Button.btn_pop_calNum_yN[userstatus=selected]
+{
+	background : URL("theme://images/btn_WF_yNext.png") no-repeat center center #FFFFFF;
+	-nexa-border : 0px none;
+}
+.Calendar.cal_WF_CalDate,
+.Calendar.cal_WF_CalDate[status=focused],
+.Calendar.cal_WF_CalDate[status=readonly],.Calendar.cal_WF_CalDate[status=disabled]
+{
+	-nexa-border : 0px none;
+}
+.Calendar.cal_WF_CalDate .dropbutton,.Calendar.cal_WF_CalDate .dropbutton[status=focused],
+.Calendar.cal_WF_CalDate .dropbutton[userstatus=pushed],.Calendar.cal_WF_CalDate .dropbutton[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-icon : URL("theme://images/btn_WF_CalDate.png");
+}
+.Calendar.cal_MF_Cal,
+.Calendar.cal_MF_Cal[status=focused]
+{
+	-nexa-border : 0px none;
+}
+.Calendar.cal_MF_Cal .datepicker,
+.Calendar.cal_MF_Cal .datepicker .head,.Calendar.cal_MF_Cal .datepicker .body
+{
+	-nexa-border : 0px none;
+	background : #FFFFFF;
+}
+.Calendar.cal_MF_Cal .datepicker .head .monthstatic,
+.Calendar.cal_MF_Cal .datepicker .head .yearstatic
+{
+	-nexa-border : 0px none;
+	color : #0a0a0a;
+	font : bold 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Calendar.cal_MF_Cal .datepicker .head .monthspin .spinedit,.Calendar.cal_MF_Cal .datepicker .head .monthspin .spinedit[status=focused],
+.Calendar.cal_MF_Cal .datepicker .head .yearspin .spinedit,.Calendar.cal_MF_Cal .datepicker .head .yearspin .spinedit[status=focused]
+{
+	-nexa-border : 0px none;
+	color : #0a0a0a;
+	background : transparent;
+}
+.Calendar.cal_MF_Cal .datepicker .body .weekband
+{
+	background : #FFFFFF;
+}
+.Calendar.cal_MF_Cal .datepicker .body .dayitem
+{
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Calendar.cal_MF_Cal .datepicker .body .dayitem[userstatus=day]
+{
+	color : #666666;
+}
+.Calendar.cal_MF_Cal .datepicker .body .dayitem[userstatus=selected]
+{
+	background : #e4f0ff;
+	border-radius : 100px;
+	color : #3683e2;
+}
+.Calendar.cal_MF_Cal .datepicker .body .dayitem[userstatus=today]
+{
+	background : #FFFFFF;
+	border-radius : 100px;
+	color : #3e8ded;
+}
+.Calendar.cal_MF_Cal .datepicker .head .prevbutton,
+.Calendar.cal_MF_Cal .datepicker .head .prevbutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/btn_MF_CalPrev.png");
+}
+.Calendar.cal_MF_Cal .datepicker .head .prevbutton[userstatus=pushed],
+.Calendar.cal_MF_Cal .datepicker .head .prevbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/btn_MF_CalPrevO.png");
+}
+.Calendar.cal_MF_Cal .datepicker .head .prevbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/btn_MF_CalPrev.png");
+}
+.Calendar.cal_MF_Cal .datepicker .head .nextbutton,
+.Calendar.cal_MF_Cal .datepicker .head .nextbutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/btn_MF_CalNext.png");
+}
+.Calendar.cal_MF_Cal .datepicker .head .nextbutton[userstatus=pushed],
+.Calendar.cal_MF_Cal .datepicker .head .nextbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/btn_MF_CalNextO.png");
+}
+.Calendar.cal_MF_Cal .datepicker .head .nextbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/btn_MF_CalNext.png");
+}
+.Grid.grd_WF_Attachment
+{
+	-nexa-border : 0px none;
+	background : #FFFFFF;
+}
+.Grid.grd_WF_Attachment .body .row .cell,
+.Grid.grd_WF_Attachment .body .row .cell[status=focused],
+.Grid.grd_WF_Attachment .body .row .cell[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	background : #FFFFFF;
+}
+.Grid.grd_WF_Attachment .body .row .cell.label_AttachSize,
+.Grid.grd_WF_Attachment .body .row .cell.label_AttachSize[status=focused],
+.Grid.grd_WF_Attachment .body .row .cell.label_AttachSize[userstatus=selected]
+{
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #999999;
+	-nexa-vertical-align : top;
+}
+.Grid.grd_WF_Attachment .body .row .cell.Icon_Attachment,
+.Grid.grd_WF_Attachment .body .row .cell.Icon_Attachment[status=focused],
+.Grid.grd_WF_Attachment .body .row .cell.Icon_Attachment[userstatus=selected]
+{
+	background : url("theme://images/Icon_Attachment.png") no-repeat center center transparent;
+	-nexa-border : 0px none;
+}
+.Grid.grd_WF_Attachment .body .row .cell .cellbutton,
+.Grid.grd_WF_Attachment .body .row .cell .cellbutton[status=focused],
+.Grid.grd_WF_Attachment .body .row .cell .cellbutton[userstatus=selected],
+.Grid.grd_WF_Attachment .body .row .cell .cellbutton[userstatus=pushed]
+{
+	background : url("theme://images/btn_WF_AttachDelete.png") no-repeat center center transparent;
+	-nexa-border : 0px none;
+}
+.Grid.grd_WF_Organization
+{
+	-nexa-border : 0px none;
+}
+.Grid.grd_WF_Organization .body .row .cell,
+.Grid.grd_WF_Organization .body .row .cell[status=focused],
+.Grid.grd_WF_Organization .body .row .cell[userstatus=selected],
+.Grid.grd_WF_Organization .body .row .cell .celltreeitem,
+.Grid.grd_WF_Organization .body .row .cell .celltreeitem[status=focused]
+{
+	-nexa-border : 0px none;
+	background : #FFFFFF;
+}
+.Grid.grd_WF_Organization .body .row .cell .celltreeitem .treeitemimage[userstatus=leaf]
+{
+	-nexa-icon : url("theme://images/grd_WF_TreeLeaf.png");
+}
+.Grid.grd_WF_Organization .body .row .cell.cell_WF_Only .celltreeitem .treeitemimage[userstatus=leaf]
+{
+	-nexa-icon : url("theme://images/grd_WF_Only.png");
+}
+.Grid.grd_RF_MenuSch
+{
+	-nexa-border : 1px solid #D4D4D4;
+	background : #FFFFFF;
+	color : #000000;
+}
+.Grid.grd_RF_MenuSch .body .row .cell,
+.Grid.grd_RF_MenuSch .body .row .cell[status=focused],
+.Grid.grd_RF_MenuSch .body .row .cell[userstatus=selected]
+{
+	-nexa-padding : 0px 20px;
+	font : 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid.grd_WF_UserInfo
+{
+	-nexa-border : 1px solid #313340, 0px none, 0px none, 0px none;
+	background : #FFFFFF;
+}
+.Grid.grd_WF_UserInfo .body .row .cell,
+.Grid.grd_WF_UserInfo .body .row .cell[status=focused],
+.Grid.grd_WF_UserInfo .body .row .cell[userstatus=selected]
+{
+	-nexa-border : 0px none, 0px none, 1px solid #e1e2e7, 0px none;
+	background : #FFFFFF;
+}
+.Grid.grd_WF_UserInfo .body .row .cell.label_Info,
+.Grid.grd_WF_UserInfo .body .row .cell.label_Info[status=focused],
+.Grid.grd_WF_UserInfo .body .row .cell.label_Info[userstatus=selected]
+{
+	font : 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #6A6E75;
+}
+.Grid.grd_WF_UserInfo .body .row .cell.label_Mobile,
+.Grid.grd_WF_UserInfo .body .row .cell.label_Mobile[status=focused],
+.Grid.grd_WF_UserInfo .body .row .cell.label_Mobile[userstatus=selected]
+{
+	background : URL("theme://images/label_Mobile.png") no-repeat center center transparent;
+}
+.Grid.grd_WF_UserInfo .body .row .cell.label_Message,
+.Grid.grd_WF_UserInfo .body .row .cell.label_Message[status=focused],
+.Grid.grd_WF_UserInfo .body .row .cell.label_Message[userstatus=selected]
+{
+	background : URL("theme://images/label_Message.png") no-repeat center center transparent;
+}
+.Grid.grd_WF_CalList .body .row .cell,
+.Grid.grd_WF_CalList .body .row .cell[status=focused],
+.Grid.grd_WF_CalList .body .row .cell[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 10px;
+	-nexa-vertical-align : middle;
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	letter-spacing : -1px;
+	background : #FFFFFF;
+}
+.Grid.grd_WF_CalList .body .row .cell.label_MT,
+.Grid.grd_WF_CalList .body .row .cell.label_MT[status=focused],
+.Grid.grd_WF_CalList .body .row .cell.label_MT[userstatus=selected]
+{
+	background : URL("theme://images/label_MT.png") no-repeat center center transparent;
+	-nexa-border : 0px none;
+	-nexa-padding : 0px;
+}
+.Grid.grd_WF_CalList .body .row .cell.label_VC,
+.Grid.grd_WF_CalList .body .row .cell.label_VC[status=focused],
+.Grid.grd_WF_CalList .body .row .cell.label_VC[userstatus=selected]
+{
+	background : URL("theme://images/label_VC.png") no-repeat center center transparent;
+	-nexa-border : 0px none;
+	-nexa-padding : 0px;
+}
+.Grid.grd_WF_CalList .body .row .cell.label_ED,
+.Grid.grd_WF_CalList .body .row .cell.label_ED[status=focused],
+.Grid.grd_WF_CalList .body .row .cell.label_ED[userstatus=selected]
+{
+	background : URL("theme://images/label_ED.png") no-repeat center center transparent;
+	-nexa-border : 0px none;
+	-nexa-padding : 0px;
+}
+.Grid.grd_WF_CalList .body .row .cell.label_IV,
+.Grid.grd_WF_CalList .body .row .cell.label_IV[status=focused],
+.Grid.grd_WF_CalList .body .row .cell.label_IV[userstatus=selected]
+{
+	background 		: URL("theme://images/label_IV.png") no-repeat center center transparent;
+	-nexa-border 		: 0px none;
+	-nexa-padding 		: 0px;
+}
+.Grid.grd_WF_CalList .body .row .cell.label_EV,
+.Grid.grd_WF_CalList .body .row .cell.label_EV[status=focused],
+.Grid.grd_WF_CalList .body .row .cell.label_EV[userstatus=selected]
+{
+	background 		: URL("theme://images/label_EV.png") no-repeat center center transparent;
+	-nexa-border 		: 0px none;
+	-nexa-padding 		: 0px;
+}
+.Grid.grd_WF_SearchBoard
+{
+	-nexa-border : 1px solid #FFFFFF;
+	background : #FFFFFF;
+}
+.Grid.grd_WF_SearchBoard .body .row .cell,
+.Grid.grd_WF_SearchBoard .body .row .cell[status=focused],
+.Grid.grd_WF_SearchBoard .body .row .cell[userstatus=selected]
+{
+	-nexa-border : 1px solid #FFFFFF;
+	-nexa-padding : 25px 0px 0px 0px;
+	-nexa-vertical-align : bottom;
+	font : 20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	background : #FFFFFF;
+	color : #000000;
+}
+.Grid.grd_WF_SearchBoard .body .row .cell.cell_WF_Line,
+.Grid.grd_WF_SearchBoard .body .row .cell.cell_WF_Line[status=focused],
+.Grid.grd_WF_SearchBoard .body .row .cell.cell_WF_Line[userstatus=selected]
+{
+	-nexa-border : 0px none, 0px none, 1px solid #EBEEF0, 0px none;
+	-nexa-vertical-align : top;
+	-nexa-padding : 10px 0px 0px 0px;
+	color : #8D939D;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #8d939d;
+}
+.Grid.grd_WF_List
+{
+	-nexa-border : 0px none;
+}
+.Grid.grd_WF_List .body .row .cell
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 5px 20px;
+	-nexa-vertical-align : bottom;
+	font : 20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid.grd_WF_List .body .row .cell.cell_WF_Line
+{
+	-nexa-border : 0px none, 0px none, 1px solid #e1e2e7, 0px none;
+	-nexa-vertical-align : top;
+	color : #888888;	
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid.grd_WF_List .body .row .cell.cell_WF_Date
+{
+	-nexa-text-align : right;
+	color : #c1c1c1;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid.grd_WF_List .body .row .cell.cell_WF_Link 
+{
+	-nexa-border : 0px none, 0px none, 1px solid #e1e2e7, 0px none;
+	-nexa-padding : 0px 0px 0px 0px;
+}
+.Grid.grd_WF_List .body .row .cell.cell_WF_Link .cellbutton,
+.Grid.grd_WF_List .body .row .cell.cell_WF_Link .cellbutton[userstatus=selected],.Grid.grd_WF_List .body .row .cell.cell_WF_Link .cellbutton[status=disabled]
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/grd_WF_Detail.png") no-repeat center transparent;
+}
+.GridCellControl .cellbutton.btn_WF_Down,
+.GridCellControl .cellbutton.btn_WF_Down[userstatus=pushed],.GridCellControl .cellbutton.btn_WF_Down[userstatus=selected]
+{
+	background : URL("theme://images/btn_WF_Down.png") no-repeat center center transparent;
+}
+.ListView.lst_WF_Calview,
+.ListView.lst_WF_Calview[status=focused],
+.ListView.lst_WF_Calview[status=disabled],.ListView.lst_WF_Calview[status=readonly]
+{
+	-nexa-border : 0px none;
+	background : transparent;
+}
+.ListView.lst_WF_Calview .body,
+.ListView.lst_WF_Calview .body[status=disabled]
+{
+	-nexa-border : 0px none;
+	background : transparent;
+	-nexa-edge : url("theme://images/lst_WF_Calview.png") 0px 0px;
+}
+.ListView.lst_WF_Calview .body .cell.cell_Box,
+.ListView.lst_WF_Calview .body .cell.cell_Box[status=focused],
+.ListView.lst_WF_Calview .body .cell.cell_Box[status=disabled],.ListView.lst_WF_Calview .body .cell.cell_Box[status=readonly]
+{
+	-nexa-border : 1px solid #EEEEEE;
+	border-radius : 15px;
+	background : #FFFFFF;
+}
+.ListView.lst_WF_Calview .body .cell,
+.ListView.lst_WF_Calview .body .cell[status=focused],
+.ListView.lst_WF_Calview .body .cell[status=disabled],.ListView.lst_WF_Calview .body .cell[status=readonly]
+{
+	-nexa-border : 0px none;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #9da0af;
+	-nexa-text-align : left;
+}
+.ListView.lst_WF_Calview .body .cell.ico_Attachment,
+.ListView.lst_WF_Calview .body .cell.ico_Attachment[status=focused],
+.ListView.lst_WF_Calview .body .cell.ico_Attachment[status=readonly]
+{
+	background : URL("theme://images/ico_Attachment.png") no-repeat center center transparent;
+	-nexa-border : 0px none;
+	-nexa-padding : 0px;
+}
+.ListView.lst_WF_Calview .body .cell.cell_CalTitle,
+.ListView.lst_WF_Calview .body .cell.cell_CalTitle[status=focused],
+.ListView.lst_WF_Calview .body .cell.cell_CalTitle[status=readonly]
+{
+	font: bold 20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	letter-spacing : -1px;
+	color : #333333;
+	-nexa-text-align : left;
+}
+.ListView.lst_WF_Calview .body .cell.cell_CalCode,
+.ListView.lst_WF_Calview .body .cell.cell_CalCode[status=focused],
+.ListView.lst_WF_Calview .body .cell.cell_CalCode[status=readonly]
+{
+	font : 11px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : left;
+}
+.ListView.lst_WF_Calview .body .cell.cell_CalCon,
+.ListView.lst_WF_Calview .body .cell.cell_CalCon[status=focused],
+.ListView.lst_WF_Calview .body .cell.cell_CalCon[status=readonly]
+{
+	font : 11px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : left;
+}
+.ListView.lst_WF_Calview .vscrollbar
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 5px;
+	background : #FFFFFF;
+}
+.ListView.lst_WF_Calview .body .cell.label01,
+.ListView.lst_WF_Calview .body .cell.label01[status=focused],
+.ListView.lst_WF_Calview .body .cell.label01[status=readonly]
+{
+	background : #F3E5F4;
+	border-radius : 14px;
+	color : #5E34B0;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label02,
+.ListView.lst_WF_Calview .body .cell.label02[status=focused],
+.ListView.lst_WF_Calview .body .cell.label02[status=readonly]
+{
+	background : #FFF2E1;
+	border-radius : 14px;
+	color : #F67C01;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label03,
+.ListView.lst_WF_Calview .body .cell.label03[status=focused],
+.ListView.lst_WF_Calview .body .cell.label03[status=readonly]
+{
+	background : #E2F4FE;
+	border-radius : 14px;
+	color : #1F87E6;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label04,
+.ListView.lst_WF_Calview .body .cell.label04[status=focused],
+.ListView.lst_WF_Calview .body .cell.label04[status=readonly]
+{
+	background : #FBE9E7;
+	border-radius : 14px;
+	color : #F5511E;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label05,
+.ListView.lst_WF_Calview .body .cell.label05[status=focused],
+.ListView.lst_WF_Calview .body .cell.label05[status=readonly]
+{
+	background : #E0F2F2;
+	border-radius : 14px;
+	color : #00887A;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label06,
+.ListView.lst_WF_Calview .body .cell.label06[status=focused],
+.ListView.lst_WF_Calview .body .cell.label06[status=readonly]
+{
+	background : #EFEBE8;
+	border-radius : 14px;
+	color : #6E4C42;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label07,
+.ListView.lst_WF_Calview .body .cell.label07[status=focused],
+.ListView.lst_WF_Calview .body .cell.label07[status=readonly]
+{
+	background : #E8F2F3;
+	border-radius : 14px;
+	color : #007499;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label08,
+.ListView.lst_WF_Calview .body .cell.label08[status=focused],
+.ListView.lst_WF_Calview .body .cell.label08[status=readonly]
+{
+	background : #FBE4EC;
+	border-radius : 14px;
+	color : #D81A60;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label09,
+.ListView.lst_WF_Calview .body .cell.label09[status=focused],
+.ListView.lst_WF_Calview .body .cell.label09[status=readonly]
+{
+	background : #F9FBE6;
+	border-radius : 14px;
+	color : #488910;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .body .cell.label10,
+.ListView.lst_WF_Calview .body .cell.label10[status=focused],
+.ListView.lst_WF_Calview .body .cell.label10[status=readonly]
+{
+	background : #E9EAF5;
+	border-radius : 14px;
+	color : #1D37D6;
+	font : 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.ListView.lst_WF_Calview .vscrollbar .decbutton,
+.ListView.lst_WF_Calview .vscrollbar .decbutton[status=focused],
+.ListView.lst_WF_Calview .vscrollbar .decbutton[userstatus=pushed],.ListView.lst_WF_Calview .vscrollbar .decbutton[userstatus=selected],
+.ListView.lst_WF_Calview .vscrollbar .decbutton[status=disabled],
+.ListView.lst_WF_Calview .vscrollbar .incbutton,
+.ListView.lst_WF_Calview .vscrollbar .incbutton[status=focused],
+.ListView.lst_WF_Calview .vscrollbar .incbutton[userstatus=pushed],.ListView.lst_WF_Calview .vscrollbar .incbutton[userstatus=selected],
+.ListView.lst_WF_Calview .vscrollbar .incbutton[status=disabled]
+{
+	-nexa-icon : none;
+}
+.ListView.lst_WF_Calview .vscrollbar .trackbar,
+.ListView.lst_WF_Calview .vscrollbar .trackbar[status=focused],
+.ListView.lst_WF_Calview .vscrollbar .trackbar[userstatus=pushed],.ListView.lst_WF_Calview .vscrollbar .trackbar[userstatus=selected]
+{
+	border-radius : 15px;
+}
+.Tab.tab_WF_Detail .prevbutton,
+.Tab.tab_WF_Detail .prevbutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/tab_WF_PreBtn.png");
+	-nexa-padding : 3px;
+}
+.Tab.tab_WF_Detail .prevbutton[userstatus=pushed],
+.Tab.tab_WF_Detail .prevbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/tab_WF_PreBtnO.png");
+}
+.Tab.tab_WF_Detail .nextbutton,
+.Tab.tab_WF_Detail .nextbutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/tab_WF_NxtBtn.png");
+	-nexa-padding : 3px;
+}
+.Tab.tab_WF_Detail .nextbutton[userstatus=pushed],
+.Tab.tab_WF_Detail .nextbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/tab_WF_NxtBtnO.png");
+}
+.Tab.tab_WF_Detail .tabbuttonitem,
+.Tab.tab_WF_Detail .tabbuttonitem[status=focused]
+{
+	-nexa-border : 0px none;
+	background : #FFFFFF;
+	color : #222222;
+	font : 18px/56px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Tab.tab_WF_Detail .tabbuttonitem[userstatus=selected]
+{
+	-nexa-border : 0px none, 0px none, 4px solid #3815DC, 0px none;
+	border-radius : 0px;
+	background : #FFFFFF;
+	color : #000000;
+	font: bold 18px/56px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Tab.tab_WF_Detail .tabbuttonitem[status=disabled]
+{
+	color : #aeaeae;
+} 
+.Tab.tab_WF_Detail .tabbuttonitem .tabbuttonitemtext
+{
+	-nexa-text-align : center;
+}
+.Tab.tab_WF_Detail .tabbuttonitem .tabbuttonitemtext[status=disabled]
+{
+	color : #aeaeae;
+}
+.Tab.tab_WF_Detail .tabbuttonitem .extrabutton,
+.Tab.tab_WF_Detail .tabbuttonitem .extrabutton[status=focused],
+.Tab.tab_WF_Detail .tabbuttonitem .extrabutton[userstatus=pushed],.Tab.tab_WF_Detail .tabbuttonitem .extrabutton[userstatus=selected],
+.Tab.tab_WF_Detail .tabbuttonitem .extrabutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/tab_WF_Close.png");
+	-nexa-padding : 0px 10px 0px 0px;
+}
+.Tab.tab_WF_Detail .tabpage,
+.Tab.tab_WF_Detail .tabpage[status=focused],.Tab.tab_WF_Detail .tabpage[status=disabled]
+{
+	background : #f4f5f9;
+}
+/***** cellclass Start *****/
+/* cellclass_head 고정 */
+.Grid .head .row .cell.cell_WF_fixing
+{
+	-nexa-border : 1px solid #d7d9e3;
+	background : #e8e9ef;
+}
+/* cellclass_body */
+.Grid .body .row .cell.cell_WF_Left
+{
+	-nexa-text-align : left;
+}
+.Grid .body .row .cell.cell_WF_Right
+{
+	-nexa-text-align : right;
+}
+.Grid .body .row .cell.cell_WF_Point01
+{
+	color : #e10000;
+}
+.Grid .body .row .cell.cell_WF_Point02
+{
+	color : #f28005;
+}
+.Grid .body .row .cell.cell_WF_Point03
+{
+	color : #2756b6;
+}
+.Grid .body .row .cell.cell_WF_Point04
+{
+	color : #2d9d0f;
+}
+.Grid .body .row .cell.cell_WF_Link
+{
+	-nexa-text-decoration : underline;
+	color : #228ff5;
+}
+.Grid .body .row .cell.cell_WF_PointTxt01,
+.Grid .body .row .cell.cell_WF_PointTxt01[userstatus=selected]
+{
+	background : #ffdfdf;
+}
+.Grid .body .row .cell.cell_WF_PointTxt02,
+.Grid .body .row .cell.cell_WF_PointTxt02[userstatus=selected]
+{
+	background : #ffe9df;
+}
+.Grid .body .row .cell.cell_WF_PointTxt03,
+.Grid .body .row .cell.cell_WF_PointTxt03[userstatus=selected]
+{
+	background : #dff3ff;
+}
+.Grid .body .row .cell.cell_WF_PointTxt04,
+.Grid .body .row .cell.cell_WF_PointTxt04[userstatus=selected]
+{
+	background : #f1ffdf;
+}
+.Grid .body .row .cell.cell_WF_PointBtn01 .cellbutton
+{
+	-nexa-border : 0px none;
+	background : #ec870c;
+	color : #FFFFFF;
+}
+/* cellclass_소계 */
+.Grid .summary .row .cell.cell_WF_Sum01
+{
+	-nexa-border : 1px solid #eeeeee;
+	background : #e9fbff;
+	color : #333333;
+	font : bold 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid .summary .row .cell.cell_WF_Sum02
+{
+	-nexa-border : 1px solid #eeeeee;
+	background : #f3fff1;
+	color : #333333;
+	font : bold 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid .summary .row .cell.cell_WF_Sum03
+{
+	-nexa-border : 1px solid #eeeeee;
+	background : #fef0ff;
+	color : #333333;
+	font : bold 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif"; 
+}
+
+/***** ListView *****/
+.ListView .detail .cell.cell_WF_DetailTitle
+{
+	-nexa-padding : 0px 0px 0px 10px;
+	background : URL("theme://images/img_WF_Subtitle.png") no-repeat left center;
+	font : bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+/***** cellclass END *****/
+/***************************************************************************/
+/*******************	WORKFRAME END	************************************/
+/***************************************************************************/
+
+/***************************************************************************/
+/*******************	RIGHT START	************************************/
+/***************************************************************************/
+.Div.div_RF_1Depth
+{
+	-nexa-border : 0px none, 1px solid #E6E6E6, 0px none, 0px none;
+	background : #FFFFFF;
+}
+.Edit.edt_RF_Sch,.Edit.edt_RF_Sch[status=focused]
+{
+	-nexa-border : 1px solid #E8E8E8;
+	-nexa-padding : 0px 70px 0px 20px;
+	background : #F8F8F8;
+	color : #000000;
+}
+.Edit.edt_RF_Sch[userstatus=nulltext]
+{
+	color : #919191;
+}
+.Button.btn_RF_Sch,
+.Button.btn_RF_Sch[userstatus=pushed],.Button.btn_RF_Sch[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_RF_Sch.png") no-repeat center transparent;
+}
+.Static.sta_RF_Bg
+{
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	background : #F3F3F3;
+}
+.Static.sta_RF_Name
+{
+	font : bold 26px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Static.sta_RF_Id
+{
+	font : 26px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid.grd_RF_Menu
+{
+	-nexa-border : 0px none;
+	background : #FFFFFF;
+}
+.Grid.grd_RF_Menu .body .row .cell
+{
+	-nexa-border : 0px none;
+	color : #000000;
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Grid.grd_RF_Menu .body .row .cell[userstatus=selected]
+{
+	background : transparent;
+	color : #3815DC;
+}
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Lev0
+{
+	-nexa-border : 0px none,0px none, 1px solid #eaebef, 0px none;
+	background : URL("theme://images/cell_RF_Lev0.png") no-repeat right transparent;
+	color : #444444;
+}
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Lev0 .celltreeitem .treeitembutton,
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Lev0 .celltreeitem .treeitembutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/blank.png");
+}
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Lev0 .celltreeitem .treeitemimage,
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Lev0 .celltreeitem .treeitemimage[userstatus=collapse],
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Lev0 .celltreeitem .treeitemimage[userstatus=expand]
+{
+	-nexa-icon : URL("theme://images/blank.png");
+}
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Lev0[userstatus=selected]
+{
+	background : URL("theme://images/cell_RF_Lev0.png") no-repeat right transparent;
+	color : #3815DC;
+}
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Lev1 .celltreeitem .treeitemimage[userstatus=leaf]
+{
+	-nexa-icon : URL("theme://images/cell_RF_Lev1.png");
+}
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Levnone
+{
+	-nexa-border : 0px none,0px none, 1px solid #eaebef, 0px none;
+	color : #444444;
+}
+.Grid.grd_RF_Menu .body .row .cell.cell_RF_Levnone[userstatus=selected]
+{
+	color : #3815DC;
+}
+.Button.btn_RF_Home,
+.Button.btn_RF_Home[userstatus=pushed],.Button.btn_RF_Home[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_RF_Home.png") no-repeat center transparent;
+}
+.Button.btn_RF_Setting,
+.Button.btn_RF_Setting[userstatus=pushed],.Button.btn_RF_Setting[userstatus=selected]
+{
+	background : URL("theme://images/btn_RF_Setting.png") no-repeat center transparent;
+}
+.Button.btn_RF_Logout,
+.Button.btn_RF_Logout[userstatus=pushed],.Button.btn_RF_Logout[userstatus=selected]
+{
+	-nexa-border : 0px none;
+	background : URL("theme://images/btn_RF_Logout.png") no-repeat center transparent;
+}
+.Button.btn_RF_1Depth01,.Button.btn_RF_1Depth01[userstatus=pushed],.Button.btn_RF_1Depth01[status=focused]
+{
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	background : URL("theme://images/btn_RF_1Depth01.png") no-repeat top center #FFFFFF;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Button.btn_RF_1Depth01S,.Button.btn_RF_1Depth01S[userstatus=pushed],.Button.btn_RF_1Depth01S[userstatus=selected]
+{
+	background : URL("theme://images/btn_RF_1Depth01S.png") no-repeat top center #3815DC;
+	color : #FFFFFF;
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_RF_1Depth02,.Button.btn_RF_1Depth02[userstatus=pushed],.Button.btn_RF_1Depth02[status=focused]
+{
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	background : URL("theme://images/btn_RF_1Depth02.png") no-repeat top center #FFFFFF;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Button.btn_RF_1Depth02S,.Button.btn_RF_1Depth02S[userstatus=pushed],.Button.btn_RF_1Depth02S[userstatus=selected]
+{
+	background : URL("theme://images/btn_RF_1Depth02S.png") no-repeat top center #3815DC;
+	color : #FFFFFF;
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_RF_1Depth03,.Button.btn_RF_1Depth03[userstatus=pushed],.Button.btn_RF_1Depth03[status=focused]
+{
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	background : URL("theme://images/btn_RF_1Depth03.png") no-repeat top center #FFFFFF;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Button.btn_RF_1Depth03S,.Button.btn_RF_1Depth03S[userstatus=pushed],.Button.btn_RF_1Depth03S[userstatus=selected]
+{
+	background : URL("theme://images/btn_RF_1Depth03S.png") no-repeat top center #3815DC;
+	color : #FFFFFF;
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_RF_1Depth04,.Button.btn_RF_1Depth04[userstatus=pushed],.Button.btn_RF_1Depth04[status=focused]
+{
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	background : URL("theme://images/btn_RF_1Depth04.png") no-repeat top center #FFFFFF;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Button.btn_RF_1Depth04S,.Button.btn_RF_1Depth04S[userstatus=pushed],.Button.btn_RF_1Depth04S[userstatus=selected]
+{
+	background : URL("theme://images/btn_RF_1Depth04S.png") no-repeat top center #3815DC;
+	color : #FFFFFF;
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_RF_1Depth05,.Button.btn_RF_1Depth05[userstatus=pushed],.Button.btn_RF_1Depth05[status=focused]
+{
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	background : URL("theme://images/btn_RF_1Depth05.png") no-repeat top center #FFFFFF;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+}
+.Button.btn_RF_1Depth05S,.Button.btn_RF_1Depth05S[userstatus=pushed],.Button.btn_RF_1Depth05S[userstatus=selected]
+{
+	background : URL("theme://images/btn_RF_1Depth05S.png") no-repeat top center #3815DC;
+	color : #FFFFFF;
+	-nexa-border : 0px none, 0px none, 1px solid #E6E6E6, 0px none;
+	border-radius : 0px;
+	-nexa-padding : 40px 0px 0px 0px;
+	font : 14px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Button.btn_RF_LightM
+{
+	-nexa-border : 1px solid #D4D4D4, 1px solid #000000, 1px solid #D4D4D4, 1px solid #D4D4D4;
+	border-radius : 0px;
+	font : 20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+	background : #FFFFFF;
+	-nexa-text-align : center;
+}
+.Button.btn_RF_DarkM
+{
+	-nexa-border : 1px solid #D4D4D4, 1px solid #D4D4D4, 1px solid #D4D4D4, 1px solid #000000;
+	border-radius : 0px;
+	font : 20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #000000;
+	background : #FFFFFF;
+	-nexa-text-align : center;
+}
+.Button.btn_RF_LightM[userstatus=pushed],.Button.btn_RF_LightM[userstatus=selected],
+.Button.btn_RF_DarkM[userstatus=pushed],.Button.btn_RF_DarkM[userstatus=selected]
+{
+	-nexa-border : 1px solid #000000;
+	background : #FFFFFF;
+}
+/***************************************************************************/
+/*******************	RIGHT END	************************************/
+/***************************************************************************/
+
+/***************************************************************************/
+/*******************	POPUP START	************************************/
+/***************************************************************************/
+.Grid.grd_Pop_ComboList
+{
+	-nexa-border : 0px none;
+	background : #FFFFFF;
+}
+.Grid.grd_Pop_ComboList .body .row .cell
+{
+	-nexa-border : 0px none, 0px none, 1px solid #EEEEEE, 0px none;
+	-nexa-padding : 5px 5px 5px 15px;
+	-nexa-word-wrap : char;
+}
+.Grid.grd_Pop_ComboList .body .row .cell[userstatus=selected]
+{
+	background : #F1F3FF;
+}
+/***************************************************************************/
+/*******************	POPUP END	************************************/
+/***************************************************************************/
+
+/***************************************************************************/
+/*******************	ESSENTIAL / ERROR COMPONENT START	************/
+/***************************************************************************/
+/***** Edit *****/
+.Edit.essential
+{
+	-nexa-border : 1px solid #f6e5bf;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.Edit.essential[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.Edit.essential[status=readonly]
+{
+	background : URL("theme://images/essential.png") no-repeat left top #f9f9f9;
+}
+.Edit.essentialSub
+{
+	-nexa-border : 1px solid #f6e5bf;
+	background : #fffdf4;
+}
+.Edit.edi_WF_SearchEssential
+{
+	-nexa-border : 1px solid #f6e5bf;
+	-nexa-padding : 0px 50px 0px 8px;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.Edit.edi_WF_SearchEssential[status=readonly]
+{
+	background : URL("theme://images/essential.png") no-repeat left top #f9f9f9;
+}
+.Edit.edi_WF_SearchEssential[userstatus=nulltext]
+{
+	color : #aaaaaa;
+}
+.Edit.edi_WF_SearchEssential[status=disabled]
+{
+	-nexa-border : 1px solid #dddddd;
+	color : #aaaaaa;
+}
+.Edit.output,
+.Edit.output[status=focused],
+.Edit.output[status=disabled],
+.MaskEdit.output,
+.MaskEdit.output[status=focused],
+.MaskEdit.output[status=disabled],
+.TextArea.output,
+.TextArea.output[status=focused],
+.TextArea.output[status=disabled]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px;
+	background : transparent;
+	font : bold 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Edit.error,
+.Edit.error[userstatus=nulltext],
+.Edit.error[status=focused],.Edit.error[status=readonly],
+.Edit.error[status=disabled]
+{
+	-nexa-border : 1px solid #ee5555;
+}
+/***** MaskEdit *****/
+.MaskEdit.essential
+{
+	-nexa-border : 1px solid #f6e5bf;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.MaskEdit.essential[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.MaskEdit.essential[status=readonly]
+{
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.MaskEdit.essentialSub
+{
+	-nexa-border : 1px solid #f6e5bf;
+	background : #fffdf4;
+}
+.MaskEdit.error,
+.MaskEdit.error[userstatus=nulltext],
+.MaskEdit.error[status=focused],.MaskEdit.error[status=readonly],
+.MaskEdit.error[status=disabled]
+{
+	-nexa-border : 1px solid #ee5555;
+}
+/***** MaskEdit(Spin) *****/
+.MaskEdit.msk_WF_Spinessential
+{
+	-nexa-text-align: center;	
+	-nexa-border : 1px solid #f6e5bf;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.MaskEdit.msk_WF_Spinessential[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.MaskEdit.msk_WF_Spinessential[status=readonly]
+{
+	-nexa-text-align: center;	
+	background : URL("theme://images/essential.png") no-repeat left top #f9f9f9;
+}
+.MaskEdit.msk_WF_Spinerror,
+.MaskEdit.msk_WF_Spinerror[userstatus=nulltext],
+.MaskEdit.msk_WF_Spinerror[status=focused],.MaskEdit.msk_WF_Spinerror[status=readonly],
+.MaskEdit.msk_WF_Spinerror[status=disabled]
+{
+	-nexa-text-align: center;
+	-nexa-border : 1px solid #ee5555;
+}
+/***** Combo *****/
+.Combo.essential,.Combo.essential[status=focused],.Combo.essential[status=mouseover]
+{
+	-nexa-border : 1px solid #f6e5bf;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+	color : #000000;
+}
+.Combo.essential[status=readonly]
+{
+	background : URL("theme://images/essential.png") no-repeat left top #f9f9f9;
+}
+.Combo.error,
+.Combo.error[status=focused],
+.Combo.error[status=readonly],.Combo.error[status=disabled]
+{
+	-nexa-border : 1px solid #ff2d4b;
+}
+/***** Calendar *****/
+.Calendar.essential
+{
+	-nexa-border : 1px solid #f6e5bf;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.Calendar.essential[status=focused]
+{
+	-nexa-border : 1px solid #000000;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.Calendar.essential[status=readonly]
+{
+	background : URL("theme://images/essential.png") no-repeat left top #f9f9f9;
+}
+.Calendar.essential .calendaredit
+{
+	background : URL("theme://images/essential.png") no-repeat left top transparent;
+}
+.Calendar.error,
+.Calendar.error[status=focused],
+.Calendar.error[status=readonly],.Calendar.error[status=disabled]
+{
+	-nexa-border : 1px solid #ff2d4b;
+}
+/***** TextArea *****/
+.TextArea.essential
+{
+	-nexa-border : 1px solid #f6e5bf;
+	background : URL("theme://images/essential.png") no-repeat left top #fffdf4;
+}
+.TextArea.essential[status=readonly]
+{
+	background : URL("theme://images/essential.png") no-repeat left top #f9f9f9;
+}
+.TextArea.error,
+.TextArea.error[userstatus=nulltext],
+.TextArea.error[status=focused],.TextArea.error[status=readonly],
+.TextArea.error[status=disabled]
+{
+	-nexa-border : 1px solid #ee5555;
+}
+/***** CheckBox *****/
+.CheckBox.essential,
+.CheckBox.essential[status=focused],.CheckBox.essential[status=readonly]
+{
+	-nexa-icon : URL("theme://images/chk_WF_boxES.png");
+}
+.CheckBox.essential[status=mouseover][userstatus=selected],
+.CheckBox.essential[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/chk_WF_boxSES.png");
+}
+/***** Radio *****/
+.Radio.essential .radioitem
+{
+	-nexa-icon : URL("theme://images/rdo_WF_ItemES.png");
+}
+.Radio.essential .radioitem[status=mouseover][userstatus=selected],.Radio.essential .radioitem[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/rdo_WF_ItemSES.png");
+}
+/***** Grid *****/
+.Grid .head .row .cell.essential,
+.Grid .head .row .cell.essential[status=focused],
+.Grid .head .row .cell.essential[status=readonly],.Grid .head .row .cell.essential[userstatus=selected], 
+.Grid .head .row .cell.essential[userstatus=blinked],.Grid .head .row .cell.essential[status=disabled]
+{
+	background : URL("theme://images/essential.png") no-repeat left top;
+}
+/***************************************************************************/
+/*******************	ESSENTIAL / ERRORCOMPONENT END	************/
+/***************************************************************************/
+
+/********************************** Guide **********************************/
+.Static.sta_WF_GSize
+{
+	-nexa-text-align : center;
+	background : #ff0000;
+	color : #000000;
+	font : bold 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	opacity : 0.3;
+}
+.Static.sta_WF_GTxt01
+{
+	font : bold 20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GTxt02
+{
+	-nexa-text-decoration : underline;
+	font : bold 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GTxt02B
+{
+	-nexa-text-decoration : underline;
+	color : #333333;
+	font : bold 12px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GTxt03
+{
+	color : #636981;
+	font : 11px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GTxt04
+{
+	color : #ff000c;
+	font : 11px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GTxt05
+{
+	color : #ff7200;
+	font : bold 12px/20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GTxt06
+{
+	color : #ee5555;
+	font : 12px/20px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GBar
+{
+	-nexa-padding : 0px 0px 0px 20px;
+	background : #f4f5f9;
+	color : #23273c;
+	font : bold 35px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_GNum
+{
+	-nexa-text-align : right;
+	color : #445BEC;
+	font : bold 30px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Static.sta_WF_Box
+{
+	background : #FFFFFF;
+	border-radius : 5px;
+	box-shadow : 3px 3px 10px 0px #e7e8f1;
+	-nexa-border : 0px none;
+}
+.Static.sta_WF_GLine
+{
+	background : #eeeeee;
+}
+.Static.sta_WF_GLine01
+{
+	background : #ff000c;
+}
+.Static.sta_WF_GBg01
+{
+	background : #f4f5f9;
+}
+.Static.sta_WF_GBg02
+{
+	-nexa-border : 1px solid #333333;
+	-nexa-padding : 8px;
+	-nexa-vertical-align : top;
+	background : #fff9ca;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}]]></XCSS>

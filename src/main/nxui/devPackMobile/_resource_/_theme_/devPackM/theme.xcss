@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XCSS version="1.1">
+  <CSSData><![CDATA[/***********************************************************************/
+/***** PROJECT NAME : 투비소프트 템플릿			********/
+/***** CREATION DATES : 2022. 02				********/
+/***** DRAFTER : TOBESOFT Design Team 				********/
+/***** DISTRIBUTION DATE : 					********/
+/***** 1st AMENDER : 						********/
+/***** 1st MODIFICATION DATE : 					********/
+/***********************************************************************/
+
+/*******************************************************************/
+/*******************	FRAME START	****************************/
+/*******************************************************************/
+.TitleBarControl,
+.TitleBarControl[status=deactivate],.TitleBarControl[status=disabled]
+{
+	background : #413c3c;
+}
+.TitleBarControl .titleicon,
+.TitleBarControl .titleicon[status=mouseover],.TitleBarControl .titleicon[status=deactivate],
+.TitleBarControl .titleicon[status=disabled]
+{
+	-nexa-padding : 0px 0px 0px 16px;
+	color : #FFFFFF;
+	font : bold 14px "Malgun Gothic";
+}
+.TitleBarControl .minbutton,
+.TitleBarControl .minbutton[status=focused],.TitleBarControl .minbutton[userstatus=selected],
+.TitleBarControl .minbutton[status=deactivate]
+{
+	-nexa-icon : URL("theme://images/tib_WF_Min.png");
+}
+.TitleBarControl .minbutton[status=mouseover],.TitleBarControl .minbutton[userstatus=pushed]
+{
+	-nexa-icon : URL("theme://images/tib_WF_MinO.png");
+}
+.TitleBarControl .minbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/tib_WF_MinD.png");
+}
+.TitleBarControl .maxbutton,
+.TitleBarControl .maxbutton[status=focused],.TitleBarControl .maxbutton[userstatus=selected],
+.TitleBarControl .maxbutton[status=deactivate]
+{
+	-nexa-icon : URL("theme://images/tib_WF_Max.png");
+}
+.TitleBarControl .maxbutton[status=mouseover],.TitleBarControl .maxbutton[userstatus=pushed]
+{
+	-nexa-icon : URL("theme://images/tib_WF_Max.png");
+}
+.TitleBarControl .maxbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/tib_WF_MaxD.png");
+}
+.TitleBarControl .normalbutton,
+.TitleBarControl .normalbutton[status=focused],.TitleBarControl .normalbutton[userstatus=selected],
+.TitleBarControl .normalbutton[status=deactivate]
+{
+	-nexa-icon : URL("theme://images/tib_WF_Normal.png");
+}
+.TitleBarControl .normalbutton[status=mouseover],.TitleBarControl .normalbutton[userstatus=pushed]
+{
+	-nexa-icon : URL("theme://images/tib_WF_NormalO.png");
+}
+.TitleBarControl .normalbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/tib_WF_NormalD.png");
+}
+.TitleBarControl .closebutton,
+.TitleBarControl .closebutton[status=focused],.TitleBarControl .closebutton[userstatus=selected],
+.TitleBarControl .closebutton[status=deactivate]
+{
+	-nexa-icon : URL("theme://images/tib_WF_Close.png");
+}
+.TitleBarControl .closebutton[status=mouseover],.TitleBarControl .closebutton[userstatus=pushed]
+{
+	-nexa-icon : URL("theme://images/tib_WF_CloseO.png");
+}
+.TitleBarControl .closebutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/tib_WF_CloseD.png");
+}
+.HScrollBarControl,
+.HScrollBarControl[status=mouseover]
+{
+	-nexa-border : 1px solid #e1e2e7, 0px none, 0px none, 0px none;
+	-nexa-padding : 1px 1px 1px 1px;
+	background : #FFFFFF;
+}
+.HScrollBarControl[status=disabled]
+{
+	-nexa-border : 1px solid #efefef, 0px none, 0px none, 0px none;
+	background: #f9f9f9;
+}
+.HScrollBarControl .trackbar,
+.HScrollBarControl .trackbar[status=focused]
+{
+	background : #dcdee2;
+}
+.HScrollBarControl .trackbar[status=mouseover]
+{
+	background : #e9ebef;
+}
+.HScrollBarControl .trackbar[userstatus=pushed],.HScrollBarControl .trackbar[userstatus=selected]
+{
+	background : #c0c1c5;
+}
+.HScrollBarControl .trackbar[status=disabled]
+{
+	background : #e4e4e4;
+}
+.VScrollBarControl,
+.VScrollBarControl[status=mouseover]
+{
+	-nexa-border : 0px none, 0px none, 0px none, 1px solid #e1e2e7;
+	-nexa-padding : 1px 1px 1px 1px;
+	background : #FFFFFF;
+}
+.VScrollBarControl[status=disabled]
+{
+	-nexa-border : 0px none, 0px none, 0px none, 1px solid #efefef;
+	background : #f9f9f9;
+}
+.VScrollBarControl .trackbar,
+.VScrollBarControl .trackbar[status=focused]
+{
+	background : #dcdee2;
+}
+.VScrollBarControl .trackbar[status=mouseover]
+{
+	background : #e9ebef;
+}
+.VScrollBarControl .trackbar[userstatus=pushed],.VScrollBarControl .trackbar[userstatus=selected]
+{
+	background : #c0c1c5;
+}
+.VScrollBarControl .trackbar[status=disabled]
+{
+	background : #e4e4e4;
+}
+.VScrollIndicatorControl
+{
+	-nexa-padding : 5px 2px 5px 2px;
+	background : transparent;
+}
+.VScrollIndicatorControl .trackbar
+{
+	background : #42454e;
+	border-radius : 5px;
+}
+.VScrollIndicatorControl .trackbar[status=mouseover], .VScrollIndicatorControl .trackbar[userstatus=pushed]
+{
+}
+.VScrollIndicatorControl .trackbar[status=disabled]
+{
+}
+/*******************************************************************/
+/*******************	FRAME END	****************************/
+/*******************************************************************/
+/***** DatePickerControl *****/
+.DatePickerControl
+{
+	-nexa-border : 1px solid #646982;
+	background : #FFFFFF;
+}
+.DatePickerControl .head
+{
+	background : #FFFFFF;
+	color : #333333;
+	font : bold 24px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.DatePickerControl .head .prevbutton,
+.DatePickerControl .head .prevbutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/cal_WF_PreBtn.png");
+}
+.DatePickerControl .head .prevbutton[userstatus=pushed],
+.DatePickerControl .head .prevbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/cal_WF_PreBtnO.png");
+}
+.DatePickerControl .head .prevbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/cal_WF_PreBtnD.png");
+}
+.DatePickerControl .head .nextbutton,
+.DatePickerControl .head .nextbutton[status=focused]
+{
+	-nexa-icon : URL("theme://images/cal_WF_NxtBtn.png");
+}
+.DatePickerControl .head .nextbutton[userstatus=pushed],
+.DatePickerControl .head .nextbutton[userstatus=selected]
+{
+	-nexa-icon : URL("theme://images/cal_WF_NxtBtnO.png");
+}
+.DatePickerControl .head .nextbutton[status=disabled]
+{
+	-nexa-icon : URL("theme://images/cal_WF_NxtBtnD.png");
+}
+.DatePickerControl .head .yearstatic,
+.DatePickerControl .head .monthstatic
+{
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.DatePickerControl .head .yearspin,.DatePickerControl .head .yearspin[status=focused],
+.DatePickerControl .head .monthspin,.DatePickerControl .head .monthspin[status=focused]
+{
+	-nexa-border : 0px none;
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.DatePickerControl .body
+{
+	background : #FFFFFF;
+}
+.DatePickerControl .body .weekband
+{
+	background : #f7f8fa;
+}
+.DatePickerControl .body .weekitem
+{
+	color : #666666;
+}
+.DatePickerControl .body .weekitem[userstatus=saturday]
+{
+	color : #127ED1;
+}
+.DatePickerControl .body .weekitem[userstatus=sunday]
+{
+	color : #EE5555;
+}
+.DatePickerControl .body .dayitem
+{
+	color : #333333;
+	font : 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.DatePickerControl .body .dayitem[userstatus=selected]
+{
+	background : #445BEC;
+	color : #FFFFFF;
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	border-radius : 30px;
+}
+.DatePickerControl .body .dayitem[userstatus=day]
+{
+	color : #333333;
+}
+.DatePickerControl .body .dayitem[userstatus=today]
+{
+	background : #B0B7FB;
+	color : #333333;
+	font : bold 18px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	border-radius : 30px;
+}
+.DatePickerControl .body .dayitem[userstatus=saturday]
+{
+	color : #127ED1;
+}
+.DatePickerControl .body .dayitem[userstatus=sunday]
+{
+	color : #EE5555;
+}
+.DatePickerControl .body .dayitem[userstatus=trailingday]
+{
+	color : #aaaaaa;
+}
+/***************************************************************************/
+/*******************	LOGIN START	************************************/
+/***************************************************************************/
+.Form.Login
+{
+	background : #F2F3FF;
+}
+.Static.sta_LOGIN_Logo
+{
+	background : URL("theme://images/sta_LOGIN_Logo.png") no-repeat center transparent;
+}
+.Edit.edt_LOGIN_Id
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 75px;
+	background : URL("theme://images/edt_LOGIN_Id.png") no-repeat left center #FFFFFF;
+	border-radius : 10px;
+	font : 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Edit.edt_LOGIN_Id[status=focused]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 75px;
+	background : URL("theme://images/edt_LOGIN_Id.png") no-repeat left center #FFFFFF;
+	border-radius : 10px;
+	box-shadow : 0px 3px 6px 3px #D8DBF4;
+}
+.Edit.edt_LOGIN_IdError,
+.Edit.edt_LOGIN_IdError[userstatus=nulltext],.Edit.edt_LOGIN_IdError[status=mouseover],
+.Edit.edt_LOGIN_IdError[status=focused],.Edit.edt_LOGIN_IdError[status=readonly],
+.Edit.edt_LOGIN_IdError[status=disabled]
+{
+	-nexa-border : 2px solid #ee5555;
+	-nexa-padding : 0px 0px 0px 75px;
+	background : URL("theme://images/edt_LOGIN_Id.png") no-repeat left center #FFFFFF;
+	border-radius : 10px;
+	font : 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.Edit.edt_LOGIN_Pw
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 75px;
+	background : URL("theme://images/edt_LOGIN_Pw.png") no-repeat left center #FFFFFF;
+	border-radius : 10px;
+	font : 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+} 
+.Edit.edt_LOGIN_Pw[status=focused]
+{
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 0px 0px 75px;
+	background : URL("theme://images/edt_LOGIN_Pw.png") no-repeat left center #FFFFFF;
+	border-radius : 10px;
+	box-shadow : 0px 3px 6px 3px #D8DBF4;
+}
+.Edit.edt_LOGIN_PwError,
+.Edit.edt_LOGIN_PwError[userstatus=nulltext],.Edit.edt_LOGIN_PwError[status=mouseover],
+.Edit.edt_LOGIN_PwError[status=focused],.Edit.edt_LOGIN_PwError[status=readonly],
+.Edit.edt_LOGIN_PwError[status=disabled]
+{
+	-nexa-border : 2px solid #ee5555;
+	-nexa-padding : 0px 0px 0px 75px;
+	background : URL("theme://images/edt_LOGIN_Pw.png") no-repeat left center #FFFFFF;
+	border-radius : 10px;
+	font : 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+} 
+.Button.btn_LOGIN,
+.Button.btn_LOGIN[userstatus=pushed],.Button.btn_LOGIN[userstatus=selected],.Button.btn_LOGIN[status=focused]
+{
+	border-radius : 10px;
+	background : #132EDB;
+	font : 22px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+	color : #FFFFFF;
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+	-nexa-border : 0px none;
+}
+.CheckBox.chk_LOGIN_SaveId
+{
+	-nexa-text-padding : 0px 0px 0px 10px;
+	-nexa-icon : URL("theme://images/chk_LOGIN_SaveId.png");
+	color : #6262A4;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+.CheckBox.chk_LOGIN_SaveId[status=focused],.CheckBox.chk_LOGIN_SaveId[userstatus=selected]
+{
+	-nexa-text-padding : 0px 0px 0px 10px;
+	-nexa-icon : URL("theme://images/chk_LOGIN_SaveIdS.png");
+	color : #6262A4;
+	font : 16px "-apple-system","BlinkMacSystemFont","Roboto","Helvetica","Arial","Apple SD Gothic Neo","sans-serif";
+}
+/***************************************************************************/
+/*******************	LOGIN END         **********************************/
+/***************************************************************************/
+]]></CSSData>
+  <Predefines/>
+</XCSS>

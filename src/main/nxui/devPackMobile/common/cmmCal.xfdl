@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="cmmCal" width="200" height="50" titletext="달력" onload="form_onload">
+    <Layouts>
+      <Layout height="50" mobileorientation="portrait" width="200">
+        <Calendar id="calYM" taborder="0" left="0" top="0" width="200" height="50" popuptype="none" ondropdown="calYM_ondropdown" dateformat="yyyy-MM-dd"/>
+        <PopupDiv id="pdvCal" text="pdvCal" visible="true" left="0" top="50" width="325" height="355">
+          <Layouts>
+            <Layout>
+              <Calendar id="cal" taborder="0" left="0" top="0" type="monthonly" right="0" bottom="0" ondayclick="pdvCal_cal_ondayclick" onchanged="pdvCal_cal_onchanged"/>
+              <Static id="staCal" taborder="1" left="110" top="5" height="40" right="107"/>
+              <Button id="btnBefore" taborder="2" left="55" top="2" width="50" height="46" cssclass="btn_pop_calNum_P" onclick="pdvCal_btnBefore_onclick" border="0px none"/>
+              <Button id="btnNext" taborder="3" top="2" width="50" height="46" right="55" cssclass="btn_pop_calNum_N" onclick="pdvCal_btnNext_onclick" border="0px none"/>
+              <Button id="btnYearNext" taborder="4" top="2" width="50" height="46" right="3" cssclass="btn_pop_calNum_yN" onclick="pdvCal_btnYearNext_onclick" border="0px none"/>
+              <Button id="btnYearBefore" taborder="5" left="3" top="2" width="50" height="46" cssclass="btn_pop_calNum_yP" onclick="pdvCal_btnYearBefore_onclick" border="0px none"/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+        <Static id="staCover" taborder="1" left="0" top="0" right="60" bottom="0"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DevPACK
+*  @FileName 	cmmCal.xfdl
+*  @Creator 	TOBESOFT
+*  @CreateDate 	2022.05.03
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2022.05.03			TOBESOFT					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvToday = "";
+this.callbackfunc = "";
+/*******************************************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose..)
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var objTarget = this.parent;	 // div
+	this.callbackfunc = objTarget.callbackfunc;
+
+	this.fvToday = this.gfnGetDate(); //오늘날자세팅
+	this.fnInit();
+};
+/*******************************************************************************************************************************
+ * 공통함수영역 (cfnSearch : 조회 / cfnSave : 저장 / cfnAdd : 신규 / cfnDel : 삭제 / cfnPrint : 인쇄..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역 (Transaction, popup, message..)
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+/**
+* @description 달력초기화
+*/
+this.fnInit = function()
+{
+	//요구사항에 따라 오늘날짜 3개월 등등 지정 현재 디폴트="";
+	this.calYM.set_value("");
+};
+
+/**
+* @description  컴포넌트 날짜 값 호출
+*/ 
+this.fnGetValue = function()
+{
+	var rtn = this.calYM.value;
+	return rtn;
+};
+
+/**
+* @description   컴포넌트 날짜 값 셋팅
+*/  
+this.fnSetValue = function(sDate)
+{
+	this.calYM.set_value(sDate);
+};
+
+/**
+* @description    컴포넌트 enable 셋팅
+*/   
+this.fnSetEnable = function(bValue)
+{
+	this.calYM.set_enable(bValue);
+};
+
+/**
+* @description    컴포넌트 Readonly 셋팅
+*/ 
+this.fnSetReadonly = function(bValue)
+{
+	this.calYM.set_readonly(bValue);
+};
+
+/**
+* @description    컴포넌트 필수 css 셋팅
+*/  
+this.fnSetEssential = function(bValue)
+{
+	//CSS Class가있는 경우 클래스설정 임시로 노란표시
+	if (bValue){
+		this.calYM.set_background("yellow");
+	}else{
+		this.calYM.set_background("");
+	}
+};
+
+this.fnCalCallback = function(obj, arg)
+{
+	if(this.gfnIsNull(arg)) return;
+	this.calYM.set_value(arg);
+}
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+/**
+* @description   Calendar_ondropdown 이벤트 시 popDiv컴포넌트 띄우기
+*/   
+this.calYM_ondropdown = function(obj:nexacro.Calendar,e:nexacro.EventInfo)
+{
+	var sDate = this.calYM.value;
+	if( this.gfnIsNull(sDate) ) sDate = this.fvToday;
+
+    this.pdvCal.form.cal.set_value(sDate);
+
+    var nLeft   =  (nexacro.getApplication().mainframe.width / 2) - Math.round(this.pdvCal.getOffsetWidth() / 2);
+    var nTop    = (nexacro.getApplication().mainframe.height / 2) - Math.round(this.pdvCal.getOffsetHeight() / 2) ;				
+
+    this.pdvCal.trackPopup(nLeft, nTop, this.pdvCal.getOffsetWidth(), this.pdvCal.getOffsetHeight(), "fnCalCallback");
+};
+
+
+this.pdvCal_cal_ondayclick = function(obj:nexacro.Calendar,e:nexacro.CalendarDayClickEventInfo)
+{
+	this.pdvCal.closePopup(e.date);	
+};
+
+this.pdvCal_cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
+{
+	if (!this.gfnIsNull(this.callbackfunc))
+	{	
+		this.lookupFunc(this.callbackfunc).call(obj, e); 
+	}    
+};
+this.pdvCal_btnBefore_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    this.pdvCal.form.cal.set_value(this.gfnAddMonth(this.pdvCal.form.cal.value, -1));
+};
+
+this.pdvCal_btnNext_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.pdvCal.form.cal.set_value(this.gfnAddMonth(this.pdvCal.form.cal.value, 1));
+};
+
+this.pdvCal_btnYearBefore_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.pdvCal.form.cal.set_value(this.gfnAddMonth(this.pdvCal.form.cal.value, -12));
+};
+
+this.pdvCal_btnYearNext_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.pdvCal.form.cal.set_value(this.gfnAddMonth(this.pdvCal.form.cal.value, 12));
+};
+]]></Script>
+  </Form>
+</FDL>

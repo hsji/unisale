@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Login" width="480" height="768" titletext="로그인" cssclass="Login">
+    <Layouts>
+      <Layout height="768" mobileorientation="portrait" screenid="mobile" width="480">
+        <Edit id="Edit01" taborder="1" left="60" top="460" width="360" height="70" cssclass="edt_LOGIN_Id"/>
+        <Edit id="Edit00_00" taborder="0" left="60" top="542" width="360" height="70" cssclass="edt_LOGIN_Pw"/>
+        <Button id="Button00" taborder="2" text="Login" left="60" top="624" width="360" height="70" cssclass="btn_LOGIN"/>
+        <Static id="Static00" taborder="3" left="0" top="80" height="370" cssclass="sta_LOGIN_Logo" right="0"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>
