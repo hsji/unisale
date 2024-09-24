@@ -529,6 +529,7 @@
         this.fnFileDownload = function()
         {
         	var row = this.ds_File.rowposition;
+        	this.fdtFile.setPostData("FSEQ"	, this.ds_File.getColumn(row, "FILE_SEQ"));
         	this.fdtFile.setPostData("SEQ"	, this.ds_File.getColumn(row, "FM_SEQ"));
         	//this.fdtFile.set_downloadfilename(this.dsUpload.getColumn(row, "FILE_NAME"));
         	this.fdtFile.download("svcUrl::nextFileDownload.do");
@@ -562,7 +563,7 @@
         			{
         				if(nFileCnt > 0)
         				{
-        					this.btn_PopFileMM.set_text(this.gfnGetTransTxt(1946,"파일보기[@1@]",[nFileCnt]));
+        					this.btn_PopFileMM.set_text(this.gfnGetTransTxt(1946,"파일보기 [@1@]",[nFileCnt]));
         				}else{
         					this.btn_PopFileMM.set_text(this.gfnGetTransTxt(328,"파일등록"));
         				}

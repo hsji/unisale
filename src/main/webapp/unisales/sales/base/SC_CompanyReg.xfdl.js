@@ -220,7 +220,7 @@
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_Cancel",null,null,"70","28","9","18",null,null,null,null,this);
-            obj.set_taborder("10");
+            obj.set_taborder("9");
             obj.set_text("닫기");
             obj.getSetter("TL_SEQ").set("59");
             this.addChild(obj.name, obj);
@@ -673,7 +673,7 @@
             obj.set_text("");
             this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
 
-            obj = new Combo("cmb_CompanyStatus","stc_CompanyStatus:8.00","519",null,"24","761",null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
+            obj = new Combo("cmb_CompanyStatus","stc_CompanyStatus:8.00","519",null,"24","875",null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
             obj.set_taborder("49");
             obj.set_innerdataset("ds_CD_COMPANY_STATE");
             obj.set_codecolumn("CODE");
@@ -681,7 +681,7 @@
             obj.set_text("");
             this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
 
-            obj = new Static("stc_PlaceOfContract","504.00","519","76","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
+            obj = new Static("stc_PlaceOfContract","385.00","519","68","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
             obj.set_taborder("50");
             obj.set_text("계약처");
             obj.set_cssclass("sta_WF_DetailTit");
@@ -689,7 +689,7 @@
             obj.getSetter("TL_SEQ").set("34");
             this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
 
-            obj = new Combo("cmb_PlaceOfContract","587.00","519",null,"24","375",null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
+            obj = new Combo("cmb_PlaceOfContract","stc_PlaceOfContract:8.00","519",null,"24","555",null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
             obj.set_taborder("51");
             obj.set_codecolumn("CODE");
             obj.set_datacolumn("CAPTION");
@@ -697,7 +697,7 @@
             obj.set_text("");
             this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
 
-            obj = new Combo("cmb_BankName","109.00","551","276","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
+            obj = new Combo("cmb_BankName","stc_BankName:8","551","276","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
             obj.set_taborder("52");
             obj.set_innerdataset("ds_CD_BANK_CODE");
             obj.set_codecolumn("CODE");
@@ -705,7 +705,7 @@
             obj.set_text("");
             this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
 
-            obj = new Static("stc_AccountNumber","412.00","551","52","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
+            obj = new Static("stc_AccountNumber","cmb_BankName:0","551","68","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
             obj.set_taborder("53");
             obj.set_text("계좌번호");
             obj.set_cssclass("sta_WF_DetailTit");
@@ -713,20 +713,20 @@
             obj.getSetter("TL_SEQ").set("856");
             this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
 
-            obj = new Edit("edt_AccountNumber","472.00","551","244","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
+            obj = new Edit("edt_AccountNumber","stc_AccountNumber:8","551","244","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
             obj.set_taborder("54");
             this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
 
-            obj = new Edit("edt_AccountName","822.00","551","223","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
-            obj.set_taborder("55");
-            this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
-
-            obj = new Static("stc_AccountName","722.00","551","92","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
+            obj = new Static("stc_AccountName","edt_AccountNumber:0","551","68","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
             obj.set_taborder("56");
             obj.set_text("계좌명");
             obj.set_cssclass("sta_WF_DetailTit");
             obj.set_textAlign("right");
             obj.getSetter("TL_SEQ").set("857");
+            this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
+
+            obj = new Edit("edt_AccountName","stc_AccountName:8","551","223","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
+            obj.set_taborder("55");
             this.tab_Info.tpg_BasicInfo.addChild(obj.name, obj);
 
             obj = new Combo("cmb_BusinessCondition","stc_BusinessCondition:8.00","135","309","24",null,null,null,null,null,null,this.tab_Info.tpg_BasicInfo.form);
@@ -1402,20 +1402,15 @@
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_Confirm",null,"26","60","25","btn_Plus:10",null,null,null,null,null,this);
-            obj.set_taborder("11");
+            obj.set_taborder("10");
             obj.set_text("선택");
             obj.set_visible("false");
             obj.set_cssclass("btn_TFDM_Add");
             obj.getSetter("TL_SEQ").set("113");
             this.addChild(obj.name, obj);
 
-            obj = new WebBrowser("wb_PostalSearch","8.00","870","72","71",null,null,null,null,null,null,this);
-            obj.set_taborder("8");
-            obj.set_visible("false");
-            this.addChild(obj.name, obj);
-
             obj = new Button("btn_ExcelPurchaseList",null,null,"68","22","btn_Save:70","21",null,null,null,null,this);
-            obj.set_taborder("9");
+            obj.set_taborder("8");
             obj.set_text("Excel");
             obj.set_cssclass("btn_WF_Excel");
             obj.set_visible("false");
@@ -2031,7 +2026,7 @@
 
 
         	this.fnSetTooltip();
-        	this.wb_PostalSearch.set_visible(false);
+        	//this.wb_PostalSearch.set_visible(false);
         	this.fnGetCode();
 
         	this.tab_Info.tpg_BasicInfo.form.jPostAddr.set_jspUrl(this.gfnGetServiceUrl() + "thirdParty/post/PostCall.jsp");
@@ -2214,10 +2209,10 @@
         					this.dsAddressBook.deleteRow(0);
         			}
 
-        			if(this.dsCompany.getColumn(0, "COMPANY_CODE") == "TOBE" || this.dsCompany.getColumn(0, "COMPANY_CODE") == "CORE")
-        			{
-        				this.div_Attachment02.set_visible(false);
-        			}
+        // 			if(this.dsCompany.getColumn(0, "COMPANY_CODE") == "TOBE" || this.dsCompany.getColumn(0, "COMPANY_CODE") == "CORE")
+        // 			{
+        // 				this.div_Attachment02.set_visible(false);
+        // 			}
 
         			//원청턴키 투입이력이 있을경우 원청턴키여부를 해제할수 없음
         			if (this.dsCompany.getColumn(0, "TURNKEY_CNT")>0) {
@@ -2252,7 +2247,7 @@
         				this.dsCompany.setColumn(newrow, "CL_SI"					, 0);
         				this.dsCompany.setColumn(newrow, "CL_NET_INCOME"			, 0);
         				this.dsCompany.setColumn(newrow, "CL_EXCEPTION_CODE"		, "000");
-        				this.dsCompany.setColumn(newrow, "NATION_CD"		, "001");
+        				this.dsCompany.setColumn(newrow, "NATION_CODE"		, "001");
 
 
 
@@ -2288,6 +2283,12 @@
         			this.tab_Info.tpg_Credit.form.ck_SalesEmpReturn.set_value("0");
         			this.gfnAlert('msg.save.success',[],"SAVE",
         			function() {
+        				if(this.getOwnerFrame().hasOwnProperty("TMP_COMP_REG")) {
+        					if(this.getOwnerFrame().TMP_COMP_REG == true && this.gfnIsNull(this.getOwnerFrame().COMPANY_CODE)) {
+        						this.close();
+        						return;
+        					}
+        				}
         				this.bUpdate = false;
         				this.fnSearch();
         			});
@@ -2367,20 +2368,20 @@
         			break;
 
         		case "btn_PostalNumber" :
-        			var sCocd = nexacro.getApplication().gdsUserInfo.getColumn(0, "CO_CD");
-
-        			if(sCocd=="J02") {
-        				var code = this.tab_Info.tpg_BasicInfo.form.edt_PostNo.value;
-
-        				var json_param = {
-        					"async" : true
-        				}
-        				this.doZip.request("zip","GET","https://apis.postcode-jp.com/api/v3/postcodes?postcode=" + code + "&apikey=5zU1XOuUdsDDHQ2unROP6wqMWpjJrMxn2O2RU9n",json_param);
-        			} else {
-        				var objEnv = nexacro.getEnvironment();
-        				var svc = objEnv.services["ServiceURL"];
-        				this.wb_PostalSearch.set_url(svc.url+"/Service/zip.html");
-        			}
+        // 			var sCocd = nexacro.getApplication().gdsUserInfo.getColumn(0, "CO_CD");
+        //
+        // 			if(sCocd=="J02") {
+        // 				var code = this.tab_Info.tpg_BasicInfo.form.edt_PostNo.value;
+        //
+        // 				var json_param = {
+        // 					"async" : true
+        // 				}
+        // 				this.doZip.request("zip","GET","https://apis.postcode-jp.com/api/v3/postcodes?postcode=" + code + "&apikey=5zU1XOuUdsDDHQ2unROP6wqMWpjJrMxn2O2RU9n",json_param);
+        // 			} else {
+        // 				var objEnv = nexacro.getEnvironment();
+        // 				var svc = objEnv.services["ServiceURL"];
+        // 				this.wb_PostalSearch.set_url(svc.url+"/Service/zip.html");
+        // 			}
 
         			break;
 
@@ -3116,8 +3117,6 @@
             this.btn_Minus.addEventHandler("onclick",this.comm_Click,this);
             this.btn_Plus.addEventHandler("onclick",this.comm_Click,this);
             this.btn_Confirm.addEventHandler("onclick",this.btn_Confirm_onclick,this);
-            this.wb_PostalSearch.addEventHandler("onloadcompleted",this.wb_PostalSearch_onloadcompleted,this);
-            this.wb_PostalSearch.addEventHandler("onusernotify",this.wb_PostalSearch_onusernotify,this);
             this.btn_ExcelPurchaseList.addEventHandler("onclick",this.btn_Excel_onclick,this);
             this.div_Reason.form.cmb_SalesEmp.addEventHandler("onitemchanged",this.div_Reason_cmb_SalesEmp_onitemchanged,this);
             this.div_Reason.form.btn_PopClose3.addEventHandler("onclick",this.comm_Click,this);

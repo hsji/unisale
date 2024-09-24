@@ -413,6 +413,8 @@ this.downloadFile = function (row)
 	this.fdtFile.setPostData("SSE"	, this.dsUpload.getColumn(row, "SOURCE_SEQ"));
 	this.fdtFile.setPostData("SFN"	, this.dsUpload.getColumn(row, "SAVE_FILE_NAME"));
 	this.fdtFile.setPostData("OF"	, this.dsUpload.getColumn(row, "FILE_NAME"));
+	this.fdtFile.setPostData("FSEQ"	, this.dsUpload.getColumn(row, "FILE_SEQ"));
+	this.fdtFile.setPostData("SEQ"	, this.dsUpload.getColumn(row, "FM_SEQ"));
 	
 	this.fdtFile.set_downloadfilename(this.dsUpload.getColumn(row, "FILE_NAME"));
 	this.fdtFile.download("svcUrl::nextFileDownload.do");

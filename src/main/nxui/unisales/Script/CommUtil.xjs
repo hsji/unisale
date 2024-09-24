@@ -1135,7 +1135,17 @@ this.gfnGetReplace = function(sString,sStartChar, sEndChar)
 
 this.gfnGetTransTxt = function (TL_SEQ, sDefTxt, arrVal) 
 {
+	if(!this.gfnIsEmpty(arrVal))
+	{
+		for(var i=0; i<arrVal.length; i++)
+		{
+			sDefTxt = sDefTxt.replace("@"+nexacro.toNumber(i+1)+"@",arrVal[i]);
+		}
+	}
+	sDefTxt = sDefTxt.replaceAll("\\n", "\n");
+	
 	return sDefTxt;
+	
 	var sRtnVal = "";
 	var nFindRow = nexacro.getApplication().gdsTransInfo.findRow("TL_SEQ", TL_SEQ);
 	if (nFindRow>=0)

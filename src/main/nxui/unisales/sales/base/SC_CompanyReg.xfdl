@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Static id="stc_BottomFrame" taborder="0" left="1.00" height="37" right="1" bottom="14" cssclass="sta_POP_BtnBg"/>
-        <Button id="btn_Cancel" taborder="10" text="닫기" width="70" height="28" bottom="18" onclick="btn_Cancel_onclick" right="9" TL_SEQ="59"/>
+        <Button id="btn_Cancel" taborder="9" text="닫기" width="70" height="28" bottom="18" onclick="btn_Cancel_onclick" right="9" TL_SEQ="59"/>
         <Button id="btn_Save" taborder="1" text="저장" width="60" height="28" cssclass="btn_WF_Crud" right="btn_Cancel:8" bottom="18" onclick="comm_Click" enable="false" TL_SEQ="115"/>
         <Button id="btn_CompanyAddMM" taborder="2" text="공통코드 관리" height="28" right="1134" bottom="18" onclick="comm_Click" enable="false" TL_SEQ="672" left="9.00"/>
         <Div id="div_Attachment02" taborder="4" left="btn_CompanyAddMM:10.00" width="116" height="28" async="true" USE_NEXT_FILE_TYPE="true" USE_LINK_TYPE="false" USE_MULTI_FILE="true" USE_OPEN_ADD_DIALOG="false" USE_DELETE_ALL="false" USE_BUTTON_ONLY="true" url="sales::comm/COM_Attachment.xfdl" bottom="18" enable="true" enableevent="true" SOURCE_SEQ="COMPANY_CODE" SOURCE_CD="COM" BINDDATASET="dsCompany" text=""/>
@@ -68,14 +68,14 @@
                   <CheckBox id="CheckBox00" taborder="59" text="채권추심이력" left="chb_Product2:9.00" top="488" width="113" height="24" falsevalue="0" truevalue="1" TL_SEQ="151" font="12px &quot;noto&quot;,&quot;Malgun Gothic&quot;,&quot;Arial&quot;"/>
                   <CheckBox id="chb_OfficialPartner" taborder="47" text="공식파트너사" left="CheckBox00:-5.00" top="488" width="101" height="24" falsevalue="0" truevalue="1" onchanged="tab_Info_tpg_BasicInfo_chb_OfficialPartner_onchanged" TL_SEQ="152" font="12px &quot;noto&quot;,&quot;Malgun Gothic&quot;,&quot;Arial&quot;"/>
                   <Combo id="cmb_PartKind" taborder="58" text="" left="chb_OfficialPartner:1.00" top="488" width="113" height="24" visible="true" innerdataset="ds_CD_PARTNER_KIND" codecolumn="CODE" datacolumn="CAPTION"/>
-                  <Combo id="cmb_CompanyStatus" taborder="49" text="" left="stc_CompanyStatus:8.00" top="519" height="24" innerdataset="ds_CD_COMPANY_STATE" codecolumn="CODE" datacolumn="CAPTION" right="761"/>
-                  <Static id="stc_PlaceOfContract" taborder="50" text="계약처" top="519" width="76" height="24" cssclass="sta_WF_DetailTit" textAlign="right" left="504.00" TL_SEQ="34"/>
-                  <Combo id="cmb_PlaceOfContract" taborder="51" text="" left="587.00" top="519" height="24" codecolumn="CODE" datacolumn="CAPTION" innerdataset="ds_CD_COMPANY_KIND" right="375"/>
-                  <Combo id="cmb_BankName" taborder="52" text="" left="109.00" top="551" width="276" height="24" innerdataset="ds_CD_BANK_CODE" codecolumn="CODE" datacolumn="CAPTION"/>
-                  <Static id="stc_AccountNumber" taborder="53" text="계좌번호" top="551" width="52" height="24" cssclass="sta_WF_DetailTit" textAlign="right" left="412.00" TL_SEQ="856"/>
-                  <Edit id="edt_AccountNumber" taborder="54" left="472.00" top="551" width="244" height="24"/>
-                  <Edit id="edt_AccountName" taborder="55" left="822.00" top="551" width="223" height="24"/>
-                  <Static id="stc_AccountName" taborder="56" text="계좌명" top="551" width="92" height="24" cssclass="sta_WF_DetailTit" textAlign="right" left="722.00" TL_SEQ="857"/>
+                  <Combo id="cmb_CompanyStatus" taborder="49" text="" left="stc_CompanyStatus:8.00" top="519" height="24" innerdataset="ds_CD_COMPANY_STATE" codecolumn="CODE" datacolumn="CAPTION" right="875"/>
+                  <Static id="stc_PlaceOfContract" taborder="50" text="계약처" top="519" width="68" height="24" cssclass="sta_WF_DetailTit" textAlign="right" left="385.00" TL_SEQ="34"/>
+                  <Combo id="cmb_PlaceOfContract" taborder="51" text="" left="stc_PlaceOfContract:8.00" top="519" height="24" codecolumn="CODE" datacolumn="CAPTION" innerdataset="ds_CD_COMPANY_KIND" right="555"/>
+                  <Combo id="cmb_BankName" taborder="52" text="" left="stc_BankName:8" top="551" width="276" height="24" innerdataset="ds_CD_BANK_CODE" codecolumn="CODE" datacolumn="CAPTION"/>
+                  <Static id="stc_AccountNumber" taborder="53" text="계좌번호" top="551" width="68" height="24" cssclass="sta_WF_DetailTit" textAlign="right" left="cmb_BankName:0" TL_SEQ="856"/>
+                  <Edit id="edt_AccountNumber" taborder="54" left="stc_AccountNumber:8" top="551" width="244" height="24"/>
+                  <Static id="stc_AccountName" taborder="56" text="계좌명" top="551" width="68" height="24" cssclass="sta_WF_DetailTit" textAlign="right" left="edt_AccountNumber:0" TL_SEQ="857"/>
+                  <Edit id="edt_AccountName" taborder="55" left="stc_AccountName:8" top="551" width="223" height="24"/>
                   <Combo id="cmb_BusinessCondition" taborder="57" text="" left="stc_BusinessCondition:8.00" top="135" width="309" height="24" innerdataset="ds_CD_BUSINESS_FORM" codecolumn="CODE" datacolumn="CAPTION" type="filterlike" enableevent="true"/>
                   <Edit id="edt_CompanyName" taborder="60" left="stc_CompanyName:8.00" top="42" width="309" height="24" onkillfocus="tab_Info_tpg_BasicInfo_edt_CompanyName_onkillfocus" onkeydown="tab_Info_tpg_BasicInfo_edt_CompanyName_onkeydown"/>
                   <Button id="btn_CompanyName" taborder="61" top="42" width="22" height="24" cssclass="btn_WF_Sch" onclick="comm_Click" left="edt_CompanyName:5.00"/>
@@ -514,9 +514,8 @@
         </Tab>
         <Button id="btn_Minus" taborder="7" height="25" onclick="comm_Click" top="26" visible="false" cssclass="btn_WF_Delete" enable="false" width="33" right="20"/>
         <Button id="btn_Plus" taborder="6" height="25" onclick="comm_Click" top="26" visible="false" cssclass="btn_WF_Add" enable="false" right="btn_Minus:10" width="33"/>
-        <Button id="btn_Confirm" taborder="11" text="선택" width="60" height="25" right="btn_Plus:10" onclick="btn_Confirm_onclick" visible="false" cssclass="btn_TFDM_Add" TL_SEQ="113" top="26"/>
-        <WebBrowser id="wb_PostalSearch" taborder="8" left="8.00" top="870" width="72" height="71" onloadcompleted="wb_PostalSearch_onloadcompleted" onusernotify="wb_PostalSearch_onusernotify" visible="false"/>
-        <Button id="btn_ExcelPurchaseList" taborder="9" text="Excel" height="22" onclick="btn_Excel_onclick" cssclass="btn_WF_Excel" visible="false" tooltiptext="매입리스트" right="btn_Save:70" width="68" bottom="21"/>
+        <Button id="btn_Confirm" taborder="10" text="선택" width="60" height="25" right="btn_Plus:10" onclick="btn_Confirm_onclick" visible="false" cssclass="btn_TFDM_Add" TL_SEQ="113" top="26"/>
+        <Button id="btn_ExcelPurchaseList" taborder="8" text="Excel" height="22" onclick="btn_Excel_onclick" cssclass="btn_WF_Excel" visible="false" tooltiptext="매입리스트" right="btn_Save:70" width="68" bottom="21"/>
         <PopupDiv id="div_Reason" visible="false" left="111.00" top="861" width="345" height="219" background="#ffffff" border="2px solid #dddddd" borderRadius="5px">
           <Layouts>
             <Layout>
@@ -939,7 +938,7 @@ this.fnFormInit = function()
 	
 	
 	this.fnSetTooltip();
-	this.wb_PostalSearch.set_visible(false);
+	//this.wb_PostalSearch.set_visible(false);
 	this.fnGetCode();
 	
 	this.tab_Info.tpg_BasicInfo.form.jPostAddr.set_jspUrl(this.gfnGetServiceUrl() + "thirdParty/post/PostCall.jsp");	
@@ -1122,10 +1121,10 @@ this.fnCallBack = function(strSvcID, nErrorCode, strErrorMag)
 					this.dsAddressBook.deleteRow(0);
 			}
 			
-			if(this.dsCompany.getColumn(0, "COMPANY_CODE") == "TOBE" || this.dsCompany.getColumn(0, "COMPANY_CODE") == "CORE")
-			{
-				this.div_Attachment02.set_visible(false);
-			}
+// 			if(this.dsCompany.getColumn(0, "COMPANY_CODE") == "TOBE" || this.dsCompany.getColumn(0, "COMPANY_CODE") == "CORE")
+// 			{
+// 				this.div_Attachment02.set_visible(false);
+// 			}
 			
 			//원청턴키 투입이력이 있을경우 원청턴키여부를 해제할수 없음
 			if (this.dsCompany.getColumn(0, "TURNKEY_CNT")>0) {
@@ -1160,7 +1159,7 @@ this.fnCallBack = function(strSvcID, nErrorCode, strErrorMag)
 				this.dsCompany.setColumn(newrow, "CL_SI"					, 0);
 				this.dsCompany.setColumn(newrow, "CL_NET_INCOME"			, 0);
 				this.dsCompany.setColumn(newrow, "CL_EXCEPTION_CODE"		, "000");
-				this.dsCompany.setColumn(newrow, "NATION_CD"		, "001");
+				this.dsCompany.setColumn(newrow, "NATION_CODE"		, "001");
 				
 				
 				
@@ -1196,6 +1195,12 @@ this.fnCallBack = function(strSvcID, nErrorCode, strErrorMag)
 			this.tab_Info.tpg_Credit.form.ck_SalesEmpReturn.set_value("0");
 			this.gfnAlert('msg.save.success',[],"SAVE",
 			function() {
+				if(this.getOwnerFrame().hasOwnProperty("TMP_COMP_REG")) {
+					if(this.getOwnerFrame().TMP_COMP_REG == true && this.gfnIsNull(this.getOwnerFrame().COMPANY_CODE)) {
+						this.close();
+						return;
+					}
+				}
 				this.bUpdate = false;
 				this.fnSearch();
 			});
@@ -1275,20 +1280,20 @@ this.comm_Click = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			break;
 		
 		case "btn_PostalNumber" : 
-			var sCocd = nexacro.getApplication().gdsUserInfo.getColumn(0, "CO_CD");
-			
-			if(sCocd=="J02") {
-				var code = this.tab_Info.tpg_BasicInfo.form.edt_PostNo.value;
-				
-				var json_param = {
-					"async" : true
-				}
-				this.doZip.request("zip","GET","https://apis.postcode-jp.com/api/v3/postcodes?postcode=" + code + "&apikey=5zU1XOuUdsDDHQ2unROP6wqMWpjJrMxn2O2RU9n",json_param);
-			} else {
-				var objEnv = nexacro.getEnvironment();
-				var svc = objEnv.services["ServiceURL"];
-				this.wb_PostalSearch.set_url(svc.url+"/Service/zip.html");
-			}
+// 			var sCocd = nexacro.getApplication().gdsUserInfo.getColumn(0, "CO_CD");
+// 			
+// 			if(sCocd=="J02") {
+// 				var code = this.tab_Info.tpg_BasicInfo.form.edt_PostNo.value;
+// 				
+// 				var json_param = {
+// 					"async" : true
+// 				}
+// 				this.doZip.request("zip","GET","https://apis.postcode-jp.com/api/v3/postcodes?postcode=" + code + "&apikey=5zU1XOuUdsDDHQ2unROP6wqMWpjJrMxn2O2RU9n",json_param);
+// 			} else {
+// 				var objEnv = nexacro.getEnvironment();
+// 				var svc = objEnv.services["ServiceURL"];
+// 				this.wb_PostalSearch.set_url(svc.url+"/Service/zip.html");
+// 			}
 			
 			break;
 		

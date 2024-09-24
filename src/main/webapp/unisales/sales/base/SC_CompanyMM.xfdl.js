@@ -112,6 +112,7 @@
             obj.set_cssclass("btn_WF_tran");
             obj.set_enable("false");
             obj.getSetter("TL_SEQ").set("116");
+            obj.set_visible("false");
             this.div_Project_Management.addChild(obj.name, obj);
 
             obj = new Button("btn_Merge",null,"8","70","22","btn_Ins:8",null,null,null,null,null,this.div_Project_Management.form);
@@ -120,6 +121,7 @@
             obj.set_cssclass("btn_WF_tran");
             obj.set_enable("false");
             obj.getSetter("TL_SEQ").set("2272");
+            obj.set_visible("false");
             this.div_Project_Management.addChild(obj.name, obj);
 
             obj = new Button("btn_Search",null,"10","48","28","25",null,null,null,null,null,this.div_Project_Management.form);

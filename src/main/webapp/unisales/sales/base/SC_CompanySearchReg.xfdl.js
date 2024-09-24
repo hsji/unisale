@@ -91,7 +91,7 @@
             obj.set_taborder("0");
             obj.set_autofittype("col");
             obj.set_binddataset("dsOutput");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"152\"/><Column size=\"387\"/><Column size=\"388\"/></Columns><Rows><Row size=\"32\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"회사코드\" TL_SEQ=\"147\"/><Cell col=\"1\" text=\"회사명\" TL_SEQ=\"22536\"/><Cell col=\"2\" text=\"영문회사명\" TL_SEQ=\"22536\"/></Band><Band id=\"body\"><Cell text=\"bind:COMPANY_CD\"/><Cell col=\"1\" text=\"bind:COMPANY_NM\"/><Cell col=\"2\" text=\"bind:COMPANY_NM_ENG\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"152\"/><Column size=\"387\"/><Column size=\"388\"/></Columns><Rows><Row size=\"32\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"회사코드\" TL_SEQ=\"147\"/><Cell col=\"1\" text=\"회사명\" TL_SEQ=\"22536\"/><Cell col=\"2\" text=\"영문회사명\" TL_SEQ=\"22536\"/></Band><Band id=\"body\"><Cell text=\"bind:COMPANY_CODE\"/><Cell col=\"1\" text=\"bind:COMPANY_NAME\"/><Cell col=\"2\" text=\"bind:COMPANY_NAME_ENG\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_Cancel",null,null,"60","28","20","10",null,null,null,null,this);
@@ -188,12 +188,13 @@
         ************************************************************************************************/
         this.fnSearchPopupClose = function (sType)
         {
-        	var sLang = nexacro.getApplication().gdsGlobal.getColumn(0, "LANGUAGE");
+        	//var sLang = nexacro.getApplication().gdsGlobal.getColumn(0, "LANGUAGE");
 
         	if(sType == "GetCompany") 		// 확인
         	{
-        		this.popupArg[0] = this.dsOutput.getColumn(this.dsOutput.rowposition,"COMPANY_NM");
-        		this.popupArg[1] = this.dsOutput.getColumn(this.dsOutput.rowposition,"COMPANY_NM_ENG");
+        		this.popupArg[0] = this.dsOutput.getColumn(this.dsOutput.rowposition,"COMPANY_NAME");
+        		this.popupArg[1] = this.dsOutput.getColumn(this.dsOutput.rowposition,"COMPANY_NAME_ENG");
+        		this.popupArg[2] = this.dsOutput.getColumn(this.dsOutput.rowposition,"COMPANY_CODE");
         	} else if (sType == "NewCompany")	// 신규
         	{
         		var bRtn = false;
@@ -235,7 +236,7 @@
         	if(this.gfnIsEmpty(this.popupArg[1])) 	{
         		this.popupArg[1] = "";
         	}
-        	this.close(this.popupArg[0]+"|"+this.popupArg[1]);
+        	this.close(this.popupArg[0]+"|"+this.popupArg[1]+"|"+this.popupArg[2]);
         	//this.commUtil.popupClose(this.popupArg);
         }
         /************************************************************************************************

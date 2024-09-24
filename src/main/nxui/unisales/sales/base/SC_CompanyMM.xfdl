@@ -11,8 +11,8 @@
               <Static id="stc_ClientName" taborder="0" left="cmb_SelectType:0.00" top="12" width="73" height="24" cssclass="sta_WF_SchLabel" text="회사" TL_SEQ="73"/>
               <Edit id="edt_ClientName" taborder="1" left="stc_ClientName:0" top="12" width="212" height="24" onkeydown="div_Project_Management_edt_ClientName_onkeydown"/>
               <CheckBox id="chb_Inquiry" taborder="2" text="가 조회" left="edt_ClientName:30" top="12" width="67" height="24" falsevalue="0" truevalue="1" TL_SEQ="2271"/>
-              <Button id="btn_Ins" taborder="3" text="신규" top="8" height="22" onclick="comm_Click" cssclass="btn_WF_tran" right="152" width="60" enable="false" TL_SEQ="116"/>
-              <Button id="btn_Merge" taborder="7" text="회사병합" top="8" height="22" onclick="comm_Click" cssclass="btn_WF_tran" right="btn_Ins:8" width="70" enable="false" TL_SEQ="2272"/>
+              <Button id="btn_Ins" taborder="3" text="신규" top="8" height="22" onclick="comm_Click" cssclass="btn_WF_tran" right="152" width="60" enable="false" TL_SEQ="116" visible="false"/>
+              <Button id="btn_Merge" taborder="7" text="회사병합" top="8" height="22" onclick="comm_Click" cssclass="btn_WF_tran" right="btn_Ins:8" width="70" enable="false" TL_SEQ="2272" visible="false"/>
               <Button id="btn_Search" taborder="4" text="조회" top="10" height="28" onclick="comm_Click" cssclass="btn_WF_Search" right="25" width="48" TL_SEQ="118"/>
               <CheckBox id="cb_BlackList" taborder="8" text="블랙리스트" left="chb_Inquiry:10" top="12" width="90" height="24" falsevalue="0" truevalue="1" TL_SEQ="842"/>
               <Static id="stc_CompanyType00" taborder="9" text="대분류" left="cb_BlackList:0.00" top="12" width="80" height="24" cssclass="sta_WF_SchLabel" TL_SEQ="670"/>

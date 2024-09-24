@@ -28,7 +28,7 @@
 
 
             obj = new Dataset("ds_Product", this);
-            obj._setContents("<ColumnInfo><Column id=\"HIPO_PRODUCT_NAME\" type=\"undefined\" size=\"0\"/><Column id=\"UNIT_COST\" type=\"undefined\" size=\"0\"/><Column id=\"CHGE_IP\" type=\"undefined\" size=\"0\"/><Column id=\"GOODS_FLAG\" type=\"string\" size=\"32\"/><Column id=\"REMARKS\" type=\"undefined\" size=\"0\"/><Column id=\"PRODUCT_CODE\" type=\"string\" size=\"32\"/><Column id=\"RELATED_COMPANY_CODE\" type=\"undefined\" size=\"0\"/><Column id=\"COMPANY_CODE\" type=\"string\" size=\"32\"/><Column id=\"MAIN_PRODUCT_CODE\" type=\"undefined\" size=\"0\"/><Column id=\"MAIN_PRODUCT_FLAG\" type=\"string\" size=\"32\"/><Column id=\"INPT_DTTM\" type=\"undefined\" size=\"0\"/><Column id=\"_ORG_PRODUCT_CODE\" type=\"undefined\" size=\"0\"/><Column id=\"PRODUCT_NAME_SHORT\" type=\"string\" size=\"32\"/><Column id=\"PRODUCT_NAME_ENG\" type=\"undefined\" size=\"0\"/><Column id=\"ROYALTY_TYPE\" type=\"undefined\" size=\"0\"/><Column id=\"SELECT_FLAG\" type=\"string\" size=\"32\"/><Column id=\"SortOrder\" type=\"undefined\" size=\"0\"/><Column id=\"NO_PURCHASE_FLAG\" type=\"string\" size=\"32\"/><Column id=\"PRODUCT_NAME\" type=\"string\" size=\"32\"/><Column id=\"PRODUCT_LVL\" type=\"int\" size=\"4\"/><Column id=\"HIPO_PRODUCT_CODE\" type=\"string\" size=\"32\"/><Column id=\"CONTRACT_TYPE\" type=\"string\" size=\"32\"/><Column id=\"CHGE_ID\" type=\"undefined\" size=\"0\"/><Column id=\"MA_FLAG\" type=\"string\" size=\"32\"/><Column id=\"DELETE_FLAG\" type=\"string\" size=\"32\"/><Column id=\"INPT_IP\" type=\"undefined\" size=\"0\"/><Column id=\"CHGE_DTTM\" type=\"undefined\" size=\"0\"/><Column id=\"RELATED_COMPANY_NAME\" type=\"undefined\" size=\"0\"/><Column id=\"PRODUCT_ORDR\" type=\"undefined\" size=\"0\"/><Column id=\"INPT_ID\" type=\"string\" size=\"32\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"HIPO_PRODUCT_NAME\" type=\"string\" size=\"32\"/><Column id=\"PRODUCT_NAME_SHORT\" type=\"string\" size=\"32\"/><Column id=\"UNIT_COST\" type=\"float\" size=\"8\"/><Column id=\"PRODUCT_NAME_ENG\" type=\"string\" size=\"32\"/><Column id=\"ROYALTY_TYPE\" type=\"string\" size=\"32\"/><Column id=\"SELECT_FLAG\" type=\"string\" size=\"32\"/><Column id=\"SortOrder\" type=\"string\" size=\"32\"/><Column id=\"GOODS_FLAG\" type=\"string\" size=\"32\"/><Column id=\"REMARKS\" type=\"string\" size=\"32\"/><Column id=\"NO_PURCHASE_FLAG\" type=\"string\" size=\"32\"/><Column id=\"PRODUCT_NAME\" type=\"string\" size=\"32\"/><Column id=\"PRODUCT_LVL\" type=\"int\" size=\"4\"/><Column id=\"PRODUCT_CODE\" type=\"string\" size=\"32\"/><Column id=\"HIPO_PRODUCT_CODE\" type=\"string\" size=\"32\"/><Column id=\"CONTRACT_TYPE\" type=\"string\" size=\"32\"/><Column id=\"MA_FLAG\" type=\"string\" size=\"32\"/><Column id=\"DELETE_FLAG\" type=\"string\" size=\"32\"/><Column id=\"RELATED_COMPANY_CODE\" type=\"string\" size=\"32\"/><Column id=\"COMPANY_CODE\" type=\"string\" size=\"32\"/><Column id=\"MAIN_PRODUCT_CODE\" type=\"string\" size=\"32\"/><Column id=\"MAIN_PRODUCT_FLAG\" type=\"string\" size=\"32\"/><Column id=\"PRODUCT_ORDER\" type=\"INT\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -416,7 +416,7 @@
             this.addChild(obj.name, obj);
             obj.bind();
 
-            obj = new BindItem("item34","div_PROD.form.divDetail.form.edtDeptSort","value","ds_Product","PRODUCT_ORDR");
+            obj = new BindItem("item34","div_PROD.form.divDetail.form.edtDeptSort","value","ds_Product","PRODUCT_ORDER");
             this.addChild(obj.name, obj);
             obj.bind();
 
@@ -718,7 +718,7 @@
         	this.gfnSetValidation(this.ds_Product, "PRODUCT_NAME", "제품명"	, "required");
         	//this.gfnSetValidation(this.ds_Product, "HIPO_PRODUCT_CODE", "상위제품코드"	, "required");
         	this.gfnSetValidation(this.ds_Product, "PRODUCT_LVL", "트리레벨"	, "required");
-        	this.gfnSetValidation(this.ds_Product, "PRODUCT_ORDR", "정렬순서"	, "required");
+        	this.gfnSetValidation(this.ds_Product, "PRODUCT_ORDER", "정렬순서"	, "required");
 
         	// Dataset의 변경된 Row Validation check
         	if (this.gfnValidation(this.ds_Product, "U") == false) return false;
