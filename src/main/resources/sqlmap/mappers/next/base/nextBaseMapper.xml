@@ -1369,4 +1369,235 @@ VALUES
 	AND PRODUCT_CODE = #{PRODUCT_CODE}
 </delete>
 
+<select id="selectStaffList" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT 
+	  VED.COMPANY_CD
+	, VED.USER_ID
+	, VED.EMP_NO
+	, VED.EMP_NM
+	, VED.KORN_NM
+	, VED.ENGL_NM
+	, VED.JAPN_NM
+	, VED.DEPT_CD
+	, VED.USER_FLAG_CD
+	, VED.WKGD_CD
+	, VED.WKDT_CD
+	, VED.OCCU_CD
+	, VED.CHAG_WORK
+	, VED.JOIN_DATE
+	, VED.RETR_DATE
+	, VED.HOOF_STAT_CD
+	, VED.WKPL_TELP_NUMB
+	, VED.REGI_NUMB
+	, VED.BIR_DT
+	, VED.BIR_LUNAR_FLAG
+	, VED.CELL_NUMB
+	, VED.HUS_TELP_NUMB
+	, VED.EMAIL
+	, VED.EMAILSUB
+	, VED.ZIP_NUMB
+	, VED.BASC_ADDR
+	, VED.DTL_ADDR
+	, VED.THEME_ID
+	, VED.MARRIAGE_FLAG
+	, VED.MILITARY_FLAG
+	, VED.WORK_STARTDATE
+	, VED.WORK_YY
+	, VED.WORK_MM
+	, VED.WORK_LEVEL_CD
+	, VED.EDU_LEVEL_CD
+	, VED.SEX_FLAG
+	, VED.SI_FLAG
+	, VED.MAIN_DEPT_FLAG
+	, '' AS NEW_COMPANY_CD
+	<if test="EMP_NO != null and EMP_NO != '' ">
+	, VED.USER_PIC
+	 ,MP.FM_SEQ
+	 ,FM.FILE_NAME
+	</if>
+	, DEPT.DEPT_KORN_NM AS DEPT_NAME
+	, COM.COMPANY_NAME
+	FROM T_SYTM_USER VED
+	LEFT JOIN T_SYTM_DEPT DEPT ON (DEPT.DEPT_CD = VED.DEPT_CD)
+	LEFT JOIN SALES_COMPANY_LIST COM ON (COM.COMPANY_CODE = VED.COMPANY_CD)
+	<if test="EMP_NO != null and EMP_NO != '' ">
+	 LEFT JOIN   SALES_FILE_MAP  MP  ON (MP.SOURCE_CD = 'EI' AND MP.SOURCE_SEQ = VED.EMP_NO AND MP.STATUS_CD = 'PRIVACY')
+	 LEFT JOIN   SALES_FILE_MASTER    FM  ON (FM.FM_SEQ = MP.FM_SEQ)
+	</if>
+	<!-- 
+	LEFT JOIN  	( SELECT  PSE.EMP_NO, COUNT(*) CNT
+					FROM  SALES_PROJECT_SI_EMP PSE
+				   GROUP BY PSE.EMP_NO
+				) PSE ON (PSE.EMP_NO = VED.EMP_NO)
+	 -->
+	WHERE VED.MAIN_DEPT_FLAG = '1'
+	<if test="COMPANY_CODE != null and COMPANY_CODE != '' ">
+	 AND VED.COMPANY_CD = #{COMPANY_CODE}
+	</if>
+	<if test="EMP_NO != null and EMP_NO != '' ">
+	 AND     VED.EMP_NO = #{EMP_NO}
+	</if>
+	<if test="SEARCH_TEXT != null and SEARCH_TEXT != '' ">
+		    <choose>
+		        <when test=' SEARCH_GB == "E" '>
+					AND VED.EMP_NM LIKE CONCAT('%',#{SEARCH_TEXT},'%')
+		        </when>
+		        <when test=' SEARCH_GB == "O" '>
+					AND COM.COMPANY_NAME LIKE CONCAT('%',#{SEARCH_TEXT},'%')
+		        </when>
+		        <otherwise>
+					AND VED.EMAIL LIKE CONCAT('%',#{SEARCH_TEXT},'%')
+		        </otherwise>
+		    </choose>	
+	</if>
+
+</select>
+
+<select id="selectStaffEduList" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT
+		 ESC.COMPANY_CD,
+		 ESC.ESC_SEQ,
+		 ESC.EMP_NO,
+		 ESC.SCHOOL_NAME,
+		 ESC.START_DATE,
+		 ESC.END_DATE,
+		 ESC.SUBJECT_NAME,
+		 ESC.GRADUATE_FLAG,
+		 ESC.PLACE_NAME
+	 FROM EMP_SCHOOL_CAREER ESC
+	 WHERE ESC.EMP_NO = #{EMP_NO}
+	 AND ESC.COMPANY_CD = #{COMPANY_CODE}
+	 ORDER BY ESC.START_DATE
+</select>
+
+<select id="selectStaffCompanyList" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT
+		 ECC.COMPANY_CD,
+		 ECC.ECC_SEQ,
+		 ECC.EMP_NO,
+		 ECC.START_DATE,
+		 ECC.END_DATE,
+		 ECC.COMPANY_NAME,
+		 ECC.GRADE_NAME,
+		 ECC.WORK_PART
+	FROM EMP_COMPANY_CAREER ECC
+	WHERE ECC.EMP_NO = #{EMP_NO}
+	 AND ECC.COMPANY_CD = #{COMPANY_CODE}
+	ORDER BY ECC.START_DATE
+</select>
+
+<select id="selectStaffProjectList" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT
+		EPC.COMPANY_CD,
+		EPC.EPC_SEQ,
+		EPC.EMP_NO,
+		EPC.PROJECT_NAME,
+		EPC.START_DATE,
+		EPC.END_DATE,
+		EPC.CLIENT_NAME,
+		EPC.COMPANY_NAME,
+		EPC.ROLE_CODE,
+		EPC.ENV,
+		EPC.PRLANGUAGE,
+		EPC.DBMS,
+		EPC.REMARKS
+	FROM EMP_PROJECT_CAREER EPC
+	WHERE EPC.EMP_NO = #{EMP_NO}
+	AND EPC.COMPANY_CD = #{COMPANY_CODE}
+	ORDER BY EPC.START_DATE DESC
+</select>
+
+<select id="selectStaffEtcTechList" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT
+	 ETS.COMPANY_CD,
+	 ETS.ETS_SEQ,
+	 ETS.EMP_NO,
+	 ETS.SKILL_NAME,
+	 ETS.SKILL
+	 FROM EMP_TECH_SKILL ETS
+	 WHERE ETS.EMP_NO = #{EMP_NO}
+	   AND ETS.COMPANY_CD = #{COMPANY_CODE}
+	 ORDER BY ETS.ETS_SEQ
+</select>
+
+<select id="selectStaffEtcEduList" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT
+	 EE.COMPANY_CD,
+	 EE.EE_SEQ,
+	 EE.EMP_NO,
+	 EE.EDU_NAME,
+	 EE.INSTITUTION_NAME,
+	 EE.START_DATE,
+	 EE.END_DATE
+	 FROM EMP_EDUCATION EE
+	 WHERE EE.EMP_NO = #{EMP_NO}
+	 AND EE.COMPANY_CD = #{COMPANY_CODE}
+	 ORDER BY EE.END_DATE DESC
+</select>
+
+<select id="selectStaffAppointmentList" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT 
+	  COMPANY_CD
+	, EMP_NO
+	, EA_SEQ
+	, APPOINT_CD
+	, APPOINT_DATE
+	, GROUP_NAME
+	, TEAM_NAME
+	, WKDT_CD
+	, REMARKS
+	FROM EMP_APPOINTMENT
+	 WHERE   EMP_NO = #{EMP_NO}
+	 AND COMPANY_CD = #{COMPANY_CODE}
+	 ORDER BY APPOINT_DATE DESC
+</select>
+
+<select id="selectStaffLicenseList" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT  
+	  EL.COMPANY_CD
+	 ,EL.EL_SEQ
+	 ,EL.EMP_NO
+	 ,EL.LICENSE_CODE
+	 ,EL.LICENSE_DATE
+	 ,EL.LICENSE_FM_SEQ
+	 ,MP.FM_SEQ
+	 ,FM.FILE_NAME
+	 FROM    EMP_LICENSE                 EL
+	 LEFT JOIN   SALES_FILE_MAP  MP  ON (MP.SOURCE_CD = 'EL' AND MP.SOURCE_SEQ = EL.EMP_NO AND MP.STATUS_CD = EL.LICENSE_CODE)
+	 LEFT JOIN   SALES_FILE_MASTER    FM  ON (FM.FM_SEQ = MP.FM_SEQ)
+	 WHERE   EL.EMP_NO = #{EMP_NO}
+	 AND EL.COMPANY_CD = #{COMPANY_CODE}
+	 ORDER BY EL.LICENSE_DATE
+</select>
+
+<select id="selectDetailPopupCompany" parameterType="java.util.List" resultType="java.util.Map">
+	SELECT 
+	  COMPANY_CODE
+	, COMPANY_NAME
+	, COMPANY_NAME_ENG
+	, COMPANY_STATE
+	, CLIENT_FLAG
+	, COMPANY_FLAG
+	, TMP_FLAG
+	, BLACKLIST_FLAG
+	, SI_VIEW_FLAG
+	, TURNKEY_FLAG
+	, SUBSIDIARY_COMPANY_FLAG
+	, COMPANY_REG_NO
+	, CORPORATE_REG_NO
+	, PHONE_NO
+	, REMARKS
+	, CONTRACT_REMARKS
+	, PURCHASE_REMARKS
+	FROM SALES_COMPANY_LIST
+	WHERE DELETE_FLAG = '0'
+	 <if test="COMPANY_NAME != null and COMPANY_NAME != '' ">
+	 AND ( COMPANY_NAME LIKE CONCAT('%',#{COMPANY_NAME},'%') OR TAG LIKE CONCAT('%',#{COMPANY_NAME},'%') )
+	 </if>
+	 <if test=' COMPANY_TYPE == "1" or COMPANY_TYPE == "2" '>
+	     AND CLIENT_FLAG = '1'
+	 </if>
+
+</select>
+
 </mapper>

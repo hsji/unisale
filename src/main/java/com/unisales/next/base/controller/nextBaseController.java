@@ -34,6 +34,7 @@ import com.nexacro.uiadapter.spring.core.annotation.ParamDataSet;
 import com.nexacro.uiadapter.spring.core.data.NexacroFileResult;
 import com.nexacro.uiadapter.spring.core.data.NexacroResult;
 import com.unisales.next.base.service.nextBaseService;
+import com.unisales.util.NexaUtil;
 import com.unisales.util.NexterUtil;
 
 /**
@@ -156,6 +157,82 @@ public class nextBaseController {
 		NexacroResult result = new NexacroResult();
 		return result;
 	}  		
+    
+	/**
+	 * 회사정보 저장
+	 * @param saveMap		: 저장할 Dataset
+	 * @return result		: 데이터 셋
+	 * @throws ParseException 
+	 * @throws IOException 
+	 */
+    @RequestMapping(value = "/saveNextUserInfoList.do")
+	public NexacroResult saveNextUserInfoList(@ParamDataSet(name = "dsInput1", required = false) List<Map<String,Object>> dsList1
+										, @ParamDataSet(name = "dsInput2", required = false) List<Map<String,Object>> dsList2
+										, @ParamDataSet(name = "dsInput3", required = false) List<Map<String,Object>> dsList3
+										, @ParamDataSet(name = "dsInput4", required = false) List<Map<String,Object>> dsList4
+										, @ParamDataSet(name = "dsInput5", required = false) List<Map<String,Object>> dsList5
+										, @ParamDataSet(name = "dsInput6", required = false) List<Map<String,Object>> dsList6
+										, @ParamDataSet(name = "dsInput7", required = false) List<Map<String,Object>> dsList7
+										, @ParamDataSet(name = "dsInput8", required = false) List<Map<String,Object>> dsList8
+										, @ParamDataSet(name = "dsInput9", required = false) List<Map<String,Object>> dsList9
+										, @ParamDataSet(name = "dsInput10", required = false) List<Map<String,Object>> dsList10
+										, @ParamDataSet(name = "dsMap", required = false) List<Map<String,String>> queryList
+										, @ParamDataSet(name = "dsCond", required = false) Map<String,Object> searchMap 
+										, HttpServletRequest request) throws NexacroException, IOException, ParseException{
+    	NexterUtil NexUtil = new NexterUtil();
+
+    	// Login 사용자 정보를 받은 Map
+    	Map<String, Object> loginUserInfo = NexUtil.getUserInfoMap(request);
+    	
+    	int size = queryList.size();
+    	for(int i=0;i<size;i++) {
+        	// 추가/수정
+    		List<Map<String,Object>> input = null;
+    		if(i==0) {
+    			input = dsList1;
+    			Map<String,Object> userMap = input.get(0);
+                String pwd = (String) userMap.get("PASSWORD");
+                if(pwd == null) pwd = "";
+                if(pwd.equals("")) {
+                } else {
+                	// PASSWORD 복호화
+                	String decryptContents = "";
+                	try {
+                		decryptContents = NexaUtil.getDectypeValue(request, pwd);
+                		userMap.put("PASSWORD", decryptContents);
+                	} catch (Exception e) {
+                		e.printStackTrace();
+                		throw new NexacroException("exceptionName", -999, "msg.keyfail");
+                	}            	
+                }    			
+    		} else if(i==1) {
+    			input = dsList2;
+    		} else if(i==2) {
+    			input = dsList3;
+    		} else if(i==3) {
+    			input = dsList4;
+    		} else if(i==4) {
+    			input = dsList5;
+    		} else if(i==5) {
+    			input = dsList6;
+    		} else if(i==6) {
+    			input = dsList7;
+    		} else if(i==7) {
+    			input = dsList8;
+    		} else if(i==8) {
+    			input = dsList9;
+    		} else if(i==9) {
+    			input = dsList10;
+    		}
+    		
+    		Map<String,String> queryMap = queryList.get(i);
+        	commBaseService.saveListUserMap(queryMap, input, loginUserInfo);
+    		
+    	}
+    	
+		NexacroResult result = new NexacroResult();
+		return result;
+	}  		    
 	
 	/**
 	 * 회사정보 저장
@@ -339,7 +416,7 @@ public class nextBaseController {
  	 * @return fileResult	: 데이터 셋
  	 */	
      @RequestMapping("/nextFileDownload.do")
-     public NexacroFileResult nextFileDownload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+     public NexacroFileResult nextFileDownload(HttpServletRequest request, HttpServletResponse response) throws NexacroException, Exception {
 
       	Properties properties = new Properties();
         Reader reader = Resources.getResourceAsReader("file.properties");
@@ -382,7 +459,9 @@ public class nextBaseController {
          //orgFileName = new String(orgFileName.getBytes("iso8859-1"), characterEncoding);    	
      	
      	File file = new File(serverPath);
-     	
+     	if(!file.exists()) {
+     		throw new NexacroException("File Error", -999, "404");
+     	}
      	NexacroFileResult fileResult = new NexacroFileResult(file);
      	fileResult.setOriginalName(OF);
      	

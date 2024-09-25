@@ -583,6 +583,16 @@
         }
 
 
+        this.fdtFile_onerror = function(obj,e)
+        {
+        	console.log("fdtFile_onerror", e);
+        };
+
+        this.fdtFile_onsuccess = function(obj,e)
+        {
+        	console.log("fdtFile_onsuccess", e);
+        };
+
         });
         
         // Regist UI Components Event

@@ -450,6 +450,16 @@ this.fnCallBack = function(strSvcID, nErrorCode, strErrorMag)
 	}
 }
 
+
+this.fdtFile_onerror = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferErrorEventInfo)
+{
+	console.log("fdtFile_onerror", e);
+};
+
+this.fdtFile_onsuccess = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferEventInfo)
+{
+	console.log("fdtFile_onsuccess", e);
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_CD_NEXT_FILE_TYPE"/>

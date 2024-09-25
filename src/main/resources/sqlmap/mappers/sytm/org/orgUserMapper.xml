@@ -347,6 +347,16 @@ WITH RECURSIVE CTE_Dept AS (
 
 
 <!--  MAP 사용자 정보 조회  -->
+<select id="selectCheckEmpNo" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT	
+	    US.EMP_NO
+	    , US.USER_ID
+	FROM T_SYTM_USER US
+	WHERE EMP_NO = #{EMP_NO}
+	AND US.COMPANY_CD = #{COMPANY_CODE}
+</select> 
+
+<!--  MAP 사용자 정보 조회  -->
 <select id="searchUserOneInfo" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT	/*  searchUserInfo  */
 	    US.EMP_NO
@@ -420,7 +430,9 @@ WITH RECURSIVE CTE_Dept AS (
 		COMPANY_CD
 	    , EMP_NO
 	    , USER_ID
+	    <if test="PASSWORD != null and PASSWORD != ''">
 	    , PASSWORD
+	    </if>
 	    , EMP_NM
 	    , KORN_NM
 	    , ENGL_NM
@@ -460,9 +472,31 @@ WITH RECURSIVE CTE_Dept AS (
 	    , CHGE_IP	    
 	)VALUES(
 		#{COMPANY_CD}
-	    , #{EMP_NO}
-	    , #{USER_ID}
+	    , 
+		<choose>
+			<when test=' EMP_NO == null or EMP_NO == "" '>
+				(SELECT CONCAT('EU', LPAD(IFNULL(MAX(CAST(SUBSTRING(TU.EMP_NO, 3) AS UNSIGNED)), 0) + 1, 8, '0')) AS EMP_NO
+				FROM T_SYTM_USER TU
+				WHERE TU.EMP_NO LIKE 'EU%' AND TU.COMPANY_CD = #{COMPANY_CD})
+			</when>
+			<otherwise>
+				#{EMP_NO}
+			</otherwise>
+		</choose>
+		,			
+		<choose>
+			<when test=' (USER_ID == null or USER_ID == "") and (EMP_NO == null or EMP_NO == "") '>
+				(SELECT CONCAT('EU', LPAD(IFNULL(MAX(CAST(SUBSTRING(TU.EMP_NO, 3) AS UNSIGNED)), 0) + 1, 8, '0')) AS EMP_NO
+				FROM T_SYTM_USER TU
+				WHERE TU.EMP_NO LIKE 'EU%' AND TU.COMPANY_CD = #{COMPANY_CD})
+			</when>
+			<otherwise>
+				#{USER_ID}
+			</otherwise>
+		</choose>			
+		<if test="PASSWORD != null and PASSWORD != ''">
 	    , CONVERT(#{PASSWORD}, CHAR)
+	    </if>
 	    , #{EMP_NM}
 	    , #{KORN_NM}
 	    , #{ENGL_NM}

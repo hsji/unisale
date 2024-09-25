@@ -205,53 +205,92 @@
             
             // BindItem Information
             obj = new BindItem("item0","div_ContractInfo.form.cal_FreeMaEndDate","value","ds_MainContract","DELIVERY_DATE");
-         gMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1438)
-Caused by: org.xml.sax.SAXParseExceptionpublicId: file:/E:/SALESDOT/ws/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/E:/SALESDOT/ws/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 1; columnNumber: 1; 프롤로그에서는 콘텐츠가 허용되지 않습니다.
-	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
-	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
-	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
-	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
-	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:994)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl.load(XMLLoadImpl.java:175)
-	at org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl.doLoad(XMLResourceImpl.java:261)
-	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1563)
-	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1342)
-	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoad(ResourceSetImpl.java:259)
-	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:274)
-	... 24 more
+            this.addChild(obj.name, obj);
+            obj.bind();
 
-!ENTRY org.eclipse.e4.ui.workbench 4 0 2024-09-23 20:54:05.362
-!MESSAGE The persisted application model has no top-level window. Reinitializing with the default application model.
-!STACK 0
-java.lang.Exception
-	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel(ResourceHandler.java:174)
-	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.loadApplicationModel(E4Application.java:384)
-	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:260)
-	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:581)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
-	at or**********/
+            obj = new BindItem("item1","div_ContractInfo.form.cal_OpenDate","value","ds_MainContract","OPEN_DATE");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item2","div_ContractInfo.form.cal_LICDate","value","ds_MainContract","ISSUE_DATE");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item3","div_ContractInfo.form.chb_Annual","value","ds_MainContract","ANNUAL_FLAG");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item4","div_ContractInfo.form.cal_StartDt","value","ds_MainContract","START_DATE2");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item5","div_ContractInfo.form.cal_EndDt","value","ds_MainContract","END_DATE2");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item6","div_ContractInfo.form.cal_ResultDt","value","ds_MainContract","RESULT_DATE");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item8","div_ContractInfo.form.edt_ContractName","value","ds_MainContract","CONTRACT_NAME");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item7","div_ContractInfo.form.edt_ContractName00","value","ds_MainContract","CONTRACT_NAME");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item9","div_ContractInfo.form.edt_ContractName01","value","ds_MainContract","CONTRACT_NAME");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item10","div_ContractInfo.form.cmb_PayMethod","value","ds_MainContract","PAY_METHOD");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item11","div_ContractInfo.form.chb_Export","value","ds_MainContract","EXPORT_FLAG");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item13","div_Search01.form.edt_ContractName02","value","ds_MainContract","CONTRACT_NAME");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            
+            // TriggerItem Information
+
+        };
+        
+        this.loadPreloadList = function()
+        {
+
+        };
+        
+        // User Script
+        this.addIncludeScript("AS_TranslationMM.xfdl","Script::CommTrans.xjs");
+        this.addIncludeScript("AS_TranslationMM.xfdl","Script::CommGrid.xjs");
+        this.addIncludeScript("AS_TranslationMM.xfdl","Script::CommUtil.xjs");
+        this.addIncludeScript("AS_TranslationMM.xfdl","Script::CommSystem.xjs");
+        this.addIncludeScript("AS_TranslationMM.xfdl","Script::ext_CommEco.xjs");
+        this.registerScript("AS_TranslationMM.xfdl", function() {
+        /************************************************************************************************
+         * 01. 업무구분 : 관리>데이터관리
+         * 02. 화면명   : 번역관리(AS_TranslationMM)
+         * 03. 화면설명 : NEXT 다국어 지원을 위한 항목, 메시지 국문 번역 등록
+         * 04. 작성일   : 2022.12.15
+         * 05. 작성자   : 채종한
+         * 06. 수정이력 :
+         ***********************************************************************************************
+         *     수정일          이  름    사유
+         ***********************************************************************************************
+         *
+         *
+         *
+         ***********************************************************************************************/
+
+
+        /************************************************************************************************
+         * 공통 라이브러리 INCLUDE 영역
+         ************************************************************************************************/
         this.executeIncludeScript("Script::CommTrans.xjs"); /*include "Script::CommTrans.xjs"*/
         this.executeIncludeScript("Script::CommGrid.xjs"); /*include "Script::CommGrid.xjs"*/
         this.executeIncludeScript("Script::CommUtil.xjs"); /*include "Script::CommUtil.xjs"*/

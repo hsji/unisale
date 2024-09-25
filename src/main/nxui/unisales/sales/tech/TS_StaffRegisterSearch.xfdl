@@ -42,8 +42,8 @@
                 <Cell col="5" text="이메일" TL_SEQ="80"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:COMPANY_NM"/>
-                <Cell col="1" text="bind:DEPT_NM"/>
+                <Cell text="bind:COMPANY_NAME"/>
+                <Cell col="1" text="bind:DEPT_NAME"/>
                 <Cell col="2" text="bind:HOOF_STAT_CD" displaytype="combotext" combodataset="ds_CD_HOOF_STAT_CD" combocodecol="CODE" combodatacol="CAPTION"/>
                 <Cell col="3" text="bind:EMP_NM"/>
                 <Cell col="4" text="bind:EMP_NO"/>

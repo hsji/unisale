@@ -13,22 +13,22 @@
             this.set_titletext("사용자 관리");
             if (Form == this.constructor)
             {
-                this._setFormPosition(1300,736);
+                this._setFormPosition(1200,736);
             }
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsCond", this);
-            obj._setContents("<ColumnInfo><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"USER_NM\" type=\"STRING\" size=\"256\"/><Column id=\"EMP_NO\" type=\"STRING\" size=\"256\"/><Column id=\"HOOF_STAT_CD\" type=\"STRING\" size=\"256\"/><Column id=\"USER_FLAG_CD\" type=\"STRING\" size=\"256\"/><Column id=\"COMPANY_CD\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            obj._setContents("<ColumnInfo><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"USER_NM\" type=\"STRING\" size=\"256\"/><Column id=\"EMP_NO\" type=\"STRING\" size=\"256\"/><Column id=\"HOOF_STAT_CD\" type=\"STRING\" size=\"256\"/><Column id=\"USER_FLAG_CD\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
             this.addChild(obj.name, obj);
 
 
             obj = new Dataset("dsList", this);
-            obj._setContents("<ColumnInfo><Column id=\"EMP_NO\" type=\"STRING\" size=\"256\"/><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"PASSWORD\" type=\"STRING\" size=\"256\"/><Column id=\"KORN_NM\" type=\"STRING\" size=\"256\"/><Column id=\"ENGL_NM\" type=\"STRING\" size=\"256\"/><Column id=\"DEPT_CD\" type=\"STRING\" size=\"256\"/><Column id=\"DEPT_NM\" type=\"STRING\" size=\"256\"/><Column id=\"USER_FLAG_CD\" type=\"STRING\" size=\"256\"/><Column id=\"WKGD_CD\" type=\"STRING\" size=\"256\"/><Column id=\"WKDT_CD\" type=\"STRING\" size=\"256\"/><Column id=\"OCCU_CD\" type=\"STRING\" size=\"256\"/><Column id=\"CHAG_WORK\" type=\"STRING\" size=\"256\"/><Column id=\"JOIN_DATE\" type=\"STRING\" size=\"256\"/><Column id=\"RETR_DATE\" type=\"STRING\" size=\"256\"/><Column id=\"HOOF_STAT_CD\" type=\"STRING\" size=\"256\"/><Column id=\"REGI_NUMB\" type=\"STRING\" size=\"256\"/><Column id=\"BIR_DT\" type=\"STRING\" size=\"256\"/><Column id=\"CELL_NUMB\" type=\"STRING\" size=\"256\"/><Column id=\"PHONE1\" type=\"STRING\" size=\"256\"/><Column id=\"PHONE2\" type=\"STRING\" size=\"256\"/><Column id=\"PHONE3\" type=\"STRING\" size=\"256\"/><Column id=\"EMAIL\" type=\"STRING\" size=\"256\"/><Column id=\"ZIP_NUMB\" type=\"STRING\" size=\"256\"/><Column id=\"BASC_ADDR\" type=\"STRING\" size=\"256\"/><Column id=\"DTL_ADDR\" type=\"STRING\" size=\"256\"/><Column id=\"COMPANY_CD\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"EMP_NO\" type=\"STRING\" size=\"256\"/><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"PASSWORD\" type=\"STRING\" size=\"256\"/><Column id=\"KORN_NM\" type=\"STRING\" size=\"256\"/><Column id=\"ENGL_NM\" type=\"STRING\" size=\"256\"/><Column id=\"DEPT_CD\" type=\"STRING\" size=\"256\"/><Column id=\"DEPT_NM\" type=\"STRING\" size=\"256\"/><Column id=\"USER_FLAG_CD\" type=\"STRING\" size=\"256\"/><Column id=\"WKGD_CD\" type=\"STRING\" size=\"256\"/><Column id=\"WKDT_CD\" type=\"STRING\" size=\"256\"/><Column id=\"OCCU_CD\" type=\"STRING\" size=\"256\"/><Column id=\"CHAG_WORK\" type=\"STRING\" size=\"256\"/><Column id=\"JOIN_DATE\" type=\"STRING\" size=\"256\"/><Column id=\"RETR_DATE\" type=\"STRING\" size=\"256\"/><Column id=\"HOOF_STAT_CD\" type=\"STRING\" size=\"256\"/><Column id=\"REGI_NUMB\" type=\"STRING\" size=\"256\"/><Column id=\"BIR_DT\" type=\"STRING\" size=\"256\"/><Column id=\"CELL_NUMB\" type=\"STRING\" size=\"256\"/><Column id=\"PHONE1\" type=\"STRING\" size=\"256\"/><Column id=\"PHONE2\" type=\"STRING\" size=\"256\"/><Column id=\"PHONE3\" type=\"STRING\" size=\"256\"/><Column id=\"EMAIL\" type=\"STRING\" size=\"256\"/><Column id=\"ZIP_NUMB\" type=\"STRING\" size=\"256\"/><Column id=\"BASC_ADDR\" type=\"STRING\" size=\"256\"/><Column id=\"DTL_ADDR\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
             obj = new Dataset("dsCheckUserId", this);
-            obj._setContents("<ColumnInfo><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"COMPANY_CD\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -50,14 +50,7 @@
             obj.set_text("");
             this.addChild(obj.name, obj);
 
-            obj = new Static("staCompany","0","12","87","24",null,null,null,null,null,null,this.divSearch.form);
-            obj.set_taborder("11");
-            obj.set_text("회사구분");
-            obj.set_cssclass("sta_WF_SchLabel");
-            obj.set_fittocontents("width");
-            this.divSearch.addChild(obj.name, obj);
-
-            obj = new Combo("cboCompany","staCompany:0","12","139","24",null,null,null,null,null,null,this.divSearch.form);
+            obj = new Combo("cboCompany","87","12","139","24",null,null,null,null,null,null,this.divSearch.form);
             obj.set_taborder("12");
             obj.set_innerdataset("gdsCompany");
             obj.set_codecolumn("SSC_CD");
@@ -128,6 +121,13 @@
             obj.set_taborder("10");
             obj.set_value("");
             obj.set_index("-1");
+            this.divSearch.addChild(obj.name, obj);
+
+            obj = new Static("staCompany","0","12","87","24",null,null,null,null,null,null,this.divSearch.form);
+            obj.set_taborder("11");
+            obj.set_text("회사구분");
+            obj.set_cssclass("sta_WF_SchLabel");
+            obj.set_fittocontents("width");
             this.divSearch.addChild(obj.name, obj);
 
             obj = new Static("staTitle01","0","divSearch:0","64","43",null,null,null,null,null,null,this);
@@ -447,7 +447,7 @@
             this.divDetail.form.addLayout(obj.name, obj);
 
             //-- Default Layout : this
-            obj = new Layout("default","",1300,736,this,function(p){});
+            obj = new Layout("default","",1200,736,this,function(p){});
             obj.set_mobileorientation("landscape");
             this.addLayout(obj.name, obj);
             
@@ -629,7 +629,6 @@
 
         	var arrComp = [this.divSearch.form.cboCompany];
         	this.gfnSetAuthorityCompany(arrComp);
-        	this.divDetail.form.divDept.form.fnSetCompany(arrComp[0].value);
 
         	//주소찾기
         //	var url = this.gfnGetServerUrl() + "devPack/thirdParty/post/PostCall.jsp";
@@ -672,7 +671,6 @@
         {
         	var nRow = this.dsList.addRow();
 
-        	this.dsList.setColumn(nRow, "COMPANY_CD", this.divSearch.form.cboCompany.value);
         	this.dsList.setColumn(nRow, "JOIN_DATE", this.gfnGetDate());
         	//this.dsList.setColumn(nRow, "RETR_DATE", "99991231");
         	this.dsList.setColumn(nRow, "HOOF_STAT_CD", "HO");
@@ -827,7 +825,6 @@
         	// 정합성 체크
         	this.gfnClearValidation(this.dsList);
 
-        	this.gfnSetValidation(this.dsList, "COMPANY_CD", "회사"	, "required");
         	this.gfnSetValidation(this.dsList, "USER_ID", "사용자ID"	, "required");
         	this.gfnSetValidation(this.dsList, "EMP_NO",  "사번"	    , "required");
         	//this.gfnSetValidation(this.dsList, "PASSWORD", "비밀번호"	, "required");
@@ -973,9 +970,7 @@
         		return;
         	}
         	var sTitle = "사용자상세";
-        	var oArg   = {pvCompanyCd:this.dsList.getColumn(this.dsList.rowposition, "COMPANY_CD")
-        					,pvEmpNo : this.dsList.getColumn(this.dsList.rowposition, "EMP_NO")
-        				};
+        	var oArg   = {pvEmpNo : this.dsList.getColumn(this.dsList.rowposition, "EMP_NO")};
         	var oOption = {title:sTitle
         				,titlebar:true};
         	var sPopupCallBack = "fnPopupCallback";
@@ -996,11 +991,6 @@
         this.dsList_onrowposchanged = function(obj,e)
         {
         	this.divDetail.form.edtPassword.set_value(this.dsList.getColumn(this.dsList.rowposition, "PASSWORD"));
-        };
-
-        this.divSearch_cboCompany_onitemchanged = function(obj,e)
-        {
-        	this.divDetail.form.divDept.form.fnSetCompany(obj.value);
         };
 
         });

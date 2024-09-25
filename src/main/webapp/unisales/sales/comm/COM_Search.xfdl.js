@@ -432,11 +432,15 @@
          ************************************************************************************************/
         this.btn_Delete_onclick = function(obj,e)
         {
+        	if(this.parent.enable == false) return;
         	this.clearData();
         };
 
         this.btn_Popup_onclick = function(obj,e)
         {
+
+        	if(this.parent.enable == false) return;
+
         	var sArgument = {};
 
         	if (this.gfnIsEmpty(this.FV_VALUE)) {
@@ -606,6 +610,19 @@
         		this.btn_Popup_onclick();
         	}
         };
+
+        this.fnSetReadOnly = function(v, v2)
+        {
+        	this.edtName.set_readonly(v);
+
+        	if(v2) {
+        		this.btn_Delete.set_enable(false);
+        		this.btn_Popup.set_enable(false);
+        	} else {
+        		this.btn_Delete.set_enable(true);
+        		this.btn_Popup.set_enable(true);
+        	}
+        }
 
         this.onchanged = function()
         {
